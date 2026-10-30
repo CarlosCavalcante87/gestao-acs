@@ -50,7 +50,7 @@
     .card-meta.active { background: #f0fdf4; border-color: #10b981; box-shadow: 0 0 0 2px #10b981; }
     .card-meta .header-card { display: flex; justify-content: space-between; align-items: baseline; }
     .card-meta h4 { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
-    .card-meta .badge-meta { font-size: 0.65rem; padding: 1px 6px; border-radius: 10px; font-weight: 700; background: #e2e8f0; color: #475569; }
+    .card-meta .badge-meta { font-size: 0.68rem; padding: 1px 6px; border-radius: 10px; font-weight: 800; background: #e2e8f0; color: #334155; }
     
     .card-meta .valor { font-size: 1.3rem; font-weight: 800; margin-top: 2px; }
     .card-meta .valor.ok { color: #0284c7; }
@@ -70,16 +70,20 @@
     .chip { font-size: 0.72rem; font-weight: 700; padding: 5px 9px; border-radius: 16px; border: 1px solid var(--border); background: white; color: var(--text-muted); white-space: nowrap; cursor: pointer; }
     .chip.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-    .search-bar { width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.9rem; margin-bottom: 8px; outline: none; background: white; }
+    .search-bar { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.92rem; margin-bottom: 8px; outline: none; background: white; }
+    .search-bar:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2); }
+    
     .filtros-duplos { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
     select.filter-select { width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; background: white; font-size: 0.82rem; }
 
     /* LISTA DE CIDADÃOS */
-    .item-cidadao { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 10px 12px; margin-bottom: 8px; }
+    .contador-resultados { font-size: 0.76rem; color: var(--text-muted); font-weight: 600; margin-bottom: 8px; padding-left: 2px; }
+    .item-cidadao { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 11px 13px; margin-bottom: 8px; }
     .item-cidadao .topo { display: flex; justify-content: space-between; align-items: baseline; }
-    .item-cidadao .nome { font-weight: 700; font-size: 0.92rem; color: #0f172a; margin-bottom: 3px; }
-    .item-cidadao .endereco { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 6px; line-height: 1.3; }
+    .item-cidadao .nome { font-weight: 700; font-size: 0.94rem; color: #0f172a; margin-bottom: 3px; }
+    .item-cidadao .endereco { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 5px; line-height: 1.35; }
     .item-cidadao .telefone a { color: var(--primary); text-decoration: none; font-weight: 600; }
+    .item-cidadao .info-cadastral { font-size: 0.74rem; color: #64748b; margin-bottom: 6px; }
 
     .tag { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 2px 6px; border-radius: 4px; margin-right: 3px; margin-bottom: 3px; }
     .tag-danger { background: #fee2e2; color: #b91c1c; }
@@ -213,19 +217,20 @@
         <button class="chip" id="chip-C6" onclick="selecionarFiltroIndicador('C6')">C6: Idosos</button>
       </div>
 
-      <input type="text" id="campoBusca" class="search-bar" placeholder="🔍 Pesquisar por nome, CPF ou número..." oninput="filtrarLista()">
+      <input type="text" id="campoBusca" class="search-bar" placeholder="🔍 Buscar por nome, CPF ou número da casa..." oninput="filtrarLista()">
 
       <div class="filtros-duplos">
         <select id="filtroRua" class="filter-select" onchange="filtrarLista()">
           <option value="">Todas as ruas</option>
         </select>
         <select id="filtroPendencia" class="filter-select" onchange="filtrarLista()">
-          <option value="todos">Exibir Todos</option>
-          <option value="pendentes" selected>⚠️ Apenas Pendências</option>
+          <option value="todos" selected>Exibir Todos</option>
+          <option value="pendentes">⚠️ Apenas Pendências</option>
           <option value="emdia">✓ Em Dia</option>
         </select>
       </div>
 
+      <div class="contador-resultados" id="contadorResultados"></div>
       <div id="listaUtentes"></div>
     </div>
 
@@ -319,6 +324,12 @@
     let cpfToChave = {};
     let nomeToChave = {};
 
+    // Remove acentos e converte para minúsculas
+    function normalizarTexto(txt) {
+      if (!txt) return "";
+      return txt.toString().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+    }
+
     window.addEventListener('DOMContentLoaded', () => {
       const salvo = localStorage.getItem('gestao_acs_dados');
       if (salvo) {
@@ -326,6 +337,14 @@
           const parseado = JSON.parse(salvo);
           BASE_DADOS.cidadaos = parseado.cidadaos || {};
           BASE_DADOS.ruas = new Set(parseado.ruas || []);
+          
+          // Garante que todo cidadão da microárea pertence ao C1
+          Object.values(BASE_DADOS.cidadaos).forEach(c => {
+            if (!c.indicadores) c.indicadores = {};
+            c.indicadores['C1'] = true;
+            if (c.c1Ok === undefined) c.c1Ok = true;
+          });
+
           atualizarInterface();
         } catch(e) { console.error(e); }
       }
@@ -348,6 +367,7 @@
       return r;
     }
 
+    // Ao clicar em um Card ou Chip:
     function selecionarFiltroIndicador(ind) {
       filtroIndicadorAtual = ind;
       document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
@@ -358,6 +378,14 @@
 
       const card = document.getElementById(`card-${ind.toLowerCase()}`);
       if (card) card.classList.add('active');
+
+      // Se o indicador for C1 ou todos, define para 'todos' para listar todos os cidadãos
+      const selectPend = document.getElementById('filtroPendencia');
+      if (ind === 'C1' || ind === 'todos') {
+        selectPend.value = 'todos';
+      } else {
+        selectPend.value = 'pendentes';
+      }
 
       filtrarLista();
     }
@@ -396,6 +424,13 @@
           if (dados.cidadaos && Object.keys(dados.cidadaos).length > 0) {
             BASE_DADOS.cidadaos = dados.cidadaos;
             BASE_DADOS.ruas = new Set(dados.ruas || []);
+            
+            Object.values(BASE_DADOS.cidadaos).forEach(c => {
+              if (!c.indicadores) c.indicadores = {};
+              c.indicadores['C1'] = true;
+              if (c.c1Ok === undefined) c.c1Ok = true;
+            });
+
             localStorage.setItem('gestao_acs_dados', JSON.stringify({
               cidadaos: BASE_DADOS.cidadaos,
               ruas: Array.from(BASE_DADOS.ruas).sort()
@@ -434,6 +469,12 @@
           };
         });
       }
+
+      Object.values(BASE_DADOS.cidadaos).forEach(c => {
+        if (!c.indicadores) c.indicadores = {};
+        c.indicadores['C1'] = true;
+        if (c.c1Ok === undefined) c.c1Ok = true;
+      });
 
       const payload = {
         cidadaos: BASE_DADOS.cidadaos,
@@ -521,12 +562,14 @@
             numero: reg["Número"] || reg["NÚMERO"] || "",
             telefone: (reg["Telefone celular"] && reg["Telefone celular"] !== "-") ? reg["Telefone celular"] : "",
             condicoes: {},
-            indicadores: {},
+            indicadores: { "C1": true },
             pendencias: []
           };
         }
 
         const cid = BASE_DADOS.cidadaos[chave];
+        cid.indicadores['C1'] = true;
+
         if (nome && !cid.nome) cid.nome = nome;
         if (cpfBruto && cpfBruto !== "-" && !cid.cpf) cid.cpf = cpfBruto;
         if (reg["CNS"] && reg["CNS"] !== "-" && !cid.cns) cid.cns = reg["CNS"];
@@ -537,19 +580,16 @@
         if (cid.rua) BASE_DADOS.ruas.add(cid.rua);
 
         // INDICADOR C1: Territorialização & Cadastros <24m
-        if (reg["Última atualização cadastral"] || reg["CPF/CNS"]) {
-          cid.indicadores['C1'] = true;
-          if (reg["Última atualização cadastral"] && reg["Última atualização cadastral"] !== "-") {
-            cid.dt_cadastral = reg["Última atualização cadastral"];
-          }
-          const dObj = parseDataJS(cid.dt_cadastral);
-          const diffDias = dObj ? (new Date() - dObj) / (1000 * 60 * 60 * 24) : 9999;
-          cid.c1Ok = (diffDias <= 730);
-          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("C1:"));
-          if (!cid.c1Ok) {
-            const dtStr = cid.dt_cadastral || "Sem registro";
-            cid.pendencias.push(`C1: Cadastro desatualizado há mais de 2 anos (${dtStr})`);
-          }
+        if (reg["Última atualização cadastral"] && reg["Última atualização cadastral"] !== "-") {
+          cid.dt_cadastral = reg["Última atualização cadastral"];
+        }
+        const dObj = parseDataJS(cid.dt_cadastral);
+        const diffDias = dObj ? (new Date() - dObj) / (1000 * 60 * 60 * 24) : 0;
+        cid.c1Ok = (dObj === null || diffDias <= 730);
+        cid.pendencias = (cid.pendencias || []).filter(p => !p.startsWith("C1:"));
+        if (!cid.c1Ok) {
+          const dtStr = cid.dt_cadastral || "Sem registro";
+          cid.pendencias.push(`C1: Cadastro desatualizado há mais de 2 anos (${dtStr})`);
         }
 
         // INDICADOR C2: Crianças (0 a 24 meses)
@@ -657,7 +697,17 @@
         if (dados.cidadaos && Object.keys(dados.cidadaos).length > 0) {
           BASE_DADOS.cidadaos = dados.cidadaos;
           BASE_DADOS.ruas = new Set(dados.ruas || []);
-          localStorage.setItem('gestao_acs_dados', JSON.stringify(dados));
+
+          Object.values(BASE_DADOS.cidadaos).forEach(c => {
+            if (!c.indicadores) c.indicadores = {};
+            c.indicadores['C1'] = true;
+            if (c.c1Ok === undefined) c.c1Ok = true;
+          });
+
+          localStorage.setItem('gestao_acs_dados', JSON.stringify({
+            cidadaos: BASE_DADOS.cidadaos,
+            ruas: Array.from(BASE_DADOS.ruas).sort()
+          }));
 
           prog.style.color = "#10b981";
           prog.innerHTML = "✅ Sincronizado com sucesso! Pronto para uso na rua.";
@@ -695,6 +745,11 @@
       };
 
       lista.forEach(c => {
+        // Assegura atribuição do C1 para toda a microárea
+        c.indicadores = c.indicadores || {};
+        c.indicadores['C1'] = true;
+        if (c.c1Ok === undefined) c.c1Ok = true;
+
         ['C1', 'C2', 'C3', 'C4', 'C5', 'C6'].forEach(ind => {
           if (c.indicadores && c.indicadores[ind]) {
             stats[ind].tot++;
@@ -719,7 +774,6 @@
         elTot.innerText = t;
 
         if (pend === 0) {
-          // 100% CUMPRIDO
           elPct.innerText = "100%";
           elPct.className = "valor ok";
           elBar.style.width = "100%";
@@ -727,7 +781,6 @@
           elPend.className = "status-meta ok";
           elPend.innerText = "✓ 100% atualizados";
         } else {
-          // COM PENDÊNCIAS
           elPct.innerText = `${pctOk}%`;
           elPct.className = "valor danger";
           elBar.style.width = `${pctOk}%`;
@@ -741,32 +794,59 @@
       filtrarLista();
     }
 
+    // Mecanismo Inteligente de Busca e Filtragem
     function filtrarLista() {
-      const termo = document.getElementById('campoBusca').value.toLowerCase();
+      const termoRaw = document.getElementById('campoBusca').value.trim();
       const ruaSel = document.getElementById('filtroRua').value;
       const situacaoSel = document.getElementById('filtroPendencia').value;
 
       const content = document.getElementById('listaUtentes');
+      const contadorEl = document.getElementById('contadorResultados');
       content.innerHTML = "";
 
+      const temTermoBusca = termoRaw.length > 0;
+      const termoNorm = normalizarTexto(termoRaw);
+      const palavrasBusca = termoNorm.split(/\s+/).filter(p => p.length > 0);
+      const termoDigitos = termoRaw.replace(/\D/g, "");
+
       const filtrados = Object.values(BASE_DADOS.cidadaos).filter(c => {
+        // 1. Filtro do Indicador (C1 a C6)
         if (filtroIndicadorAtual !== 'todos') {
-          if (!c.indicadores || !c.indicadores[filtroIndicadorAtual]) return false;
+          if (filtroIndicadorAtual === 'C1') {
+            // Todos os cidadãos da microárea pertencem ao C1
+          } else {
+            if (!c.indicadores || !c.indicadores[filtroIndicadorAtual]) return false;
+          }
         }
 
-        const matchesBusca = c.nome.toLowerCase().includes(termo) ||
-                             (c.cpf && c.cpf.includes(termo)) ||
-                             (c.numero && c.numero.toString().includes(termo));
-        if (!matchesBusca) return false;
+        // 2. Busca por Nome, CPF, CNS ou Casa
+        if (temTermoBusca) {
+          const nomeNorm = normalizarTexto(c.nome);
+          const matchNome = palavrasBusca.length > 0 && palavrasBusca.every(p => nomeNorm.includes(p));
 
+          const cpfDigitos = (c.cpf || "").replace(/\D/g, "");
+          const cnsDigitos = (c.cns || "").replace(/\D/g, "");
+          const matchDoc = termoDigitos.length >= 2 && (cpfDigitos.includes(termoDigitos) || cnsDigitos.includes(termoDigitos));
+
+          const matchNum = c.numero && normalizarTexto(c.numero) === termoNorm;
+
+          if (!matchNome && !matchDoc && !matchNum) return false;
+        }
+
+        // 3. Filtro por Rua
         if (ruaSel && c.rua !== ruaSel) return false;
 
-        const temPendencias = (c.pendencias && c.pendencias.length > 0);
-        if (situacaoSel === 'pendentes' && !temPendencias) return false;
-        if (situacaoSel === 'emdia' && temPendencias) return false;
+        // 4. Filtro por Situação (se o usuário estiver buscando ativamente por nome/CPF, ignora restrição de pendência)
+        if (!temTermoBusca) {
+          const temPendencias = (c.pendencias && c.pendencias.length > 0);
+          if (situacaoSel === 'pendentes' && !temPendencias) return false;
+          if (situacaoSel === 'emdia' && temPendencias) return false;
+        }
 
         return true;
       });
+
+      contadorEl.innerText = `Exibindo ${filtrados.length} cidadão(s)`;
 
       if (!filtrados.length) {
         content.innerHTML = '<p style="text-align:center; padding: 24px; color: var(--text-muted); font-size: 0.88rem;">Nenhum cidadão localizado para este filtro.</p>';
@@ -794,13 +874,15 @@
         }
 
         const linkTel = c.telefone ? `<span class="telefone"> | 📞 <a href="tel:${c.telefone.replace(/\D/g, '')}">${c.telefone}</a></span>` : '';
+        const dtCadStr = c.dt_cadastral ? `<div class="info-cadastral">🗓️ Atualização cadastral: <strong>${c.dt_cadastral}</strong></div>` : '';
 
         content.innerHTML += `
           <div class="item-cidadao">
             <div class="topo">
               <div class="nome">${c.nome}</div>
             </div>
-            <div class="endereco">📍 ${c.rua || 'Sem rua'}, nº ${c.numero || 'S/N'}${linkTel}</div>
+            <div class="endereco">📍 ${c.rua || 'Sem rua cadastrada'}, nº ${c.numero || 'S/N'}${linkTel}</div>
+            ${dtCadStr}
             <div>${tagsHtml}</div>
             ${pendenciasHtml}
           </div>

@@ -10,7 +10,7 @@ PORTA = 8080
 ARQUIVO_DADOS = "dados_microarea.json"
 
 def garantir_icones():
-    """Gera automaticamente arquivos PNG válidos para os ícones do PWA caso ainda não existam."""
+    """Gera arquivos PNG válidos para os ícones do PWA caso ainda não existam."""
     def criar_png_puro(largura, altura, cor_rgb=(2, 132, 199)):
         r, g, b = cor_rgb
         dados = bytearray()
@@ -135,11 +135,13 @@ def processar_csvs_da_pasta():
                     "numero": reg.get("Número") or reg.get("NÚMERO") or "",
                     "telefone": reg.get("Telefone celular", "") if reg.get("Telefone celular") != "-" else "",
                     "condicoes": {},
-                    "indicadores": {},
+                    "indicadores": {"C1": True},
                     "pendencias": []
                 }
 
             cid = base_dados["cidadaos"][chave]
+            cid["indicadores"]["C1"] = True
+
             if nome and not cid["nome"]: cid["nome"] = nome
             if cpf_bruto and cpf_bruto != "-" and not cid["cpf"]: cid["cpf"] = cpf_bruto
             if reg.get("CNS") and reg.get("CNS") != "-" and not cid["cns"]: cid["cns"] = reg.get("CNS")
@@ -150,32 +152,11 @@ def processar_csvs_da_pasta():
                 cid["telefone"] = reg.get("Telefone celular")
             if cid["rua"]: base_dados["ruas"].add(cid["rua"])
 
-            # ========================================================
-            # INDICADOR C1: Territorialização & Cadastros < 24 meses
-            # ========================================================
-            if 'Última atualização cadastral' in reg or 'CPF/CNS' in reg:
-                cid['indicadores']['C1'] = True
-                dt_cad = reg.get('Última atualização cadastral', '')
-                if dt_cad and dt_cad != '-':
-                    cid['dt_cadastral'] = dt_cad
+            # Data de Atualização Cadastral
+            if 'Última atualização cadastral' in reg and reg.get('Última atualização cadastral') and reg.get('Última atualização cadastral') != '-':
+                cid['dt_cadastral'] = reg.get('Última atualização cadastral')
 
-                dt_obj = parse_data(cid.get('dt_cadastral', ''))
-                if dt_obj:
-                    dias = (datetime.now() - dt_obj).days
-                else:
-                    dias = 9999
-
-                cid['dias_cadastral'] = dias
-                cid['c1Ok'] = bool(dt_obj and dias <= 730)
-
-                cid['pendencias'] = [p for p in cid['pendencias'] if not p.startswith("C1:")]
-                if not cid['c1Ok']:
-                    dt_str = cid.get('dt_cadastral', 'Sem registro')
-                    cid['pendencias'].append(f"C1: Cadastro desatualizado há mais de 2 anos ({dt_str})")
-
-            # ========================================================
-            # INDICADOR C2: Cuidado Infantil (0 a 24 meses)
-            # ========================================================
+            # Indicador C2: Crianças (0 a 24 meses)
             if tema == "Desenvolvimento infantil":
                 cid['indicadores']['C2'] = True
                 try: vis_inf = int(reg.get('Quantidade de visitas domiciliares até os 24 meses de idade', 0) or 0)
@@ -187,10 +168,7 @@ def processar_csvs_da_pasta():
                 vac_ok = bool(penta and penta != '-' and polio and polio != '-')
 
                 cid['c2_visitas'] = vis_inf
-                cid['c2_consultas'] = cons_inf
-                cid['c2_vacinasOk'] = vac_ok
                 cid['c2Ok'] = (vis_inf >= 2 and vac_ok and cons_inf >= 1)
-
                 cid['pendencias'] = [p for p in cid['pendencias'] if not p.startswith("C2:")]
                 if vis_inf < 2:
                     cid['pendencias'].append(f"C2: Visita Domiciliar pendente ({vis_inf}/2 visitas)")
@@ -199,9 +177,7 @@ def processar_csvs_da_pasta():
                 if cons_inf == 0:
                     cid['pendencias'].append("C2: Busca Ativa - Agendar consulta de puericultura")
 
-            # ========================================================
-            # INDICADOR C3: Gestante / Pré-Natal e Puerpério
-            # ========================================================
+            # Indicador C3: Gestantes e Puerpério
             elif tema == "Gestação e puerpério":
                 cid['indicadores']['C3'] = True
                 try: vis_pn = int(reg.get('Quantidade de visitas domiciliares no pré-natal', 0) or 0)
@@ -218,7 +194,6 @@ def processar_csvs_da_pasta():
                 cid['c3_vis_pn'] = vis_pn
                 cid['c3_vis_puerp'] = vis_puerp
                 cid['c3Ok'] = (vis_pn >= 3 and vis_puerp >= 1 and cons_pn >= 6 and odonto >= 1 and cons_12sem >= 1)
-
                 cid['pendencias'] = [p for p in cid['pendencias'] if not p.startswith("C3:")]
                 if vis_pn < 3:
                     cid['pendencias'].append(f"C3: Visitas Pré-Natal pendentes ({vis_pn}/3)")
@@ -231,9 +206,7 @@ def processar_csvs_da_pasta():
                 if odonto < 1:
                     cid['pendencias'].append("C3: Busca Ativa - Avaliação Odontológica pendente")
 
-            # ========================================================
-            # INDICADOR C4: Diabetes Mellitus
-            # ========================================================
+            # Indicador C4: Diabetes Mellitus
             elif tema == "Diabetes":
                 cid['indicadores']['C4'] = True
                 try: vis_dia = int(reg.get('Quantidade de visitas domiciliares', 0) or 0)
@@ -246,7 +219,6 @@ def processar_csvs_da_pasta():
 
                 cid['c4_visitas'] = vis_dia
                 cid['c4Ok'] = (vis_dia >= 2 and hg_ok and pes_ok)
-
                 cid['pendencias'] = [p for p in cid['pendencias'] if not p.startswith("C4:")]
                 if vis_dia < 2:
                     cid['pendencias'].append(f"C4: Visitas Domiciliares pendentes ({vis_dia}/2 no ano)")
@@ -255,9 +227,7 @@ def processar_csvs_da_pasta():
                 if not pes_ok:
                     cid['pendencias'].append("C4: Busca Ativa - Avaliação periódica dos pés")
 
-            # ========================================================
-            # INDICADOR C5: Hipertensão Arterial
-            # ========================================================
+            # Indicador C5: Hipertensão Arterial
             elif tema == "Hipertensão":
                 cid['indicadores']['C5'] = True
                 try: vis_hip = int(reg.get('Quantidade de visitas domiciliares', 0) or 0)
@@ -269,7 +239,6 @@ def processar_csvs_da_pasta():
 
                 cid['c5_visitas'] = vis_hip
                 cid['c5Ok'] = (vis_hip >= 2 and pa_qtd >= 1 and cons_qtd >= 1)
-
                 cid['pendencias'] = [p for p in cid['pendencias'] if not p.startswith("C5:")]
                 if vis_hip < 2:
                     cid['pendencias'].append(f"C5: Visitas Domiciliares pendentes ({vis_hip}/2 no ano)")
@@ -278,9 +247,7 @@ def processar_csvs_da_pasta():
                 if cons_qtd == 0:
                     cid['pendencias'].append("C5: Busca Ativa - Agendar Consulta semestral")
 
-            # ========================================================
-            # INDICADOR C6: Pessoa Idosa (60+)
-            # ========================================================
+            # Indicador C6: Pessoa Idosa (60+)
             elif tema == "Pessoa idosa":
                 cid['indicadores']['C6'] = True
                 try: vis_ido = int(reg.get('Quantidade de visitas domiciliares', 0) or 0)
@@ -297,7 +264,6 @@ def processar_csvs_da_pasta():
 
                 cid['c6_visitas'] = vis_ido
                 cid['c6Ok'] = (vis_ido >= 2 and inf_ok and cons_anual)
-
                 cid['pendencias'] = [p for p in cid['pendencias'] if not p.startswith("C6:")]
                 if vis_ido < 2:
                     cid['pendencias'].append(f"C6: Visitas Domiciliares pendentes ({vis_ido}/2 no ano)")
@@ -307,6 +273,18 @@ def processar_csvs_da_pasta():
                     cid['pendencias'].append("C6: Busca Ativa - Consulta anual pendente (>12 meses)")
                 if not ivcf_ok:
                     cid['pendencias'].append("C6: Busca Ativa - Avaliação multidimensional (IVCF-20)")
+
+    # Validação Final de Territorialização e Cadastros (C1 < 24 meses) para todos os cidadãos
+    agora = datetime.now()
+    for cid in base_dados["cidadaos"].values():
+        cid['indicadores']['C1'] = True
+        dt_obj = parse_data(cid.get('dt_cadastral', ''))
+        dias = (agora - dt_obj).days if dt_obj else 0
+        cid['c1Ok'] = bool(dt_obj and dias <= 730)
+        if not cid['c1Ok']:
+            dt_str = cid.get('dt_cadastral', 'Sem data')
+            cid['pendencias'] = [p for p in cid['pendencias'] if not p.startswith("C1:")]
+            cid['pendencias'].append(f"C1: Cadastro desatualizado há mais de 2 anos ({dt_str})")
 
     base_dados["ruas"] = sorted(list(base_dados["ruas"]))
 
