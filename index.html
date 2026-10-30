@@ -7,17 +7,23 @@
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" type="image/png" sizes="192x192" href="./icone-192.png">
   <title>Gestão ACS — Indicadores</title>
+  
+  <!-- IMPORTAÇÃO DA FONTE INTER -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
     :root {
       --primary: #0284c7;
       --primary-dark: #0369a1;
       --danger: #ef4444;
       --success: #10b981;
-      --bg: #f8fafc;
-      --card: #ffffff;
+      --bg: #cbd5e1;
+      --card: rgba(255, 255, 255, 0.65);
       --text: #1e293b;
-      --text-muted: #64748b;
-      --border: #e2e8f0;
+      --text-muted: #475569;
+      --border: rgba(255, 255, 255, 0.8);
 
       --c1: #0284c7;
       --c2: #8b5cf6;
@@ -27,84 +33,134 @@
       --c6: #10b981;
       --c7: #db2777;
     }
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    body { background: var(--bg); color: var(--text); padding-bottom: 75px; }
-    header { background: var(--primary); color: white; padding: 14px 16px; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    
+    /* APLICAÇÃO DA FONTE INTER EM TODO O SISTEMA */
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    
+    body { 
+      background: linear-gradient(135deg, #cbd5e1 0%, #e2e8f0 100%);
+      background-attachment: fixed;
+      color: var(--text); 
+      padding-bottom: 75px; 
+    }
+    
+    header { background: var(--primary); color: white; padding: 14px 16px; position: sticky; top: 0; z-index: 10; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
     header h1 { font-size: 1.15rem; font-weight: 700; }
     header p { font-size: 0.8rem; opacity: 0.9; margin-top: 2px; }
 
     .container { padding: 10px; max-width: 650px; margin: 0 auto; }
-    .card { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 12px; margin-bottom: 10px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+    
+    .card, .card-meta, .item-cidadao { 
+      background: var(--card); 
+      border-radius: 12px; 
+      border: 1px solid var(--border); 
+      padding: 12px; 
+      margin-bottom: 10px; 
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
+      backdrop-filter: blur(12px); 
+      -webkit-backdrop-filter: blur(12px); 
+    }
 
-    .btn { background: var(--primary); color: white; border: none; padding: 10px 14px; border-radius: 6px; font-weight: 600; font-size: 0.88rem; cursor: pointer; display: inline-block; width: 100%; text-align: center; text-decoration: none; }
-    .btn-install { background: #10b981; margin-bottom: 10px; font-size: 0.92rem; display: none; }
+    .btn { background: var(--primary); color: white; border: none; padding: 10px 14px; border-radius: 8px; font-weight: 600; font-size: 0.88rem; cursor: pointer; display: inline-block; width: 100%; text-align: center; text-decoration: none; box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3); }
+    .btn-install { background: #10b981; margin-bottom: 10px; font-size: 0.92rem; display: none; box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3); }
     .btn-json-in { background: #0284c7; margin-bottom: 8px; }
     .btn-json-out { background: #475569; margin-bottom: 8px; }
     .btn-sync { background: #0369a1; margin-bottom: 8px; font-size: 0.85rem; }
     .btn-danger { background: var(--danger); margin-top: 8px; }
 
-    /* GRID DE CARDS DOS INDICADORES ORDENADOS DE C1 A C7 */
-    .grid-indicadores { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
-    .card-meta { background: var(--card); padding: 9px 11px; border-radius: 8px; border: 1px solid var(--border); border-left: 4px solid var(--primary); cursor: pointer; transition: transform 0.1s, box-shadow 0.1s; position: relative; }
-    .card-meta:active { transform: scale(0.98); }
-    .card-meta.active { background: #f0fdf4; border-color: #10b981; box-shadow: 0 0 0 2px #10b981; }
+    .grid-indicadores { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
+    .card-meta { padding: 9px 11px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s, background 0.2s; border-left: 4px solid var(--primary); }
+    .card-meta:active { transform: scale(0.97); }
+    .card-meta.active { background: rgba(240, 253, 244, 0.75); border-color: #10b981; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15); }
     .card-meta .header-card { display: flex; justify-content: space-between; align-items: baseline; }
-    .card-meta h4 { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
-    .card-meta .badge-meta { font-size: 0.68rem; padding: 1px 6px; border-radius: 10px; font-weight: 800; background: #e2e8f0; color: #334155; }
+    .card-meta h4 { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: -0.01em; }
+    .card-meta .badge-meta { font-size: 0.68rem; padding: 2px 8px; border-radius: 12px; font-weight: 800; background: rgba(255, 255, 255, 0.8); color: #334155; border: 1px solid rgba(0,0,0,0.05); }
     
-    .card-meta .valor { font-size: 1.3rem; font-weight: 800; margin-top: 2px; }
+    .card-meta .valor { font-size: 1.35rem; font-weight: 800; margin-top: 2px; letter-spacing: -0.03em; }
     .card-meta .valor.ok { color: #0284c7; }
     .card-meta .valor.danger { color: #ef4444; }
 
-    .card-meta .barra-fundo { height: 5px; background: #e2e8f0; border-radius: 3px; margin: 5px 0; overflow: hidden; }
+    .card-meta .barra-fundo { height: 5px; background: rgba(0,0,0,0.05); border-radius: 3px; margin: 5px 0; overflow: hidden; }
     .card-meta .barra-progresso { height: 100%; width: 0%; border-radius: 3px; background: #0284c7; transition: width 0.3s ease; }
 
     .card-meta .rodape-card { display: flex; justify-content: space-between; font-size: 0.72rem; font-weight: 700; min-height: 16px; }
     .card-meta .status-meta.ok { color: #10b981; font-weight: 800; }
     .card-meta .status-meta.danger { color: #ef4444; font-weight: 700; }
-    .card-meta .regra-acs { font-size: 0.65rem; color: var(--text-muted); margin-top: 4px; border-top: 1px dashed var(--border); padding-top: 2px; }
+    .card-meta .regra-acs { font-size: 0.65rem; color: var(--text-muted); margin-top: 4px; border-top: 1px dashed rgba(0,0,0,0.1); padding-top: 2px; }
 
-    /* BARRA DE FILTROS */
-    .chips-indicadores { display: flex; gap: 4px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 8px; -webkit-overflow-scrolling: touch; }
-    .chip { font-size: 0.72rem; font-weight: 700; padding: 5px 9px; border-radius: 16px; border: 1px solid var(--border); background: white; color: var(--text-muted); white-space: nowrap; cursor: pointer; }
-    .chip.active { background: var(--primary); color: white; border-color: var(--primary); }
+    .chips-indicadores { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 8px; -webkit-overflow-scrolling: touch; }
+    .chip { font-size: 0.72rem; font-weight: 600; padding: 6px 12px; border-radius: 20px; border: 1px solid var(--border); background: var(--card); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); color: var(--text-muted); white-space: nowrap; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+    .chip.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3); }
 
-    .search-bar { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.92rem; margin-bottom: 8px; outline: none; background: white; }
-    .search-bar:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2); }
+    .barra-filtros { display: block; }
+    .search-bar { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.92rem; margin-bottom: 8px; outline: none; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 2px 4px rgba(0,0,0,0.02); color: var(--text); }
+    .search-bar:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2); background: #ffffff; }
     
-    .filtros-duplos { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
-    select.filter-select { width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; background: white; font-size: 0.82rem; }
+    .filtros-duplos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+    select.filter-select { width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-size: 0.82rem; color: var(--text); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
 
-    /* LISTA DE CIDADÃOS E ANOTAÇÕES */
     .contador-resultados { font-size: 0.76rem; color: var(--text-muted); font-weight: 600; margin-bottom: 8px; padding-left: 2px; }
-    .item-cidadao { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 11px 13px; margin-bottom: 8px; }
+    
+    #listaUtentes { display: block; }
+    .item-cidadao { display: flex; flex-direction: column; }
     .item-cidadao .topo { display: flex; justify-content: space-between; align-items: baseline; }
-    .item-cidadao .nome { font-weight: 700; font-size: 0.94rem; color: #0f172a; margin-bottom: 3px; }
-    .item-cidadao .endereco { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 5px; line-height: 1.35; }
+    .item-cidadao .nome { font-weight: 700; font-size: 0.94rem; color: #0f172a; margin-bottom: 3px; letter-spacing: -0.01em; }
+    .item-cidadao .endereco { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 5px; line-height: 1.4; }
     .item-cidadao .telefone a { color: var(--primary); text-decoration: none; font-weight: 600; }
     .item-cidadao .info-cadastral { font-size: 0.74rem; color: #64748b; margin-bottom: 6px; }
 
-    .area-anotacao { width: 100%; border: 1px solid #cbd5e1; border-radius: 6px; padding: 8px; font-size: 0.8rem; margin-top: 10px; background: #f8fafc; resize: vertical; min-height: 40px; font-family: inherit; color: var(--text); }
-    .area-anotacao:focus { border-color: var(--primary); outline: none; background: white; box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15); }
+    .area-anotacao { width: 100%; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; padding: 10px; font-size: 0.82rem; margin-top: 10px; background: rgba(255,255,255,0.5); resize: vertical; min-height: 40px; color: var(--text); line-height: 1.4; }
+    .area-anotacao:focus { border-color: var(--primary); outline: none; background: #ffffff; box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15); }
 
-    .tag { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 2px 6px; border-radius: 4px; margin-right: 3px; margin-bottom: 3px; }
-    .tag-danger { background: #fee2e2; color: #b91c1c; }
-    .tag-ok { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
-    .tag-c1 { background: #e0f2fe; color: #0369a1; }
-    .tag-c2 { background: #f3e8ff; color: #7e22ce; }
-    .tag-c3 { background: #fce7f3; color: #be185d; }
-    .tag-c4 { background: #fef3c7; color: #b45309; }
-    .tag-c5 { background: #fee2e2; color: #b91c1c; }
-    .tag-c6 { background: #dcfce7; color: #15803d; }
-    .tag-c7 { background: #fdf2f8; color: #be185d; border: 1px solid #fbcfe8; }
+    .tag { display: inline-block; font-size: 0.68rem; font-weight: 600; padding: 2px 6px; border-radius: 4px; margin-right: 3px; margin-bottom: 3px; }
+    .tag-danger { background: rgba(254, 226, 226, 0.8); color: #b91c1c; }
+    .tag-ok { background: rgba(220, 252, 231, 0.8); color: #15803d; border: 1px solid rgba(187, 247, 208, 0.8); }
+    .tag-c1 { background: rgba(224, 242, 254, 0.8); color: #0369a1; }
+    .tag-c2 { background: rgba(243, 232, 255, 0.8); color: #7e22ce; }
+    .tag-c3 { background: rgba(252, 231, 243, 0.8); color: #be185d; }
+    .tag-c4 { background: rgba(254, 243, 199, 0.8); color: #b45309; }
+    .tag-c5 { background: rgba(254, 226, 226, 0.8); color: #b91c1c; }
+    .tag-c6 { background: rgba(220, 252, 231, 0.8); color: #15803d; }
+    .tag-c7 { background: rgba(253, 242, 248, 0.8); color: #be185d; border: 1px solid rgba(251, 207, 232, 0.8); }
 
-    .pendencia-item { font-size: 0.74rem; font-weight: 600; color: #991b1b; background: #fff1f2; border: 1px solid #fecdd3; border-radius: 4px; padding: 3px 6px; margin-top: 3px; }
+    .pendencia-item { font-size: 0.74rem; font-weight: 600; color: #991b1b; background: rgba(255, 241, 242, 0.8); border: 1px solid rgba(254, 205, 211, 0.8); border-radius: 6px; padding: 5px 8px; margin-top: 4px; line-height: 1.3; }
 
-    nav.tab-bar { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid var(--border); display: flex; height: 56px; z-index: 20; }
-    nav.tab-bar button { flex: 1; border: none; background: transparent; font-size: 0.76rem; font-weight: 600; color: var(--text-muted); cursor: pointer; }
-    nav.tab-bar button.active { color: var(--primary); font-weight: 700; border-top: 2px solid var(--primary); }
-    .upload-area { border: 2px dashed var(--primary); border-radius: 8px; padding: 18px 12px; text-align: center; cursor: pointer; background: #f0f9ff; }
+    nav.tab-bar { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--border); display: flex; height: 60px; z-index: 20; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); }
+    nav.tab-bar button { flex: 1; border: none; background: transparent; font-size: 0.76rem; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: color 0.2s; }
+    nav.tab-bar button.active { color: var(--primary); font-weight: 700; border-top: 3px solid var(--primary); }
+    
+    .upload-area { border: 2px dashed rgba(2, 132, 199, 0.5); border-radius: 12px; padding: 20px 12px; text-align: center; cursor: pointer; background: rgba(240, 249, 255, 0.6); backdrop-filter: blur(8px); transition: background 0.2s; }
+    .upload-area:hover { background: rgba(240, 249, 255, 0.9); }
     .upload-area input { display: none; }
+
+    /* ======================================================== */
+    /* OTIMIZAÇÃO PARA DESKTOP E ECRÃS GRANDES (>768px)         */
+    /* ======================================================== */
+    @media (min-width: 768px) {
+      .container { max-width: 1200px; padding: 24px; }
+      
+      .grid-indicadores { grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+      .card-meta { padding: 16px 20px; }
+      .card-meta h4 { font-size: 0.9rem; }
+      .card-meta .badge-meta { font-size: 0.85rem; padding: 3px 10px; }
+      .card-meta .valor { font-size: 2.2rem; margin: 8px 0; }
+      .card-meta .rodape-card { font-size: 0.85rem; margin-top: 6px; }
+      .card-meta .regra-acs { font-size: 0.75rem; margin-top: 10px; padding-top: 8px; }
+
+      .chips-indicadores { flex-wrap: wrap; justify-content: center; padding-bottom: 8px; margin-bottom: 20px; }
+      .chip { font-size: 0.85rem; padding: 8px 16px; }
+      
+      .barra-filtros { display: flex; gap: 12px; margin-bottom: 20px; align-items: center; }
+      .search-bar { flex: 2; margin-bottom: 0; font-size: 1rem; padding: 12px 14px; }
+      .filtros-duplos { flex: 3; margin-bottom: 0; gap: 12px; }
+      select.filter-select { font-size: 0.95rem; padding: 10px 12px; }
+      
+      #listaUtentes { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px; align-items: stretch; }
+      .item-cidadao { margin-bottom: 0; height: 100%; }
+      .area-anotacao { flex-grow: 1; font-size: 0.9rem; }
+
+      nav.tab-bar { max-width: 1200px; margin: 0 auto; border-radius: 12px 12px 0 0; border-bottom: none; }
+    }
   </style>
 </head>
 <body>
@@ -119,11 +175,9 @@
       📲 Instalar Aplicativo no Celular
     </button>
 
-    <!-- Tela 1: Painel dos Indicadores em Ordem Numérica C1 a C7 -->
     <div id="view-dashboard">
       <div class="grid-indicadores">
 
-        <!-- C1 -->
         <div class="card-meta" id="card-c1" style="border-left-color: var(--c1);" onclick="selecionarFiltroIndicador('C1')">
           <div class="header-card">
             <h4>C1 · Cadastro</h4>
@@ -135,7 +189,6 @@
           <div class="regra-acs">Meta: Territorialização &lt;24m</div>
         </div>
 
-        <!-- C2 -->
         <div class="card-meta" id="card-c2" style="border-left-color: var(--c2);" onclick="selecionarFiltroIndicador('C2')">
           <div class="header-card">
             <h4>C2 · Criança (0-24m)</h4>
@@ -147,7 +200,6 @@
           <div class="regra-acs">Meta: Visitas + Vacinas + Pueric.</div>
         </div>
 
-        <!-- C3 -->
         <div class="card-meta" id="card-c3" style="border-left-color: var(--c3);" onclick="selecionarFiltroIndicador('C3')">
           <div class="header-card">
             <h4>C3 · Pré-Natal</h4>
@@ -159,7 +211,6 @@
           <div class="regra-acs">Meta: 3 PN + 1 Pós-parto + Odonto</div>
         </div>
 
-        <!-- C4 -->
         <div class="card-meta" id="card-c4" style="border-left-color: var(--c4);" onclick="selecionarFiltroIndicador('C4')">
           <div class="header-card">
             <h4>C4 · Diabetes</h4>
@@ -171,7 +222,6 @@
           <div class="regra-acs">Meta: 2 Visitas + HbA1c + Pés</div>
         </div>
 
-        <!-- C5 -->
         <div class="card-meta" id="card-c5" style="border-left-color: var(--c5);" onclick="selecionarFiltroIndicador('C5')">
           <div class="header-card">
             <h4>C5 · Hipertensão</h4>
@@ -183,7 +233,6 @@
           <div class="regra-acs">Meta: 2 Visitas + Aferição PA</div>
         </div>
 
-        <!-- C6 -->
         <div class="card-meta" id="card-c6" style="border-left-color: var(--c6);" onclick="selecionarFiltroIndicador('C6')">
           <div class="header-card">
             <h4>C6 · Pessoa Idosa</h4>
@@ -195,7 +244,6 @@
           <div class="regra-acs">Meta: 2 Visitas + Vacina Influenza</div>
         </div>
 
-        <!-- C7 -->
         <div class="card-meta" id="card-c7" style="border-left-color: var(--c7);" onclick="selecionarFiltroIndicador('C7')">
           <div class="header-card">
             <h4>C7 · Mulher (25-64)</h4>
@@ -209,7 +257,6 @@
 
       </div>
 
-      <!-- Filtros Rápidos em Chips Sequenciais -->
       <div class="chips-indicadores">
         <button class="chip active" id="chip-todos" onclick="selecionarFiltroIndicador('todos')">Todos</button>
         <button class="chip" id="chip-C1" onclick="selecionarFiltroIndicador('C1')">C1: Cadastros</button>
@@ -221,17 +268,18 @@
         <button class="chip" id="chip-C7" onclick="selecionarFiltroIndicador('C7')">C7: Mulheres</button>
       </div>
 
-      <input type="text" id="campoBusca" class="search-bar" placeholder="🔍 Buscar por nome, CPF ou número da casa..." oninput="filtrarLista()">
-
-      <div class="filtros-duplos">
-        <select id="filtroRua" class="filter-select" onchange="filtrarLista()">
-          <option value="">Todas as ruas</option>
-        </select>
-        <select id="filtroPendencia" class="filter-select" onchange="filtrarLista()">
-          <option value="todos" selected>Exibir Todos</option>
-          <option value="pendentes">⚠️ Apenas Pendências</option>
-          <option value="emdia">✓ Em Dia</option>
-        </select>
+      <div class="barra-filtros">
+        <input type="text" id="campoBusca" class="search-bar" placeholder="🔍 Buscar por nome, CPF ou número da casa..." oninput="filtrarLista()">
+        <div class="filtros-duplos">
+          <select id="filtroRua" class="filter-select" onchange="filtrarLista()">
+            <option value="">Todas as ruas</option>
+          </select>
+          <select id="filtroPendencia" class="filter-select" onchange="filtrarLista()">
+            <option value="todos" selected>Exibir Todos</option>
+            <option value="pendentes">⚠️ Apenas Pendências</option>
+            <option value="emdia">✓ Em Dia</option>
+          </select>
+        </div>
       </div>
 
       <div class="contador-resultados" id="contadorResultados"></div>
@@ -746,10 +794,10 @@
             }
           }
           if (c.indicadores['C3']) tagsHtml += `<span class="tag tag-c3">C3: Gestante (${c.c3_vis_pn || 0}/3 vis)</span>`;
-          if (c.indicadores['C7']) tagsHtml += `<span class="tag tag-c7">C7: Mulher 25-64</span>`;
           if (c.indicadores['C4']) tagsHtml += `<span class="tag tag-c4">C4: Diabetes (${c.c4_visitas || 0}/2 vis)</span>`;
           if (c.indicadores['C5']) tagsHtml += `<span class="tag tag-c5">C5: Hipertensão (${c.c5_visitas || 0}/2 vis)</span>`;
           if (c.indicadores['C6']) tagsHtml += `<span class="tag tag-c6">C6: Idoso (${c.c6_visitas || 0}/2 vis)</span>`;
+          if (c.indicadores['C7']) tagsHtml += `<span class="tag tag-c7">C7: Mulher 25-64</span>`;
         }
 
         let pendenciasHtml = '';
