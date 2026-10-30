@@ -151,7 +151,7 @@ def processar_csvs_da_pasta():
             if cid["rua"]: base_dados["ruas"].add(cid["rua"])
 
             # ========================================================
-            # INDICADOR C1: Acesso / Territorialização & Cadastros <24m
+            # INDICADOR C1: Territorialização & Cadastros < 24 meses
             # ========================================================
             if 'Última atualização cadastral' in reg or 'CPF/CNS' in reg:
                 cid['indicadores']['C1'] = True
@@ -166,13 +166,12 @@ def processar_csvs_da_pasta():
                     dias = 9999
 
                 cid['dias_cadastral'] = dias
-                # Regra: válido e atualizado nos últimos 24 meses (<= 730 dias)
                 cid['c1Ok'] = bool(dt_obj and dias <= 730)
 
                 cid['pendencias'] = [p for p in cid['pendencias'] if not p.startswith("C1:")]
                 if not cid['c1Ok']:
                     dt_str = cid.get('dt_cadastral', 'Sem registro')
-                    cid['pendencias'].append(f"C1: Cadastro desatualizado há mais de 24 meses ({dt_str})")
+                    cid['pendencias'].append(f"C1: Cadastro desatualizado há mais de 2 anos ({dt_str})")
 
             # ========================================================
             # INDICADOR C2: Cuidado Infantil (0 a 24 meses)
@@ -317,7 +316,7 @@ def processar_csvs_da_pasta():
     total_cidadaos = len(base_dados["cidadaos"])
     c1_ok = sum(1 for c in base_dados["cidadaos"].values() if c.get('c1Ok'))
     print(f"[OK] {total_cidadaos} cidadãos processados com sucesso.")
-    print(f"[OK] Indicador C1: {c1_ok}/{total_cidadaos} cadastros atualizados há menos de 24 meses ({(c1_ok/total_cidadaos)*100:.1f}%).")
+    print(f"[OK] Indicador C1: {c1_ok}/{total_cidadaos} cadastros atualizados há menos de 2 anos ({(c1_ok/total_cidadaos)*100:.1f}%).")
     print(f"[OK] Base de dados gerada em '{ARQUIVO_DADOS}'.")
 
 

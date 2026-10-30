@@ -45,19 +45,25 @@
 
     /* GRID DE CARDS DOS INDICADORES */
     .grid-indicadores { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
-    .card-meta { background: var(--card); padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border); border-left: 4px solid var(--primary); cursor: pointer; transition: transform 0.1s, box-shadow 0.1s; position: relative; }
+    .card-meta { background: var(--card); padding: 9px 11px; border-radius: 8px; border: 1px solid var(--border); border-left: 4px solid var(--primary); cursor: pointer; transition: transform 0.1s, box-shadow 0.1s; position: relative; }
     .card-meta:active { transform: scale(0.98); }
     .card-meta.active { background: #f0fdf4; border-color: #10b981; box-shadow: 0 0 0 2px #10b981; }
     .card-meta .header-card { display: flex; justify-content: space-between; align-items: baseline; }
     .card-meta h4 { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
-    .card-meta .badge-meta { font-size: 0.65rem; padding: 1px 5px; border-radius: 10px; font-weight: 700; background: #e2e8f0; color: #475569; }
-    .card-meta .valor { font-size: 1.25rem; font-weight: 800; margin-top: 2px; }
-    .card-meta .barra-fundo { height: 4px; background: #e2e8f0; border-radius: 2px; margin: 4px 0; overflow: hidden; }
-    .card-meta .barra-progresso { height: 100%; width: 0%; border-radius: 2px; }
-    .card-meta .rodape-card { display: flex; justify-content: space-between; font-size: 0.7rem; font-weight: 600; }
-    .card-meta .pendentes { color: var(--danger); }
-    .card-meta .pendentes.ok { color: var(--success); }
-    .card-meta .regra-acs { font-size: 0.65rem; color: var(--text-muted); margin-top: 3px; border-top: 1px dashed var(--border); padding-top: 2px; }
+    .card-meta .badge-meta { font-size: 0.65rem; padding: 1px 6px; border-radius: 10px; font-weight: 700; background: #e2e8f0; color: #475569; }
+    
+    .card-meta .valor { font-size: 1.3rem; font-weight: 800; margin-top: 2px; }
+    .card-meta .valor.ok { color: #0284c7; }
+    .card-meta .valor.danger { color: #ef4444; }
+
+    .card-meta .barra-fundo { height: 5px; background: #e2e8f0; border-radius: 3px; margin: 5px 0; overflow: hidden; }
+    .card-meta .barra-progresso { height: 100%; width: 0%; border-radius: 3px; background: #0284c7; transition: width 0.3s ease; }
+
+    .card-meta .rodape-card { display: flex; justify-content: space-between; font-size: 0.72rem; font-weight: 700; min-height: 16px; }
+    .card-meta .status-meta.ok { color: #10b981; font-weight: 800; }
+    .card-meta .status-meta.danger { color: #ef4444; font-weight: 700; }
+
+    .card-meta .regra-acs { font-size: 0.65rem; color: var(--text-muted); margin-top: 4px; border-top: 1px dashed var(--border); padding-top: 2px; }
 
     /* BARRA DE FILTROS */
     .chips-indicadores { display: flex; gap: 4px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 8px; -webkit-overflow-scrolling: touch; }
@@ -117,9 +123,9 @@
             <span class="badge-meta" id="c1-tot">0</span>
           </div>
           <div class="valor" id="c1-pct">0%</div>
-          <div class="barra-fundo"><div class="barra-progresso" id="c1-bar" style="background: var(--c1);"></div></div>
+          <div class="barra-fundo"><div class="barra-progresso" id="c1-bar"></div></div>
           <div class="rodape-card">
-            <span class="pendentes" id="c1-pend">0 pendentes</span>
+            <span class="status-meta" id="c1-pend">Aguardando...</span>
           </div>
           <div class="regra-acs">Meta: Territorialização & Cadastros &lt;24m</div>
         </div>
@@ -131,9 +137,9 @@
             <span class="badge-meta" id="c2-tot">0</span>
           </div>
           <div class="valor" id="c2-pct">0%</div>
-          <div class="barra-fundo"><div class="barra-progresso" id="c2-bar" style="background: var(--c2);"></div></div>
+          <div class="barra-fundo"><div class="barra-progresso" id="c2-bar"></div></div>
           <div class="rodape-card">
-            <span class="pendentes" id="c2-pend">0 pendentes</span>
+            <span class="status-meta" id="c2-pend">Aguardando...</span>
           </div>
           <div class="regra-acs">Meta: 2 Visitas + Vacinas + Puericultura</div>
         </div>
@@ -145,9 +151,9 @@
             <span class="badge-meta" id="c3-tot">0</span>
           </div>
           <div class="valor" id="c3-pct">0%</div>
-          <div class="barra-fundo"><div class="barra-progresso" id="c3-bar" style="background: var(--c3);"></div></div>
+          <div class="barra-fundo"><div class="barra-progresso" id="c3-bar"></div></div>
           <div class="rodape-card">
-            <span class="pendentes" id="c3-pend">0 pendentes</span>
+            <span class="status-meta" id="c3-pend">Aguardando...</span>
           </div>
           <div class="regra-acs">Meta: 3 Visitas PN + 1 Pós-parto + Odonto</div>
         </div>
@@ -159,9 +165,9 @@
             <span class="badge-meta" id="c4-tot">0</span>
           </div>
           <div class="valor" id="c4-pct">0%</div>
-          <div class="barra-fundo"><div class="barra-progresso" id="c4-bar" style="background: var(--c4);"></div></div>
+          <div class="barra-fundo"><div class="barra-progresso" id="c4-bar"></div></div>
           <div class="rodape-card">
-            <span class="pendentes" id="c4-pend">0 pendentes</span>
+            <span class="status-meta" id="c4-pend">Aguardando...</span>
           </div>
           <div class="regra-acs">Meta: 2 Visitas + Hemog. Glicada + Pés</div>
         </div>
@@ -173,9 +179,9 @@
             <span class="badge-meta" id="c5-tot">0</span>
           </div>
           <div class="valor" id="c5-pct">0%</div>
-          <div class="barra-fundo"><div class="barra-progresso" id="c5-bar" style="background: var(--c5);"></div></div>
+          <div class="barra-fundo"><div class="barra-progresso" id="c5-bar"></div></div>
           <div class="rodape-card">
-            <span class="pendentes" id="c5-pend">0 pendentes</span>
+            <span class="status-meta" id="c5-pend">Aguardando...</span>
           </div>
           <div class="regra-acs">Meta: 2 Visitas + Aferição PA + Consulta</div>
         </div>
@@ -187,9 +193,9 @@
             <span class="badge-meta" id="c6-tot">0</span>
           </div>
           <div class="valor" id="c6-pct">0%</div>
-          <div class="barra-fundo"><div class="barra-progresso" id="c6-bar" style="background: var(--c6);"></div></div>
+          <div class="barra-fundo"><div class="barra-progresso" id="c6-bar"></div></div>
           <div class="rodape-card">
-            <span class="pendentes" id="c6-pend">0 pendentes</span>
+            <span class="status-meta" id="c6-pend">Aguardando...</span>
           </div>
           <div class="regra-acs">Meta: 2 Visitas + Vacina Influenza + Consulta</div>
         </div>
@@ -542,7 +548,7 @@
           cid.pendencias = cid.pendencias.filter(p => !p.startsWith("C1:"));
           if (!cid.c1Ok) {
             const dtStr = cid.dt_cadastral || "Sem registro";
-            cid.pendencias.push(`C1: Cadastro desatualizado há mais de 24 meses (${dtStr})`);
+            cid.pendencias.push(`C1: Cadastro desatualizado há mais de 2 anos (${dtStr})`);
           }
         }
 
@@ -579,7 +585,7 @@
           if (visPn < 3) cid.pendencias.push(`C3: Visitas Pré-Natal pendentes (${visPn}/3)`);
           if (visPuerp < 1) cid.pendencias.push("C3: Visita no Puerpério pendente (0/1)");
           if (cons12sem === 0) cid.pendencias.push("C3: Busca Ativa - Captação precoce (<12 semanas)");
-          if (consPn < 6) cid.pendencias.push(`C3: Busca Ativa - Consultas Pré-Natal ({consPn}/6)`);
+          if (consPn < 6) cid.pendencias.push(`C3: Busca Ativa - Consultas Pré-Natal (${consPn}/6)`);
           if (odonto < 1) cid.pendencias.push("C3: Busca Ativa - Avaliação Odontológica pendente");
         }
 
@@ -701,20 +707,34 @@
         const t = stats[ind].tot;
         const o = stats[ind].ok;
         const pend = t - o;
-        const pct = t > 0 ? Math.round((o / t) * 100) : 0;
+        const pctOk = t > 0 ? Math.round((o / t) * 100) : 100;
+        const pctPend = t > 0 ? Math.round((pend / t) * 100) : 0;
         const idLow = ind.toLowerCase();
 
-        document.getElementById(`${idLow}-tot`).innerText = t;
-        document.getElementById(`${idLow}-pct`).innerText = `${pct}%`;
-        document.getElementById(`${idLow}-bar`).style.width = `${pct}%`;
-
+        const elTot = document.getElementById(`${idLow}-tot`);
+        const elPct = document.getElementById(`${idLow}-pct`);
+        const elBar = document.getElementById(`${idLow}-bar`);
         const elPend = document.getElementById(`${idLow}-pend`);
-        if (pend === 0 && t > 0) {
-          elPend.className = "pendentes ok";
+
+        elTot.innerText = t;
+
+        if (pend === 0) {
+          // 100% CUMPRIDO
+          elPct.innerText = "100%";
+          elPct.className = "valor ok";
+          elBar.style.width = "100%";
+          elBar.style.background = "#0284c7";
+          elPend.className = "status-meta ok";
           elPend.innerText = "✓ 100% atualizados";
         } else {
-          elPend.className = "pendentes";
-          elPend.innerText = `${pend} pendentes`;
+          // COM PENDÊNCIAS
+          elPct.innerText = `${pctOk}%`;
+          elPct.className = "valor danger";
+          elBar.style.width = `${pctOk}%`;
+          elBar.style.background = "#0284c7";
+          elPend.className = "status-meta danger";
+          const sufixo = pend === 1 ? 'pendente' : 'pendentes';
+          elPend.innerText = `⚠️ ${pend} ${sufixo} (${pctPend}% a resolver)`;
         }
       });
 
