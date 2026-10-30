@@ -7,15 +7,13 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "2",
       "telefone": "(99) 98480-1118",
-      "condicoes": {
-        "Hipertensao": true,
-        "Mulher": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true
       },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "hipertensaoOk": true,
-      "citopatologicoOk": false
+      "pendencias": [],
+      "c5_visitas": 2,
+      "c5Ok": true
     },
     "01720427399": {
       "nome": "ANTONIA MENDES DO NASCIMENTO",
@@ -24,13 +22,13 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "2",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Hipertensao": true,
-        "Mulher": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true
       },
       "pendencias": [],
-      "hipertensaoOk": true,
-      "citopatologicoOk": true
+      "c5_visitas": 12,
+      "c5Ok": true
     },
     "90848365372": {
       "nome": "ANTÔNIO CAVALCANTE MELO",
@@ -39,15 +37,19 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "44",
       "telefone": "(99) 98534-4663",
-      "condicoes": {
-        "Hipertensao": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C6": true
       },
       "pendencias": [
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "hipertensaoOk": true,
-      "ivcfOk": false
+      "c5_visitas": 27,
+      "c5Ok": true,
+      "c6_visitas": 67,
+      "c6Ok": false
     },
     "48850829353": {
       "nome": "ANTÔNIO JOSÉ DE PAULA",
@@ -56,17 +58,22 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "116",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Hipertensao": true,
-        "Diabetes": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C4": true,
+        "C6": true
       },
       "pendencias": [
-        "Diabetes: Exame de Hemoglobina Glicada"
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
-      "hipertensaoOk": true,
-      "diabetesOk": false,
-      "ivcfOk": true
+      "c5_visitas": 16,
+      "c5Ok": true,
+      "c4_visitas": 3,
+      "c4Ok": false,
+      "c6_visitas": 26,
+      "c6Ok": false
     },
     "00389721824": {
       "nome": "CANDIDO MONTEIRO DA SILVA",
@@ -75,13 +82,18 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "84",
       "telefone": "(99) 98125-0212",
-      "condicoes": {
-        "Hipertensao": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C6": true
       },
-      "pendencias": [],
-      "hipertensaoOk": true,
-      "ivcfOk": true
+      "pendencias": [
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
+      ],
+      "c5_visitas": 16,
+      "c5Ok": true,
+      "c6_visitas": 49,
+      "c6Ok": false
     },
     "28256948353": {
       "nome": "CICERA PEREIRA DA SILVA",
@@ -90,17 +102,18 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "38",
       "telefone": "(99) 98470-3752",
-      "condicoes": {
-        "Hipertensao": true,
-        "Mulher": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C6": true
       },
       "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
-      "hipertensaoOk": true,
-      "citopatologicoOk": false,
-      "ivcfOk": true
+      "c5_visitas": 7,
+      "c5Ok": true,
+      "c6_visitas": 45,
+      "c6Ok": false
     },
     "03835946340": {
       "nome": "DIOMAR DE BARROS",
@@ -109,15 +122,13 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "23",
       "telefone": "(99) 98171-3424",
-      "condicoes": {
-        "Hipertensao": true,
-        "Mulher": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true
       },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "hipertensaoOk": true,
-      "citopatologicoOk": false
+      "pendencias": [],
+      "c5_visitas": 14,
+      "c5Ok": true
     },
     "72557052191": {
       "nome": "EDINALVA BEZERRA DOS SANTOS",
@@ -126,17 +137,18 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "11",
       "telefone": "(61) 99126-6054",
-      "condicoes": {
-        "Hipertensao": true,
-        "Mulher": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C6": true
       },
       "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
-      "hipertensaoOk": true,
-      "citopatologicoOk": false,
-      "ivcfOk": true
+      "c5_visitas": 40,
+      "c5Ok": true,
+      "c6_visitas": 68,
+      "c6Ok": false
     },
     "24854212349": {
       "nome": "EDSON GOMES DE MELO",
@@ -145,15 +157,19 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "130",
       "telefone": "(99) 98151-5219",
-      "condicoes": {
-        "Hipertensao": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C6": true
       },
       "pendencias": [
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "hipertensaoOk": true,
-      "ivcfOk": false
+      "c5_visitas": 20,
+      "c5Ok": true,
+      "c6_visitas": 60,
+      "c6Ok": false
     },
     "86094840330": {
       "nome": "ERINEIDE ALVES BATISTA",
@@ -162,17 +178,16 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "43",
       "telefone": "(99) 98888-8888",
-      "condicoes": {
-        "Hipertensao": true,
-        "Mulher": true,
-        "Diabetes": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C4": true
       },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "hipertensaoOk": true,
-      "citopatologicoOk": false,
-      "diabetesOk": true
+      "pendencias": [],
+      "c5_visitas": 24,
+      "c5Ok": true,
+      "c4_visitas": 23,
+      "c4Ok": true
     },
     "17363454272": {
       "nome": "FRANCISCO DO NASCIMENTO NETO",
@@ -181,15 +196,19 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "28",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Hipertensao": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C6": true
       },
       "pendencias": [
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "hipertensaoOk": true,
-      "ivcfOk": false
+      "c5_visitas": 42,
+      "c5Ok": true,
+      "c6_visitas": 98,
+      "c6Ok": false
     },
     "45249652387": {
       "nome": "GESSI RAMALHO BERNARDO",
@@ -198,20 +217,23 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "17",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Hipertensao": true,
-        "Mulher": true,
-        "Diabetes": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C4": true,
+        "C6": true
       },
       "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo",
-        "Diabetes: Exame de Hemoglobina Glicada"
+        "C5: Visitas Domiciliares pendentes (0/2 no ano)",
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
-      "hipertensaoOk": true,
-      "citopatologicoOk": false,
-      "diabetesOk": false,
-      "ivcfOk": true
+      "c5_visitas": 0,
+      "c5Ok": false,
+      "c4_visitas": 47,
+      "c4Ok": false,
+      "c6_visitas": 104,
+      "c6Ok": false
     },
     "01804500348": {
       "nome": "JADSON VIEIRA DE MORAES",
@@ -220,11 +242,13 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "86",
       "telefone": "(99) 98155-4806",
-      "condicoes": {
-        "Hipertensao": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true
       },
       "pendencias": [],
-      "hipertensaoOk": true
+      "c5_visitas": 22,
+      "c5Ok": true
     },
     "91581672349": {
       "nome": "JOSÉ BORGES DA SILVA",
@@ -233,15 +257,19 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "18",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Hipertensao": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C6": true
       },
       "pendencias": [
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "hipertensaoOk": true,
-      "ivcfOk": false
+      "c5_visitas": 36,
+      "c5Ok": true,
+      "c6_visitas": 87,
+      "c6Ok": false
     },
     "18281109149": {
       "nome": "JOSE FRANCISCO DE OLIVEIRA PACHECO",
@@ -250,18 +278,23 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "21",
       "telefone": "(99) 98114-2267",
-      "condicoes": {
-        "Hipertensao": true,
-        "Diabetes": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C4": true,
+        "C6": true
       },
       "pendencias": [
-        "Diabetes: Exame de Hemoglobina Glicada",
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "hipertensaoOk": true,
-      "diabetesOk": false,
-      "ivcfOk": false
+      "c5_visitas": 36,
+      "c5Ok": true,
+      "c4_visitas": 34,
+      "c4Ok": false,
+      "c6_visitas": 43,
+      "c6Ok": false
     },
     "40606520325": {
       "nome": "JOSIVAL FRANCISCO DA SILVA",
@@ -270,18 +303,22 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "09",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Hipertensao": true,
-        "Diabetes": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C4": true,
+        "C6": true
       },
       "pendencias": [
-        "Diabetes: Exame de Hemoglobina Glicada",
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "hipertensaoOk": true,
-      "diabetesOk": false,
-      "ivcfOk": false
+      "c5_visitas": 50,
+      "c5Ok": true,
+      "c4_visitas": 51,
+      "c4Ok": false,
+      "c6_visitas": 115,
+      "c6Ok": true
     },
     "02753183112": {
       "nome": "LUCILANIO ROSA BASILIO",
@@ -290,11 +327,13 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "2",
       "telefone": "(99) 98425-9446",
-      "condicoes": {
-        "Hipertensao": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true
       },
       "pendencias": [],
-      "hipertensaoOk": true
+      "c5_visitas": 10,
+      "c5Ok": true
     },
     "01530620376": {
       "nome": "LUSANIRA DA CONCEICAO VIEIRA GOMES",
@@ -303,15 +342,13 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "22",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Hipertensao": true,
-        "Mulher": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true
       },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "hipertensaoOk": true,
-      "citopatologicoOk": false
+      "pendencias": [],
+      "c5_visitas": 42,
+      "c5Ok": true
     },
     "94089698391": {
       "nome": "MARIA CILENE FREIRES MOARES",
@@ -320,15 +357,13 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "07",
       "telefone": "(99) 8135-9145",
-      "condicoes": {
-        "Hipertensao": true,
-        "Mulher": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true
       },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "hipertensaoOk": true,
-      "citopatologicoOk": false
+      "pendencias": [],
+      "c5_visitas": 28,
+      "c5Ok": true
     },
     "46668977391": {
       "nome": "MARIA CONCEBIDA BARBOSA",
@@ -337,15 +372,18 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "01",
       "telefone": "(99) 98274-0732",
-      "condicoes": {
-        "Hipertensao": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C6": true
       },
       "pendencias": [
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "hipertensaoOk": true,
-      "ivcfOk": false
+      "c5_visitas": 44,
+      "c5Ok": true,
+      "c6_visitas": 59,
+      "c6Ok": true
     },
     "43802745353": {
       "nome": "MARIA DA CONCEIÇÃO CARDOSO DOURADO",
@@ -354,21 +392,23 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "21",
       "telefone": "(99) 98114-2267",
-      "condicoes": {
-        "Hipertensao": true,
-        "Mulher": true,
-        "Diabetes": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C4": true,
+        "C6": true
       },
       "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo",
-        "Diabetes: Exame de Hemoglobina Glicada",
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "hipertensaoOk": true,
-      "citopatologicoOk": false,
-      "diabetesOk": false,
-      "ivcfOk": false
+      "c5_visitas": 40,
+      "c5Ok": true,
+      "c4_visitas": 38,
+      "c4Ok": false,
+      "c6_visitas": 87,
+      "c6Ok": false
     },
     "55759980378": {
       "nome": "MARIA DA PAZ DA ENCARNAÇÃO",
@@ -377,17 +417,21 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "34",
       "telefone": "(99) 98105-3404",
-      "condicoes": {
-        "Hipertensao": true,
-        "Diabetes": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C4": true,
+        "C6": true
       },
       "pendencias": [
-        "Diabetes: Exame de Hemoglobina Glicada"
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada"
       ],
-      "hipertensaoOk": true,
-      "diabetesOk": false,
-      "ivcfOk": true
+      "c5_visitas": 39,
+      "c5Ok": true,
+      "c4_visitas": 38,
+      "c4Ok": false,
+      "c6_visitas": 88,
+      "c6Ok": true
     },
     "17607248315": {
       "nome": "MARIA ELENA MARQUES DOS SANTOS",
@@ -396,18 +440,19 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "25",
       "telefone": "(99) 98416-3870",
-      "condicoes": {
-        "Hipertensao": true,
-        "Mulher": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C6": true
       },
       "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo",
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "hipertensaoOk": true,
-      "citopatologicoOk": false,
-      "ivcfOk": false
+      "c5_visitas": 7,
+      "c5Ok": true,
+      "c6_visitas": 111,
+      "c6Ok": false
     },
     "72212810334": {
       "nome": "MARIA GORETH FERREIRA PRIMO DA SILVA",
@@ -416,17 +461,25 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "114",
       "telefone": "(99) 9856-2314",
-      "condicoes": {
-        "Hipertensao": true,
-        "Diabetes": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C4": true,
+        "C6": true
       },
       "pendencias": [
-        "Diabetes: Exame de Hemoglobina Glicada"
+        "C5: Visitas Domiciliares pendentes (0/2 no ano)",
+        "C4: Visitas Domiciliares pendentes (0/2 no ano)",
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
+        "C4: Busca Ativa - Avaliação periódica dos pés",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
-      "hipertensaoOk": true,
-      "diabetesOk": false,
-      "ivcfOk": true
+      "c5_visitas": 0,
+      "c5Ok": false,
+      "c4_visitas": 0,
+      "c4Ok": false,
+      "c6_visitas": 59,
+      "c6Ok": false
     },
     "18394728391": {
       "nome": "MARIA JOSÉ CAMPELO DA SILVA",
@@ -435,15 +488,19 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "48",
       "telefone": "(99) 98168-8242",
-      "condicoes": {
-        "Hipertensao": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C6": true
       },
       "pendencias": [
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "hipertensaoOk": true,
-      "ivcfOk": false
+      "c5_visitas": 23,
+      "c5Ok": true,
+      "c6_visitas": 68,
+      "c6Ok": false
     },
     "70598304304": {
       "nome": "MARIA MARLY DE LIRA SOUSA",
@@ -452,18 +509,18 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "44",
       "telefone": "(99) 98445-4704",
-      "condicoes": {
-        "Hipertensao": true,
-        "Mulher": true,
-        "Diabetes": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C4": true
       },
       "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo",
-        "Diabetes: Exame de Hemoglobina Glicada"
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada"
       ],
-      "hipertensaoOk": true,
-      "citopatologicoOk": false,
-      "diabetesOk": false
+      "c5_visitas": 36,
+      "c5Ok": true,
+      "c4_visitas": 34,
+      "c4Ok": false
     },
     "96820462387": {
       "nome": "MARIA MATOS SILVA",
@@ -472,17 +529,22 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "136",
       "telefone": "(98) 98431-0910",
-      "condicoes": {
-        "Hipertensao": true,
-        "Diabetes": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C4": true,
+        "C6": true
       },
       "pendencias": [
-        "Diabetes: Exame de Hemoglobina Glicada"
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
-      "hipertensaoOk": true,
-      "diabetesOk": false,
-      "ivcfOk": true
+      "c5_visitas": 26,
+      "c5Ok": true,
+      "c4_visitas": 25,
+      "c4Ok": false,
+      "c6_visitas": 66,
+      "c6Ok": false
     },
     "16748833825": {
       "nome": "MIGUEL LOPES DOS SANTOS",
@@ -491,15 +553,20 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "15",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Hipertensao": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C6": true
       },
       "pendencias": [
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C5: Visitas Domiciliares pendentes (0/2 no ano)",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "hipertensaoOk": true,
-      "ivcfOk": false
+      "c5_visitas": 0,
+      "c5Ok": false,
+      "c6_visitas": 91,
+      "c6Ok": false
     },
     "76432378915": {
       "nome": "PAULO DE SOUZA",
@@ -508,16 +575,20 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "13",
       "telefone": "(99) 98198-6313",
-      "condicoes": {
-        "Hipertensao": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C6": true
       },
       "pendencias": [
-        "Hipertensão: Aferir PA no semestre",
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C5: Busca Ativa - Aferição de PA no semestre",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "hipertensaoOk": false,
-      "ivcfOk": false
+      "c5_visitas": 7,
+      "c5Ok": false,
+      "c6_visitas": 18,
+      "c6Ok": false
     },
     "15874958304": {
       "nome": "PAULO FREIRE MENDANHA",
@@ -526,13 +597,16 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "01",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Hipertensao": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C6": true
       },
       "pendencias": [],
-      "hipertensaoOk": true,
-      "ivcfOk": true
+      "c5_visitas": 46,
+      "c5Ok": true,
+      "c6_visitas": 103,
+      "c6Ok": true
     },
     "00419830332": {
       "nome": "RAIMUNDO NONATO DA CONCEIÇÃO",
@@ -541,11 +615,13 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "43",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Hipertensao": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true
       },
       "pendencias": [],
-      "hipertensaoOk": true
+      "c5_visitas": 26,
+      "c5Ok": true
     },
     "88390659387": {
       "nome": "RAIMUNDO NONATO MOURA GOMES",
@@ -554,11 +630,13 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "22",
       "telefone": "(99) 98234-4466",
-      "condicoes": {
-        "Hipertensao": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true
       },
       "pendencias": [],
-      "hipertensaoOk": true
+      "c5_visitas": 43,
+      "c5Ok": true
     },
     "02473391300": {
       "nome": "RAIMUNDO RIBEIRO ANASTACIO",
@@ -567,11 +645,15 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "30",
       "telefone": "(99) 98888-8888",
-      "condicoes": {
-        "Hipertensao": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true
       },
-      "pendencias": [],
-      "hipertensaoOk": true
+      "pendencias": [
+        "C5: Visitas Domiciliares pendentes (0/2 no ano)"
+      ],
+      "c5_visitas": 0,
+      "c5Ok": false
     },
     "99509016349": {
       "nome": "TERESA FRANCISCO DA SILVA MOREIRA",
@@ -580,21 +662,22 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "11",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Hipertensao": true,
-        "Mulher": true,
-        "Diabetes": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C4": true,
+        "C6": true
       },
       "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo",
-        "Diabetes: Exame de Hemoglobina Glicada",
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "hipertensaoOk": true,
-      "citopatologicoOk": false,
-      "diabetesOk": false,
-      "ivcfOk": false
+      "c5_visitas": 39,
+      "c5Ok": true,
+      "c4_visitas": 39,
+      "c4Ok": false,
+      "c6_visitas": 93,
+      "c6Ok": true
     },
     "61964743320": {
       "nome": "VALDECIR ROCHA DE LIMA",
@@ -603,13 +686,18 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "25",
       "telefone": "(99) 98416-3870",
-      "condicoes": {
-        "Hipertensao": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C6": true
       },
-      "pendencias": [],
-      "hipertensaoOk": true,
-      "ivcfOk": true
+      "pendencias": [
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
+      ],
+      "c5_visitas": 48,
+      "c5Ok": true,
+      "c6_visitas": 57,
+      "c6Ok": false
     },
     "02531774300": {
       "nome": "VANUBIA ALMEIDA FERNANDES MENESES",
@@ -618,15 +706,13 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "15",
       "telefone": "(99) 98518-4732",
-      "condicoes": {
-        "Hipertensao": true,
-        "Mulher": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true
       },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "hipertensaoOk": true,
-      "citopatologicoOk": false
+      "pendencias": [],
+      "c5_visitas": 42,
+      "c5Ok": true
     },
     "01376032317": {
       "nome": "VILMARIA LIMA DE MESQUITA",
@@ -635,18 +721,18 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "99",
       "telefone": "(99) 98472-7415",
-      "condicoes": {
-        "Hipertensao": true,
-        "Mulher": true,
-        "Diabetes": true
+      "condicoes": {},
+      "indicadores": {
+        "C5": true,
+        "C4": true
       },
       "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo",
-        "Diabetes: Exame de Hemoglobina Glicada"
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada"
       ],
-      "hipertensaoOk": true,
-      "citopatologicoOk": false,
-      "diabetesOk": false
+      "c5_visitas": 20,
+      "c5Ok": true,
+      "c4_visitas": 21,
+      "c4Ok": false
     },
     "62816925358": {
       "nome": "AGIVANIA MARIA LIMA DE OLIVEIRA MOURÃO",
@@ -655,13 +741,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "35",
       "telefone": "(99) 98447-8260",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "61781005311": {
       "nome": "ALANA DIAS DE ABREU MELO SILVA",
@@ -670,13 +752,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "38",
       "telefone": "(99) 98513-2834",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "06727490333": {
       "nome": "ALANE KAREN DE ABREU VIANA",
@@ -685,13 +763,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "87",
       "telefone": "(99) 98451-2323",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "00576201308": {
       "nome": "ALBERLEILA NOBRE ROCHA",
@@ -700,13 +774,9 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "19",
       "telefone": "(99) 98185-8182",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "63112960394": {
       "nome": "ALICYA KEMILLY ROCHA DE CASTRO",
@@ -715,13 +785,9 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "19",
       "telefone": "(99) 98185-8182",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "62857679394": {
       "nome": "ANA LARA DE ABREU VIANA",
@@ -730,13 +796,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "87",
       "telefone": "(99) 98410-4224",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "05834871305": {
       "nome": "ANAIZA BARROS DE ANDRADE BRANDÃO",
@@ -745,13 +807,9 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "08",
       "telefone": "(99) 98536-9172",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "04923623357": {
       "nome": "ANTONIA DE SOUSA ARAUJO",
@@ -760,11 +818,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "10",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [],
-      "citopatologicoOk": true
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "99988321368": {
       "nome": "ANTÔNIA DOS SANTOS GERMANO DA COSTA",
@@ -773,13 +829,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "36",
       "telefone": "(99) 98130-3744",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "00459637380": {
       "nome": "ANTÔNIA FREITAS DA SILVA",
@@ -788,13 +840,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "13",
       "telefone": "(99) 98198-6313",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "00077403363": {
       "nome": "ANTONIA NASCIMENTO DA SILVA",
@@ -803,16 +851,15 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "26",
       "telefone": "(99) 98102-9092",
-      "condicoes": {
-        "Mulher": true,
-        "Diabetes": true
+      "condicoes": {},
+      "indicadores": {
+        "C4": true
       },
       "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo",
-        "Diabetes: Exame de Hemoglobina Glicada"
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada"
       ],
-      "citopatologicoOk": false,
-      "diabetesOk": false
+      "c4_visitas": 7,
+      "c4Ok": false
     },
     "63260729305": {
       "nome": "ARCLEIA DE SOUSA SILVA",
@@ -821,13 +868,9 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "29",
       "telefone": "(99) 98526-2952",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "08412476336": {
       "nome": "AURITÂNIA LIMA SOUSA",
@@ -836,13 +879,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "42",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "63473202312": {
       "nome": "BRUNA CARLA DA SILVA CAMELO",
@@ -851,13 +890,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "16",
       "telefone": "(99) 98494-4358",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "63106525320": {
       "nome": "BRUNA DE SOUSA LIMA",
@@ -866,13 +901,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "10",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "93888066387": {
       "nome": "CLEONICE DAMACENA DE ANDRADE FEITOSA",
@@ -881,13 +912,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "30",
       "telefone": "(99) 98194-8840",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "03645574352": {
       "nome": "CLEUDIANA DOS SANTOS MELO",
@@ -896,11 +923,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "10",
       "telefone": "(99) 98144-0181",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [],
-      "citopatologicoOk": true
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "96820470304": {
       "nome": "DEUZA DA SILVA CASTRO",
@@ -909,13 +934,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "90",
       "telefone": "(99) 98156-5935",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "60211292370": {
       "nome": "DIANA DE SOUSA RODRIGUES",
@@ -924,13 +945,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "100",
       "telefone": "(99) 98470-3752",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "81443013315": {
       "nome": "ELDENIR DIAS DE ABREU VIANA",
@@ -939,13 +956,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "87",
       "telefone": "(99) 98410-4224",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "60963898302": {
       "nome": "ELIDA DE SOUSA RIBEIRO",
@@ -954,13 +967,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "48",
       "telefone": "(99) 98140-1680",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "94220760300": {
       "nome": "ELIENE CONCEIÇÃO DE SOUSA VERAS",
@@ -969,15 +978,15 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "42",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Mulher": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C6": true
       },
       "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
-      "citopatologicoOk": false,
-      "ivcfOk": true
+      "c6_visitas": 67,
+      "c6Ok": false
     },
     "94793131387": {
       "nome": "ELIETE PEREIRA DA SILVA",
@@ -986,13 +995,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "31",
       "telefone": "(99) 9455-1856",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "45268851349": {
       "nome": "ELZENIR DIAS DE ABREU MELO",
@@ -1001,13 +1006,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "38",
       "telefone": "(99) 98413-2067",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "62290555380": {
       "nome": "EMILLY PEREIRA DIAS",
@@ -1016,13 +1017,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "74",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "03273692308": {
       "nome": "FRANCISCA DE SOUSA",
@@ -1031,13 +1028,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "86",
       "telefone": "(99) 98432-0632",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "47555840359": {
       "nome": "FRANCISCA JESUS SILVA",
@@ -1046,13 +1039,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "130",
       "telefone": "(99) 98151-5219",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "00430457316": {
       "nome": "GRAÇA DE MARIA SANTOS DE JESUS",
@@ -1061,16 +1050,15 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "144",
       "telefone": "(99) 98449-2682",
-      "condicoes": {
-        "Mulher": true,
-        "Diabetes": true
+      "condicoes": {},
+      "indicadores": {
+        "C4": true
       },
       "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo",
-        "Diabetes: Exame de Hemoglobina Glicada"
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada"
       ],
-      "citopatologicoOk": false,
-      "diabetesOk": false
+      "c4_visitas": 3,
+      "c4Ok": false
     },
     "03462162306": {
       "nome": "IRANILDE BORGES DA SILVA",
@@ -1079,13 +1067,9 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "23",
       "telefone": "(99) 98418-7812",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "62838429337": {
       "nome": "ISABELA TEIXEIRA DOS SANTOS",
@@ -1094,13 +1078,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "19",
       "telefone": "(99) 98262-3169",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "12104338344": {
       "nome": "JESSICA GALVAO MOREIRA",
@@ -1109,15 +1089,18 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "09",
       "telefone": "(99) 98413-6414",
-      "condicoes": {
-        "Mulher": true,
-        "Gestante": true
+      "condicoes": {},
+      "indicadores": {
+        "C3": true
       },
       "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
+        "C3: Visitas Pré-Natal pendentes (2/3)",
+        "C3: Visita no Puerpério pendente (0/1)",
+        "C3: Busca Ativa - Captação precoce (<12 semanas)"
       ],
-      "citopatologicoOk": false,
-      "gestanteOk": true
+      "c3_vis_pn": 2,
+      "c3_vis_puerp": 0,
+      "c3Ok": false
     },
     "62914437323": {
       "nome": "KAMYLA KAWANNY ARAUJO DA ENCARNAÇAO",
@@ -1126,13 +1109,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "34",
       "telefone": "(12) 99721-6998",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "09880392221": {
       "nome": "KAWANE MIRANDA DA SILVA",
@@ -1141,13 +1120,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "144",
       "telefone": "(94) 99141-0357",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "62914441355": {
       "nome": "KEMILLY MARIANE ARAUJO DA ENCARNAÇÃO",
@@ -1156,13 +1131,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "34",
       "telefone": "(55) 99985-5681",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "01874836396": {
       "nome": "LADIA DA CONCEICAO MELO PEREIRA",
@@ -1171,13 +1142,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "49",
       "telefone": "(99) 98171-8449",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "02498803343": {
       "nome": "LAIS DE PAIVA MARTINS",
@@ -1186,13 +1153,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "111",
       "telefone": "(99) 98470-3752",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "62869586302": {
       "nome": "LARA LORRANY DE SOUSA MORAES",
@@ -1201,13 +1164,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "86",
       "telefone": "(99) 98432-0632",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "60863677363": {
       "nome": "LUCILEIA BORGES DA SILVA",
@@ -1216,13 +1175,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "16",
       "telefone": "(99) 98494-4358",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "07546010306": {
       "nome": "LUCILENE DO NASCIMENTO BASILIO",
@@ -1231,13 +1186,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "2",
       "telefone": "(99) 98400-4085",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "00130724394": {
       "nome": "LUIZA RODRIGUES DOS SANTOS MELO",
@@ -1246,15 +1197,15 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "10",
       "telefone": "(99) 98456-4671",
-      "condicoes": {
-        "Mulher": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C6": true
       },
       "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
-      "citopatologicoOk": false,
-      "ivcfOk": true
+      "c6_visitas": 91,
+      "c6Ok": false
     },
     "70049602349": {
       "nome": "LUZIA ANDRADE DA CONCEIÇÃO",
@@ -1263,13 +1214,9 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "35",
       "telefone": "(99) 98116-9042",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "93290985334": {
       "nome": "LUZINETE DE SOUSA",
@@ -1278,13 +1225,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "105",
       "telefone": "(99) 98432-2170",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "05395795308": {
       "nome": "MANUELA FERREIRA SANTOS",
@@ -1293,13 +1236,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "40",
       "telefone": "(99) 98272-0763",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "02416266330": {
       "nome": "MARIA DE JESUS EMIDIO DA COSTA",
@@ -1308,13 +1247,9 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "30",
       "telefone": "(99) 99176-3328",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "00924493364": {
       "nome": "MARIA DO SOCORRO DA SILVA MELO",
@@ -1323,15 +1258,15 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "44",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Mulher": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C6": true
       },
       "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
-      "citopatologicoOk": false,
-      "ivcfOk": true
+      "c6_visitas": 35,
+      "c6Ok": false
     },
     "48852082387": {
       "nome": "MARIA DO SOCORRO PEREIRA DO VALE",
@@ -1340,13 +1275,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "18",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "61782772375": {
       "nome": "MARIA EDUARDA DE JESUS BATISTA",
@@ -1355,13 +1286,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "118",
       "telefone": "(99) 98442-4805",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "84723041168": {
       "nome": "MARIA IRISMAR MARQUES DOS SANTOS",
@@ -1370,13 +1297,9 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "25",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "00386807345": {
       "nome": "MARIA JUCINEIDE CARLOS DE SOUSA",
@@ -1385,13 +1308,9 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "27",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "94521034349": {
       "nome": "MARIA LINDALVA RODRIGUES DA SILVA PAULA",
@@ -1400,13 +1319,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "96",
       "telefone": "(99) 99150-6739",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "62827813378": {
       "nome": "MARIA VERONICA RAMALHO PINTO",
@@ -1415,13 +1330,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "20",
       "telefone": "(99) 98516-6687",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "40309657334": {
       "nome": "MARINALVA PEQUENO DE SOUSA",
@@ -1430,13 +1341,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "89",
       "telefone": "(99) 98479-1380",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "61198324325": {
       "nome": "MARTA SILVA SANTOS TEODORIO",
@@ -1445,13 +1352,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "28",
       "telefone": "(99) 9129-0801",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "60213538385": {
       "nome": "MIRIAN DA SILVA ARAUJO",
@@ -1460,13 +1363,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "34",
       "telefone": "(12) 99721-6998",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "00395006325": {
       "nome": "MISSILENE OLIVEIRA DE SOUSA",
@@ -1475,13 +1374,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "12",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "06085498357": {
       "nome": "RAIANE PEREIRA DOS SANTOS DIAS",
@@ -1490,13 +1385,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "74",
       "telefone": "(99) 98442-1605",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "RAIMUNDA DA SILVA PAULA": {
       "nome": "RAIMUNDA DA SILVA PAULA",
@@ -1505,15 +1396,16 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "54",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Mulher": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C6": true
       },
       "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Consulta anual pendente (>12 meses)"
       ],
-      "citopatologicoOk": false,
-      "ivcfOk": true
+      "c6_visitas": 62,
+      "c6Ok": false
     },
     "RAIZA JOSEFINA VENAVIDES": {
       "nome": "RAIZA JOSEFINA VENAVIDES",
@@ -1522,13 +1414,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "4",
       "telefone": "(99) 98470-3752",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "62970929317": {
       "nome": "RAYLA VITORIA DA COSTA ANASTACIO",
@@ -1537,13 +1425,9 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "30",
       "telefone": "(99) 00000-0000",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "62856814301": {
       "nome": "RAYSSA DIAS DE ABREU MELO",
@@ -1552,13 +1436,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "38",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "00372540309": {
       "nome": "ROSILENE MAGALHÃES DE ALMADA",
@@ -1567,13 +1447,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "107",
       "telefone": "(99) 98441-2681",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "05941246382": {
       "nome": "SAMARA SILVEIRA DE MATOS",
@@ -1582,13 +1458,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "05",
       "telefone": "(99) 99204-8119",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "02277436364": {
       "nome": "SUZETE FIRME TOMÉ",
@@ -1597,18 +1469,20 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "40",
       "telefone": "(99) 98118-9138",
-      "condicoes": {
-        "Mulher": true,
-        "Diabetes": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C4": true,
+        "C6": true
       },
       "pendencias": [
-        "Diabetes: Exame de Hemoglobina Glicada",
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "citopatologicoOk": true,
-      "diabetesOk": false,
-      "ivcfOk": false
+      "c4_visitas": 37,
+      "c4Ok": false,
+      "c6_visitas": 92,
+      "c6Ok": false
     },
     "62952057397": {
       "nome": "THAIS DA CONCEICAO MOURA",
@@ -1617,13 +1491,9 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "22",
       "telefone": "(99) 98154-8784",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "00288725336": {
       "nome": "VANDICREIDE DA SILVEIRA QUEIROZ",
@@ -1632,13 +1502,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "78A",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "00880734329": {
       "nome": "VANETE DE SOUSA MOURÃO",
@@ -1647,13 +1513,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "92",
       "telefone": "(99) 98510-4921",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "60302919392": {
       "nome": "VANUSA SILVA DOS SANTOS",
@@ -1662,13 +1524,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "112",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "62431240371": {
       "nome": "VILMARA DE LIMA BARBOSA",
@@ -1677,13 +1535,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "97",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "63086154390": {
       "nome": "VITORIA ALVES DA CONCEIÇÃO",
@@ -1692,13 +1546,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "43",
       "telefone": "(99) 98225-1635",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "62443778347": {
       "nome": "WATILA SOUSA DA CONCEICAO",
@@ -1707,13 +1557,9 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "89",
       "telefone": "(99) 98479-1380",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "62856845371": {
       "nome": "YASMIM DA SILVA BARROS",
@@ -1722,13 +1568,9 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "23",
       "telefone": "(99) 98171-3424",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "06040246308": {
       "nome": "YASMIM MICHELLY DOS SANTOS GOMES",
@@ -1737,13 +1579,9 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "25",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Mulher": true
-      },
-      "pendencias": [
-        "Saúde da Mulher: Coleta de Preventivo"
-      ],
-      "citopatologicoOk": false
+      "condicoes": {},
+      "indicadores": {},
+      "pendencias": []
     },
     "60214647374": {
       "nome": "FRANCISCO JHONNY DE BRITO BRANDÃO",
@@ -1753,6 +1591,7 @@
       "numero": "08",
       "telefone": "(99) 98536-9172",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "10797671340": {
@@ -1763,6 +1602,7 @@
       "numero": "08",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "12176878310": {
@@ -1773,6 +1613,7 @@
       "numero": "08",
       "telefone": "(99) 98536-9172",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "09387229300": {
@@ -1783,6 +1624,7 @@
       "numero": "09",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "02765853304": {
@@ -1792,11 +1634,15 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "09",
       "telefone": "(99) 98413-6414",
-      "condicoes": {
-        "Crianca": true
+      "condicoes": {},
+      "indicadores": {
+        "C2": true
       },
-      "pendencias": [],
-      "criancaOk": true
+      "pendencias": [
+        "C2: Busca Ativa - Agendar consulta de puericultura"
+      ],
+      "c2_visitas": 20,
+      "c2Ok": false
     },
     "00553949306": {
       "nome": "MILTON BORGES DA SILVA",
@@ -1806,6 +1652,7 @@
       "numero": "10",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62981959395": {
@@ -1816,6 +1663,7 @@
       "numero": "15",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62981956370": {
@@ -1826,6 +1674,7 @@
       "numero": "15",
       "telefone": "(99) 99999-9999",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "46669752334": {
@@ -1836,6 +1685,7 @@
       "numero": "15",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "63112953347": {
@@ -1846,6 +1696,7 @@
       "numero": "19",
       "telefone": "(99) 98177-4455",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "04393114388": {
@@ -1856,6 +1707,7 @@
       "numero": "2",
       "telefone": "(99) 99954-6466",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "07696397397": {
@@ -1866,6 +1718,7 @@
       "numero": "22",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "11060283336": {
@@ -1876,6 +1729,7 @@
       "numero": "23A",
       "telefone": "(99) 98518-3724",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "11844828379": {
@@ -1886,6 +1740,7 @@
       "numero": "23",
       "telefone": "(99) 98171-3424",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62844658318": {
@@ -1896,6 +1751,7 @@
       "numero": "25",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "06863334380": {
@@ -1906,6 +1762,7 @@
       "numero": "26",
       "telefone": "(99) 98102-9092",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "46668985300": {
@@ -1916,6 +1773,7 @@
       "numero": "26",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "03926955376": {
@@ -1926,6 +1784,7 @@
       "numero": "27",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "91180856368": {
@@ -1935,16 +1794,20 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "28",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Diabetes": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C4": true,
+        "C6": true
       },
       "pendencias": [
-        "Diabetes: Exame de Hemoglobina Glicada",
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "diabetesOk": false,
-      "ivcfOk": false
+      "c4_visitas": 40,
+      "c4Ok": false,
+      "c6_visitas": 49,
+      "c6Ok": false
     },
     "05679983397": {
       "nome": "FRANCIELDE MARTINS",
@@ -1954,6 +1817,7 @@
       "numero": "29",
       "telefone": "(99) 98526-2952",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "00152382372": {
@@ -1963,11 +1827,13 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "29",
       "telefone": "(99) 98526-2952",
-      "condicoes": {
-        "Crianca": true
+      "condicoes": {},
+      "indicadores": {
+        "C2": true
       },
       "pendencias": [],
-      "criancaOk": true
+      "c2_visitas": 5,
+      "c2Ok": true
     },
     "63199753345": {
       "nome": "FRANCISCO HIGOR EMIDIO DA COSTA",
@@ -1977,6 +1843,7 @@
       "numero": "30",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62970922304": {
@@ -1987,6 +1854,7 @@
       "numero": "30",
       "telefone": "(99) 00000-0000",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "00728058383": {
@@ -1997,6 +1865,7 @@
       "numero": "38",
       "telefone": "(99) 98470-3752",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "JOSE VIEIRA DA SILVA": {
@@ -2007,6 +1876,7 @@
       "numero": "39",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "00692385371": {
@@ -2017,6 +1887,7 @@
       "numero": "39",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "95079068353": {
@@ -2026,13 +1897,16 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "40",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C6": true
       },
       "pendencias": [
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "ivcfOk": false
+      "c6_visitas": 46,
+      "c6Ok": false
     },
     "17813549368": {
       "nome": "JOSE EVARISTO CAVALCANTE",
@@ -2041,16 +1915,20 @@
       "rua": "RUA SÃO FRANCISCO",
       "numero": "42",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Diabetes": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C4": true,
+        "C6": true
       },
       "pendencias": [
-        "Diabetes: Exame de Hemoglobina Glicada",
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "diabetesOk": false,
-      "ivcfOk": false
+      "c4_visitas": 8,
+      "c4Ok": false,
+      "c6_visitas": 98,
+      "c6Ok": false
     },
     "01103912330": {
       "nome": "JUNIOR MARLON DE LIRA",
@@ -2060,6 +1938,7 @@
       "numero": "44",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62202279300": {
@@ -2070,6 +1949,7 @@
       "numero": "44",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62987068360": {
@@ -2080,6 +1960,7 @@
       "numero": "44",
       "telefone": "(99) 98455-1908",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62979687308": {
@@ -2090,6 +1971,7 @@
       "numero": "44",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "06106909300": {
@@ -2100,6 +1982,7 @@
       "numero": "05",
       "telefone": "(99) 98507-8530",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "03660648353": {
@@ -2109,11 +1992,13 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "05",
       "telefone": "(99) 98507-8530",
-      "condicoes": {
-        "Crianca": true
+      "condicoes": {},
+      "indicadores": {
+        "C2": true
       },
       "pendencias": [],
-      "criancaOk": true
+      "c2_visitas": 14,
+      "c2Ok": true
     },
     "LOURINALDO ALVES DE ANDRADE": {
       "nome": "LOURINALDO ALVES DE ANDRADE",
@@ -2123,6 +2008,7 @@
       "numero": "08",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "01535090316": {
@@ -2132,15 +2018,20 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "09",
       "telefone": "(99) 98428-6694",
-      "condicoes": {
-        "Diabetes": true,
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C4": true,
+        "C6": true
       },
       "pendencias": [
-        "Diabetes: Exame de Hemoglobina Glicada"
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
+        "C4: Busca Ativa - Avaliação periódica dos pés",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
-      "diabetesOk": false,
-      "ivcfOk": true
+      "c4_visitas": 45,
+      "c4Ok": false,
+      "c6_visitas": 56,
+      "c6Ok": false
     },
     "10595892302": {
       "nome": "ANA CECÍLIA DE SOUSA LIMA",
@@ -2150,6 +2041,7 @@
       "numero": "10",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "24025482827": {
@@ -2160,6 +2052,7 @@
       "numero": "10",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "03468858337": {
@@ -2169,13 +2062,17 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "10",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C6": true
       },
       "pendencias": [
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "ivcfOk": false
+      "c6_visitas": 43,
+      "c6Ok": false
     },
     "62824713380": {
       "nome": "ALAN DOS SANTOS MELO",
@@ -2185,6 +2082,7 @@
       "numero": "10",
       "telefone": "(99) 98144-0181",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62825761303": {
@@ -2195,6 +2093,7 @@
       "numero": "10",
       "telefone": "(99) 98456-4671",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "42632333873": {
@@ -2205,6 +2104,7 @@
       "numero": "10",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "06907183307": {
@@ -2215,6 +2115,7 @@
       "numero": "10",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "08045608382": {
@@ -2225,6 +2126,7 @@
       "numero": "10",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62870733305": {
@@ -2235,6 +2137,7 @@
       "numero": "100",
       "telefone": "(99) 98114-8346",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "10308193350": {
@@ -2245,6 +2148,7 @@
       "numero": "100",
       "telefone": "(99) 98114-8346",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "05182585306": {
@@ -2255,6 +2159,7 @@
       "numero": "100",
       "telefone": "(99) 98486-2805",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62870738374": {
@@ -2265,6 +2170,7 @@
       "numero": "100",
       "telefone": "(99) 98403-8620",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "93290950387": {
@@ -2275,6 +2181,7 @@
       "numero": "105",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62434202306": {
@@ -2285,6 +2192,7 @@
       "numero": "105",
       "telefone": "(99) 9888-8888",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "08467435313": {
@@ -2295,6 +2203,7 @@
       "numero": "107",
       "telefone": "(99) 98441-2681",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "01660529301": {
@@ -2305,6 +2214,7 @@
       "numero": "111",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "63212389370": {
@@ -2315,6 +2225,7 @@
       "numero": "112",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "03856016384": {
@@ -2325,6 +2236,7 @@
       "numero": "114",
       "telefone": "(99) 98116-9978",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "00091842360": {
@@ -2335,6 +2247,7 @@
       "numero": "116",
       "telefone": "(99) 98450-6375",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "08699503393": {
@@ -2345,6 +2258,7 @@
       "numero": "118",
       "telefone": "(99) 98185-9661",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "12686149396": {
@@ -2354,11 +2268,13 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "118",
       "telefone": "(99) 98442-4805",
-      "condicoes": {
-        "Crianca": true
+      "condicoes": {},
+      "indicadores": {
+        "C2": true
       },
       "pendencias": [],
-      "criancaOk": true
+      "c2_visitas": 17,
+      "c2Ok": true
     },
     "63122756390": {
       "nome": "MILENE DE SOUZA CARVALHO",
@@ -2368,6 +2284,7 @@
       "numero": "12",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "08115379352": {
@@ -2378,6 +2295,7 @@
       "numero": "12",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "08115394319": {
@@ -2388,6 +2306,7 @@
       "numero": "12",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "08695636372": {
@@ -2398,6 +2317,7 @@
       "numero": "12",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "12413599380": {
@@ -2408,6 +2328,7 @@
       "numero": "12",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "09103599388": {
@@ -2418,6 +2339,7 @@
       "numero": "13",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "04077897319": {
@@ -2428,6 +2350,7 @@
       "numero": "136",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "02713021359": {
@@ -2437,13 +2360,17 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "14",
       "telefone": "(99) 98171-3424",
-      "condicoes": {
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C6": true
       },
       "pendencias": [
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "ivcfOk": false
+      "c6_visitas": 10,
+      "c6Ok": false
     },
     "62851372343": {
       "nome": "ERISVAN SANTOS DE JESUS",
@@ -2453,6 +2380,7 @@
       "numero": "144",
       "telefone": "(99) 98407-0641",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62851386301": {
@@ -2463,6 +2391,7 @@
       "numero": "144",
       "telefone": "(99) 98407-0641",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "02441285378": {
@@ -2473,6 +2402,7 @@
       "numero": "16",
       "telefone": "(99) 98439-7754",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "63473193305": {
@@ -2483,6 +2413,7 @@
       "numero": "16",
       "telefone": "(99) 98494-4358",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "63473199346": {
@@ -2493,6 +2424,7 @@
       "numero": "16",
       "telefone": "(99) 98494-4358",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "13278952340": {
@@ -2502,11 +2434,13 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "16",
       "telefone": "(99) 98494-4358",
-      "condicoes": {
-        "Crianca": true
+      "condicoes": {},
+      "indicadores": {
+        "C2": true
       },
       "pendencias": [],
-      "criancaOk": true
+      "c2_visitas": 15,
+      "c2Ok": true
     },
     "05525205351": {
       "nome": "ANTONIO SOBRINHO DE SOUSA NETO",
@@ -2516,6 +2450,7 @@
       "numero": "18",
       "telefone": "(99) 98468-4307",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "08465735395": {
@@ -2526,6 +2461,7 @@
       "numero": "19",
       "telefone": "(99) 98455-1856",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "00963026313": {
@@ -2536,6 +2472,7 @@
       "numero": "2",
       "telefone": "(99) 98442-4517",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62968800302": {
@@ -2546,6 +2483,7 @@
       "numero": "2",
       "telefone": "(99) 98442-4517",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62843950350": {
@@ -2556,6 +2494,7 @@
       "numero": "2",
       "telefone": "(99) 98224-4555",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "10317530364": {
@@ -2566,6 +2505,7 @@
       "numero": "2",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "04884619102": {
@@ -2576,6 +2516,7 @@
       "numero": "2",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "13289126390": {
@@ -2585,11 +2526,13 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "2",
       "telefone": "(99) 98400-4085",
-      "condicoes": {
-        "Crianca": true
+      "condicoes": {},
+      "indicadores": {
+        "C2": true
       },
       "pendencias": [],
-      "criancaOk": true
+      "c2_visitas": 10,
+      "c2Ok": true
     },
     "11403757330": {
       "nome": "ANNA VITORIA RAMALHO MATOS",
@@ -2599,6 +2542,7 @@
       "numero": "20",
       "telefone": "(88) 98153-6911",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "63027076337": {
@@ -2609,6 +2553,7 @@
       "numero": "20",
       "telefone": "(99) 98516-6687",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "13640416341": {
@@ -2618,11 +2563,13 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "20",
       "telefone": "(99) 98516-6687",
-      "condicoes": {
-        "Crianca": true
+      "condicoes": {},
+      "indicadores": {
+        "C2": true
       },
       "pendencias": [],
-      "criancaOk": true
+      "c2_visitas": 9,
+      "c2Ok": true
     },
     "61091151342": {
       "nome": "THAFNNY DE SOUSA PACHECO",
@@ -2632,6 +2579,7 @@
       "numero": "21",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "93433280363": {
@@ -2642,6 +2590,7 @@
       "numero": "21",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "00512116377": {
@@ -2651,13 +2600,17 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "22",
       "telefone": "(99) 98508-4394",
-      "condicoes": {
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C6": true
       },
       "pendencias": [
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "ivcfOk": false
+      "c6_visitas": 35,
+      "c6Ok": false
     },
     "50801481368": {
       "nome": "NILZETE NASCIMENTO COSTA",
@@ -2667,6 +2620,7 @@
       "numero": "26",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "04860859375": {
@@ -2677,6 +2631,7 @@
       "numero": "28",
       "telefone": "(99) 99129-0801",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "48850861320": {
@@ -2687,6 +2642,7 @@
       "numero": "31",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "04113414300": {
@@ -2697,6 +2653,7 @@
       "numero": "34",
       "telefone": "(99) 98105-3404",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62563354307": {
@@ -2707,6 +2664,7 @@
       "numero": "35",
       "telefone": "(99) 98447-8260",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "13267683360": {
@@ -2716,11 +2674,13 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "35",
       "telefone": "(99) 98447-8260",
-      "condicoes": {
-        "Crianca": true
+      "condicoes": {},
+      "indicadores": {
+        "C2": true
       },
       "pendencias": [],
-      "criancaOk": true
+      "c2_visitas": 16,
+      "c2Ok": true
     },
     "01373548789": {
       "nome": "JOÃO BATISTA RIBEIRO DA COSTA",
@@ -2730,6 +2690,7 @@
       "numero": "36",
       "telefone": "(99) 98130-3744",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62862131393": {
@@ -2740,6 +2701,7 @@
       "numero": "36",
       "telefone": "(99) 98190-9084",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "72686537353": {
@@ -2750,6 +2712,7 @@
       "numero": "37",
       "telefone": "(99) 98536-4293",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62831513375": {
@@ -2760,6 +2723,7 @@
       "numero": "38",
       "telefone": "(99) 98513-2834",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "12642730379": {
@@ -2769,11 +2733,13 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "38",
       "telefone": "(99) 98513-2834",
-      "condicoes": {
-        "Crianca": true
+      "condicoes": {},
+      "indicadores": {
+        "C2": true
       },
       "pendencias": [],
-      "criancaOk": true
+      "c2_visitas": 16,
+      "c2Ok": true
     },
     "17879291750": {
       "nome": "RODRIGO TIMOTÉO DA SILVA",
@@ -2783,6 +2749,7 @@
       "numero": "38",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "YURIMAR ESTEFANIA RODRIGUEZ VENAVIDES": {
@@ -2793,6 +2760,7 @@
       "numero": "4",
       "telefone": "(99) 98135-6552",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "04518982304": {
@@ -2803,6 +2771,7 @@
       "numero": "4",
       "telefone": "(99) 98470-3752",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "13573849393": {
@@ -2813,6 +2782,7 @@
       "numero": "4",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "05035652378": {
@@ -2823,6 +2793,7 @@
       "numero": "40",
       "telefone": "(99) 98551-7882",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "12821678398": {
@@ -2832,11 +2803,13 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "40",
       "telefone": "(99) 98272-0763",
-      "condicoes": {
-        "Crianca": true
+      "condicoes": {},
+      "indicadores": {
+        "C2": true
       },
       "pendencias": [],
-      "criancaOk": true
+      "c2_visitas": 10,
+      "c2Ok": true
     },
     "11782997326": {
       "nome": "LUIS FERNANDO FERREIRA DOS SANTOS",
@@ -2846,6 +2819,7 @@
       "numero": "40",
       "telefone": "(99) 98272-0763",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62912831318": {
@@ -2856,6 +2830,7 @@
       "numero": "42",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "60478447310": {
@@ -2866,6 +2841,7 @@
       "numero": "42",
       "telefone": "(99) 98212-7674",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "03907611330": {
@@ -2876,6 +2852,7 @@
       "numero": "42",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "63086160365": {
@@ -2886,6 +2863,7 @@
       "numero": "43",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62869894392": {
@@ -2896,6 +2874,7 @@
       "numero": "48",
       "telefone": "(99) 98140-1680",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "97212644315": {
@@ -2906,6 +2885,7 @@
       "numero": "49",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "63024327312": {
@@ -2916,6 +2896,7 @@
       "numero": "49",
       "telefone": "(99) 98453-1718",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "63024331344": {
@@ -2926,6 +2907,7 @@
       "numero": "49",
       "telefone": "(99) 98529-2168",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "60263716309": {
@@ -2936,6 +2918,7 @@
       "numero": "50",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "03075848360": {
@@ -2946,6 +2929,7 @@
       "numero": "74",
       "telefone": "(99) 98457-1296",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62840155346": {
@@ -2956,6 +2940,7 @@
       "numero": "74",
       "telefone": "(99) 98457-1296",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "06254228300": {
@@ -2966,6 +2951,7 @@
       "numero": "76",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "12328072305": {
@@ -2976,6 +2962,7 @@
       "numero": "76",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "10341344346": {
@@ -2986,6 +2973,7 @@
       "numero": "76",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "60212130331": {
@@ -2996,6 +2984,7 @@
       "numero": "76",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "00316987352": {
@@ -3006,6 +2995,7 @@
       "numero": "78A",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "63018173384": {
@@ -3016,6 +3006,7 @@
       "numero": "78A",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "10382831322": {
@@ -3026,6 +3017,7 @@
       "numero": "78A",
       "telefone": "(99) 98469-0351",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "00397034369": {
@@ -3035,13 +3027,16 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "80",
       "telefone": "(99) 98469-8670",
-      "condicoes": {
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C6": true
       },
       "pendencias": [
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "ivcfOk": false
+      "c6_visitas": 59,
+      "c6Ok": false
     },
     "62869593350": {
       "nome": "WENDEL DE SOUSA MORAES",
@@ -3051,6 +3046,7 @@
       "numero": "86",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62869575378": {
@@ -3061,6 +3057,7 @@
       "numero": "86",
       "telefone": "(99) 98432-0632",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "77072111387": {
@@ -3071,6 +3068,7 @@
       "numero": "87",
       "telefone": "(99) 98498-8981",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "62857694350": {
@@ -3081,6 +3079,7 @@
       "numero": "87",
       "telefone": "(99) 98451-2323",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "05824496340": {
@@ -3091,6 +3090,7 @@
       "numero": "89",
       "telefone": "(99) 98120-6723",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "13025032359": {
@@ -3100,11 +3100,13 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "89",
       "telefone": "(99) 98479-1380",
-      "condicoes": {
-        "Crianca": true
+      "condicoes": {},
+      "indicadores": {
+        "C2": true
       },
       "pendencias": [],
-      "criancaOk": true
+      "c2_visitas": 9,
+      "c2Ok": true
     },
     "17210127291": {
       "nome": "JOSÉ ISAÍAS DA SILVA",
@@ -3113,13 +3115,17 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "91",
       "telefone": "(99) 98457-6021",
-      "condicoes": {
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C6": true
       },
       "pendencias": [
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "ivcfOk": false
+      "c6_visitas": 52,
+      "c6Ok": false
     },
     "95106294304": {
       "nome": "ANTÔNIO MENESES DE SOUSA",
@@ -3129,6 +3135,7 @@
       "numero": "92",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "07624623374": {
@@ -3139,6 +3146,7 @@
       "numero": "92",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "07035175385": {
@@ -3149,6 +3157,7 @@
       "numero": "92",
       "telefone": "",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "50801562368": {
@@ -3158,13 +3167,16 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "96",
       "telefone": "(99) 98187-7678",
-      "condicoes": {
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C6": true
       },
       "pendencias": [
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "ivcfOk": false
+      "c6_visitas": 50,
+      "c6Ok": false
     },
     "63027758330": {
       "nome": "NICOLAS DINIZ DA SILVA LIMA",
@@ -3174,6 +3186,7 @@
       "numero": "96",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     },
     "00481758380": {
@@ -3183,11 +3196,15 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "96",
       "telefone": "(99) 98139-8331",
-      "condicoes": {
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C6": true
       },
-      "pendencias": [],
-      "ivcfOk": true
+      "pendencias": [
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
+      ],
+      "c6_visitas": 25,
+      "c6Ok": false
     },
     "23652756304": {
       "nome": "MARIA JOSÉ BARBOSA SILVA",
@@ -3196,13 +3213,16 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "97",
       "telefone": "(99) 98234-4663",
-      "condicoes": {
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C6": true
       },
       "pendencias": [
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "ivcfOk": false
+      "c6_visitas": 50,
+      "c6Ok": false
     },
     "68547650300": {
       "nome": "VALDIR BARBOSA SILVA",
@@ -3211,13 +3231,16 @@
       "rua": "RUA SÃO PEDRO",
       "numero": "99",
       "telefone": "(99) 9834-4663",
-      "condicoes": {
-        "Idoso": true
+      "condicoes": {},
+      "indicadores": {
+        "C6": true
       },
       "pendencias": [
-        "Idoso: Avaliação IVCF-20 pendente"
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
-      "ivcfOk": false
+      "c6_visitas": 53,
+      "c6Ok": false
     },
     "63047965366": {
       "nome": "LORENZO SILVA SOUSA",
@@ -3227,6 +3250,7 @@
       "numero": "18",
       "telefone": "(99) 99999-9999",
       "condicoes": {},
+      "indicadores": {},
       "pendencias": []
     }
   },

@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0284c7">
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" type="image/png" sizes="192x192" href="./icone-192.png">
-  <title>Gestão ACS Offline</title>
+  <title>Gestão ACS — Indicadores C1 a C6</title>
   <style>
     :root {
       --primary: #0284c7;
@@ -19,6 +19,13 @@
       --text: #1e293b;
       --text-muted: #64748b;
       --border: #e2e8f0;
+
+      --c1: #0284c7;
+      --c2: #8b5cf6;
+      --c3: #ec4899;
+      --c4: #f59e0b;
+      --c5: #ef4444;
+      --c6: #10b981;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background: var(--bg); color: var(--text); padding-bottom: 75px; }
@@ -26,38 +33,65 @@
     header h1 { font-size: 1.15rem; font-weight: 700; }
     header p { font-size: 0.8rem; opacity: 0.9; margin-top: 2px; }
 
-    .container { padding: 12px; max-width: 650px; margin: 0 auto; }
-    .card { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 14px; margin-bottom: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
-    
-    .btn { background: var(--primary); color: white; border: none; padding: 11px 14px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; cursor: pointer; display: inline-block; width: 100%; text-align: center; text-decoration: none; }
-    .btn-install { background: #10b981; margin-bottom: 12px; font-size: 0.95rem; display: none; }
+    .container { padding: 10px; max-width: 650px; margin: 0 auto; }
+    .card { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 12px; margin-bottom: 10px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+
+    .btn { background: var(--primary); color: white; border: none; padding: 10px 14px; border-radius: 6px; font-weight: 600; font-size: 0.88rem; cursor: pointer; display: inline-block; width: 100%; text-align: center; text-decoration: none; }
+    .btn-install { background: #10b981; margin-bottom: 10px; font-size: 0.92rem; display: none; }
     .btn-json-in { background: #0284c7; margin-bottom: 8px; }
     .btn-json-out { background: #475569; margin-bottom: 8px; }
     .btn-sync { background: #0369a1; margin-bottom: 8px; font-size: 0.85rem; }
     .btn-danger { background: var(--danger); margin-top: 8px; }
 
-    .upload-area { border: 2px dashed var(--primary); border-radius: 8px; padding: 20px 14px; text-align: center; cursor: pointer; background: #f0f9ff; }
-    .upload-area input { display: none; }
-
+    /* GRID DE CARDS DOS INDICADORES */
     .grid-indicadores { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
-    .card-meta { background: var(--card); padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); border-left: 4px solid var(--primary); }
-    .card-meta h4 { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
-    .card-meta .valor { font-size: 1.35rem; font-weight: 700; margin-top: 2px; }
-    .card-meta .pendentes { color: var(--danger); font-size: 0.75rem; font-weight: 600; margin-top: 2px; }
+    .card-meta { background: var(--card); padding: 8px 10px; border-radius: 8px; border: 1px solid var(--border); border-left: 4px solid var(--primary); cursor: pointer; transition: transform 0.1s, box-shadow 0.1s; position: relative; }
+    .card-meta:active { transform: scale(0.98); }
+    .card-meta.active { background: #f0fdf4; border-color: #10b981; box-shadow: 0 0 0 2px #10b981; }
+    .card-meta .header-card { display: flex; justify-content: space-between; align-items: baseline; }
+    .card-meta h4 { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; }
+    .card-meta .badge-meta { font-size: 0.65rem; padding: 1px 5px; border-radius: 10px; font-weight: 700; background: #e2e8f0; color: #475569; }
+    .card-meta .valor { font-size: 1.25rem; font-weight: 800; margin-top: 2px; }
+    .card-meta .barra-fundo { height: 4px; background: #e2e8f0; border-radius: 2px; margin: 4px 0; overflow: hidden; }
+    .card-meta .barra-progresso { height: 100%; width: 0%; border-radius: 2px; }
+    .card-meta .rodape-card { display: flex; justify-content: space-between; font-size: 0.7rem; font-weight: 600; }
+    .card-meta .pendentes { color: var(--danger); }
+    .card-meta .pendentes.ok { color: var(--success); }
+    .card-meta .regra-acs { font-size: 0.65rem; color: var(--text-muted); margin-top: 3px; border-top: 1px dashed var(--border); padding-top: 2px; }
 
-    .search-bar { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem; margin-bottom: 8px; outline: none; background: white; }
-    select.filter-select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 10px; background: white; font-size: 0.9rem; }
+    /* BARRA DE FILTROS */
+    .chips-indicadores { display: flex; gap: 4px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 8px; -webkit-overflow-scrolling: touch; }
+    .chip { font-size: 0.72rem; font-weight: 700; padding: 5px 9px; border-radius: 16px; border: 1px solid var(--border); background: white; color: var(--text-muted); white-space: nowrap; cursor: pointer; }
+    .chip.active { background: var(--primary); color: white; border-color: var(--primary); }
 
-    .item-cidadao { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 12px; margin-bottom: 8px; }
-    .item-cidadao .nome { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; color: #0f172a; }
-    .item-cidadao .endereco { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; line-height: 1.3; }
-    .tag { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 2px 7px; border-radius: 4px; margin-right: 4px; margin-bottom: 4px; }
+    .search-bar { width: 100%; padding: 9px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.9rem; margin-bottom: 8px; outline: none; background: white; }
+    .filtros-duplos { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 8px; }
+    select.filter-select { width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 6px; background: white; font-size: 0.82rem; }
+
+    /* LISTA DE CIDADÃOS */
+    .item-cidadao { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 10px 12px; margin-bottom: 8px; }
+    .item-cidadao .topo { display: flex; justify-content: space-between; align-items: baseline; }
+    .item-cidadao .nome { font-weight: 700; font-size: 0.92rem; color: #0f172a; margin-bottom: 3px; }
+    .item-cidadao .endereco { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 6px; line-height: 1.3; }
+    .item-cidadao .telefone a { color: var(--primary); text-decoration: none; font-weight: 600; }
+
+    .tag { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 2px 6px; border-radius: 4px; margin-right: 3px; margin-bottom: 3px; }
     .tag-danger { background: #fee2e2; color: #b91c1c; }
     .tag-ok { background: #dcfce7; color: #15803d; }
+    .tag-c1 { background: #e0f2fe; color: #0369a1; }
+    .tag-c2 { background: #f3e8ff; color: #7e22ce; }
+    .tag-c3 { background: #fce7f3; color: #be185d; }
+    .tag-c4 { background: #fef3c7; color: #b45309; }
+    .tag-c5 { background: #fee2e2; color: #b91c1c; }
+    .tag-c6 { background: #dcfce7; color: #15803d; }
+
+    .pendencia-item { font-size: 0.74rem; font-weight: 600; color: #991b1b; background: #fff1f2; border: 1px solid #fecdd3; border-radius: 4px; padding: 3px 6px; margin-top: 3px; }
 
     nav.tab-bar { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid var(--border); display: flex; height: 56px; z-index: 20; }
-    nav.tab-bar button { flex: 1; border: none; background: transparent; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); cursor: pointer; }
+    nav.tab-bar button { flex: 1; border: none; background: transparent; font-size: 0.76rem; font-weight: 600; color: var(--text-muted); cursor: pointer; }
     nav.tab-bar button.active { color: var(--primary); font-weight: 700; border-top: 2px solid var(--primary); }
+    .upload-area { border: 2px dashed var(--primary); border-radius: 8px; padding: 18px 12px; text-align: center; cursor: pointer; background: #f0f9ff; }
+    .upload-area input { display: none; }
   </style>
 </head>
 <body>
@@ -68,99 +102,171 @@
   </header>
 
   <div class="container">
-    <!-- Botão de Instalação no Topo -->
     <button id="btnInstalarApp" class="btn btn-install" onclick="acionarInstalacaoPWA()">
       📲 Instalar Aplicativo no Celular
     </button>
 
-    <!-- Tela 1: Visitas e Metas -->
+    <!-- Tela 1: Painel dos Indicadores C1 a C6 -->
     <div id="view-dashboard">
       <div class="grid-indicadores">
-        <div class="card-meta" style="border-left-color: #ef4444;">
-          <h4>Hipertensão</h4>
-          <div class="valor" id="ind-hip-pct">0%</div>
-          <div class="pendentes" id="ind-hip-pend">0 pendentes</div>
+
+        <!-- C1 -->
+        <div class="card-meta" id="card-c1" style="border-left-color: var(--c1);" onclick="selecionarFiltroIndicador('C1')">
+          <div class="header-card">
+            <h4>C1 · Acesso / Cadastro</h4>
+            <span class="badge-meta" id="c1-tot">0</span>
+          </div>
+          <div class="valor" id="c1-pct">0%</div>
+          <div class="barra-fundo"><div class="barra-progresso" id="c1-bar" style="background: var(--c1);"></div></div>
+          <div class="rodape-card">
+            <span class="pendentes" id="c1-pend">0 pendentes</span>
+          </div>
+          <div class="regra-acs">Meta: Territorialização & Cadastros &lt;24m</div>
         </div>
-        <div class="card-meta" style="border-left-color: #f59e0b;">
-          <h4>Diabetes</h4>
-          <div class="valor" id="ind-dia-pct">0%</div>
-          <div class="pendentes" id="ind-dia-pend">0 pendentes</div>
+
+        <!-- C2 -->
+        <div class="card-meta" id="card-c2" style="border-left-color: var(--c2);" onclick="selecionarFiltroIndicador('C2')">
+          <div class="header-card">
+            <h4>C2 · Criança (0-24m)</h4>
+            <span class="badge-meta" id="c2-tot">0</span>
+          </div>
+          <div class="valor" id="c2-pct">0%</div>
+          <div class="barra-fundo"><div class="barra-progresso" id="c2-bar" style="background: var(--c2);"></div></div>
+          <div class="rodape-card">
+            <span class="pendentes" id="c2-pend">0 pendentes</span>
+          </div>
+          <div class="regra-acs">Meta: 2 Visitas + Vacinas + Puericultura</div>
         </div>
-        <div class="card-meta" style="border-left-color: #ec4899;">
-          <h4>Gestantes</h4>
-          <div class="valor" id="ind-ges-pct">0%</div>
-          <div class="pendentes" id="ind-ges-pend">0 pendentes</div>
+
+        <!-- C3 -->
+        <div class="card-meta" id="card-c3" style="border-left-color: var(--c3);" onclick="selecionarFiltroIndicador('C3')">
+          <div class="header-card">
+            <h4>C3 · Pré-Natal</h4>
+            <span class="badge-meta" id="c3-tot">0</span>
+          </div>
+          <div class="valor" id="c3-pct">0%</div>
+          <div class="barra-fundo"><div class="barra-progresso" id="c3-bar" style="background: var(--c3);"></div></div>
+          <div class="rodape-card">
+            <span class="pendentes" id="c3-pend">0 pendentes</span>
+          </div>
+          <div class="regra-acs">Meta: 3 Visitas PN + 1 Pós-parto + Odonto</div>
         </div>
-        <div class="card-meta" style="border-left-color: #10b981;">
-          <h4>Mulheres (Citopat.)</h4>
-          <div class="valor" id="ind-mul-pct">0%</div>
-          <div class="pendentes" id="ind-mul-pend">0 pendentes</div>
+
+        <!-- C4 -->
+        <div class="card-meta" id="card-c4" style="border-left-color: var(--c4);" onclick="selecionarFiltroIndicador('C4')">
+          <div class="header-card">
+            <h4>C4 · Diabetes</h4>
+            <span class="badge-meta" id="c4-tot">0</span>
+          </div>
+          <div class="valor" id="c4-pct">0%</div>
+          <div class="barra-fundo"><div class="barra-progresso" id="c4-bar" style="background: var(--c4);"></div></div>
+          <div class="rodape-card">
+            <span class="pendentes" id="c4-pend">0 pendentes</span>
+          </div>
+          <div class="regra-acs">Meta: 2 Visitas + Hemog. Glicada + Pés</div>
         </div>
+
+        <!-- C5 -->
+        <div class="card-meta" id="card-c5" style="border-left-color: var(--c5);" onclick="selecionarFiltroIndicador('C5')">
+          <div class="header-card">
+            <h4>C5 · Hipertensão</h4>
+            <span class="badge-meta" id="c5-tot">0</span>
+          </div>
+          <div class="valor" id="c5-pct">0%</div>
+          <div class="barra-fundo"><div class="barra-progresso" id="c5-bar" style="background: var(--c5);"></div></div>
+          <div class="rodape-card">
+            <span class="pendentes" id="c5-pend">0 pendentes</span>
+          </div>
+          <div class="regra-acs">Meta: 2 Visitas + Aferição PA + Consulta</div>
+        </div>
+
+        <!-- C6 -->
+        <div class="card-meta" id="card-c6" style="border-left-color: var(--c6);" onclick="selecionarFiltroIndicador('C6')">
+          <div class="header-card">
+            <h4>C6 · Pessoa Idosa</h4>
+            <span class="badge-meta" id="c6-tot">0</span>
+          </div>
+          <div class="valor" id="c6-pct">0%</div>
+          <div class="barra-fundo"><div class="barra-progresso" id="c6-bar" style="background: var(--c6);"></div></div>
+          <div class="rodape-card">
+            <span class="pendentes" id="c6-pend">0 pendentes</span>
+          </div>
+          <div class="regra-acs">Meta: 2 Visitas + Vacina Influenza + Consulta</div>
+        </div>
+
       </div>
 
-      <input type="text" id="campoBusca" class="search-bar" placeholder="🔍 Pesquisar por nome ou CPF..." oninput="filtrarLista()">
-      <select id="filtroRua" class="filter-select" onchange="filtrarLista()">
-        <option value="">Todas as ruas</option>
-      </select>
-      <select id="filtroPendencia" class="filter-select" onchange="filtrarLista()">
-        <option value="pendentes" selected>Apenas com pendências</option>
-        <option value="todos">Exibir todos os cadastrados</option>
-      </select>
+      <!-- Filtros Rápidos em Chips -->
+      <div class="chips-indicadores">
+        <button class="chip active" id="chip-todos" onclick="selecionarFiltroIndicador('todos')">Todos</button>
+        <button class="chip" id="chip-C1" onclick="selecionarFiltroIndicador('C1')">C1: Cadastros</button>
+        <button class="chip" id="chip-C2" onclick="selecionarFiltroIndicador('C2')">C2: Crianças</button>
+        <button class="chip" id="chip-C3" onclick="selecionarFiltroIndicador('C3')">C3: Gestantes</button>
+        <button class="chip" id="chip-C4" onclick="selecionarFiltroIndicador('C4')">C4: Diabéticos</button>
+        <button class="chip" id="chip-C5" onclick="selecionarFiltroIndicador('C5')">C5: Hipertensos</button>
+        <button class="chip" id="chip-C6" onclick="selecionarFiltroIndicador('C6')">C6: Idosos</button>
+      </div>
+
+      <input type="text" id="campoBusca" class="search-bar" placeholder="🔍 Pesquisar por nome, CPF ou número..." oninput="filtrarLista()">
+
+      <div class="filtros-duplos">
+        <select id="filtroRua" class="filter-select" onchange="filtrarLista()">
+          <option value="">Todas as ruas</option>
+        </select>
+        <select id="filtroPendencia" class="filter-select" onchange="filtrarLista()">
+          <option value="todos">Exibir Todos</option>
+          <option value="pendentes" selected>⚠️ Apenas Pendências</option>
+          <option value="emdia">✓ Em Dia</option>
+        </select>
+      </div>
 
       <div id="listaUtentes"></div>
     </div>
 
     <!-- Tela 2: Importar e Sincronizar -->
     <div id="view-upload" style="display: none;">
-      
-      <!-- Carga Rápida de Base JSON -->
       <div class="card">
-        <h3>Transferência por Arquivo (Recomendado)</h3>
-        <p style="font-size: 0.82rem; color: var(--text-muted); margin: 6px 0 12px;">
-          Ideal para o PWA no celular: exporte o arquivo no PC e abra-o aqui sem depender de rede.
+        <h3>Transferência por Arquivo JSON (Recomendado)</h3>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0 10px;">
+          Exporte no computador e abra o arquivo no celular sem depender de sinal de rede.
         </p>
-        
         <input type="file" id="inputArquivoJSON" accept=".json" style="display: none;" onchange="importarBaseJSON(this.files[0])">
         <button class="btn btn-json-in" onclick="document.getElementById('inputArquivoJSON').click()">
-          📤 Carregar Arquivo de Carga (.json)
+          📤 Carregar Arquivo (.json) no Celular
         </button>
-        
         <button class="btn btn-json-out" onclick="exportarBaseJSON()">
-          📥 Baixar Arquivo de Carga (.json)
+          📥 Baixar Arquivo (.json) do Computador
         </button>
       </div>
 
-      <!-- Sincronização Wi-Fi -->
       <div class="card">
         <h3>Sincronização Direta Wi-Fi</h3>
-        <p style="font-size: 0.82rem; color: var(--text-muted); margin: 6px 0 10px;">
-          Disponível ao acessar diretamente pelo endereço de IP do PC na mesma rede.
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0 10px;">
+          Pressione para sincronizar se o celular estiver na mesma rede Wi-Fi do computador.
         </p>
         <button class="btn btn-sync" onclick="sincronizarComPC()">
-          🔄 Sincronizar via Wi-Fi Local
+          🔄 Sincronizar via Wi-Fi do PC
         </button>
       </div>
 
-      <!-- Importação Direta de CSVs -->
       <div class="card">
         <h3>Importar Relatórios do PEC (.csv)</h3>
-        <p style="font-size: 0.82rem; color: var(--text-muted); margin: 6px 0 12px;">
-          Selecione todos os arquivos .csv gerados pelo e-SUS PEC de uma única vez.
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0 10px;">
+          Selecione os relatórios .csv exportados da sua microárea de uma só vez.
         </p>
         <div class="upload-area" onclick="document.getElementById('inputArquivosCSV').click()">
-          <span style="font-size: 2.2rem;">📁</span>
-          <p style="font-weight: 600; margin-top: 6px;">Toque para selecionar os CSVs</p>
-          <span style="font-size: 0.75rem; color: var(--text-muted);">Relatórios operacionais exportados do PEC</span>
+          <span style="font-size: 2rem;">📁</span>
+          <p style="font-weight: 600; margin-top: 4px;">Toque para selecionar os CSVs</p>
+          <span style="font-size: 0.72rem; color: var(--text-muted);">Relatórios de acompanhamento do e-SUS PEC</span>
           <input type="file" id="inputArquivosCSV" multiple accept=".csv" onchange="processarFicheiros(this.files)">
         </div>
-        <div id="progressoUpload" style="margin-top: 12px; font-size: 0.85rem; font-weight: 600;"></div>
+        <div id="progressoUpload" style="margin-top: 10px; font-size: 0.82rem; font-weight: 600;"></div>
       </div>
 
-      <!-- Gestão da Base -->
       <div class="card">
         <h3>Base de Dados Local</h3>
-        <p style="font-size: 0.82rem; color: var(--text-muted); margin: 6px 0 8px;">
-          Apaga todas as informações salvas na memória deste aparelho.
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0 6px;">
+          Limpa todos os dados armazenados na memória deste navegador.
         </p>
         <button class="btn btn-danger" onclick="limparBase()">Limpar Todos os Dados</button>
       </div>
@@ -168,8 +274,8 @@
   </div>
 
   <nav class="tab-bar">
-    <button id="btnTabDash" class="active" onclick="alternarAba('dashboard')">📋 Visitas e Metas</button>
-    <button id="btnTabUp" onclick="alternarAba('upload')">⚙️ Dados / Carga</button>
+    <button id="btnTabDash" class="active" onclick="alternarAba('dashboard')">📋 Indicadores C1-C6</button>
+    <button id="btnTabUp" onclick="alternarAba('upload')">⚙️ Carga / Dados</button>
   </nav>
 
   <script>
@@ -183,7 +289,7 @@
 
     async function acionarInstalacaoPWA() {
       if (!eventoInstalacao) {
-        alert("Para instalar: toque no menu (três pontos) do Chrome e escolha 'Adicionar à tela inicial' ou 'Instalar aplicativo'.");
+        alert("Para instalar: toque no menu (3 pontos) do Chrome e selecione 'Adicionar à tela inicial' ou 'Instalar aplicativo'.");
         return;
       }
       eventoInstalacao.prompt();
@@ -203,6 +309,7 @@
       ruas: new Set()
     };
 
+    let filtroIndicadorAtual = 'todos';
     let cpfToChave = {};
     let nomeToChave = {};
 
@@ -235,15 +342,27 @@
       return r;
     }
 
-    // Exportação do banco em arquivo JSON
+    function selecionarFiltroIndicador(ind) {
+      filtroIndicadorAtual = ind;
+      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.card-meta').forEach(c => c.classList.remove('active'));
+
+      const chip = document.getElementById(`chip-${ind}`);
+      if (chip) chip.classList.add('active');
+
+      const card = document.getElementById(`card-${ind.toLowerCase()}`);
+      if (card) card.classList.add('active');
+
+      filtrarLista();
+    }
+
     function exportarBaseJSON() {
       const payload = {
         cidadaos: BASE_DADOS.cidadaos,
         ruas: Array.from(BASE_DADOS.ruas).sort()
       };
-      const total = Object.keys(payload.cidadaos).length;
-      if (total === 0) {
-        alert("Não há dados cadastrados para exportar. Importe os relatórios primeiro.");
+      if (Object.keys(payload.cidadaos).length === 0) {
+        alert("Nenhum dado cadastrado para exportar. Importe as planilhas primeiro.");
         return;
       }
       const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
@@ -257,12 +376,11 @@
       URL.revokeObjectURL(url);
     }
 
-    // Importação direta de arquivo JSON (bypass de bloqueio HTTPS/HTTP)
     function importarBaseJSON(arquivo) {
       if (!arquivo) return;
       const prog = document.getElementById('progressoUpload');
       prog.style.color = "#0284c7";
-      prog.innerHTML = "Carregando arquivo de carga...";
+      prog.innerHTML = "Carregando base JSON...";
 
       const leitor = new FileReader();
       leitor.readAsText(arquivo, 'utf-8');
@@ -279,24 +397,23 @@
             prog.style.color = "#10b981";
             prog.innerHTML = `✅ ${Object.keys(BASE_DADOS.cidadaos).length} cidadãos carregados com sucesso!`;
             atualizarInterface();
-            setTimeout(() => alternarAba('dashboard'), 900);
+            setTimeout(() => alternarAba('dashboard'), 800);
           } else {
             prog.style.color = "#ef4444";
-            prog.innerHTML = "❌ O arquivo JSON não contém cidadãos válidos.";
+            prog.innerHTML = "❌ O arquivo não possui cidadãos válidos.";
           }
         } catch (e) {
           prog.style.color = "#ef4444";
-          prog.innerHTML = "❌ Erro ao ler o arquivo JSON: " + e.message;
+          prog.innerHTML = "❌ Erro ao ler JSON: " + e.message;
         }
       };
     }
 
-    // Leitura dos CSVs com decodificação ISO-8859-1
     async function processarFicheiros(files) {
       if (!files.length) return;
       const prog = document.getElementById('progressoUpload');
       prog.style.color = "#0284c7";
-      prog.innerHTML = `Processando ${files.length} arquivo(s)...`;
+      prog.innerHTML = `Lendo ${files.length} arquivo(s)...`;
 
       cpfToChave = {};
       nomeToChave = {};
@@ -318,7 +435,6 @@
       };
 
       localStorage.setItem('gestao_acs_dados', JSON.stringify(payload));
-
       fetch('/api/salvar', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -326,8 +442,17 @@
       }).catch(() => console.log("Servidor local não conectado"));
 
       prog.style.color = "#10b981";
-      prog.innerHTML = "✅ Arquivos processados e salvos com sucesso!";
+      prog.innerHTML = "✅ Arquivos processados com sucesso!";
       atualizarInterface();
+    }
+
+    function parseDataJS(dStr) {
+      if (!dStr || dStr === '-') return null;
+      const partes = dStr.split('/');
+      if (partes.length === 3) return new Date(partes[2], partes[1] - 1, partes[0]);
+      const pIso = dStr.split('-');
+      if (pIso.length === 3) return new Date(pIso[0], pIso[1] - 1, pIso[2]);
+      return null;
     }
 
     function interpretarRelatorioPEC(texto) {
@@ -349,7 +474,7 @@
       if (cabecalhoIdx === -1) return;
 
       const colunas = linhas[cabecalhoIdx].split(";").map(c => c.trim().replace(/^"|"$/g, ''));
-      
+
       for (let i = cabecalhoIdx + 1; i < linhas.length; i++) {
         const linha = linhas[i].trim();
         if (!linha) continue;
@@ -390,6 +515,7 @@
             numero: reg["Número"] || reg["NÚMERO"] || "",
             telefone: (reg["Telefone celular"] && reg["Telefone celular"] !== "-") ? reg["Telefone celular"] : "",
             condicoes: {},
+            indicadores: {},
             pendencias: []
           };
         }
@@ -404,53 +530,111 @@
         if (reg["Telefone celular"] && reg["Telefone celular"] !== "-" && !cid.telefone) cid.telefone = reg["Telefone celular"];
         if (cid.rua) BASE_DADOS.ruas.add(cid.rua);
 
-        if (tema === "Hipertensão") {
-          const paQtd = parseInt(reg["Quantidade de medições de pressão arterial"]) || 0;
-          const consQtd = parseInt(reg["Quantidade de consultas"]) || 0;
-          cid.condicoes['Hipertensao'] = true;
-          cid.hipertensaoOk = (paQtd >= 1 && consQtd >= 1);
-          
-          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("Hipertensão:"));
-          if (!cid.hipertensaoOk) {
-            if (consQtd === 0) cid.pendencias.push("Hipertensão: Consulta pendente");
-            if (paQtd === 0) cid.pendencias.push("Hipertensão: Aferir PA no semestre");
+        // INDICADOR C1: Territorialização & Cadastros <24m
+        if (reg["Última atualização cadastral"] || reg["CPF/CNS"]) {
+          cid.indicadores['C1'] = true;
+          if (reg["Última atualização cadastral"] && reg["Última atualização cadastral"] !== "-") {
+            cid.dt_cadastral = reg["Última atualização cadastral"];
           }
-        } else if (tema === "Diabetes") {
-          const hg = reg["Hemoglobina glicada"] || "";
-          cid.condicoes['Diabetes'] = true;
-          cid.diabetesOk = (hg !== "" && hg !== "-");
-          
-          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("Diabetes:"));
-          if (!cid.diabetesOk) cid.pendencias.push("Diabetes: Exame de Hemoglobina Glicada");
-        } else if (tema === "Gestação e puerpério") {
-          const consPreNatal = parseInt(reg["Quantidade de atendimentos no pré-natal"]) || 0;
-          const odonto = parseInt(reg["Quantidade de atendimentos odontológicos no pré-natal"]) || 0;
-          cid.condicoes['Gestante'] = true;
-          cid.gestanteOk = (consPreNatal >= 6 && odonto >= 1);
-          
-          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("Pré-natal:"));
-          if (consPreNatal < 6) cid.pendencias.push(`Pré-natal: ${consPreNatal}/6 consultas`);
-          if (odonto === 0) cid.pendencias.push("Pré-natal: Odonto pendente");
-        } else if (tema === "Saúde da mulher") {
-          const avaliacao = reg["Exame de rastreamento de câncer de colo de útero data última avaliação"] || "";
-          cid.condicoes['Mulher'] = true;
-          cid.citopatologicoOk = (avaliacao !== "" && avaliacao !== "-");
-          
-          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("Saúde da Mulher:"));
-          if (!cid.citopatologicoOk) cid.pendencias.push("Saúde da Mulher: Coleta de Preventivo");
-        } else if (tema === "Desenvolvimento infantil") {
-          cid.condicoes['Crianca'] = true;
+          const dObj = parseDataJS(cid.dt_cadastral);
+          const diffDias = dObj ? (new Date() - dObj) / (1000 * 60 * 60 * 24) : 9999;
+          cid.c1Ok = (diffDias <= 730);
+          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("C1:"));
+          if (!cid.c1Ok) {
+            const dtStr = cid.dt_cadastral || "Sem registro";
+            cid.pendencias.push(`C1: Cadastro desatualizado há mais de 24 meses (${dtStr})`);
+          }
+        }
+
+        // INDICADOR C2: Crianças (0 a 24 meses)
+        if (tema === "Desenvolvimento infantil") {
+          cid.indicadores['C2'] = true;
+          const visInf = parseInt(reg["Quantidade de visitas domiciliares até os 24 meses de idade"]) || 0;
+          const consInf = parseInt(reg["Quantidade de consultas até 24 meses"]) || 0;
           const penta = reg["Difteria, Tétano, Pertusis, Hepatite B, Haemophilus Influenza B"] || "";
           const polio = reg["Poliomielite"] || "";
-          cid.criancaOk = (penta !== "" && penta !== "-" && polio !== "" && polio !== "-");
-          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("Criança:"));
-          if (!cid.criancaOk) cid.pendencias.push("Criança: Vacinas pendentes (Penta/Polio)");
-        } else if (tema === "Pessoa idosa") {
-          cid.condicoes['Idoso'] = true;
+          const vacOk = (penta !== "" && penta !== "-" && polio !== "" && polio !== "-");
+
+          cid.c2_visitas = visInf;
+          cid.c2Ok = (visInf >= 2 && vacOk && consInf >= 1);
+          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("C2:"));
+          if (visInf < 2) cid.pendencias.push(`C2: Visita Domiciliar pendente (${visInf}/2 visitas)`);
+          if (!vacOk) cid.pendencias.push("C2: Busca Ativa - Vacinas atrasadas (Penta/Polio)");
+          if (consInf === 0) cid.pendencias.push("C2: Busca Ativa - Agendar consulta de puericultura");
+        }
+
+        // INDICADOR C3: Gestantes e Puerpério
+        else if (tema === "Gestação e puerpério") {
+          cid.indicadores['C3'] = true;
+          const visPn = parseInt(reg["Quantidade de visitas domiciliares no pré-natal"]) || 0;
+          const visPuerp = parseInt(reg["Quantidade de visitas domiciliares no puerpério"]) || 0;
+          const consPn = parseInt(reg["Quantidade de atendimentos no pré-natal"]) || 0;
+          const cons12sem = parseInt(reg["Quantidade de atendimentos até 12 semanas no pré-natal"]) || 0;
+          const odonto = parseInt(reg["Quantidade de atendimentos odontológicos no pré-natal"]) || 0;
+
+          cid.c3_vis_pn = visPn;
+          cid.c3_vis_puerp = visPuerp;
+          cid.c3Ok = (visPn >= 3 && visPuerp >= 1 && consPn >= 6 && odonto >= 1 && cons12sem >= 1);
+          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("C3:"));
+          if (visPn < 3) cid.pendencias.push(`C3: Visitas Pré-Natal pendentes (${visPn}/3)`);
+          if (visPuerp < 1) cid.pendencias.push("C3: Visita no Puerpério pendente (0/1)");
+          if (cons12sem === 0) cid.pendencias.push("C3: Busca Ativa - Captação precoce (<12 semanas)");
+          if (consPn < 6) cid.pendencias.push(`C3: Busca Ativa - Consultas Pré-Natal ({consPn}/6)`);
+          if (odonto < 1) cid.pendencias.push("C3: Busca Ativa - Avaliação Odontológica pendente");
+        }
+
+        // INDICADOR C4: Diabetes Mellitus
+        else if (tema === "Diabetes") {
+          cid.indicadores['C4'] = true;
+          const visDia = parseInt(reg["Quantidade de visitas domiciliares"]) || 0;
+          const hg = reg["Hemoglobina glicada"] || "";
+          const dtHg = reg["Data da última avaliação de hemoglobina glicada"] || "";
+          const dtPes = reg["Data da avaliação dos pés"] || "";
+          const hgOk = (hg !== "" && hg !== "-") || (dtHg !== "" && dtHg !== "-");
+          const pesOk = (dtPes !== "" && dtPes !== "-");
+
+          cid.c4_visitas = visDia;
+          cid.c4Ok = (visDia >= 2 && hgOk && pesOk);
+          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("C4:"));
+          if (visDia < 2) cid.pendencias.push(`C4: Visitas Domiciliares pendentes (${visDia}/2 no ano)`);
+          if (!hgOk) cid.pendencias.push("C4: Busca Ativa - Exame de Hemoglobina Glicada");
+          if (!pesOk) cid.pendencias.push("C4: Busca Ativa - Avaliação periódica dos pés");
+        }
+
+        // INDICADOR C5: Hipertensão Arterial
+        else if (tema === "Hipertensão") {
+          cid.indicadores['C5'] = true;
+          const visHip = parseInt(reg["Quantidade de visitas domiciliares"]) || 0;
+          const paQtd = parseInt(reg["Quantidade de medições de pressão arterial"]) || 0;
+          const consQtd = parseInt(reg["Quantidade de consultas"]) || 0;
+
+          cid.c5_visitas = visHip;
+          cid.c5Ok = (visHip >= 2 && paQtd >= 1 && consQtd >= 1);
+          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("C5:"));
+          if (visHip < 2) cid.pendencias.push(`C5: Visitas Domiciliares pendentes (${visHip}/2 no ano)`);
+          if (paQtd === 0) cid.pendencias.push("C5: Busca Ativa - Aferição de PA no semestre");
+          if (consQtd === 0) cid.pendencias.push("C5: Busca Ativa - Agendar Consulta semestral");
+        }
+
+        // INDICADOR C6: Pessoa Idosa (60+)
+        else if (tema === "Pessoa idosa") {
+          cid.indicadores['C6'] = true;
+          const visIdo = parseInt(reg["Quantidade de visitas domiciliares"]) || 0;
+          const inf = reg["Influenza (últimos 12 meses)"] || "";
+          const infOk = (inf !== "" && inf !== "-" && inf !== "Não" && inf !== "Sem registro");
+          const mMed = parseInt(reg["Meses desde o último atendimento médico"]) || 99;
+          const mEnf = parseInt(reg["Meses desde o último atendimento de enfermagem"]) || 99;
+          const consAnual = (mMed <= 12 || mEnf <= 12);
           const ivcf = reg["IVCF-20 Índice"] || "";
-          cid.ivcfOk = (ivcf !== "" && ivcf !== "-" && ivcf !== "Sem registro");
-          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("Idoso:"));
-          if (!cid.ivcfOk) cid.pendencias.push("Idoso: Avaliação IVCF-20 pendente");
+          const ivcfOk = (ivcf !== "" && ivcf !== "-" && ivcf !== "Sem registro");
+
+          cid.c6_visitas = visIdo;
+          cid.c6Ok = (visIdo >= 2 && infOk && consAnual);
+          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("C6:"));
+          if (visIdo < 2) cid.pendencias.push(`C6: Visitas Domiciliares pendentes (${visIdo}/2 no ano)`);
+          if (!infOk) cid.pendencias.push("C6: Busca Ativa - Vacina contra Influenza atrasada");
+          if (!consAnual) cid.pendencias.push("C6: Busca Ativa - Consulta anual pendente (>12 meses)");
+          if (!ivcfOk) cid.pendencias.push("C6: Busca Ativa - Avaliação multidimensional (IVCF-20)");
         }
       }
     }
@@ -463,12 +647,12 @@
       try {
         const res = await fetch('/api/dados');
         const dados = await res.json();
-        
+
         if (dados.cidadaos && Object.keys(dados.cidadaos).length > 0) {
           BASE_DADOS.cidadaos = dados.cidadaos;
           BASE_DADOS.ruas = new Set(dados.ruas || []);
           localStorage.setItem('gestao_acs_dados', JSON.stringify(dados));
-          
+
           prog.style.color = "#10b981";
           prog.innerHTML = "✅ Sincronizado com sucesso! Pronto para uso na rua.";
           atualizarInterface();
@@ -485,7 +669,7 @@
 
     function atualizarInterface() {
       const lista = Object.values(BASE_DADOS.cidadaos);
-      document.getElementById('subtitulo').innerText = `${lista.length} cidadãos acompanhados`;
+      document.getElementById('subtitulo').innerText = `${lista.length} cidadãos vinculados`;
 
       const selectRua = document.getElementById('filtroRua');
       const ruaAtual = selectRua.value;
@@ -495,29 +679,44 @@
       });
       selectRua.value = ruaAtual;
 
-      let hipTot = 0, hipOk = 0;
-      let diaTot = 0, diaOk = 0;
-      let gesTot = 0, gesOk = 0;
-      let mulTot = 0, mulOk = 0;
+      const stats = {
+        C1: { tot: 0, ok: 0 },
+        C2: { tot: 0, ok: 0 },
+        C3: { tot: 0, ok: 0 },
+        C4: { tot: 0, ok: 0 },
+        C5: { tot: 0, ok: 0 },
+        C6: { tot: 0, ok: 0 }
+      };
 
       lista.forEach(c => {
-        if (c.condicoes['Hipertensao']) { hipTot++; if (c.hipertensaoOk) hipOk++; }
-        if (c.condicoes['Diabetes']) { diaTot++; if (c.diabetesOk) diaOk++; }
-        if (c.condicoes['Gestante']) { gesTot++; if (c.gestanteOk) gesOk++; }
-        if (c.condicoes['Mulher']) { mulTot++; if (c.citopatologicoOk) mulOk++; }
+        ['C1', 'C2', 'C3', 'C4', 'C5', 'C6'].forEach(ind => {
+          if (c.indicadores && c.indicadores[ind]) {
+            stats[ind].tot++;
+            if (c[`${ind.toLowerCase()}Ok`]) stats[ind].ok++;
+          }
+        });
       });
 
-      document.getElementById('ind-hip-pct').innerText = hipTot ? `${Math.round((hipOk/hipTot)*100)}%` : "0%";
-      document.getElementById('ind-hip-pend').innerText = `${hipTot - hipOk} pendentes`;
+      ['C1', 'C2', 'C3', 'C4', 'C5', 'C6'].forEach(ind => {
+        const t = stats[ind].tot;
+        const o = stats[ind].ok;
+        const pend = t - o;
+        const pct = t > 0 ? Math.round((o / t) * 100) : 0;
+        const idLow = ind.toLowerCase();
 
-      document.getElementById('ind-dia-pct').innerText = diaTot ? `${Math.round((diaOk/diaTot)*100)}%` : "0%";
-      document.getElementById('ind-dia-pend').innerText = `${diaTot - diaOk} pendentes`;
+        document.getElementById(`${idLow}-tot`).innerText = t;
+        document.getElementById(`${idLow}-pct`).innerText = `${pct}%`;
+        document.getElementById(`${idLow}-bar`).style.width = `${pct}%`;
 
-      document.getElementById('ind-ges-pct').innerText = gesTot ? `${Math.round((gesOk/gesTot)*100)}%` : "0%";
-      document.getElementById('ind-ges-pend').innerText = `${gesTot - gesOk} pendentes`;
-
-      document.getElementById('ind-mul-pct').innerText = mulTot ? `${Math.round((mulOk/mulTot)*100)}%` : "0%";
-      document.getElementById('ind-mul-pend').innerText = `${mulTot - mulOk} pendentes`;
+        const elPend = document.getElementById(`${idLow}-pend`);
+        if (pend === 0 && t > 0) {
+          elPend.className = "pendentes ok";
+          elPend.innerText = "✓ 100% atualizados";
+        } else {
+          elPend.className = "pendentes";
+          elPend.innerText = `${pend} pendentes`;
+        }
+      });
 
       filtrarLista();
     }
@@ -525,45 +724,63 @@
     function filtrarLista() {
       const termo = document.getElementById('campoBusca').value.toLowerCase();
       const ruaSel = document.getElementById('filtroRua').value;
-      const apenasPendentes = document.getElementById('filtroPendencia').value === 'pendentes';
+      const situacaoSel = document.getElementById('filtroPendencia').value;
 
       const content = document.getElementById('listaUtentes');
       content.innerHTML = "";
 
       const filtrados = Object.values(BASE_DADOS.cidadaos).filter(c => {
-        const matchesBusca = c.nome.toLowerCase().includes(termo) || (c.cpf && c.cpf.includes(termo));
-        const matchesRua = !ruaSel || c.rua === ruaSel;
-        const matchesPend = !apenasPendentes || (c.pendencias && c.pendencias.length > 0);
-        return matchesBusca && matchesRua && matchesPend;
+        if (filtroIndicadorAtual !== 'todos') {
+          if (!c.indicadores || !c.indicadores[filtroIndicadorAtual]) return false;
+        }
+
+        const matchesBusca = c.nome.toLowerCase().includes(termo) ||
+                             (c.cpf && c.cpf.includes(termo)) ||
+                             (c.numero && c.numero.toString().includes(termo));
+        if (!matchesBusca) return false;
+
+        if (ruaSel && c.rua !== ruaSel) return false;
+
+        const temPendencias = (c.pendencias && c.pendencias.length > 0);
+        if (situacaoSel === 'pendentes' && !temPendencias) return false;
+        if (situacaoSel === 'emdia' && temPendencias) return false;
+
+        return true;
       });
 
       if (!filtrados.length) {
-        content.innerHTML = '<p style="text-align:center; padding: 24px; color: var(--text-muted); font-size: 0.9rem;">Nenhum registo encontrado.</p>';
+        content.innerHTML = '<p style="text-align:center; padding: 24px; color: var(--text-muted); font-size: 0.88rem;">Nenhum cidadão localizado para este filtro.</p>';
         return;
       }
 
       filtrados.forEach(c => {
         let tagsHtml = '';
-        if (c.condicoes['Hipertensao']) tagsHtml += `<span class="tag ${c.hipertensaoOk ? 'tag-ok' : 'tag-danger'}">Hipertenso</span>`;
-        if (c.condicoes['Diabetes']) tagsHtml += `<span class="tag ${c.diabetesOk ? 'tag-ok' : 'tag-danger'}">Diabético</span>`;
-        if (c.condicoes['Gestante']) tagsHtml += `<span class="tag ${c.gestanteOk ? 'tag-ok' : 'tag-danger'}">Gestante</span>`;
-        if (c.condicoes['Mulher']) tagsHtml += `<span class="tag ${c.citopatologicoOk ? 'tag-ok' : 'tag-danger'}">Mulher 25-64</span>`;
-        if (c.condicoes['Crianca']) tagsHtml += `<span class="tag ${c.criancaOk ? 'tag-ok' : 'tag-danger'}">Criança</span>`;
-        if (c.condicoes['Idoso']) tagsHtml += `<span class="tag ${c.ivcfOk ? 'tag-ok' : 'tag-danger'}">Idoso</span>`;
+        if (c.indicadores) {
+          if (c.indicadores['C1']) tagsHtml += `<span class="tag tag-c1">C1: Cadastrado</span>`;
+          if (c.indicadores['C2']) tagsHtml += `<span class="tag tag-c2">C2: Criança (${c.c2_visitas || 0}/2 vis)</span>`;
+          if (c.indicadores['C3']) tagsHtml += `<span class="tag tag-c3">C3: Gestante (${c.c3_vis_pn || 0}/3 vis)</span>`;
+          if (c.indicadores['C4']) tagsHtml += `<span class="tag tag-c4">C4: Diabetes (${c.c4_visitas || 0}/2 vis)</span>`;
+          if (c.indicadores['C5']) tagsHtml += `<span class="tag tag-c5">C5: Hipertensão (${c.c5_visitas || 0}/2 vis)</span>`;
+          if (c.indicadores['C6']) tagsHtml += `<span class="tag tag-c6">C6: Idoso (${c.c6_visitas || 0}/2 vis)</span>`;
+        }
 
         let pendenciasHtml = '';
         if (c.pendencias && c.pendencias.length > 0) {
-          pendenciasHtml = '<div style="margin-top: 6px;">' + 
-            c.pendencias.map(p => `<span class="tag tag-danger">⚠️ ${p}</span>`).join('') + 
+          pendenciasHtml = '<div style="margin-top: 6px;">' +
+            c.pendencias.map(p => `<div class="pendencia-item">⚠️ ${p}</div>`).join('') +
           '</div>';
         } else {
-          pendenciasHtml = '<div style="margin-top: 6px;"><span class="tag tag-ok">✓ Metas em dia</span></div>';
+          pendenciasHtml = '<div style="margin-top: 6px;"><span class="tag tag-ok">✓ Metas e Visitas em dia</span></div>';
         }
+
+        const linkTel = c.telefone ? `<span class="telefone"> | 📞 <a href="tel:${c.telefone.replace(/\D/g, '')}">${c.telefone}</a></span>` : '';
 
         content.innerHTML += `
           <div class="item-cidadao">
-            <div class="nome">${c.nome}</div>
-            <div class="endereco">📍 ${c.rua || 'Sem logradouro'}, nº ${c.numero || 'S/N'} ${c.telefone ? ' | 📞 ' + c.telefone : ''}</div>
+            <div class="topo">
+              <div class="nome">${c.nome}</div>
+            </div>
+            <div class="endereco">📍 ${c.rua || 'Sem rua'}, nº ${c.numero || 'S/N'}${linkTel}</div>
             <div>${tagsHtml}</div>
             ${pendenciasHtml}
           </div>
