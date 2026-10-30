@@ -1,0 +1,25 @@
+@echo off
+title Servidor ACS - Microarea
+color 0B
+echo ======================================================
+echo           INICIANDO SERVIDOR ACS OFFLINE
+echo ======================================================
+echo.
+echo Para fechar o servidor, feche esta janela.
+echo.
+
+:: Verifica se o Python esta instalado e no PATH
+python --version >nul 2>&1
+if %errorlevel% neq 0 (
+    color 0C
+    echo [ERRO] O Python nao foi encontrado.
+    echo Certifique-se de que o Python esta instalado e adicionado as Variaveis de Ambiente (PATH).
+    echo.
+    pause
+    exit /b
+)
+
+:: Inicia o servidor Python
+python servidor.py
+
+pause

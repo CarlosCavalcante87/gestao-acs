@@ -10,7 +10,6 @@ PORTA = 8080
 ARQUIVO_DADOS = "dados_microarea.json"
 
 def garantir_icones():
-    """Gera arquivos PNG válidos para os ícones do PWA caso ainda não existam."""
     def criar_png_puro(largura, altura, cor_rgb=(2, 132, 199)):
         r, g, b = cor_rgb
         dados = bytearray()
@@ -27,15 +26,12 @@ def garantir_icones():
     if not os.path.exists("icone-192.png"):
         with open("icone-192.png", "wb") as f:
             f.write(criar_png_puro(192, 192))
-        print("[+] Gerado com sucesso: icone-192.png")
 
     if not os.path.exists("icone-512.png"):
         with open("icone-512.png", "wb") as f:
             f.write(criar_png_puro(512, 512))
-        print("[+] Gerado com sucesso: icone-512.png")
 
 def normalizar_rua(nome_rua):
-    """Uniformiza a grafia dos logradouros da microárea."""
     rua = nome_rua.strip().upper()
     if not rua or rua == "-":
         return ""
@@ -57,16 +53,24 @@ def parse_data(d_str):
     return None
 
 def processar_csvs_da_pasta():
-    """
-    Lê os relatórios CSV do e-SUS PEC, consolida o território
-    e calcula as regras dos Indicadores C1 a C6 do ACS.
-    """
     csv_files = glob.glob("*.csv")
     if not csv_files:
         print("[-] Nenhum arquivo .csv encontrado na pasta atual.")
         return
 
-    print(f"[*] Processando {len(csv_files)} relatórios CSV do PEC...")
+    print(f"[*] Processando {len(csv_files)} relatórios CSV do PEC (Incluindo C7 - Saúde da Mulher)...")
+    
+    anotacoes_salvas = {}
+    if os.path.exists(ARQUIVO_DADOS):
+        try:
+            with open(ARQUIVO_DADOS, 'r', encoding='utf-8') as f:
+                dados_antigos = json.load(f)
+                for k, v in dados_antigos.get('cidadaos', {}).items():
+                    if v.get('anotacao'):
+                        anotacoes_salvas[k] = v['anotacao']
+        except Exception:
+            pass
+
     base_dados = {"cidadaos": {}, "ruas": set()}
     cpf_to_chave = {}
     nome_to_chave = {}
@@ -136,11 +140,12 @@ def processar_csvs_da_pasta():
                     "telefone": reg.get("Telefone celular", "") if reg.get("Telefone celular") != "-" else "",
                     "condicoes": {},
                     "indicadores": {"C1": True},
-                    "pendencias": []
+                    "pendencias": [],
+                    "anotacao": anotacoes_salvas.get(chave, "")
                 }
 
             cid = base_dados["cidadaos"][chave]
-            cid["indicadores"]["C1"] = True
+            cid['indicadores']['C1'] = True
 
             if nome and not cid["nome"]: cid["nome"] = nome
             if cpf_bruto and cpf_bruto != "-" and not cid["cpf"]: cid["cpf"] = cpf_bruto
@@ -152,11 +157,10 @@ def processar_csvs_da_pasta():
                 cid["telefone"] = reg.get("Telefone celular")
             if cid["rua"]: base_dados["ruas"].add(cid["rua"])
 
-            # Data de Atualização Cadastral
             if 'Última atualização cadastral' in reg and reg.get('Última atualização cadastral') and reg.get('Última atualização cadastral') != '-':
                 cid['dt_cadastral'] = reg.get('Última atualização cadastral')
 
-            # Indicador C2: Crianças (0 a 24 meses)
+            # C2: Crianças
             if tema == "Desenvolvimento infantil":
                 cid['indicadores']['C2'] = True
                 try: vis_inf = int(reg.get('Quantidade de visitas domiciliares até os 24 meses de idade', 0) or 0)
@@ -170,14 +174,11 @@ def processar_csvs_da_pasta():
                 cid['c2_visitas'] = vis_inf
                 cid['c2Ok'] = (vis_inf >= 2 and vac_ok and cons_inf >= 1)
                 cid['pendencias'] = [p for p in cid['pendencias'] if not p.startswith("C2:")]
-                if vis_inf < 2:
-                    cid['pendencias'].append(f"C2: Visita Domiciliar pendente ({vis_inf}/2 visitas)")
-                if not vac_ok:
-                    cid['pendencias'].append("C2: Busca Ativa - Vacinas atrasadas (Penta/Polio)")
-                if cons_inf == 0:
-                    cid['pendencias'].append("C2: Busca Ativa - Agendar consulta de puericultura")
+                if vis_inf < 2: cid['pendencias'].append(f"C2: Visita Domiciliar pendente ({vis_inf}/2 visitas)")
+                if not vac_ok: cid['pendencias'].append("C2: Busca Ativa - Vacinas atrasadas (Penta/Polio)")
+                if cons_inf == 0: cid['pendencias'].append("C2: Busca Ativa - Agendar consulta de puericultura")
 
-            # Indicador C3: Gestantes e Puerpério
+            # C3: Gestantes
             elif tema == "Gestação e puerpério":
                 cid['indicadores']['C3'] = True
                 try: vis_pn = int(reg.get('Quantidade de visitas domiciliares no pré-natal', 0) or 0)
@@ -195,18 +196,13 @@ def processar_csvs_da_pasta():
                 cid['c3_vis_puerp'] = vis_puerp
                 cid['c3Ok'] = (vis_pn >= 3 and vis_puerp >= 1 and cons_pn >= 6 and odonto >= 1 and cons_12sem >= 1)
                 cid['pendencias'] = [p for p in cid['pendencias'] if not p.startswith("C3:")]
-                if vis_pn < 3:
-                    cid['pendencias'].append(f"C3: Visitas Pré-Natal pendentes ({vis_pn}/3)")
-                if vis_puerp < 1:
-                    cid['pendencias'].append("C3: Visita no Puerpério pendente (0/1)")
-                if cons_12sem == 0:
-                    cid['pendencias'].append("C3: Busca Ativa - Captação precoce (<12 semanas)")
-                if cons_pn < 6:
-                    cid['pendencias'].append(f"C3: Busca Ativa - Consultas Pré-Natal ({cons_pn}/6)")
-                if odonto < 1:
-                    cid['pendencias'].append("C3: Busca Ativa - Avaliação Odontológica pendente")
+                if vis_pn < 3: cid['pendencias'].append(f"C3: Visitas Pré-Natal pendentes ({vis_pn}/3)")
+                if vis_puerp < 1: cid['pendencias'].append("C3: Visita no Puerpério pendente (0/1)")
+                if cons_12sem == 0: cid['pendencias'].append("C3: Busca Ativa - Captação precoce (<12 semanas)")
+                if cons_pn < 6: cid['pendencias'].append(f"C3: Busca Ativa - Consultas Pré-Natal ({cons_pn}/6)")
+                if odonto < 1: cid['pendencias'].append("C3: Busca Ativa - Avaliação Odontológica pendente")
 
-            # Indicador C4: Diabetes Mellitus
+            # C4: Diabetes
             elif tema == "Diabetes":
                 cid['indicadores']['C4'] = True
                 try: vis_dia = int(reg.get('Quantidade de visitas domiciliares', 0) or 0)
@@ -220,14 +216,11 @@ def processar_csvs_da_pasta():
                 cid['c4_visitas'] = vis_dia
                 cid['c4Ok'] = (vis_dia >= 2 and hg_ok and pes_ok)
                 cid['pendencias'] = [p for p in cid['pendencias'] if not p.startswith("C4:")]
-                if vis_dia < 2:
-                    cid['pendencias'].append(f"C4: Visitas Domiciliares pendentes ({vis_dia}/2 no ano)")
-                if not hg_ok:
-                    cid['pendencias'].append("C4: Busca Ativa - Exame de Hemoglobina Glicada")
-                if not pes_ok:
-                    cid['pendencias'].append("C4: Busca Ativa - Avaliação periódica dos pés")
+                if vis_dia < 2: cid['pendencias'].append(f"C4: Visitas Domiciliares pendentes ({vis_dia}/2 no ano)")
+                if not hg_ok: cid['pendencias'].append("C4: Busca Ativa - Exame de Hemoglobina Glicada")
+                if not pes_ok: cid['pendencias'].append("C4: Busca Ativa - Avaliação periódica dos pés")
 
-            # Indicador C5: Hipertensão Arterial
+            # C5: Hipertensão
             elif tema == "Hipertensão":
                 cid['indicadores']['C5'] = True
                 try: vis_hip = int(reg.get('Quantidade de visitas domiciliares', 0) or 0)
@@ -240,14 +233,11 @@ def processar_csvs_da_pasta():
                 cid['c5_visitas'] = vis_hip
                 cid['c5Ok'] = (vis_hip >= 2 and pa_qtd >= 1 and cons_qtd >= 1)
                 cid['pendencias'] = [p for p in cid['pendencias'] if not p.startswith("C5:")]
-                if vis_hip < 2:
-                    cid['pendencias'].append(f"C5: Visitas Domiciliares pendentes ({vis_hip}/2 no ano)")
-                if pa_qtd == 0:
-                    cid['pendencias'].append("C5: Busca Ativa - Aferição de PA no semestre")
-                if cons_qtd == 0:
-                    cid['pendencias'].append("C5: Busca Ativa - Agendar Consulta semestral")
+                if vis_hip < 2: cid['pendencias'].append(f"C5: Visitas Domiciliares pendentes ({vis_hip}/2 no ano)")
+                if pa_qtd == 0: cid['pendencias'].append("C5: Busca Ativa - Aferição de PA no semestre")
+                if cons_qtd == 0: cid['pendencias'].append("C5: Busca Ativa - Agendar Consulta semestral")
 
-            # Indicador C6: Pessoa Idosa (60+)
+            # C6: Pessoa Idosa (60+)
             elif tema == "Pessoa idosa":
                 cid['indicadores']['C6'] = True
                 try: vis_ido = int(reg.get('Quantidade de visitas domiciliares', 0) or 0)
@@ -265,16 +255,21 @@ def processar_csvs_da_pasta():
                 cid['c6_visitas'] = vis_ido
                 cid['c6Ok'] = (vis_ido >= 2 and inf_ok and cons_anual)
                 cid['pendencias'] = [p for p in cid['pendencias'] if not p.startswith("C6:")]
-                if vis_ido < 2:
-                    cid['pendencias'].append(f"C6: Visitas Domiciliares pendentes ({vis_ido}/2 no ano)")
-                if not inf_ok:
-                    cid['pendencias'].append("C6: Busca Ativa - Vacina contra Influenza atrasada")
-                if not cons_anual:
-                    cid['pendencias'].append("C6: Busca Ativa - Consulta anual pendente (>12 meses)")
-                if not ivcf_ok:
-                    cid['pendencias'].append("C6: Busca Ativa - Avaliação multidimensional (IVCF-20)")
+                if vis_ido < 2: cid['pendencias'].append(f"C6: Visitas Domiciliares pendentes ({vis_ido}/2 no ano)")
+                if not inf_ok: cid['pendencias'].append("C6: Busca Ativa - Vacina contra Influenza atrasada")
+                if not cons_anual: cid['pendencias'].append("C6: Busca Ativa - Consulta anual pendente (>12 meses)")
+                if not ivcf_ok: cid['pendencias'].append("C6: Busca Ativa - Avaliação multidimensional (IVCF-20)")
 
-    # Validação Final de Territorialização e Cadastros (C1 < 24 meses) para todos os cidadãos
+            # C7: Saúde da Mulher (Preventivo / Citopatológico)
+            elif tema == "Saúde da mulher":
+                cid['indicadores']['C7'] = True
+                av = reg.get("Exame de rastreamento de câncer de colo de útero data última avaliação", "")
+                cid['c7Ok'] = bool(av and av != "-")
+                cid['pendencias'] = [p for p in cid['pendencias'] if not p.startswith("C7:")]
+                if not cid['c7Ok']:
+                    cid['pendencias'].append("C7: Busca Ativa - Coleta de Preventivo em atraso")
+
+    # Validação Final do C1
     agora = datetime.now()
     for cid in base_dados["cidadaos"].values():
         cid['indicadores']['C1'] = True
@@ -291,11 +286,7 @@ def processar_csvs_da_pasta():
     with open(ARQUIVO_DADOS, 'w', encoding='utf-8') as f:
         json.dump(base_dados, f, ensure_ascii=False, indent=2)
 
-    total_cidadaos = len(base_dados["cidadaos"])
-    c1_ok = sum(1 for c in base_dados["cidadaos"].values() if c.get('c1Ok'))
-    print(f"[OK] {total_cidadaos} cidadãos processados com sucesso.")
-    print(f"[OK] Indicador C1: {c1_ok}/{total_cidadaos} cadastros atualizados há menos de 2 anos ({(c1_ok/total_cidadaos)*100:.1f}%).")
-    print(f"[OK] Base de dados gerada em '{ARQUIVO_DADOS}'.")
+    print(f"[OK] {len(base_dados['cidadaos'])} cidadãos processados com sucesso.")
 
 
 class ServidorACS(SimpleHTTPRequestHandler):
@@ -321,6 +312,33 @@ class ServidorACS(SimpleHTTPRequestHandler):
                 self.send_header('Content-Type', 'application/json; charset=utf-8')
                 self.end_headers()
                 self.wfile.write(b'{"status": "sucesso"}')
+            except Exception as e:
+                self.send_response(500)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(json.dumps({"status": "erro", "detalhe": str(e)}).encode('utf-8'))
+                
+        elif self.path == '/api/salvar_anotacoes':
+            try:
+                tamanho = int(self.headers.get('Content-Length', 0))
+                corpo = self.rfile.read(tamanho)
+                notas_recebidas = json.loads(corpo.decode('utf-8'))
+                
+                if os.path.exists(ARQUIVO_DADOS):
+                    with open(ARQUIVO_DADOS, 'r', encoding='utf-8') as f:
+                        dados_atuais = json.load(f)
+                    
+                    for chave, nota in notas_recebidas.items():
+                        if chave in dados_atuais.get("cidadaos", {}):
+                            dados_atuais["cidadaos"][chave]["anotacao"] = nota
+                            
+                    with open(ARQUIVO_DADOS, 'w', encoding='utf-8') as f:
+                        json.dump(dados_atuais, f, ensure_ascii=False, indent=2)
+                
+                self.send_response(200)
+                self.send_header('Content-Type', 'application/json; charset=utf-8')
+                self.end_headers()
+                self.wfile.write(b'{"status": "anotacoes_salvas"}')
             except Exception as e:
                 self.send_response(500)
                 self.send_header('Content-Type', 'application/json; charset=utf-8')
