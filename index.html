@@ -29,12 +29,14 @@
     .container { padding: 12px; max-width: 650px; margin: 0 auto; }
     .card { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 14px; margin-bottom: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
     
-    .btn { background: var(--primary); color: white; border: none; padding: 11px 14px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; cursor: pointer; display: inline-block; width: 100%; text-align: center; }
+    .btn { background: var(--primary); color: white; border: none; padding: 11px 14px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; cursor: pointer; display: inline-block; width: 100%; text-align: center; text-decoration: none; }
     .btn-install { background: #10b981; margin-bottom: 12px; font-size: 0.95rem; display: none; }
-    .btn-sync { background: #0284c7; margin-bottom: 12px; font-size: 0.95rem; }
+    .btn-json-in { background: #0284c7; margin-bottom: 8px; }
+    .btn-json-out { background: #475569; margin-bottom: 8px; }
+    .btn-sync { background: #0369a1; margin-bottom: 8px; font-size: 0.85rem; }
     .btn-danger { background: var(--danger); margin-top: 8px; }
 
-    .upload-area { border: 2px dashed var(--primary); border-radius: 8px; padding: 22px 14px; text-align: center; cursor: pointer; background: #f0f9ff; }
+    .upload-area { border: 2px dashed var(--primary); border-radius: 8px; padding: 20px 14px; text-align: center; cursor: pointer; background: #f0f9ff; }
     .upload-area input { display: none; }
 
     .grid-indicadores { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
@@ -110,34 +112,55 @@
 
     <!-- Tela 2: Importar e Sincronizar -->
     <div id="view-upload" style="display: none;">
+      
+      <!-- Carga Rápida de Base JSON -->
       <div class="card">
-        <h3>Sincronização Wi-Fi</h3>
+        <h3>Transferência por Arquivo (Recomendado)</h3>
         <p style="font-size: 0.82rem; color: var(--text-muted); margin: 6px 0 12px;">
-          Se importou as planilhas no computador, sincronize o telemóvel conectado à mesma rede Wi-Fi.
+          Ideal para o PWA no celular: exporte o arquivo no PC e abra-o aqui sem depender de rede.
         </p>
-        <button class="btn btn-sync" onclick="sincronizarComPC()">
-          🔄 Sincronizar com o Computador
+        
+        <input type="file" id="inputArquivoJSON" accept=".json" style="display: none;" onchange="importarBaseJSON(this.files[0])">
+        <button class="btn btn-json-in" onclick="document.getElementById('inputArquivoJSON').click()">
+          📤 Carregar Arquivo de Carga (.json)
+        </button>
+        
+        <button class="btn btn-json-out" onclick="exportarBaseJSON()">
+          📥 Baixar Arquivo de Carga (.json)
         </button>
       </div>
 
+      <!-- Sincronização Wi-Fi -->
       <div class="card">
-        <h3>Importar Relatórios do PEC</h3>
+        <h3>Sincronização Direta Wi-Fi</h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin: 6px 0 10px;">
+          Disponível ao acessar diretamente pelo endereço de IP do PC na mesma rede.
+        </p>
+        <button class="btn btn-sync" onclick="sincronizarComPC()">
+          🔄 Sincronizar via Wi-Fi Local
+        </button>
+      </div>
+
+      <!-- Importação Direta de CSVs -->
+      <div class="card">
+        <h3>Importar Relatórios do PEC (.csv)</h3>
         <p style="font-size: 0.82rem; color: var(--text-muted); margin: 6px 0 12px;">
           Selecione todos os arquivos .csv gerados pelo e-SUS PEC de uma única vez.
         </p>
-        <div class="upload-area" onclick="document.getElementById('inputArquivos').click()">
+        <div class="upload-area" onclick="document.getElementById('inputArquivosCSV').click()">
           <span style="font-size: 2.2rem;">📁</span>
-          <p style="font-weight: 600; margin-top: 6px;">Clique para carregar os CSVs</p>
-          <span style="font-size: 0.75rem; color: var(--text-muted);">Formatos .csv exportados do PEC</span>
-          <input type="file" id="inputArquivos" multiple accept=".csv" onchange="processarFicheiros(this.files)">
+          <p style="font-weight: 600; margin-top: 6px;">Toque para selecionar os CSVs</p>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Relatórios operacionais exportados do PEC</span>
+          <input type="file" id="inputArquivosCSV" multiple accept=".csv" onchange="processarFicheiros(this.files)">
         </div>
         <div id="progressoUpload" style="margin-top: 12px; font-size: 0.85rem; font-weight: 600;"></div>
       </div>
 
+      <!-- Gestão da Base -->
       <div class="card">
         <h3>Base de Dados Local</h3>
         <p style="font-size: 0.82rem; color: var(--text-muted); margin: 6px 0 8px;">
-          Limpa todas as informações gravadas na memória deste dispositivo.
+          Apaga todas as informações salvas na memória deste aparelho.
         </p>
         <button class="btn btn-danger" onclick="limparBase()">Limpar Todos os Dados</button>
       </div>
@@ -146,11 +169,10 @@
 
   <nav class="tab-bar">
     <button id="btnTabDash" class="active" onclick="alternarAba('dashboard')">📋 Visitas e Metas</button>
-    <button id="btnTabUp" onclick="alternarAba('upload')">⚙️ Importar / Sincronizar</button>
+    <button id="btnTabUp" onclick="alternarAba('upload')">⚙️ Dados / Carga</button>
   </nav>
 
   <script>
-    // Gerenciamento da Instalação do PWA
     let eventoInstalacao = null;
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
@@ -161,7 +183,7 @@
 
     async function acionarInstalacaoPWA() {
       if (!eventoInstalacao) {
-        alert("Para instalar: toque no menu (três pontos) do Chrome e selecione 'Adicionar à tela inicial' ou 'Instalar aplicativo'.");
+        alert("Para instalar: toque no menu (três pontos) do Chrome e escolha 'Adicionar à tela inicial' ou 'Instalar aplicativo'.");
         return;
       }
       eventoInstalacao.prompt();
@@ -213,6 +235,63 @@
       return r;
     }
 
+    // Exportação do banco em arquivo JSON
+    function exportarBaseJSON() {
+      const payload = {
+        cidadaos: BASE_DADOS.cidadaos,
+        ruas: Array.from(BASE_DADOS.ruas).sort()
+      };
+      const total = Object.keys(payload.cidadaos).length;
+      if (total === 0) {
+        alert("Não há dados cadastrados para exportar. Importe os relatórios primeiro.");
+        return;
+      }
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "dados_microarea.json";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    // Importação direta de arquivo JSON (bypass de bloqueio HTTPS/HTTP)
+    function importarBaseJSON(arquivo) {
+      if (!arquivo) return;
+      const prog = document.getElementById('progressoUpload');
+      prog.style.color = "#0284c7";
+      prog.innerHTML = "Carregando arquivo de carga...";
+
+      const leitor = new FileReader();
+      leitor.readAsText(arquivo, 'utf-8');
+      leitor.onload = () => {
+        try {
+          const dados = JSON.parse(leitor.result);
+          if (dados.cidadaos && Object.keys(dados.cidadaos).length > 0) {
+            BASE_DADOS.cidadaos = dados.cidadaos;
+            BASE_DADOS.ruas = new Set(dados.ruas || []);
+            localStorage.setItem('gestao_acs_dados', JSON.stringify({
+              cidadaos: BASE_DADOS.cidadaos,
+              ruas: Array.from(BASE_DADOS.ruas).sort()
+            }));
+            prog.style.color = "#10b981";
+            prog.innerHTML = `✅ ${Object.keys(BASE_DADOS.cidadaos).length} cidadãos carregados com sucesso!`;
+            atualizarInterface();
+            setTimeout(() => alternarAba('dashboard'), 900);
+          } else {
+            prog.style.color = "#ef4444";
+            prog.innerHTML = "❌ O arquivo JSON não contém cidadãos válidos.";
+          }
+        } catch (e) {
+          prog.style.color = "#ef4444";
+          prog.innerHTML = "❌ Erro ao ler o arquivo JSON: " + e.message;
+        }
+      };
+    }
+
+    // Leitura dos CSVs com decodificação ISO-8859-1
     async function processarFicheiros(files) {
       if (!files.length) return;
       const prog = document.getElementById('progressoUpload');
