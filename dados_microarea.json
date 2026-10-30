@@ -1,309 +1,5 @@
 {
   "cidadaos": {
-    "04860859375": {
-      "nome": "ADEMILSON DA SILVA TEODORIO",
-      "cpf": "048.608.593-75",
-      "cns": "700504344326857",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "28",
-      "telefone": "(99) 99129-0801",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "06/06/2026"
-    },
-    "62843950350": {
-      "nome": "AGATHA RIANA DE SOUSA BASILIO",
-      "cpf": "628.439.503-50",
-      "cns": "898005191523115",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "2",
-      "telefone": "(99) 98224-4555",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "08/10/2026"
-    },
-    "10382831322": {
-      "nome": "AGATHA SOPHIA SILVEIRA GOMES",
-      "cpf": "103.828.313-22",
-      "cns": "898005909174225",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "78A",
-      "telefone": "(99) 98469-0351",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "31/03/2026"
-    },
-    "62816925358": {
-      "nome": "AGIVANIA MARIA LIMA DE OLIVEIRA MOURÃO",
-      "cpf": "628.169.253-58",
-      "cns": "898003730359934",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "35",
-      "telefone": "(99) 98447-8260",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "02/06/2026",
-      "c7Ok": false
-    },
-    "62824713380": {
-      "nome": "ALAN DOS SANTOS MELO",
-      "cpf": "628.247.133-80",
-      "cns": "898002977471067",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "10",
-      "telefone": "(99) 98144-0181",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "13/03/2026"
-    },
-    "61781005311": {
-      "nome": "ALANA DIAS DE ABREU MELO SILVA",
-      "cpf": "617.810.053-11",
-      "cns": "898003700822903",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "38",
-      "telefone": "(99) 98513-2834",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "03/02/2026",
-      "c7Ok": false
-    },
-    "06727490333": {
-      "nome": "ALANE KAREN DE ABREU VIANA",
-      "cpf": "067.274.903-33",
-      "cns": "706509310293992",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "87",
-      "telefone": "(99) 98451-2323",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "24/08/2026",
-      "c7Ok": false
-    },
-    "63112953347": {
-      "nome": "ALANE KELLY ROCHA DE CASTRO",
-      "cpf": "631.129.533-47",
-      "cns": "700009243731801",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "19",
-      "telefone": "(99) 98177-4455",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "06/04/2026"
-    },
-    "00576201308": {
-      "nome": "ALBERLEILA NOBRE ROCHA",
-      "cpf": "005.762.013-08",
-      "cns": "898002995247548",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "19",
-      "telefone": "(99) 98185-8182",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "06/04/2026",
-      "c7Ok": false
-    },
-    "13025032359": {
-      "nome": "ALEF RAVI SOUSA DA CONCEICAO",
-      "cpf": "130.250.323-59",
-      "cns": "705008492171257",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "89",
-      "telefone": "(99) 98479-1380",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C2": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "02/06/2026",
-      "c2_visitas": 9,
-      "c2Ok": true
-    },
-    "63473199346": {
-      "nome": "ALEXIA DA SILVA CAMELO",
-      "cpf": "634.731.993-46",
-      "cns": "700002910856903",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "16",
-      "telefone": "(99) 98494-4358",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "11/06/2026"
-    },
-    "62870733305": {
-      "nome": "ALICIA RODRIGUES OLIVEIRA",
-      "cpf": "628.707.333-05",
-      "cns": "898004872923792",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "100",
-      "telefone": "(99) 98114-8346",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "16/03/2026"
-    },
-    "63112960394": {
-      "nome": "ALICYA KEMILLY ROCHA DE CASTRO",
-      "cpf": "631.129.603-94",
-      "cns": "898005876042287",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "19",
-      "telefone": "(99) 98185-8182",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "06/04/2026",
-      "c7Ok": false
-    },
-    "10595892302": {
-      "nome": "ANA CECÍLIA DE SOUSA LIMA",
-      "cpf": "105.958.923-02",
-      "cns": "898005919976855",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "10",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "13/03/2026"
-    },
-    "62857679394": {
-      "nome": "ANA LARA DE ABREU VIANA",
-      "cpf": "628.576.793-94",
-      "cns": "898004607770525",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "87",
-      "telefone": "(99) 98410-4224",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "24/08/2026",
-      "c7Ok": false
-    },
-    "12821678398": {
-      "nome": "ANA LIVIA FERREIRA CORREIA",
-      "cpf": "128.216.783-98",
-      "cns": "-",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "40",
-      "telefone": "(99) 98272-0763",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C2": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "16/06/2026",
-      "c2_visitas": 10,
-      "c2Ok": true
-    },
-    "05834871305": {
-      "nome": "ANAIZA BARROS DE ANDRADE BRANDÃO",
-      "cpf": "058.348.713-05",
-      "cns": "704702713447535",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "08",
-      "telefone": "(99) 98536-9172",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "12/06/2026",
-      "c7Ok": false
-    },
-    "62563354307": {
-      "nome": "ANANIAS MOURAO SOUSA",
-      "cpf": "625.633.543-07",
-      "cns": "898002991434084",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "35",
-      "telefone": "(99) 98447-8260",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "02/06/2026"
-    },
     "02591216304": {
       "nome": "ANDREIA PEREIRA SILVA MELO",
       "cpf": "025.912.163-04",
@@ -314,135 +10,40 @@
       "condicoes": {},
       "indicadores": {
         "C1": true,
-        "C7": true,
-        "C5": true
+        "C5": true,
+        "C7": true
       },
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "17/08/2026",
-      "c7Ok": false,
       "c5_visitas": 2,
-      "c5Ok": true
-    },
-    "11403757330": {
-      "nome": "ANNA VITORIA RAMALHO MATOS",
-      "cpf": "114.037.573-30",
-      "cns": "700000868264207",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "20",
-      "telefone": "(88) 98153-6911",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "26/06/2026"
-    },
-    "04923623357": {
-      "nome": "ANTONIA DE SOUSA ARAUJO",
-      "cpf": "049.236.233-57",
-      "cns": "701209095933513",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "10",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "13/03/2026",
-      "c7Ok": true
-    },
-    "99988321368": {
-      "nome": "ANTÔNIA DOS SANTOS GERMANO DA COSTA",
-      "cpf": "999.883.213-68",
-      "cns": "708403727727760",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "36",
-      "telefone": "(99) 98130-3744",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "18/08/2026",
-      "c7Ok": false
-    },
-    "00459637380": {
-      "nome": "ANTÔNIA FREITAS DA SILVA",
-      "cpf": "004.596.373-80",
-      "cns": "702101754010695",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "13",
-      "telefone": "(99) 98198-6313",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "13/02/2026",
+      "c5Ok": true,
       "c7Ok": false
     },
     "01720427399": {
       "nome": "ANTONIA MENDES DO NASCIMENTO",
       "cpf": "017.204.273-99",
-      "cns": "898002991996805",
+      "cns": "8,98003E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "2",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
       "indicadores": {
         "C1": true,
-        "C7": true,
-        "C5": true
+        "C5": true,
+        "C7": true
       },
       "pendencias": [],
       "c1Ok": true,
-      "dt_cadastral": "08/10/2026",
-      "c7Ok": true,
       "c5_visitas": 12,
-      "c5Ok": true
-    },
-    "00077403363": {
-      "nome": "ANTONIA NASCIMENTO DA SILVA",
-      "cpf": "000.774.033-63",
-      "cns": "-",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "26",
-      "telefone": "(99) 98102-9092",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true,
-        "C4": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso",
-        "C4: Busca Ativa - Exame de Hemoglobina Glicada"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "20/02/2026",
-      "c7Ok": false,
-      "c4_visitas": 7,
-      "c4Ok": false
+      "c5Ok": true,
+      "c7Ok": true
     },
     "90848365372": {
       "nome": "ANTÔNIO CAVALCANTE MELO",
       "cpf": "908.483.653-72",
-      "cns": "898002984708239",
+      "cns": "8,98003E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "44",
       "telefone": "(99) 98534-4663",
@@ -457,7 +58,6 @@
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
       "c1Ok": true,
-      "dt_cadastral": "20/03/2026",
       "c5_visitas": 27,
       "c5Ok": true,
       "c6_visitas": 67,
@@ -466,7 +66,7 @@
     "48850829353": {
       "nome": "ANTÔNIO JOSÉ DE PAULA",
       "cpf": "488.508.293-53",
-      "cns": "898002905006201",
+      "cns": "8,98003E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "116",
       "telefone": "(99) 98234-4663",
@@ -482,7 +82,6 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
       "c1Ok": true,
-      "dt_cadastral": "27/03/2026",
       "c5_visitas": 16,
       "c5Ok": true,
       "c4_visitas": 3,
@@ -490,197 +89,10 @@
       "c6_visitas": 26,
       "c6Ok": false
     },
-    "00091842360": {
-      "nome": "ANTONIO JOSE DE PAULO FILHO",
-      "cpf": "000.918.423-60",
-      "cns": "704006107922870",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "116",
-      "telefone": "(99) 98450-6375",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "27/03/2026"
-    },
-    "95106294304": {
-      "nome": "ANTÔNIO MENESES DE SOUSA",
-      "cpf": "951.062.943-04",
-      "cns": "898002978124751",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "92",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "27/03/2026"
-    },
-    "04393114388": {
-      "nome": "ANTONIO MOURA",
-      "cpf": "043.931.143-88",
-      "cns": "-",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "2",
-      "telefone": "(99) 99954-6466",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "25/09/2026"
-    },
-    "05525205351": {
-      "nome": "ANTONIO SOBRINHO DE SOUSA NETO",
-      "cpf": "055.252.053-51",
-      "cns": "705404498157194",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "18",
-      "telefone": "(99) 98468-4307",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "11/05/2026"
-    },
-    "63260729305": {
-      "nome": "ARCLEIA DE SOUSA SILVA",
-      "cpf": "632.607.293-05",
-      "cns": "898003724033828",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "29",
-      "telefone": "(99) 98526-2952",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "04/03/2026",
-      "c7Ok": false
-    },
-    "13267683360": {
-      "nome": "ARTHUR OLIVEIRA MOURÃO",
-      "cpf": "132.676.833-60",
-      "cns": "704200755828483",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "35",
-      "telefone": "(99) 98447-8260",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C2": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "02/06/2026",
-      "c2_visitas": 16,
-      "c2Ok": true
-    },
-    "08412476336": {
-      "nome": "AURITÂNIA LIMA SOUSA",
-      "cpf": "084.124.763-36",
-      "cns": "898004121662018",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "42",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "20/03/2026",
-      "c7Ok": false
-    },
-    "13640416341": {
-      "nome": "ÁVILLA CLARA RAMALHO MENDES",
-      "cpf": "136.404.163-41",
-      "cns": "700008786385105",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "20",
-      "telefone": "(99) 98516-6687",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C2": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "13/07/2026",
-      "c2_visitas": 9,
-      "c2Ok": true
-    },
-    "62987068360": {
-      "nome": "BENJAMIN ASAFE DE LIMA MATIAS",
-      "cpf": "629.870.683-60",
-      "cns": "898005132230743",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "44",
-      "telefone": "(99) 98455-1908",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "05/05/2026"
-    },
-    "63473202312": {
-      "nome": "BRUNA CARLA DA SILVA CAMELO",
-      "cpf": "634.732.023-12",
-      "cns": "-",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "16",
-      "telefone": "(99) 98494-4358",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "11/06/2026",
-      "c7Ok": false
-    },
-    "63106525320": {
-      "nome": "BRUNA DE SOUSA LIMA",
-      "cpf": "631.065.253-20",
-      "cns": "898003414166102",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "10",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "13/03/2026",
-      "c7Ok": false
-    },
     "00389721824": {
       "nome": "CANDIDO MONTEIRO DA SILVA",
       "cpf": "003.897.218-24",
-      "cns": "709207276744333",
+      "cns": "7,09207E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "84",
       "telefone": "(99) 98125-0212",
@@ -694,7 +106,6 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
       "c1Ok": true,
-      "dt_cadastral": "20/03/2026",
       "c5_visitas": 16,
       "c5Ok": true,
       "c6_visitas": 49,
@@ -710,8 +121,8 @@
       "condicoes": {},
       "indicadores": {
         "C1": true,
-        "C7": true,
         "C5": true,
+        "C7": true,
         "C6": true
       },
       "pendencias": [
@@ -719,241 +130,45 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
       "c1Ok": true,
-      "dt_cadastral": "21/09/2026",
-      "c7Ok": false,
       "c5_visitas": 7,
       "c5Ok": true,
+      "c7Ok": false,
       "c6_visitas": 45,
       "c6Ok": false
-    },
-    "93888066387": {
-      "nome": "CLEONICE DAMACENA DE ANDRADE FEITOSA",
-      "cpf": "938.880.663-87",
-      "cns": "-",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "30",
-      "telefone": "(99) 98194-8840",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "14/03/2026",
-      "c7Ok": false
-    },
-    "03645574352": {
-      "nome": "CLEUDIANA DOS SANTOS MELO",
-      "cpf": "036.455.743-52",
-      "cns": "709208252653037",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "10",
-      "telefone": "(99) 98144-0181",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "13/03/2026",
-      "c7Ok": true
-    },
-    "48850861320": {
-      "nome": "DANIEL DE LIRA",
-      "cpf": "488.508.613-20",
-      "cns": "898003418557084",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "31",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "14/03/2026"
-    },
-    "62857694350": {
-      "nome": "DAVI LUCCA ABREU CAETANO",
-      "cpf": "628.576.943-50",
-      "cns": "898004085125569",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "87",
-      "telefone": "(99) 98451-2323",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "24/08/2026"
-    },
-    "62869894392": {
-      "nome": "DAVI MIGUEL RIBEIRO ANDRADE",
-      "cpf": "628.698.943-92",
-      "cns": "898005126071124",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "48",
-      "telefone": "(99) 98140-1680",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "26/02/2026"
-    },
-    "62912831318": {
-      "nome": "DAVI SOUSA VERAS",
-      "cpf": "629.128.313-18",
-      "cns": "898004543388714",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "42",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "20/03/2026"
-    },
-    "62851386301": {
-      "nome": "DENISVAN SANTOS DE JESUS",
-      "cpf": "628.513.863-01",
-      "cns": "898003407293854",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "144",
-      "telefone": "(99) 98407-0641",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "15/07/2026"
-    },
-    "96820470304": {
-      "nome": "DEUZA DA SILVA CASTRO",
-      "cpf": "968.204.703-04",
-      "cns": "898003427764941",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "90",
-      "telefone": "(99) 98156-5935",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "28/04/2026",
-      "c7Ok": false
-    },
-    "08699503393": {
-      "nome": "DHOSEFHY VIANE DE SOUSA FRANÇA",
-      "cpf": "086.995.033-93",
-      "cns": "898005148829011",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "118",
-      "telefone": "(99) 98185-9661",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "21/08/2026"
-    },
-    "60211292370": {
-      "nome": "DIANA DE SOUSA RODRIGUES",
-      "cpf": "602.112.923-70",
-      "cns": "898003424421407",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "100",
-      "telefone": "(99) 98470-3752",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "16/03/2026",
-      "c7Ok": false
-    },
-    "62970922304": {
-      "nome": "DIEGO EMIDIO DA COSTA",
-      "cpf": "629.709.223-04",
-      "cns": "-",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "30",
-      "telefone": "(99) 00000-0000",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "08/04/2026"
-    },
-    "62434202306": {
-      "nome": "DIOGO DE SOUZA CHAVES",
-      "cpf": "624.342.023-06",
-      "cns": "700102964261311",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "105",
-      "telefone": "(99) 9888-8888",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "27/03/2026"
     },
     "03835946340": {
       "nome": "DIOMAR DE BARROS",
       "cpf": "038.359.463-40",
-      "cns": "705805415317536",
+      "cns": "7,05805E+14",
       "rua": "RUA SÃO FRANCISCO",
       "numero": "23",
       "telefone": "(99) 98171-3424",
       "condicoes": {},
       "indicadores": {
         "C1": true,
-        "C7": true,
-        "C5": true
+        "C5": true,
+        "C7": true
       },
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "08/04/2026",
-      "c7Ok": false,
       "c5_visitas": 14,
-      "c5Ok": true
+      "c5Ok": true,
+      "c7Ok": false
     },
     "72557052191": {
       "nome": "EDINALVA BEZERRA DOS SANTOS",
       "cpf": "725.570.521-91",
-      "cns": "706401634603281",
+      "cns": "7,06402E+14",
       "rua": "RUA SÃO FRANCISCO",
       "numero": "11",
       "telefone": "(61) 99126-6054",
       "condicoes": {},
       "indicadores": {
         "C1": true,
-        "C7": true,
         "C5": true,
+        "C7": true,
         "C6": true
       },
       "pendencias": [
@@ -961,17 +176,16 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
       "c1Ok": true,
-      "dt_cadastral": "06/05/2026",
-      "c7Ok": false,
       "c5_visitas": 40,
       "c5Ok": true,
+      "c7Ok": false,
       "c6_visitas": 68,
       "c6Ok": false
     },
     "24854212349": {
       "nome": "EDSON GOMES DE MELO",
       "cpf": "248.542.123-49",
-      "cns": "700101816697390",
+      "cns": "7,00102E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "130",
       "telefone": "(99) 98151-5219",
@@ -986,384 +200,39 @@
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
       "c1Ok": true,
-      "dt_cadastral": "27/03/2026",
       "c5_visitas": 20,
       "c5Ok": true,
       "c6_visitas": 60,
       "c6Ok": false
     },
-    "03075848360": {
-      "nome": "ELCIEL DIAS DE ABREU",
-      "cpf": "030.758.483-60",
-      "cns": "702907565405070",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "74",
-      "telefone": "(99) 98457-1296",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "17/08/2026"
-    },
-    "81443013315": {
-      "nome": "ELDENIR DIAS DE ABREU VIANA",
-      "cpf": "814.430.133-15",
-      "cns": "700501306671159",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "87",
-      "telefone": "(99) 98410-4224",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "24/08/2026",
-      "c7Ok": false
-    },
-    "62840155346": {
-      "nome": "ELIAB PEREIRA DIAS",
-      "cpf": "628.401.553-46",
-      "cns": "707405045935079",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "74",
-      "telefone": "(99) 98457-1296",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "17/08/2026"
-    },
-    "60963898302": {
-      "nome": "ELIDA DE SOUSA RIBEIRO",
-      "cpf": "609.638.983-02",
-      "cns": "898002985137391",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "48",
-      "telefone": "(99) 98140-1680",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "12/08/2026",
-      "c7Ok": false
-    },
-    "94220760300": {
-      "nome": "ELIENE CONCEIÇÃO DE SOUSA VERAS",
-      "cpf": "942.207.603-00",
-      "cns": "898002359404158",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "42",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso",
-        "C6: Busca Ativa - Vacina contra Influenza atrasada"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "20/03/2026",
-      "c7Ok": false,
-      "c6_visitas": 67,
-      "c6Ok": false
-    },
-    "94793131387": {
-      "nome": "ELIETE PEREIRA DA SILVA",
-      "cpf": "947.931.313-87",
-      "cns": "898002927641856",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "31",
-      "telefone": "(99) 9455-1856",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "14/03/2026",
-      "c7Ok": false
-    },
-    "45268851349": {
-      "nome": "ELZENIR DIAS DE ABREU MELO",
-      "cpf": "452.688.513-49",
-      "cns": "898002991220351",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "38",
-      "telefone": "(99) 98413-2067",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "19/08/2026",
-      "c7Ok": false
-    },
-    "62831513375": {
-      "nome": "EMANUEL DIAS DE ABREU TIMOTEO",
-      "cpf": "628.315.133-75",
-      "cns": "898005814958083",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "38",
-      "telefone": "(99) 98513-2834",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "02/02/2026"
-    },
-    "62290555380": {
-      "nome": "EMILLY PEREIRA DIAS",
-      "cpf": "622.905.553-80",
-      "cns": "898004091897586",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "74",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "17/08/2026",
-      "c7Ok": false
-    },
     "86094840330": {
       "nome": "ERINEIDE ALVES BATISTA",
       "cpf": "860.948.403-30",
-      "cns": "705006854825151",
+      "cns": "7,05007E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "43",
       "telefone": "(99) 98888-8888",
       "condicoes": {},
       "indicadores": {
         "C1": true,
-        "C7": true,
         "C5": true,
+        "C7": true,
         "C4": true
       },
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "20/03/2026",
-      "c7Ok": false,
-      "c5_visitas": 25,
+      "c5_visitas": 24,
       "c5Ok": true,
+      "c7Ok": false,
       "c4_visitas": 23,
       "c4Ok": true
-    },
-    "62851372343": {
-      "nome": "ERISVAN SANTOS DE JESUS",
-      "cpf": "628.513.723-43",
-      "cns": "898003407308355",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "144",
-      "telefone": "(99) 98407-0641",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "15/07/2026"
-    },
-    "77072111387": {
-      "nome": "ERIVAN FERREIRA VIANA",
-      "cpf": "770.721.113-87",
-      "cns": "708906763281317",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "87",
-      "telefone": "(99) 98498-8981",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "24/08/2026"
-    },
-    "06863334380": {
-      "nome": "FELIPE NASCIMENTO DA SILVA",
-      "cpf": "068.633.343-80",
-      "cns": "-",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "26",
-      "telefone": "(99) 98102-9092",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "17/07/2026"
-    },
-    "08465735395": {
-      "nome": "FERNANDO FERREIRA DE MATOS",
-      "cpf": "084.657.353-95",
-      "cns": "706707592368312",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "19",
-      "telefone": "(99) 98455-1856",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "14/04/2026"
-    },
-    "05679983397": {
-      "nome": "FRANCIELDE MARTINS",
-      "cpf": "056.799.833-97",
-      "cns": "700003574505609",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "29",
-      "telefone": "(99) 98526-2952",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "04/03/2026"
-    },
-    "03273692308": {
-      "nome": "FRANCISCA DE SOUSA",
-      "cpf": "032.736.923-08",
-      "cns": "898003414611467",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "86",
-      "telefone": "(99) 98432-0632",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "20/03/2026",
-      "c7Ok": false
-    },
-    "47555840359": {
-      "nome": "FRANCISCA JESUS SILVA",
-      "cpf": "475.558.403-59",
-      "cns": "125314726910018",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "130",
-      "telefone": "(99) 98151-5219",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "27/03/2026",
-      "c7Ok": false
-    },
-    "00512116377": {
-      "nome": "FRANCISCO BARBOSA DE SOUSA BEZERRA",
-      "cpf": "005.121.163-77",
-      "cns": "-",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "22",
-      "telefone": "(99) 98508-4394",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C6: Busca Ativa - Vacina contra Influenza atrasada",
-        "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
-        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "23/04/2026",
-      "c6_visitas": 35,
-      "c6Ok": false
-    },
-    "72686537353": {
-      "nome": "FRANCISCO CANDIDO DA SILVA",
-      "cpf": "726.865.373-53",
-      "cns": "-",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "37",
-      "telefone": "(99) 98536-4293",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "08/04/2026"
-    },
-    "04113414300": {
-      "nome": "FRANCISCO DA ENCARNAÇÃO",
-      "cpf": "041.134.143-00",
-      "cns": "708007333212629",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "34",
-      "telefone": "(99) 98105-3404",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "22/06/2026"
-    },
-    "05035652378": {
-      "nome": "FRANCISCO DE ASSIS DA CONCEIÇÃO CORREIA",
-      "cpf": "050.356.523-78",
-      "cns": "-",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "40",
-      "telefone": "(99) 98551-7882",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "16/06/2026"
     },
     "17363454272": {
       "nome": "FRANCISCO DO NASCIMENTO NETO",
       "cpf": "173.634.542-72",
-      "cns": "206996175900018",
+      "cns": "2,06996E+14",
       "rua": "RUA SÃO FRANCISCO",
       "numero": "28",
       "telefone": "(99) 98234-4663",
@@ -1378,262 +247,40 @@
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
       "c1Ok": true,
-      "dt_cadastral": "08/04/2026",
       "c5_visitas": 42,
       "c5Ok": true,
       "c6_visitas": 98,
       "c6Ok": false
     },
-    "60214647374": {
-      "nome": "FRANCISCO JHONNY DE BRITO BRANDÃO",
-      "cpf": "602.146.473-74",
-      "cns": "700009961355800",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "08",
-      "telefone": "(99) 98536-9172",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "12/06/2026"
-    },
-    "60478447310": {
-      "nome": "FRANCISCO RICARDO DE SOUSA VERAS",
-      "cpf": "604.784.473-10",
-      "cns": "-",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "42",
-      "telefone": "(99) 98212-7674",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "20/03/2026"
-    },
-    "95079068353": {
-      "nome": "FRANCISCO RODRIGUES TOMÉ",
-      "cpf": "950.790.683-53",
-      "cns": "701704229044670",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "40",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
-        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "13/02/2026",
-      "c6_visitas": 46,
-      "c6Ok": false
-    },
-    "10308193350": {
-      "nome": "GABRIEL DE SOUSA RODRIGUES CARVALHO",
-      "cpf": "103.081.933-50",
-      "cns": "898005911848041",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "100",
-      "telefone": "(99) 98114-8346",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "16/03/2026"
-    },
-    "63027076337": {
-      "nome": "GABRIEL PINTO DE MIRANDA",
-      "cpf": "630.270.763-37",
-      "cns": "-",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "20",
-      "telefone": "(99) 98516-6687",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "26/06/2026"
-    },
-    "24025482827": {
-      "nome": "GEANDERSON DOS SANTOS CONCEIÇÃO",
-      "cpf": "240.254.828-27",
-      "cns": "898000749409225",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "10",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "13/03/2026"
-    },
-    "62862131393": {
-      "nome": "GEOVANA DOS SANTOS RIBEIRO",
-      "cpf": "628.621.313-93",
-      "cns": "898004170969997",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "36",
-      "telefone": "(99) 98190-9084",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "18/08/2026"
-    },
     "45249652387": {
       "nome": "GESSI RAMALHO BERNARDO",
       "cpf": "452.496.523-87",
-      "cns": "898003726967208",
+      "cns": "8,98004E+14",
       "rua": "RUA SÃO FRANCISCO",
       "numero": "17",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
       "indicadores": {
         "C1": true,
-        "C7": true,
         "C5": true,
+        "C7": true,
         "C4": true,
         "C6": true
       },
       "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso",
         "C5: Visitas Domiciliares pendentes (0/2 no ano)",
+        "C7: Busca Ativa - Coleta de Preventivo em atraso",
         "C4: Busca Ativa - Exame de Hemoglobina Glicada",
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
       "c1Ok": true,
-      "dt_cadastral": "06/04/2026",
-      "c7Ok": false,
       "c5_visitas": 0,
       "c5Ok": false,
+      "c7Ok": false,
       "c4_visitas": 47,
       "c4Ok": false,
       "c6_visitas": 104,
       "c6Ok": false
-    },
-    "00430457316": {
-      "nome": "GRAÇA DE MARIA SANTOS DE JESUS",
-      "cpf": "004.304.573-16",
-      "cns": "898003407709643",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "144",
-      "telefone": "(99) 98449-2682",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true,
-        "C4": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso",
-        "C4: Busca Ativa - Exame de Hemoglobina Glicada"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "15/07/2026",
-      "c7Ok": false,
-      "c4_visitas": 3,
-      "c4Ok": false
-    },
-    "12642730379": {
-      "nome": "HELOISA DIAS DE ABREU TIMOTÉO",
-      "cpf": "126.427.303-79",
-      "cns": "-",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "38",
-      "telefone": "(99) 98513-2834",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C2": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "02/02/2026",
-      "c2_visitas": 16,
-      "c2Ok": true
-    },
-    "10797671340": {
-      "nome": "IANA ELIZA ANDRADE BRANDÃO",
-      "cpf": "107.976.713-40",
-      "cns": "898005926549177",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "08",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "12/06/2026"
-    },
-    "03462162306": {
-      "nome": "IRANILDE BORGES DA SILVA",
-      "cpf": "034.621.623-06",
-      "cns": "706208584747267",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "23",
-      "telefone": "(99) 98418-7812",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "17/07/2026",
-      "c7Ok": false
-    },
-    "11060283336": {
-      "nome": "IRISNALDO DA SILVA",
-      "cpf": "110.602.833-36",
-      "cns": "160937770660000",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "23A",
-      "telefone": "(99) 98518-3724",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "29/06/2026"
-    },
-    "62838429337": {
-      "nome": "ISABELA TEIXEIRA DOS SANTOS",
-      "cpf": "628.384.293-37",
-      "cns": "898003725581039",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "19",
-      "telefone": "(99) 98262-3169",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "14/04/2026",
-      "c7Ok": false
     },
     "01804500348": {
       "nome": "JADSON VIEIRA DE MORAES",
@@ -1649,200 +296,13 @@
       },
       "pendencias": [],
       "c1Ok": true,
-      "dt_cadastral": "20/03/2026",
-      "c5_visitas": 23,
+      "c5_visitas": 22,
       "c5Ok": true
-    },
-    "00963026313": {
-      "nome": "JANES FRAN OLIVEIRA MELO",
-      "cpf": "009.630.263-13",
-      "cns": "-",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "2",
-      "telefone": "(99) 98442-4517",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "11/03/2026"
-    },
-    "63473193305": {
-      "nome": "JARDIELTO BORGES DA SILVA",
-      "cpf": "634.731.933-05",
-      "cns": "707403065724772",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "16",
-      "telefone": "(99) 98494-4358",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "11/06/2026"
-    },
-    "12104338344": {
-      "nome": "JESSICA GALVAO MOREIRA",
-      "cpf": "121.043.383-44",
-      "cns": "898003410867017",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "09",
-      "telefone": "(99) 98400-8099",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true,
-        "C3": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso",
-        "C3: Visitas Pré-Natal pendentes (2/3)",
-        "C3: Visita no Puerpério pendente (0/1)",
-        "C3: Busca Ativa - Captação precoce (<12 semanas)"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "27/06/2026",
-      "c7Ok": false,
-      "c3_vis_pn": 2,
-      "c3Ok": false
-    },
-    "02765853304": {
-      "nome": "JHONATAN GALVAO MOREIRA",
-      "cpf": "027.658.533-04",
-      "cns": "898006347914842",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "09",
-      "telefone": "(99) 98413-6414",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C2": true
-      },
-      "pendencias": [
-        "C2: Busca Ativa - Agendar consulta de puericultura"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "27/06/2026",
-      "c2_visitas": 20,
-      "c2Ok": false
-    },
-    "01373548789": {
-      "nome": "JOÃO BATISTA RIBEIRO DA COSTA",
-      "cpf": "013.735.487-89",
-      "cns": "898004014422897",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "36",
-      "telefone": "(99) 98130-3744",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "18/08/2026"
-    },
-    "50801562368": {
-      "nome": "JOÃO MARCOS DA SILVA",
-      "cpf": "508.015.623-68",
-      "cns": "898002982800944",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "96",
-      "telefone": "(99) 98187-7678",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C6: Busca Ativa - Vacina contra Influenza atrasada",
-        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "12/06/2026",
-      "c6_visitas": 50,
-      "c6Ok": false
-    },
-    "12176878310": {
-      "nome": "JOÃO MIGUEL SOUSA BRANDÃO",
-      "cpf": "121.768.783-10",
-      "cns": "-",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "08",
-      "telefone": "(99) 98536-9172",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "17/07/2026"
-    },
-    "05824496340": {
-      "nome": "JOÃO PEQUENO DE SOUSA",
-      "cpf": "058.244.963-40",
-      "cns": "706003333708144",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "89",
-      "telefone": "(99) 98120-6723",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "02/06/2026"
-    },
-    "09387229300": {
-      "nome": "JOÃO VICTOR MARQUES MOREIRA MORAIS",
-      "cpf": "093.872.293-00",
-      "cns": "898003989964145",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "09",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "27/06/2026"
-    },
-    "08045608382": {
-      "nome": "JOÃO VITOR BARBOSA DE SOUZA",
-      "cpf": "080.456.083-82",
-      "cns": "898003707358242",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "10",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "01/09/2026"
-    },
-    "06106909300": {
-      "nome": "JOHN RAMON SILVA CRUZ",
-      "cpf": "061.069.093-00",
-      "cns": "704503328028318",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "05",
-      "telefone": "(99) 98507-8530",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "13/03/2026"
     },
     "91581672349": {
       "nome": "JOSÉ BORGES DA SILVA",
       "cpf": "915.816.723-49",
-      "cns": "898004119086552",
+      "cns": "8,98004E+14",
       "rua": "RUA SÃO FRANCISCO",
       "numero": "18",
       "telefone": "(99) 98234-4663",
@@ -1857,56 +317,9 @@
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
       "c1Ok": true,
-      "dt_cadastral": "06/04/2026",
       "c5_visitas": 36,
       "c5Ok": true,
       "c6_visitas": 87,
-      "c6Ok": false
-    },
-    "17813549368": {
-      "nome": "JOSE EVARISTO CAVALCANTE",
-      "cpf": "178.135.493-68",
-      "cns": "898003709498742",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "42",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C4": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
-        "C6: Busca Ativa - Vacina contra Influenza atrasada",
-        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "20/02/2026",
-      "c4_visitas": 8,
-      "c4Ok": false,
-      "c6_visitas": 98,
-      "c6Ok": false
-    },
-    "00397034369": {
-      "nome": "JOSÉ FERREIRA LIMA",
-      "cpf": "003.970.343-69",
-      "cns": "898003741006426",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "80",
-      "telefone": "(99) 98469-8670",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C6: Busca Ativa - Vacina contra Influenza atrasada",
-        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "20/03/2026",
-      "c6_visitas": 59,
       "c6Ok": false
     },
     "18281109149": {
@@ -1929,7 +342,6 @@
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
       "c1Ok": true,
-      "dt_cadastral": "13/03/2026",
       "c5_visitas": 36,
       "c5Ok": true,
       "c4_visitas": 34,
@@ -1937,71 +349,12 @@
       "c6_visitas": 43,
       "c6Ok": false
     },
-    "17210127291": {
-      "nome": "JOSÉ ISAÍAS DA SILVA",
-      "cpf": "172.101.272-91",
-      "cns": "898002978460549",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "91",
-      "telefone": "(99) 98457-6021",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C6: Busca Ativa - Vacina contra Influenza atrasada",
-        "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
-        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "02/10/2026",
-      "c6_visitas": 52,
-      "c6Ok": false
-    },
-    "62981956370": {
-      "nome": "JOSÉ LUIZ FERNANDES DE ASSIS",
-      "cpf": "629.819.563-70",
-      "cns": "898004006243024",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "15",
-      "telefone": "(99) 99999-9999",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "06/04/2026"
-    },
-    "02713021359": {
-      "nome": "JOSÉ PEDRO DOS SANTOS",
-      "cpf": "027.130.213-59",
-      "cns": "898002985075175",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "14",
-      "telefone": "(99) 98171-3424",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C6: Busca Ativa - Vacina contra Influenza atrasada",
-        "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
-        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "20/08/2026",
-      "c6_visitas": 10,
-      "c6Ok": false
-    },
     "40606520325": {
       "nome": "JOSIVAL FRANCISCO DA SILVA",
       "cpf": "406.065.203-25",
-      "cns": "702103713287392",
+      "cns": "7,02104E+14",
       "rua": "RUA SÃO PEDRO",
-      "numero": "09",
+      "numero": "9",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
       "indicadores": {
@@ -2015,7 +368,6 @@
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
       "c1Ok": true,
-      "dt_cadastral": "13/03/2026",
       "c5_visitas": 50,
       "c5Ok": true,
       "c4_visitas": 51,
@@ -2023,229 +375,10 @@
       "c6_visitas": 115,
       "c6Ok": true
     },
-    "08695636372": {
-      "nome": "KAIQUE DE SOUZA CARVALHO",
-      "cpf": "086.956.363-72",
-      "cns": "898004120021655",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "12",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "13/03/2026"
-    },
-    "62914437323": {
-      "nome": "KAMYLA KAWANNY ARAUJO DA ENCARNAÇAO",
-      "cpf": "629.144.373-23",
-      "cns": "702000883282489",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "34",
-      "telefone": "(12) 99721-6998",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "06/07/2026",
-      "c7Ok": false
-    },
-    "62825761303": {
-      "nome": "KAUAN MELO CONCEIÇÃO",
-      "cpf": "628.257.613-03",
-      "cns": "705406443941499",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "10",
-      "telefone": "(99) 98456-4671",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "13/03/2026"
-    },
-    "09880392221": {
-      "nome": "KAWANE MIRANDA DA SILVA",
-      "cpf": "098.803.922-21",
-      "cns": "700707969354279",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "144",
-      "telefone": "(94) 99141-0357",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "15/07/2026",
-      "c7Ok": false
-    },
-    "62914441355": {
-      "nome": "KEMILLY MARIANE ARAUJO DA ENCARNAÇÃO",
-      "cpf": "629.144.413-55",
-      "cns": "702309112723019",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "34",
-      "telefone": "(55) 99985-5681",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "22/06/2026",
-      "c7Ok": false
-    },
-    "01874836396": {
-      "nome": "LADIA DA CONCEICAO MELO PEREIRA",
-      "cpf": "018.748.363-96",
-      "cns": "708104572284333",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "49",
-      "telefone": "(99) 98171-8449",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "20/03/2026",
-      "c7Ok": false
-    },
-    "02498803343": {
-      "nome": "LAIS DE PAIVA MARTINS",
-      "cpf": "024.988.033-43",
-      "cns": "898002995708804",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "111",
-      "telefone": "(99) 98470-3752",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "27/03/2026",
-      "c7Ok": false
-    },
-    "62869586302": {
-      "nome": "LARA LORRANY DE SOUSA MORAES",
-      "cpf": "628.695.863-02",
-      "cns": "898003414605521",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "86",
-      "telefone": "(99) 98432-0632",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "20/03/2026",
-      "c7Ok": false
-    },
-    "62869575378": {
-      "nome": "LAYS DE SOUSA MORAES",
-      "cpf": "628.695.753-78",
-      "cns": "898004804625692",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "86",
-      "telefone": "(99) 98432-0632",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "30/03/2026"
-    },
-    "63047965366": {
-      "nome": "LORENZO SILVA SOUSA",
-      "cpf": "630.479.653-66",
-      "cns": "898005861146529",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "18",
-      "telefone": "(99) 99999-9999",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "14/10/2025"
-    },
-    "10317530364": {
-      "nome": "LUARA KEVILLY FELIX BASILIO",
-      "cpf": "103.175.303-64",
-      "cns": "898005907924456",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "2",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "08/10/2026"
-    },
-    "63024331344": {
-      "nome": "LUCAS ELIEL MELO PEREIRA",
-      "cpf": "630.243.313-44",
-      "cns": "898003439417141",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "49",
-      "telefone": "(99) 98529-2168",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "20/03/2026"
-    },
-    "08115394319": {
-      "nome": "LUCAS GABRIEL FEITOSA SOUZA",
-      "cpf": "081.153.943-19",
-      "cns": "898004118930848",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "12",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "13/03/2026"
-    },
     "02753183112": {
       "nome": "LUCILANIO ROSA BASILIO",
       "cpf": "027.531.831-12",
-      "cns": "898002992030971",
+      "cns": "8,98003E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "2",
       "telefone": "(99) 98425-9446",
@@ -2256,241 +389,57 @@
       },
       "pendencias": [],
       "c1Ok": true,
-      "dt_cadastral": "08/10/2026",
       "c5_visitas": 10,
       "c5Ok": true
-    },
-    "60863677363": {
-      "nome": "LUCILEIA BORGES DA SILVA",
-      "cpf": "608.636.773-63",
-      "cns": "706403197402588",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "16",
-      "telefone": "(99) 98494-4358",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "11/06/2026",
-      "c7Ok": false
-    },
-    "07546010306": {
-      "nome": "LUCILENE DO NASCIMENTO BASILIO",
-      "cpf": "075.460.103-06",
-      "cns": "898002991981603",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "2",
-      "telefone": "(99) 98400-4085",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "08/10/2026",
-      "c7Ok": false
-    },
-    "11782997326": {
-      "nome": "LUIS FERNANDO FERREIRA DOS SANTOS",
-      "cpf": "117.829.973-26",
-      "cns": "-",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "40",
-      "telefone": "(99) 98272-0763",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "16/06/2026"
-    },
-    "00130724394": {
-      "nome": "LUIZA RODRIGUES DOS SANTOS MELO",
-      "cpf": "001.307.243-94",
-      "cns": "898000749409241",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "10",
-      "telefone": "(99) 98456-4671",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso",
-        "C6: Busca Ativa - Vacina contra Influenza atrasada"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "13/03/2026",
-      "c7Ok": false,
-      "c6_visitas": 91,
-      "c6Ok": false
-    },
-    "11844828379": {
-      "nome": "LUNA VALENTINA DA SILVA BARROS",
-      "cpf": "118.448.283-79",
-      "cns": "709603694484070",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "23",
-      "telefone": "(99) 98171-3424",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "08/04/2026"
     },
     "01530620376": {
       "nome": "LUSANIRA DA CONCEICAO VIEIRA GOMES",
       "cpf": "015.306.203-76",
-      "cns": "898003716683894",
+      "cns": "8,98004E+14",
       "rua": "RUA SÃO FRANCISCO",
       "numero": "22",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
       "indicadores": {
         "C1": true,
-        "C7": true,
-        "C5": true
+        "C5": true,
+        "C7": true
       },
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "08/04/2026",
-      "c7Ok": false,
       "c5_visitas": 42,
-      "c5Ok": true
-    },
-    "70049602349": {
-      "nome": "LUZIA ANDRADE DA CONCEIÇÃO",
-      "cpf": "700.496.023-49",
-      "cns": "708604537490289",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "35",
-      "telefone": "(99) 98116-9042",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "08/04/2026",
-      "c7Ok": false
-    },
-    "93290985334": {
-      "nome": "LUZINETE DE SOUSA",
-      "cpf": "932.909.853-34",
-      "cns": "164040486990004",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "105",
-      "telefone": "(99) 98432-2170",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "27/03/2026",
-      "c7Ok": false
-    },
-    "13278952340": {
-      "nome": "MAITÊ HADASSAH BORGES DE MORAIS BAIMA",
-      "cpf": "132.789.523-40",
-      "cns": "708600072827380",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "16",
-      "telefone": "(99) 98494-4358",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C2": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "11/06/2026",
-      "c2_visitas": 15,
-      "c2Ok": true
-    },
-    "04518982304": {
-      "nome": "MANOEL DE GRACIANO ALMEIDA DE SOUSA",
-      "cpf": "045.189.823-04",
-      "cns": "-",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "4",
-      "telefone": "(99) 98470-3752",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "30/04/2026"
-    },
-    "05395795308": {
-      "nome": "MANUELA FERREIRA SANTOS",
-      "cpf": "053.957.953-08",
-      "cns": "700004801395109",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "40",
-      "telefone": "(99) 98272-0763",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "16/06/2026",
+      "c5Ok": true,
       "c7Ok": false
     },
     "94089698391": {
       "nome": "MARIA CILENE FREIRES MOARES",
       "cpf": "940.896.983-91",
-      "cns": "898003725230937",
+      "cns": "8,98004E+14",
       "rua": "RUA SÃO PEDRO",
-      "numero": "07",
+      "numero": "7",
       "telefone": "(99) 8135-9145",
       "condicoes": {},
       "indicadores": {
         "C1": true,
-        "C7": true,
-        "C5": true
+        "C5": true,
+        "C7": true
       },
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "17/07/2026",
-      "c7Ok": false,
       "c5_visitas": 28,
-      "c5Ok": true
+      "c5Ok": true,
+      "c7Ok": false
     },
     "46668977391": {
       "nome": "MARIA CONCEBIDA BARBOSA",
       "cpf": "466.689.773-91",
-      "cns": "898002977496612",
+      "cns": "8,98003E+14",
       "rua": "RUA SÃO PEDRO",
-      "numero": "01",
+      "numero": "1",
       "telefone": "(99) 98274-0732",
       "condicoes": {},
       "indicadores": {
@@ -2502,7 +451,6 @@
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
       "c1Ok": true,
-      "dt_cadastral": "13/06/2026",
       "c5_visitas": 44,
       "c5Ok": true,
       "c6_visitas": 59,
@@ -2511,15 +459,15 @@
     "43802745353": {
       "nome": "MARIA DA CONCEIÇÃO CARDOSO DOURADO",
       "cpf": "438.027.453-53",
-      "cns": "706808750079626",
+      "cns": "7,06809E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "21",
       "telefone": "(99) 98114-2267",
       "condicoes": {},
       "indicadores": {
         "C1": true,
-        "C7": true,
         "C5": true,
+        "C7": true,
         "C4": true,
         "C6": true
       },
@@ -2530,10 +478,9 @@
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
       "c1Ok": true,
-      "dt_cadastral": "13/03/2026",
-      "c7Ok": false,
       "c5_visitas": 40,
       "c5Ok": true,
+      "c7Ok": false,
       "c4_visitas": 38,
       "c4Ok": false,
       "c6_visitas": 87,
@@ -2542,7 +489,7 @@
     "55759980378": {
       "nome": "MARIA DA PAZ DA ENCARNAÇÃO",
       "cpf": "557.599.803-78",
-      "cns": "898003712949296",
+      "cns": "8,98004E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "34",
       "telefone": "(99) 98105-3404",
@@ -2557,7 +504,6 @@
         "C4: Busca Ativa - Exame de Hemoglobina Glicada"
       ],
       "c1Ok": true,
-      "dt_cadastral": "22/06/2026",
       "c5_visitas": 39,
       "c5Ok": true,
       "c4_visitas": 38,
@@ -2565,166 +511,18 @@
       "c6_visitas": 88,
       "c6Ok": true
     },
-    "91180856368": {
-      "nome": "MARIA DAS GRAÇAS SILVA NASCIMENTO",
-      "cpf": "911.808.563-68",
-      "cns": "898003442496758",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "28",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C4": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
-        "C6: Busca Ativa - Vacina contra Influenza atrasada",
-        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "08/04/2026",
-      "c4_visitas": 40,
-      "c4Ok": false,
-      "c6_visitas": 49,
-      "c6Ok": false
-    },
-    "02416266330": {
-      "nome": "MARIA DE JESUS EMIDIO DA COSTA",
-      "cpf": "024.162.663-30",
-      "cns": "-",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "30",
-      "telefone": "(99) 99176-3328",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "08/04/2026",
-      "c7Ok": false
-    },
-    "12686149396": {
-      "nome": "MARIA DHORRANA DE JESUS FRANÇA",
-      "cpf": "126.861.493-96",
-      "cns": "700500546412351",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "118",
-      "telefone": "(99) 98442-4805",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C2": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "21/08/2026",
-      "c2_visitas": 17,
-      "c2Ok": true
-    },
-    "01535090316": {
-      "nome": "MARIA DIAS DA SILVA",
-      "cpf": "015.350.903-16",
-      "cns": "898003706344388",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "09",
-      "telefone": "(99) 98428-6694",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C4": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
-        "C4: Busca Ativa - Avaliação periódica dos pés",
-        "C6: Busca Ativa - Vacina contra Influenza atrasada"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "13/03/2026",
-      "c4_visitas": 45,
-      "c4Ok": false,
-      "c6_visitas": 56,
-      "c6Ok": false
-    },
-    "00924493364": {
-      "nome": "MARIA DO SOCORRO DA SILVA MELO",
-      "cpf": "009.244.933-64",
-      "cns": "898002984729058",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "44",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso",
-        "C6: Busca Ativa - Vacina contra Influenza atrasada"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "20/03/2026",
-      "c7Ok": false,
-      "c6_visitas": 35,
-      "c6Ok": false
-    },
-    "48852082387": {
-      "nome": "MARIA DO SOCORRO PEREIRA DO VALE",
-      "cpf": "488.520.823-87",
-      "cns": "898003720191577",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "18",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "11/05/2026",
-      "c7Ok": false
-    },
-    "61782772375": {
-      "nome": "MARIA EDUARDA DE JESUS BATISTA",
-      "cpf": "617.827.723-75",
-      "cns": "702004393703988",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "118",
-      "telefone": "(99) 98442-4805",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "21/08/2026",
-      "c7Ok": false
-    },
     "17607248315": {
       "nome": "MARIA ELENA MARQUES DOS SANTOS",
       "cpf": "176.072.483-15",
-      "cns": "898050066058874",
+      "cns": "8,9805E+14",
       "rua": "RUA SÃO FRANCISCO",
       "numero": "25",
       "telefone": "(99) 98416-3870",
       "condicoes": {},
       "indicadores": {
         "C1": true,
-        "C7": true,
         "C5": true,
+        "C7": true,
         "C6": true
       },
       "pendencias": [
@@ -2733,17 +531,16 @@
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
       "c1Ok": true,
-      "dt_cadastral": "21/09/2026",
-      "c7Ok": false,
       "c5_visitas": 7,
       "c5Ok": true,
-      "c6_visitas": 109,
+      "c7Ok": false,
+      "c6_visitas": 111,
       "c6Ok": false
     },
     "72212810334": {
       "nome": "MARIA GORETH FERREIRA PRIMO DA SILVA",
       "cpf": "722.128.103-34",
-      "cns": "700509923641856",
+      "cns": "7,0051E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "114",
       "telefone": "(99) 9856-2314",
@@ -2762,7 +559,6 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
       "c1Ok": true,
-      "dt_cadastral": "14/08/2026",
       "c5_visitas": 0,
       "c5Ok": false,
       "c4_visitas": 0,
@@ -2770,50 +566,10 @@
       "c6_visitas": 59,
       "c6Ok": false
     },
-    "MARIA IRISMAR MARQUES DOS SANTOS": {
-      "nome": "MARIA IRISMAR MARQUES DOS SANTOS",
-      "cpf": "-",
-      "cns": "702606213530547",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "25",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "21/09/2026",
-      "c7Ok": false
-    },
-    "23652756304": {
-      "nome": "MARIA JOSÉ BARBOSA SILVA",
-      "cpf": "236.527.563-04",
-      "cns": "706404618631686",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "97",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C6: Busca Ativa - Vacina contra Influenza atrasada",
-        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "24/02/2026",
-      "c6_visitas": 52,
-      "c6Ok": false
-    },
     "18394728391": {
       "nome": "MARIA JOSÉ CAMPELO DA SILVA",
       "cpf": "183.947.283-91",
-      "cns": "898003736856522",
+      "cns": "8,98004E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "48",
       "telefone": "(99) 98168-8242",
@@ -2828,49 +584,10 @@
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
       "c1Ok": true,
-      "dt_cadastral": "22/06/2026",
-      "c5_visitas": 24,
+      "c5_visitas": 23,
       "c5Ok": true,
-      "c6_visitas": 70,
+      "c6_visitas": 68,
       "c6Ok": false
-    },
-    "00386807345": {
-      "nome": "MARIA JUCINEIDE CARLOS DE SOUSA",
-      "cpf": "003.868.073-45",
-      "cns": "898002994188505",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "27",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "08/04/2026",
-      "c7Ok": false
-    },
-    "94521034349": {
-      "nome": "MARIA LINDALVA RODRIGUES DA SILVA PAULA",
-      "cpf": "945.210.343-49",
-      "cns": "164068758190018",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "96",
-      "telefone": "(99) 99150-6739",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "12/06/2026",
-      "c7Ok": false
     },
     "70598304304": {
       "nome": "MARIA MARLY DE LIRA SOUSA",
@@ -2882,8 +599,8 @@
       "condicoes": {},
       "indicadores": {
         "C1": true,
-        "C7": true,
         "C5": true,
+        "C7": true,
         "C4": true
       },
       "pendencias": [
@@ -2891,17 +608,16 @@
         "C4: Busca Ativa - Exame de Hemoglobina Glicada"
       ],
       "c1Ok": true,
-      "dt_cadastral": "05/05/2026",
-      "c7Ok": false,
       "c5_visitas": 36,
       "c5Ok": true,
+      "c7Ok": false,
       "c4_visitas": 34,
       "c4Ok": false
     },
     "96820462387": {
       "nome": "MARIA MATOS SILVA",
       "cpf": "968.204.623-87",
-      "cns": "163599298140002",
+      "cns": "1,63599E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "136",
       "telefone": "(98) 98431-0910",
@@ -2917,7 +633,6 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
       "c1Ok": true,
-      "dt_cadastral": "27/03/2026",
       "c5_visitas": 26,
       "c5Ok": true,
       "c4_visitas": 25,
@@ -2925,82 +640,10 @@
       "c6_visitas": 66,
       "c6Ok": false
     },
-    "62827813378": {
-      "nome": "MARIA VERONICA RAMALHO PINTO",
-      "cpf": "628.278.133-78",
-      "cns": "898002944225008",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "20",
-      "telefone": "(99) 98516-6687",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "26/06/2026",
-      "c7Ok": false
-    },
-    "40309657334": {
-      "nome": "MARINALVA PEQUENO DE SOUSA",
-      "cpf": "403.096.573-34",
-      "cns": "704309514577994",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "89",
-      "telefone": "(99) 98479-1380",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "02/06/2026",
-      "c7Ok": false
-    },
-    "61198324325": {
-      "nome": "MARTA SILVA SANTOS TEODORIO",
-      "cpf": "611.983.243-25",
-      "cns": "898003473633897",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "28",
-      "telefone": "(99) 9129-0801",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "06/06/2026",
-      "c7Ok": false
-    },
-    "63024327312": {
-      "nome": "MAURO HENRIQUE MELO PEREIRA",
-      "cpf": "630.243.273-12",
-      "cns": "708002344753826",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "49",
-      "telefone": "(99) 98453-1718",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "05/08/2026"
-    },
     "16748833825": {
       "nome": "MIGUEL LOPES DOS SANTOS",
       "cpf": "167.488.338-25",
-      "cns": "708506087540380",
+      "cns": "7,08506E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "15",
       "telefone": "(99) 98234-4663",
@@ -3016,94 +659,10 @@
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
       "c1Ok": true,
-      "dt_cadastral": "17/03/2026",
       "c5_visitas": 0,
       "c5Ok": false,
       "c6_visitas": 91,
       "c6Ok": false
-    },
-    "00553949306": {
-      "nome": "MILTON BORGES DA SILVA",
-      "cpf": "005.539.493-06",
-      "cns": "898003737192628",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "10",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "08/04/2026"
-    },
-    "60213538385": {
-      "nome": "MIRIAN DA SILVA ARAUJO",
-      "cpf": "602.135.383-85",
-      "cns": "700409932296547",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "34",
-      "telefone": "(12) 99721-6998",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "19/06/2026",
-      "c7Ok": false
-    },
-    "00395006325": {
-      "nome": "MISSILENE OLIVEIRA DE SOUSA",
-      "cpf": "003.950.063-25",
-      "cns": "700401941291547",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "12",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "13/03/2026",
-      "c7Ok": false
-    },
-    "63027758330": {
-      "nome": "NICOLAS DINIZ DA SILVA LIMA",
-      "cpf": "630.277.583-30",
-      "cns": "898005155447307",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "96",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "12/06/2026"
-    },
-    "00728058383": {
-      "nome": "OSIMAR PEREIRA DA SILVA",
-      "cpf": "007.280.583-83",
-      "cns": "-",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "38",
-      "telefone": "(99) 98470-3752",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "21/09/2026"
     },
     "76432378915": {
       "nome": "PAULO DE SOUZA",
@@ -3124,7 +683,6 @@
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
       "c1Ok": true,
-      "dt_cadastral": "13/02/2026",
       "c5_visitas": 7,
       "c5Ok": false,
       "c6_visitas": 18,
@@ -3133,9 +691,9 @@
     "15874958304": {
       "nome": "PAULO FREIRE MENDANHA",
       "cpf": "158.749.583-04",
-      "cns": "898002994711011",
+      "cns": "8,98003E+14",
       "rua": "RUA SÃO PEDRO",
-      "numero": "01",
+      "numero": "1",
       "telefone": "(99) 98234-4663",
       "condicoes": {},
       "indicadores": {
@@ -3145,107 +703,15 @@
       },
       "pendencias": [],
       "c1Ok": true,
-      "dt_cadastral": "13/06/2026",
       "c5_visitas": 46,
       "c5Ok": true,
       "c6_visitas": 103,
       "c6Ok": true
     },
-    "63212389370": {
-      "nome": "PAULO HENRIQUE SILVA SANTOS",
-      "cpf": "632.123.893-70",
-      "cns": "898003724778556",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "112",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "27/03/2026"
-    },
-    "00152382372": {
-      "nome": "PIETRO MARTINS DE SOUSA",
-      "cpf": "001.523.823-72",
-      "cns": "702109727995594",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "29",
-      "telefone": "(99) 98526-2952",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C2": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "04/03/2026",
-      "c2_visitas": 5,
-      "c2Ok": true
-    },
-    "06085498357": {
-      "nome": "RAIANE PEREIRA DOS SANTOS DIAS",
-      "cpf": "060.854.983-57",
-      "cns": "700001262212000",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "74",
-      "telefone": "(99) 98442-1605",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "17/08/2026",
-      "c7Ok": false
-    },
-    "RAIMUNDA DA SILVA PAULA": {
-      "nome": "RAIMUNDA DA SILVA PAULA",
-      "cpf": "-",
-      "cns": "898002976174093",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "54",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso",
-        "C6: Busca Ativa - Vacina contra Influenza atrasada",
-        "C6: Busca Ativa - Consulta anual pendente (>12 meses)"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "20/03/2026",
-      "c7Ok": false,
-      "c6_visitas": 62,
-      "c6Ok": false
-    },
-    "00316987352": {
-      "nome": "RAIMUNDO DE SOUSA QUEIROZ",
-      "cpf": "003.169.873-52",
-      "cns": "898003741082858",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "78A",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "20/03/2026"
-    },
     "00419830332": {
       "nome": "RAIMUNDO NONATO DA CONCEIÇÃO",
       "cpf": "004.198.303-32",
-      "cns": "898003413006934",
+      "cns": "8,98003E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "43",
       "telefone": "(99) 98234-4663",
@@ -3256,29 +722,13 @@
       },
       "pendencias": [],
       "c1Ok": true,
-      "dt_cadastral": "20/03/2026",
-      "c5_visitas": 27,
+      "c5_visitas": 26,
       "c5Ok": true
-    },
-    "02441285378": {
-      "nome": "RAIMUNDO NONATO DE MORAIS BAIMA",
-      "cpf": "024.412.853-78",
-      "cns": "706705721408720",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "16",
-      "telefone": "(99) 98439-7754",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "11/06/2026"
     },
     "88390659387": {
       "nome": "RAIMUNDO NONATO MOURA GOMES",
       "cpf": "883.906.593-87",
-      "cns": "709200278580536",
+      "cns": "7,092E+14",
       "rua": "RUA SÃO FRANCISCO",
       "numero": "22",
       "telefone": "(99) 98234-4466",
@@ -3289,7 +739,6 @@
       },
       "pendencias": [],
       "c1Ok": true,
-      "dt_cadastral": "08/04/2026",
       "c5_visitas": 43,
       "c5Ok": true
     },
@@ -3309,14 +758,1163 @@
         "C5: Visitas Domiciliares pendentes (0/2 no ano)"
       ],
       "c1Ok": true,
-      "dt_cadastral": "08/04/2026",
       "c5_visitas": 0,
       "c5Ok": false
+    },
+    "99509016349": {
+      "nome": "TERESA FRANCISCO DA SILVA MOREIRA",
+      "cpf": "995.090.163-49",
+      "cns": "8,9805E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "11",
+      "telefone": "(99) 98234-4663",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C5": true,
+        "C7": true,
+        "C4": true,
+        "C6": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso",
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
+      ],
+      "c1Ok": true,
+      "c5_visitas": 39,
+      "c5Ok": true,
+      "c7Ok": false,
+      "c4_visitas": 39,
+      "c4Ok": false,
+      "c6_visitas": 93,
+      "c6Ok": true
+    },
+    "61964743320": {
+      "nome": "VALDECIR ROCHA DE LIMA",
+      "cpf": "619.647.433-20",
+      "cns": "7,02008E+14",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "25",
+      "telefone": "(99) 98416-3870",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C5": true,
+        "C6": true
+      },
+      "pendencias": [
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
+      ],
+      "c1Ok": true,
+      "c5_visitas": 48,
+      "c5Ok": true,
+      "c6_visitas": 57,
+      "c6Ok": false
+    },
+    "02531774300": {
+      "nome": "VANUBIA ALMEIDA FERNANDES MENESES",
+      "cpf": "025.317.743-00",
+      "cns": "7,00008E+14",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "15",
+      "telefone": "(99) 98518-4732",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C5": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c5_visitas": 42,
+      "c5Ok": true,
+      "c7Ok": false
+    },
+    "01376032317": {
+      "nome": "VILMARIA LIMA DE MESQUITA",
+      "cpf": "013.760.323-17",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "99",
+      "telefone": "(99) 98472-7415",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C5": true,
+        "C7": true,
+        "C4": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso",
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada"
+      ],
+      "c1Ok": true,
+      "c5_visitas": 20,
+      "c5Ok": true,
+      "c7Ok": false,
+      "c4_visitas": 21,
+      "c4Ok": false
+    },
+    "62816925358": {
+      "nome": "AGIVANIA MARIA LIMA DE OLIVEIRA MOURÃO",
+      "cpf": "628.169.253-58",
+      "cns": "8,98004E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "35",
+      "telefone": "(99) 98447-8260",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "61781005311": {
+      "nome": "ALANA DIAS DE ABREU MELO SILVA",
+      "cpf": "617.810.053-11",
+      "cns": "8,98004E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "38",
+      "telefone": "(99) 98513-2834",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "06727490333": {
+      "nome": "ALANE KAREN DE ABREU VIANA",
+      "cpf": "067.274.903-33",
+      "cns": "7,06509E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "87",
+      "telefone": "(99) 98451-2323",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "00576201308": {
+      "nome": "ALBERLEILA NOBRE ROCHA",
+      "cpf": "005.762.013-08",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "19",
+      "telefone": "(99) 98185-8182",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "63112960394": {
+      "nome": "ALICYA KEMILLY ROCHA DE CASTRO",
+      "cpf": "631.129.603-94",
+      "cns": "8,98006E+14",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "19",
+      "telefone": "(99) 98185-8182",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "62857679394": {
+      "nome": "ANA LARA DE ABREU VIANA",
+      "cpf": "628.576.793-94",
+      "cns": "8,98005E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "87",
+      "telefone": "(99) 98410-4224",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "05834871305": {
+      "nome": "ANAIZA BARROS DE ANDRADE BRANDÃO",
+      "cpf": "058.348.713-05",
+      "cns": "7,04703E+14",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "8",
+      "telefone": "(99) 98536-9172",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "04923623357": {
+      "nome": "ANTONIA DE SOUSA ARAUJO",
+      "cpf": "049.236.233-57",
+      "cns": "7,01209E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "10",
+      "telefone": "(99) 98234-4663",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [],
+      "c1Ok": true,
+      "c7Ok": true
+    },
+    "99988321368": {
+      "nome": "ANTÔNIA DOS SANTOS GERMANO DA COSTA",
+      "cpf": "999.883.213-68",
+      "cns": "7,08404E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "36",
+      "telefone": "(99) 98130-3744",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "00459637380": {
+      "nome": "ANTÔNIA FREITAS DA SILVA",
+      "cpf": "004.596.373-80",
+      "cns": "7,02102E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "13",
+      "telefone": "(99) 98198-6313",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "00077403363": {
+      "nome": "ANTONIA NASCIMENTO DA SILVA",
+      "cpf": "000.774.033-63",
+      "cns": "-",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "26",
+      "telefone": "(99) 98102-9092",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true,
+        "C4": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso",
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada"
+      ],
+      "c1Ok": true,
+      "c7Ok": false,
+      "c4_visitas": 7,
+      "c4Ok": false
+    },
+    "63260729305": {
+      "nome": "ARCLEIA DE SOUSA SILVA",
+      "cpf": "632.607.293-05",
+      "cns": "8,98004E+14",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "29",
+      "telefone": "(99) 98526-2952",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "08412476336": {
+      "nome": "AURITÂNIA LIMA SOUSA",
+      "cpf": "084.124.763-36",
+      "cns": "8,98004E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "42",
+      "telefone": "(99) 98234-4663",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "63473202312": {
+      "nome": "BRUNA CARLA DA SILVA CAMELO",
+      "cpf": "634.732.023-12",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "16",
+      "telefone": "(99) 98494-4358",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "63106525320": {
+      "nome": "BRUNA DE SOUSA LIMA",
+      "cpf": "631.065.253-20",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "10",
+      "telefone": "(99) 98234-4663",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "93888066387": {
+      "nome": "CLEONICE DAMACENA DE ANDRADE FEITOSA",
+      "cpf": "938.880.663-87",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "30",
+      "telefone": "(99) 98194-8840",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "03645574352": {
+      "nome": "CLEUDIANA DOS SANTOS MELO",
+      "cpf": "036.455.743-52",
+      "cns": "7,09208E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "10",
+      "telefone": "(99) 98144-0181",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [],
+      "c1Ok": true,
+      "c7Ok": true
+    },
+    "96820470304": {
+      "nome": "DEUZA DA SILVA CASTRO",
+      "cpf": "968.204.703-04",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "90",
+      "telefone": "(99) 98156-5935",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "60211292370": {
+      "nome": "DIANA DE SOUSA RODRIGUES",
+      "cpf": "602.112.923-70",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "100",
+      "telefone": "(99) 98470-3752",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "81443013315": {
+      "nome": "ELDENIR DIAS DE ABREU VIANA",
+      "cpf": "814.430.133-15",
+      "cns": "7,00501E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "87",
+      "telefone": "(99) 98410-4224",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "60963898302": {
+      "nome": "ELIDA DE SOUSA RIBEIRO",
+      "cpf": "609.638.983-02",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "48",
+      "telefone": "(99) 98140-1680",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "94220760300": {
+      "nome": "ELIENE CONCEIÇÃO DE SOUSA VERAS",
+      "cpf": "942.207.603-00",
+      "cns": "8,98002E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "42",
+      "telefone": "(99) 98234-4663",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true,
+        "C6": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
+      ],
+      "c1Ok": true,
+      "c7Ok": false,
+      "c6_visitas": 67,
+      "c6Ok": false
+    },
+    "94793131387": {
+      "nome": "ELIETE PEREIRA DA SILVA",
+      "cpf": "947.931.313-87",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "31",
+      "telefone": "(99) 9455-1856",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "45268851349": {
+      "nome": "ELZENIR DIAS DE ABREU MELO",
+      "cpf": "452.688.513-49",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "38",
+      "telefone": "(99) 98413-2067",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "62290555380": {
+      "nome": "EMILLY PEREIRA DIAS",
+      "cpf": "622.905.553-80",
+      "cns": "8,98004E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "74",
+      "telefone": "(99) 98234-4663",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "03273692308": {
+      "nome": "FRANCISCA DE SOUSA",
+      "cpf": "032.736.923-08",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "86",
+      "telefone": "(99) 98432-0632",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "47555840359": {
+      "nome": "FRANCISCA JESUS SILVA",
+      "cpf": "475.558.403-59",
+      "cns": "1,25315E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "130",
+      "telefone": "(99) 98151-5219",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "00430457316": {
+      "nome": "GRAÇA DE MARIA SANTOS DE JESUS",
+      "cpf": "004.304.573-16",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "144",
+      "telefone": "(99) 98449-2682",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true,
+        "C4": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso",
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada"
+      ],
+      "c1Ok": true,
+      "c7Ok": false,
+      "c4_visitas": 3,
+      "c4Ok": false
+    },
+    "03462162306": {
+      "nome": "IRANILDE BORGES DA SILVA",
+      "cpf": "034.621.623-06",
+      "cns": "7,06209E+14",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "23",
+      "telefone": "(99) 98418-7812",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "62838429337": {
+      "nome": "ISABELA TEIXEIRA DOS SANTOS",
+      "cpf": "628.384.293-37",
+      "cns": "8,98004E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "19",
+      "telefone": "(99) 98262-3169",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "12104338344": {
+      "nome": "JESSICA GALVAO MOREIRA",
+      "cpf": "121.043.383-44",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "9",
+      "telefone": "(99) 98413-6414",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true,
+        "C3": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso",
+        "C3: Visitas Pré-Natal pendentes (2/3)",
+        "C3: Visita no Puerpério pendente (0/1)",
+        "C3: Busca Ativa - Captação precoce (<12 semanas)"
+      ],
+      "c1Ok": true,
+      "c7Ok": false,
+      "c3_vis_pn": 2,
+      "c3Ok": false
+    },
+    "62914437323": {
+      "nome": "KAMYLA KAWANNY ARAUJO DA ENCARNAÇAO",
+      "cpf": "629.144.373-23",
+      "cns": "7,02001E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "34",
+      "telefone": "(12) 99721-6998",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "09880392221": {
+      "nome": "KAWANE MIRANDA DA SILVA",
+      "cpf": "098.803.922-21",
+      "cns": "7,00708E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "144",
+      "telefone": "(94) 99141-0357",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "62914441355": {
+      "nome": "KEMILLY MARIANE ARAUJO DA ENCARNAÇÃO",
+      "cpf": "629.144.413-55",
+      "cns": "7,02309E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "34",
+      "telefone": "(55) 99985-5681",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "01874836396": {
+      "nome": "LADIA DA CONCEICAO MELO PEREIRA",
+      "cpf": "018.748.363-96",
+      "cns": "7,08105E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "49",
+      "telefone": "(99) 98171-8449",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "02498803343": {
+      "nome": "LAIS DE PAIVA MARTINS",
+      "cpf": "024.988.033-43",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "111",
+      "telefone": "(99) 98470-3752",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "62869586302": {
+      "nome": "LARA LORRANY DE SOUSA MORAES",
+      "cpf": "628.695.863-02",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "86",
+      "telefone": "(99) 98432-0632",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "60863677363": {
+      "nome": "LUCILEIA BORGES DA SILVA",
+      "cpf": "608.636.773-63",
+      "cns": "7,06403E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "16",
+      "telefone": "(99) 98494-4358",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "07546010306": {
+      "nome": "LUCILENE DO NASCIMENTO BASILIO",
+      "cpf": "075.460.103-06",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "2",
+      "telefone": "(99) 98400-4085",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "00130724394": {
+      "nome": "LUIZA RODRIGUES DOS SANTOS MELO",
+      "cpf": "001.307.243-94",
+      "cns": "8,98001E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "10",
+      "telefone": "(99) 98456-4671",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true,
+        "C6": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
+      ],
+      "c1Ok": true,
+      "c7Ok": false,
+      "c6_visitas": 91,
+      "c6Ok": false
+    },
+    "70049602349": {
+      "nome": "LUZIA ANDRADE DA CONCEIÇÃO",
+      "cpf": "700.496.023-49",
+      "cns": "7,08605E+14",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "35",
+      "telefone": "(99) 98116-9042",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "93290985334": {
+      "nome": "LUZINETE DE SOUSA",
+      "cpf": "932.909.853-34",
+      "cns": "1,6404E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "105",
+      "telefone": "(99) 98432-2170",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "05395795308": {
+      "nome": "MANUELA FERREIRA SANTOS",
+      "cpf": "053.957.953-08",
+      "cns": "7,00005E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "40",
+      "telefone": "(99) 98272-0763",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "02416266330": {
+      "nome": "MARIA DE JESUS EMIDIO DA COSTA",
+      "cpf": "024.162.663-30",
+      "cns": "-",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "30",
+      "telefone": "(99) 99176-3328",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "00924493364": {
+      "nome": "MARIA DO SOCORRO DA SILVA MELO",
+      "cpf": "009.244.933-64",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "44",
+      "telefone": "(99) 98234-4663",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true,
+        "C6": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
+      ],
+      "c1Ok": true,
+      "c7Ok": false,
+      "c6_visitas": 35,
+      "c6Ok": false
+    },
+    "48852082387": {
+      "nome": "MARIA DO SOCORRO PEREIRA DO VALE",
+      "cpf": "488.520.823-87",
+      "cns": "8,98004E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "18",
+      "telefone": "(99) 98234-4663",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "61782772375": {
+      "nome": "MARIA EDUARDA DE JESUS BATISTA",
+      "cpf": "617.827.723-75",
+      "cns": "7,02004E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "118",
+      "telefone": "(99) 98442-4805",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "84723041168": {
+      "nome": "MARIA IRISMAR MARQUES DOS SANTOS",
+      "cpf": "847.230.411-68",
+      "cns": "7,02606E+14",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "25",
+      "telefone": "(99) 98234-4663",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "00386807345": {
+      "nome": "MARIA JUCINEIDE CARLOS DE SOUSA",
+      "cpf": "003.868.073-45",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "27",
+      "telefone": "(99) 98234-4663",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "94521034349": {
+      "nome": "MARIA LINDALVA RODRIGUES DA SILVA PAULA",
+      "cpf": "945.210.343-49",
+      "cns": "1,64069E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "96",
+      "telefone": "(99) 99150-6739",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "62827813378": {
+      "nome": "MARIA VERONICA RAMALHO PINTO",
+      "cpf": "628.278.133-78",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "20",
+      "telefone": "(99) 98516-6687",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "40309657334": {
+      "nome": "MARINALVA PEQUENO DE SOUSA",
+      "cpf": "403.096.573-34",
+      "cns": "7,0431E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "89",
+      "telefone": "(99) 98479-1380",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "61198324325": {
+      "nome": "MARTA SILVA SANTOS TEODORIO",
+      "cpf": "611.983.243-25",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "28",
+      "telefone": "(99) 9129-0801",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "60213538385": {
+      "nome": "MIRIAN DA SILVA ARAUJO",
+      "cpf": "602.135.383-85",
+      "cns": "7,0041E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "34",
+      "telefone": "(12) 99721-6998",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "00395006325": {
+      "nome": "MISSILENE OLIVEIRA DE SOUSA",
+      "cpf": "003.950.063-25",
+      "cns": "7,00402E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "12",
+      "telefone": "(99) 98234-4663",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "06085498357": {
+      "nome": "RAIANE PEREIRA DOS SANTOS DIAS",
+      "cpf": "060.854.983-57",
+      "cns": "7,00001E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "74",
+      "telefone": "(99) 98442-1605",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso"
+      ],
+      "c1Ok": true,
+      "c7Ok": false
+    },
+    "RAIMUNDA DA SILVA PAULA": {
+      "nome": "RAIMUNDA DA SILVA PAULA",
+      "cpf": "-",
+      "cns": "8,98003E+14",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "54",
+      "telefone": "(99) 98234-4663",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C7": true,
+        "C6": true
+      },
+      "pendencias": [
+        "C7: Busca Ativa - Coleta de Preventivo em atraso",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Consulta anual pendente (>12 meses)"
+      ],
+      "c1Ok": true,
+      "c7Ok": false,
+      "c6_visitas": 62,
+      "c6Ok": false
     },
     "RAIZA JOSEFINA VENAVIDES": {
       "nome": "RAIZA JOSEFINA VENAVIDES",
       "cpf": "-",
-      "cns": "705601413472915",
+      "cns": "7,05601E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "4",
       "telefone": "(99) 98470-3752",
@@ -3329,7 +1927,6 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "29/04/2026",
       "c7Ok": false
     },
     "62970929317": {
@@ -3348,13 +1945,12 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "08/04/2026",
       "c7Ok": false
     },
     "62856814301": {
       "nome": "RAYSSA DIAS DE ABREU MELO",
       "cpf": "628.568.143-01",
-      "cns": "898003700806541",
+      "cns": "8,98004E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "38",
       "telefone": "(99) 98234-4663",
@@ -3367,121 +1963,7 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "02/02/2026",
       "c7Ok": false
-    },
-    "13289126390": {
-      "nome": "RENATA FELIX BASILIO GOMES",
-      "cpf": "132.891.263-90",
-      "cns": "700004498367906",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "2",
-      "telefone": "(99) 98400-4085",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C2": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "08/10/2026",
-      "c2_visitas": 10,
-      "c2Ok": true
-    },
-    "03856016384": {
-      "nome": "RENILDO DA SILVA OLIVEIRA",
-      "cpf": "038.560.163-84",
-      "cns": "898050038701768",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "114",
-      "telefone": "(99) 98116-9978",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "14/08/2026"
-    },
-    "62870738374": {
-      "nome": "RHUAN GUILHERME DE SOUSA BARBOSA",
-      "cpf": "628.707.383-74",
-      "cns": "898004055584298",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "100",
-      "telefone": "(99) 98403-8620",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "16/03/2026"
-    },
-    "62844658318": {
-      "nome": "RIKELME DOS SANTOS GOMES",
-      "cpf": "628.446.583-18",
-      "cns": "898004130700849",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "25",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "21/09/2026"
-    },
-    "00481758380": {
-      "nome": "RITA MARIA RODRIGUES DA SILVA",
-      "cpf": "004.817.583-80",
-      "cns": "898002977737733",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "96",
-      "telefone": "(99) 98139-8331",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C6: Busca Ativa - Vacina contra Influenza atrasada"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "12/06/2026",
-      "c6_visitas": 25,
-      "c6Ok": false
-    },
-    "08467435313": {
-      "nome": "RODRIGO DE ALMADA FERREIRA",
-      "cpf": "084.674.353-13",
-      "cns": "707009830912339",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "107",
-      "telefone": "(99) 98441-2681",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "05/05/2026"
-    },
-    "62968800302": {
-      "nome": "RODRIGO SILVA MELO",
-      "cpf": "629.688.003-02",
-      "cns": "898004108751495",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "2",
-      "telefone": "(99) 98442-4517",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "11/03/2026"
     },
     "00372540309": {
       "nome": "ROSILENE MAGALHÃES DE ALMADA",
@@ -3499,15 +1981,14 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "05/05/2026",
       "c7Ok": false
     },
     "05941246382": {
       "nome": "SAMARA SILVEIRA DE MATOS",
       "cpf": "059.412.463-82",
-      "cns": "708404235712361",
+      "cns": "7,08404E+14",
       "rua": "RUA SÃO PEDRO",
-      "numero": "05",
+      "numero": "5",
       "telefone": "(99) 99204-8119",
       "condicoes": {},
       "indicadores": {
@@ -3518,35 +1999,12 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "13/03/2026",
       "c7Ok": false
-    },
-    "03468858337": {
-      "nome": "SIVIRINO DE SOUSA MELO",
-      "cpf": "034.688.583-37",
-      "cns": "898003735519395",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "10",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C6: Busca Ativa - Vacina contra Influenza atrasada",
-        "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
-        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "13/03/2026",
-      "c6_visitas": 43,
-      "c6Ok": false
     },
     "02277436364": {
       "nome": "SUZETE FIRME TOMÉ",
       "cpf": "022.774.363-64",
-      "cns": "898002996623411",
+      "cns": "8,98003E+14",
       "rua": "RUA SÃO FRANCISCO",
       "numero": "40",
       "telefone": "(99) 98118-9138",
@@ -3563,47 +2021,16 @@
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
       "c1Ok": true,
-      "dt_cadastral": "14/04/2026",
       "c7Ok": true,
       "c4_visitas": 37,
       "c4Ok": false,
       "c6_visitas": 92,
       "c6Ok": false
     },
-    "99509016349": {
-      "nome": "TERESA FRANCISCO DA SILVA MOREIRA",
-      "cpf": "995.090.163-49",
-      "cns": "898050021935639",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "11",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true,
-        "C5": true,
-        "C4": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso",
-        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
-        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "13/03/2026",
-      "c7Ok": false,
-      "c5_visitas": 39,
-      "c5Ok": true,
-      "c4_visitas": 39,
-      "c4Ok": false,
-      "c6_visitas": 93,
-      "c6Ok": true
-    },
     "62952057397": {
       "nome": "THAIS DA CONCEICAO MOURA",
       "cpf": "629.520.573-97",
-      "cns": "898002940467031",
+      "cns": "8,98003E+14",
       "rua": "RUA SÃO FRANCISCO",
       "numero": "22",
       "telefone": "(99) 98154-8784",
@@ -3616,72 +2043,12 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "08/04/2026",
       "c7Ok": false
-    },
-    "61964743320": {
-      "nome": "VALDECIR ROCHA DE LIMA",
-      "cpf": "619.647.433-20",
-      "cns": "702007833283380",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "25",
-      "telefone": "(99) 98416-3870",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C5": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C6: Busca Ativa - Vacina contra Influenza atrasada"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "08/10/2026",
-      "c5_visitas": 48,
-      "c5Ok": true,
-      "c6_visitas": 56,
-      "c6Ok": false
-    },
-    "05182585306": {
-      "nome": "VALDEMIR CARVALHO DE SOUSA",
-      "cpf": "051.825.853-06",
-      "cns": "-",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "100",
-      "telefone": "(99) 98486-2805",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "16/03/2026"
-    },
-    "68547650300": {
-      "nome": "VALDIR BARBOSA SILVA",
-      "cpf": "685.476.503-00",
-      "cns": "898003420907453",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "99",
-      "telefone": "(99) 9834-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C6": true
-      },
-      "pendencias": [
-        "C6: Busca Ativa - Vacina contra Influenza atrasada",
-        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "27/03/2026",
-      "c6_visitas": 53,
-      "c6Ok": false
     },
     "00288725336": {
       "nome": "VANDICREIDE DA SILVEIRA QUEIROZ",
       "cpf": "002.887.253-36",
-      "cns": "898003741995365",
+      "cns": "8,98004E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "78A",
       "telefone": "(99) 98234-4663",
@@ -3694,13 +2061,12 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "20/03/2026",
       "c7Ok": false
     },
     "00880734329": {
       "nome": "VANETE DE SOUSA MOURÃO",
       "cpf": "008.807.343-29",
-      "cns": "704605619746129",
+      "cns": "7,04606E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "92",
       "telefone": "(99) 98510-4921",
@@ -3713,35 +2079,12 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "06/07/2026",
       "c7Ok": false
-    },
-    "02531774300": {
-      "nome": "VANUBIA ALMEIDA FERNANDES MENESES",
-      "cpf": "025.317.743-00",
-      "cns": "700008180511507",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "15",
-      "telefone": "(99) 98518-4732",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true,
-        "C5": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "06/04/2026",
-      "c7Ok": false,
-      "c5_visitas": 42,
-      "c5Ok": true
     },
     "60302919392": {
       "nome": "VANUSA SILVA DOS SANTOS",
       "cpf": "603.029.193-92",
-      "cns": "898003701724727",
+      "cns": "8,98004E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "112",
       "telefone": "(99) 98234-4663",
@@ -3754,13 +2097,12 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "27/03/2026",
       "c7Ok": false
     },
     "62431240371": {
       "nome": "VILMARA DE LIMA BARBOSA",
       "cpf": "624.312.403-71",
-      "cns": "898003258951251",
+      "cns": "8,98003E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "97",
       "telefone": "(99) 98234-4663",
@@ -3773,54 +2115,12 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "24/02/2026",
       "c7Ok": false
-    },
-    "01376032317": {
-      "nome": "VILMARIA LIMA DE MESQUITA",
-      "cpf": "013.760.323-17",
-      "cns": "898003420902508",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "99",
-      "telefone": "(99) 98472-7415",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true,
-        "C7": true,
-        "C5": true,
-        "C4": true
-      },
-      "pendencias": [
-        "C7: Busca Ativa - Coleta de Preventivo em atraso",
-        "C4: Busca Ativa - Exame de Hemoglobina Glicada"
-      ],
-      "c1Ok": true,
-      "dt_cadastral": "27/03/2026",
-      "c7Ok": false,
-      "c5_visitas": 20,
-      "c5Ok": true,
-      "c4_visitas": 21,
-      "c4Ok": false
-    },
-    "63086160365": {
-      "nome": "VINICIUS BATISTA DA CONCEIÇÃO",
-      "cpf": "630.861.603-65",
-      "cns": "700009575196400",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "43",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "20/03/2026"
     },
     "63086154390": {
       "nome": "VITORIA ALVES DA CONCEIÇÃO",
       "cpf": "630.861.543-90",
-      "cns": "898003412997678",
+      "cns": "8,98003E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "43",
       "telefone": "(99) 98225-1635",
@@ -3833,13 +2133,12 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "20/03/2026",
       "c7Ok": false
     },
     "62443778347": {
       "nome": "WATILA SOUSA DA CONCEICAO",
       "cpf": "624.437.783-47",
-      "cns": "702508343022331",
+      "cns": "7,02508E+14",
       "rua": "RUA SÃO PEDRO",
       "numero": "89",
       "telefone": "(99) 98479-1380",
@@ -3852,28 +2151,12 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "02/06/2026",
       "c7Ok": false
-    },
-    "62869593350": {
-      "nome": "WENDEL DE SOUSA MORAES",
-      "cpf": "628.695.933-50",
-      "cns": "898003414616647",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "86",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "20/03/2026"
     },
     "62856845371": {
       "nome": "YASMIM DA SILVA BARROS",
       "cpf": "628.568.453-71",
-      "cns": "703406245512412",
+      "cns": "7,03406E+14",
       "rua": "RUA SÃO FRANCISCO",
       "numero": "23",
       "telefone": "(99) 98171-3424",
@@ -3886,13 +2169,12 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "08/04/2026",
       "c7Ok": false
     },
     "06040246308": {
       "nome": "YASMIM MICHELLY DOS SANTOS GOMES",
       "cpf": "060.402.463-08",
-      "cns": "898004130710852",
+      "cns": "8,98004E+14",
       "rua": "RUA SÃO FRANCISCO",
       "numero": "25",
       "telefone": "(99) 98234-4663",
@@ -3905,31 +2187,311 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
       "c1Ok": true,
-      "dt_cadastral": "21/09/2026",
       "c7Ok": false
     },
-    "YURIMAR ESTEFANIA RODRIGUEZ VENAVIDES": {
-      "nome": "YURIMAR ESTEFANIA RODRIGUEZ VENAVIDES",
-      "cpf": "-",
-      "cns": "705001415998456",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "4",
-      "telefone": "(99) 98135-6552",
+    "60214647374": {
+      "nome": "FRANCISCO JHONNY DE BRITO BRANDÃO",
+      "cpf": "\t60214647374",
+      "cns": "\t700009961355800",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "08",
+      "telefone": "",
       "condicoes": {},
       "indicadores": {
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true,
-      "dt_cadastral": "30/04/2026"
+      "c1Ok": true
     },
-    "03660648353": {
-      "nome": "ZAIRA LOUISE SILVEIRA CRUZ",
-      "cpf": "036.606.483-53",
+    "10797671340": {
+      "nome": "IANA ELIZA ANDRADE BRANDÃO",
+      "cpf": "\t10797671340",
+      "cns": "\t898005926549177",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "08",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "12176878310": {
+      "nome": "JOÃO MIGUEL SOUSA BRANDÃO",
+      "cpf": "\t12176878310",
       "cns": "-",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "05",
-      "telefone": "(99) 98507-8530",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "08",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "09387229300": {
+      "nome": "JOÃO VICTOR MARQUES MOREIRA MORAIS",
+      "cpf": "\t09387229300",
+      "cns": "\t898003989964145",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "09",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "02765853304": {
+      "nome": "JHONATAN GALVAO MOREIRA",
+      "cpf": "\t02765853304",
+      "cns": "\t898006347914842",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "09",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C2": true
+      },
+      "pendencias": [
+        "C2: Busca Ativa - Agendar consulta de puericultura"
+      ],
+      "c1Ok": true,
+      "c2_visitas": 20,
+      "c2_vacinasOk": true,
+      "c2Ok": false
+    },
+    "00553949306": {
+      "nome": "MILTON BORGES DA SILVA",
+      "cpf": "\t00553949306",
+      "cns": "\t898003737192628",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "10",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62981959395": {
+      "nome": "SUELEN NAZARETH FERNANDES DE ASSIS",
+      "cpf": "\t62981959395",
+      "cns": "\t898004006250381",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "15",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62981956370": {
+      "nome": "JOSÉ LUIZ FERNANDES DE ASSIS",
+      "cpf": "\t62981956370",
+      "cns": "\t898004006243024",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "15",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "46669752334": {
+      "nome": "WHILISTON CHARLES PEREIRADE ASSIS",
+      "cpf": "\t46669752334",
+      "cns": "-",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "15",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "63112953347": {
+      "nome": "ALANE KELLY ROCHA DE CASTRO",
+      "cpf": "\t63112953347",
+      "cns": "\t700009243731801",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "19",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "04393114388": {
+      "nome": "ANTONIO MOURA",
+      "cpf": "\t04393114388",
+      "cns": "-",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "2",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "07696397397": {
+      "nome": "ERIKA VIEIRA ALMEIDA",
+      "cpf": "\t07696397397",
+      "cns": "\t898004174223671",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "22",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "11060283336": {
+      "nome": "IRISNALDO DA SILVA",
+      "cpf": "\t11060283336",
+      "cns": "\t160937770660000",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "23",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "11844828379": {
+      "nome": "LUNA VALENTINA DA SILVA BARROS",
+      "cpf": "\t11844828379",
+      "cns": "\t709603694484070",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "23",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62844658318": {
+      "nome": "RIKELME DOS SANTOS GOMES",
+      "cpf": "\t62844658318",
+      "cns": "\t898004130700849",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "25",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "06863334380": {
+      "nome": "FELIPE NASCIMENTO DA SILVA",
+      "cpf": "\t06863334380",
+      "cns": "-",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "26",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "46668985300": {
+      "nome": "MANOEL VANDERLEY PEREIRA DA SILVA",
+      "cpf": "\t46668985300",
+      "cns": "-",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "26",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "03926955376": {
+      "nome": "PEDRO LUCAS FERNANDES CARLOS DE SOUSA",
+      "cpf": "\t03926955376",
+      "cns": "\t898002994197202",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "27",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "91180856368": {
+      "nome": "MARIA DAS GRAÇAS SILVA NASCIMENTO",
+      "cpf": "\t91180856368",
+      "cns": "\t898003442496758",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "28",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C4": true,
+        "C6": true
+      },
+      "pendencias": [
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
+      ],
+      "c1Ok": true,
+      "c4_visitas": 40,
+      "c4Ok": false,
+      "c6_visitas": 49,
+      "c6Ok": false
+    },
+    "05679983397": {
+      "nome": "FRANCIELDE MARTINS",
+      "cpf": "\t05679983397",
+      "cns": "\t700003574505609",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "29",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "00152382372": {
+      "nome": "PIETRO MARTINS DE SOUSA",
+      "cpf": "\t00152382372",
+      "cns": "\t702109727995594",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "29",
+      "telefone": "",
       "condicoes": {},
       "indicadores": {
         "C1": true,
@@ -3937,563 +2499,1765 @@
       },
       "pendencias": [],
       "c1Ok": true,
-      "dt_cadastral": "13/03/2026",
-      "c2_visitas": 14,
+      "c2_visitas": 5,
+      "c2_vacinasOk": true,
       "c2Ok": true
+    },
+    "63199753345": {
+      "nome": "FRANCISCO HIGOR EMIDIO DA COSTA",
+      "cpf": "\t63199753345",
+      "cns": "-",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "30",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62970922304": {
+      "nome": "DIEGO EMIDIO DA COSTA",
+      "cpf": "\t62970922304",
+      "cns": "-",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "30",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "00728058383": {
+      "nome": "OSIMAR PEREIRA DA SILVA",
+      "cpf": "\t00728058383",
+      "cns": "-",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "38",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
     },
     "JOSE VIEIRA DA SILVA": {
       "nome": "JOSE VIEIRA DA SILVA",
-      "cpf": "898002976716678",
-      "cns": "",
+      "cpf": "-",
+      "cns": "\t898002976716678",
       "rua": "RUA SÃO FRANCISCO",
-      "numero": "",
-      "telefone": "(99) 98234-4663",
+      "numero": "39",
+      "telefone": "",
       "condicoes": {},
       "indicadores": {
         "C1": true
       },
       "pendencias": [],
-      "dt_cadastral": "21/09/2026",
-      "c1Ok": true
-    },
-    "97212644315": {
-      "nome": "FRANCIMAURO ALVES RODRIGUES PEREIRA",
-      "cpf": "972.126.443-15",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98171-8449",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "20/03/2026",
-      "c1Ok": true
-    },
-    "60263716309": {
-      "nome": "DEUSIMAR ALVES PEREIRA",
-      "cpf": "602.637.163-09",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 99201-1791",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "25/02/2026",
-      "c1Ok": true
-    },
-    "06254228300": {
-      "nome": "KARINE MORAIS BARROS DE ABREU CAMPELO",
-      "cpf": "062.542.283-00",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98433-5520",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "02/06/2026",
-      "c1Ok": true
-    },
-    "50801481368": {
-      "nome": "NILZETE NASCIMENTO COSTA",
-      "cpf": "508.014.813-68",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98455-1856",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "14/03/2026",
-      "c1Ok": true
-    },
-    "LOURINALDO ALVES DE ANDRADE": {
-      "nome": "LOURINALDO ALVES DE ANDRADE",
-      "cpf": "706805768453721",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 99999-4232",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "14/08/2026",
-      "c1Ok": true
-    },
-    "01103912330": {
-      "nome": "JUNIOR MARLON DE LIRA",
-      "cpf": "011.039.123-30",
-      "cns": "",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "",
-      "telefone": "(99) 98145-4545",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "07/10/2026",
       "c1Ok": true
     },
     "00692385371": {
       "nome": "FRANCISCA NEUMA DA SILVA E SILVA",
-      "cpf": "006.923.853-71",
-      "cns": "",
+      "cpf": "\t00692385371",
+      "cns": "\t898002976719294",
       "rua": "RUA SÃO FRANCISCO",
-      "numero": "",
-      "telefone": "(99) 98234-4663",
+      "numero": "39",
+      "telefone": "",
       "condicoes": {},
       "indicadores": {
         "C1": true
       },
       "pendencias": [],
-      "dt_cadastral": "08/04/2026",
       "c1Ok": true
     },
-    "93290950387": {
-      "nome": "FRANCINILDO DA SILVA CHAVES",
-      "cpf": "932.909.503-87",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98432-1705",
+    "95079068353": {
+      "nome": "FRANCISCO RODRIGUES TOMÉ",
+      "cpf": "\t95079068353",
+      "cns": "\t701704229044670",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "40",
+      "telefone": "",
       "condicoes": {},
       "indicadores": {
-        "C1": true
+        "C1": true,
+        "C6": true
       },
-      "pendencias": [],
-      "dt_cadastral": "27/03/2026",
-      "c1Ok": true
+      "pendencias": [
+        "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
+      ],
+      "c1Ok": true,
+      "c6_visitas": 46,
+      "c6Ok": false
     },
-    "12328072305": {
-      "nome": "REBECA MORAIS DIAS CAMPELO",
-      "cpf": "123.280.723-05",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98433-5520",
+    "17813549368": {
+      "nome": "JOSE EVARISTO CAVALCANTE",
+      "cpf": "\t17813549368",
+      "cns": "\t898003709498742",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "42",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C4": true,
+        "C6": true
+      },
+      "pendencias": [
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
+      ],
+      "c1Ok": true,
+      "c4_visitas": 8,
+      "c4Ok": false,
+      "c6_visitas": 98,
+      "c6Ok": false
+    },
+    "01103912330": {
+      "nome": "JUNIOR MARLON DE LIRA",
+      "cpf": "\t01103912330",
+      "cns": "\t704306516627295",
+      "rua": "RUA SÃO FRANCISCO",
+      "numero": "44",
+      "telefone": "",
       "condicoes": {},
       "indicadores": {
         "C1": true
       },
       "pendencias": [],
-      "dt_cadastral": "02/06/2026",
       "c1Ok": true
     },
     "62202279300": {
       "nome": "THALISSA LAIS LIRA MAIA",
-      "cpf": "622.022.793-00",
-      "cns": "",
+      "cpf": "\t62202279300",
+      "cns": "\t898003403104356",
       "rua": "RUA SÃO FRANCISCO",
-      "numero": "",
-      "telefone": "(99) 98469-4435",
+      "numero": "44",
+      "telefone": "",
       "condicoes": {},
       "indicadores": {
         "C1": true
       },
       "pendencias": [],
-      "dt_cadastral": "05/05/2026",
       "c1Ok": true
     },
-    "63018173384": {
-      "nome": "ALLAN DA SILVEIRA QUEIROZ",
-      "cpf": "630.181.733-84",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "20/03/2026",
-      "c1Ok": true
-    },
-    "63122756390": {
-      "nome": "MILENE DE SOUZA CARVALHO",
-      "cpf": "631.227.563-90",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "13/03/2026",
-      "c1Ok": true
-    },
-    "08115379352": {
-      "nome": "MARIA CARLA FEITOSA SOUSA",
-      "cpf": "081.153.793-52",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "13/03/2026",
-      "c1Ok": true
-    },
-    "07624623374": {
-      "nome": "FRANCISCO ALVES MOURÃO NETO",
-      "cpf": "076.246.233-74",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "27/03/2026",
-      "c1Ok": true
-    },
-    "07035175385": {
-      "nome": "TIAGO MOURÃO SOUSA",
-      "cpf": "070.351.753-85",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "27/03/2026",
-      "c1Ok": true
-    },
-    "10341344346": {
-      "nome": "ISABELLE MORAIS DIAS CAMPELO",
-      "cpf": "103.413.443-46",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98433-5520",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "02/06/2026",
-      "c1Ok": true
-    },
-    "46668985300": {
-      "nome": "MANOEL VANDERLEY PEREIRA DA SILVA",
-      "cpf": "466.689.853-00",
-      "cns": "",
+    "62987068360": {
+      "nome": "BENJAMIN ASAFE DE LIMA MATIAS",
+      "cpf": "\t62987068360",
+      "cns": "\t898005132230743",
       "rua": "RUA SÃO FRANCISCO",
-      "numero": "",
-      "telefone": "(99) 98102-9092",
+      "numero": "44",
+      "telefone": "",
       "condicoes": {},
       "indicadores": {
         "C1": true
       },
       "pendencias": [],
-      "dt_cadastral": "17/07/2026",
-      "c1Ok": true
-    },
-    "63199753345": {
-      "nome": "FRANCISCO HIGOR EMIDIO DA COSTA",
-      "cpf": "631.997.533-45",
-      "cns": "",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "",
-      "telefone": "(99) 00000-0000",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "08/04/2026",
-      "c1Ok": true
-    },
-    "62981959395": {
-      "nome": "SUELEN NAZARETH FERNANDES DE ASSIS",
-      "cpf": "629.819.593-95",
-      "cns": "",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "06/04/2026",
-      "c1Ok": true
-    },
-    "03926955376": {
-      "nome": "PEDRO LUCAS FERNANDES CARLOS DE SOUSA",
-      "cpf": "039.269.553-76",
-      "cns": "",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "",
-      "telefone": "(99) 98234-4663",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "08/04/2026",
-      "c1Ok": true
-    },
-    "12413599380": {
-      "nome": "ALICE DE SOUSA CARVALHO",
-      "cpf": "124.135.993-80",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98425-2583",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "13/03/2026",
-      "c1Ok": true
-    },
-    "61091151342": {
-      "nome": "THAFNNY DE SOUSA PACHECO",
-      "cpf": "610.911.513-42",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98114-2267",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "13/03/2026",
-      "c1Ok": true
-    },
-    "60212130331": {
-      "nome": "JAILSON DIAS CAMPELO",
-      "cpf": "602.121.303-31",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98164-5954",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "02/06/2026",
-      "c1Ok": true
-    },
-    "93433280363": {
-      "nome": "JADSON DOURADO PACHECO",
-      "cpf": "934.332.803-63",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98114-2267",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "18/08/2026",
-      "c1Ok": true
-    },
-    "04077897319": {
-      "nome": "VALDERI MATOS SILVA",
-      "cpf": "040.778.973-19",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98455-1856",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "27/03/2026",
-      "c1Ok": true
-    },
-    "04884619102": {
-      "nome": "ROMARIO DO NASCIMENTO BASILIO",
-      "cpf": "048.846.191-02",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98425-9446",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "08/10/2026",
-      "c1Ok": true
-    },
-    "42632333873": {
-      "nome": "SAMARA GOMES DA CONCEIÇÃO",
-      "cpf": "426.323.338-73",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98456-4671",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "13/03/2026",
-      "c1Ok": true
-    },
-    "07696397397": {
-      "nome": "ERIKA VIEIRA ALMEIDA",
-      "cpf": "076.963.973-97",
-      "cns": "",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "",
-      "telefone": "(99) 98499-5895",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "08/04/2026",
-      "c1Ok": true
-    },
-    "03907611330": {
-      "nome": "REINALDO DE SOUSA VERAS",
-      "cpf": "039.076.113-30",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(16) 98152-1813",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "20/03/2026",
-      "c1Ok": true
-    },
-    "06907183307": {
-      "nome": "FRANCISCO RODRIGUES MELO",
-      "cpf": "069.071.833-07",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98554-8257",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "13/03/2026",
-      "c1Ok": true
-    },
-    "17879291750": {
-      "nome": "RODRIGO TIMOTÉO DA SILVA",
-      "cpf": "178.792.917-50",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98523-9671",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "02/02/2026",
-      "c1Ok": true
-    },
-    "01660529301": {
-      "nome": "EMANUEL WENDEL POOL GAT RODRIGUES",
-      "cpf": "016.605.293-01",
-      "cns": "",
-      "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98452-8452",
-      "condicoes": {},
-      "indicadores": {
-        "C1": true
-      },
-      "pendencias": [],
-      "dt_cadastral": "27/03/2026",
       "c1Ok": true
     },
     "62979687308": {
       "nome": "PEDRO EMANUEL DE LIRA SOUSA",
-      "cpf": "629.796.873-08",
-      "cns": "",
+      "cpf": "\t62979687308",
+      "cns": "\t706305714444079",
       "rua": "RUA SÃO FRANCISCO",
-      "numero": "",
-      "telefone": "(99) 98456-2314",
+      "numero": "44",
+      "telefone": "",
       "condicoes": {},
       "indicadores": {
         "C1": true
       },
       "pendencias": [],
-      "dt_cadastral": "05/05/2026",
       "c1Ok": true
     },
-    "46669752334": {
-      "nome": "WHILISTON CHARLES PEREIRADE ASSIS",
-      "cpf": "466.697.523-34",
-      "cns": "",
-      "rua": "RUA SÃO FRANCISCO",
-      "numero": "",
-      "telefone": "(99) 98518-4732",
+    "06106909300": {
+      "nome": "JOHN RAMON SILVA CRUZ",
+      "cpf": "\t06106909300",
+      "cns": "\t704503328028318",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "05",
+      "telefone": "",
       "condicoes": {},
       "indicadores": {
         "C1": true
       },
       "pendencias": [],
-      "dt_cadastral": "06/04/2026",
+      "c1Ok": true
+    },
+    "03660648353": {
+      "nome": "ZAIRA LOUISE SILVEIRA CRUZ",
+      "cpf": "\t03660648353",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "05",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C2": true
+      },
+      "pendencias": [],
+      "c1Ok": true,
+      "c2_visitas": 14,
+      "c2_vacinasOk": true,
+      "c2Ok": true
+    },
+    "LOURINALDO ALVES DE ANDRADE": {
+      "nome": "LOURINALDO ALVES DE ANDRADE",
+      "cpf": "-",
+      "cns": "\t706805768453721",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "08",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "01535090316": {
+      "nome": "MARIA DIAS DA SILVA",
+      "cpf": "\t01535090316",
+      "cns": "\t898003706344388",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "09",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C4": true,
+        "C6": true
+      },
+      "pendencias": [
+        "C4: Busca Ativa - Exame de Hemoglobina Glicada",
+        "C4: Busca Ativa - Avaliação periódica dos pés",
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
+      ],
+      "c1Ok": true,
+      "c4_visitas": 45,
+      "c4Ok": false,
+      "c6_visitas": 56,
+      "c6Ok": false
+    },
+    "10595892302": {
+      "nome": "ANA CECÍLIA DE SOUSA LIMA",
+      "cpf": "\t10595892302",
+      "cns": "\t898005919976855",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "10",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "24025482827": {
+      "nome": "GEANDERSON DOS SANTOS CONCEIÇÃO",
+      "cpf": "\t24025482827",
+      "cns": "\t898000749409225",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "10",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "03468858337": {
+      "nome": "SIVIRINO DE SOUSA MELO",
+      "cpf": "\t03468858337",
+      "cns": "\t898003735519395",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "10",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C6": true
+      },
+      "pendencias": [
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
+      ],
+      "c1Ok": true,
+      "c6_visitas": 43,
+      "c6Ok": false
+    },
+    "62824713380": {
+      "nome": "ALAN DOS SANTOS MELO",
+      "cpf": "\t62824713380",
+      "cns": "\t898002977471067",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "10",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62825761303": {
+      "nome": "KAUAN MELO CONCEIÇÃO",
+      "cpf": "\t62825761303",
+      "cns": "\t705406443941499",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "10",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "42632333873": {
+      "nome": "SAMARA GOMES DA CONCEIÇÃO",
+      "cpf": "\t42632333873",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "10",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "06907183307": {
+      "nome": "FRANCISCO RODRIGUES MELO",
+      "cpf": "\t06907183307",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "10",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "08045608382": {
+      "nome": "JOÃO VITOR BARBOSA DE SOUZA",
+      "cpf": "\t08045608382",
+      "cns": "\t898003707358242",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "10",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62870733305": {
+      "nome": "ALICIA RODRIGUES OLIVEIRA",
+      "cpf": "\t62870733305",
+      "cns": "\t898004872923792",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "100",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "10308193350": {
+      "nome": "GABRIEL DE SOUSA RODRIGUES CARVALHO",
+      "cpf": "\t10308193350",
+      "cns": "\t898005911848041",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "100",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "05182585306": {
+      "nome": "VALDEMIR CARVALHO DE SOUSA",
+      "cpf": "\t05182585306",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "100",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62870738374": {
+      "nome": "RHUAN GUILHERME DE SOUSA BARBOSA",
+      "cpf": "\t62870738374",
+      "cns": "\t898004055584298",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "100",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "93290950387": {
+      "nome": "FRANCINILDO DA SILVA CHAVES",
+      "cpf": "\t93290950387",
+      "cns": "\t898003468300249",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "105",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62434202306": {
+      "nome": "DIOGO DE SOUZA CHAVES",
+      "cpf": "\t62434202306",
+      "cns": "\t700102964261311",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "105",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "08467435313": {
+      "nome": "RODRIGO DE ALMADA FERREIRA",
+      "cpf": "\t08467435313",
+      "cns": "\t707009830912339",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "107",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "01660529301": {
+      "nome": "EMANUEL WENDEL POOL GAT RODRIGUES",
+      "cpf": "\t01660529301",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "111",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "63212389370": {
+      "nome": "PAULO HENRIQUE SILVA SANTOS",
+      "cpf": "\t63212389370",
+      "cns": "\t898003724778556",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "112",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "03856016384": {
+      "nome": "RENILDO DA SILVA OLIVEIRA",
+      "cpf": "\t03856016384",
+      "cns": "\t898050038701768",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "114",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "00091842360": {
+      "nome": "ANTONIO JOSE DE PAULO FILHO",
+      "cpf": "\t00091842360",
+      "cns": "\t704006107922870",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "116",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "08699503393": {
+      "nome": "DHOSEFHY VIANE DE SOUSA FRANÇA",
+      "cpf": "\t08699503393",
+      "cns": "\t898005148829011",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "118",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "12686149396": {
+      "nome": "MARIA DHORRANA DE JESUS FRANÇA",
+      "cpf": "\t12686149396",
+      "cns": "\t700500546412351",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "118",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C2": true
+      },
+      "pendencias": [],
+      "c1Ok": true,
+      "c2_visitas": 17,
+      "c2_vacinasOk": true,
+      "c2Ok": true
+    },
+    "63122756390": {
+      "nome": "MILENE DE SOUZA CARVALHO",
+      "cpf": "\t63122756390",
+      "cns": "\t701000808687991",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "12",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "08115379352": {
+      "nome": "MARIA CARLA FEITOSA SOUSA",
+      "cpf": "\t08115379352",
+      "cns": "\t898004118933715",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "12",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "08115394319": {
+      "nome": "LUCAS GABRIEL FEITOSA SOUZA",
+      "cpf": "\t08115394319",
+      "cns": "\t898004118930848",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "12",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "08695636372": {
+      "nome": "KAIQUE DE SOUZA CARVALHO",
+      "cpf": "\t08695636372",
+      "cns": "\t898004120021655",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "12",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "12413599380": {
+      "nome": "ALICE DE SOUSA CARVALHO",
+      "cpf": "\t12413599380",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "12",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
       "c1Ok": true
     },
     "09103599388": {
       "nome": "GUYLBTY FREITAS DA SILVA SOUSA",
-      "cpf": "091.035.993-88",
-      "cns": "",
+      "cpf": "\t09103599388",
+      "cns": "-",
       "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98198-6313",
+      "numero": "13",
+      "telefone": "",
       "condicoes": {},
       "indicadores": {
         "C1": true
       },
       "pendencias": [],
-      "dt_cadastral": "13/02/2026",
+      "c1Ok": true
+    },
+    "04077897319": {
+      "nome": "VALDERI MATOS SILVA",
+      "cpf": "\t04077897319",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "136",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "02713021359": {
+      "nome": "JOSÉ PEDRO DOS SANTOS",
+      "cpf": "\t02713021359",
+      "cns": "\t898002985075175",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "14",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C6": true
+      },
+      "pendencias": [
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
+      ],
+      "c1Ok": true,
+      "c6_visitas": 10,
+      "c6Ok": false
+    },
+    "62851372343": {
+      "nome": "ERISVAN SANTOS DE JESUS",
+      "cpf": "\t62851372343",
+      "cns": "\t898003407308355",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "144",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62851386301": {
+      "nome": "DENISVAN SANTOS DE JESUS",
+      "cpf": "\t62851386301",
+      "cns": "\t898003407293854",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "144",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "02441285378": {
+      "nome": "RAIMUNDO NONATO DE MORAIS BAIMA",
+      "cpf": "\t02441285378",
+      "cns": "\t706705721408720",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "16",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "63473193305": {
+      "nome": "JARDIELTO BORGES DA SILVA",
+      "cpf": "\t63473193305",
+      "cns": "\t707403065724772",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "16",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "63473199346": {
+      "nome": "ALEXIA DA SILVA CAMELO",
+      "cpf": "\t63473199346",
+      "cns": "\t700002910856903",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "16",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "13278952340": {
+      "nome": "MAITÊ HADASSAH BORGES DE MORAIS BAIMA",
+      "cpf": "\t13278952340",
+      "cns": "\t708600072827380",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "16",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C2": true
+      },
+      "pendencias": [],
+      "c1Ok": true,
+      "c2_visitas": 15,
+      "c2_vacinasOk": true,
+      "c2Ok": true
+    },
+    "05525205351": {
+      "nome": "ANTONIO SOBRINHO DE SOUSA NETO",
+      "cpf": "\t05525205351",
+      "cns": "\t705404498157194",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "18",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "08465735395": {
+      "nome": "FERNANDO FERREIRA DE MATOS",
+      "cpf": "\t08465735395",
+      "cns": "\t706707592368312",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "19",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "00963026313": {
+      "nome": "JANES FRAN OLIVEIRA MELO",
+      "cpf": "\t00963026313",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "2",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62968800302": {
+      "nome": "RODRIGO SILVA MELO",
+      "cpf": "\t62968800302",
+      "cns": "\t898004108751495",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "2",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62843950350": {
+      "nome": "AGATHA RIANA DE SOUSA BASILIO",
+      "cpf": "\t62843950350",
+      "cns": "\t898005191523115",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "2",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "10317530364": {
+      "nome": "LUARA KEVILLY FELIX BASILIO",
+      "cpf": "\t10317530364",
+      "cns": "\t898005907924456",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "2",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "04884619102": {
+      "nome": "ROMARIO DO NASCIMENTO BASILIO",
+      "cpf": "\t04884619102",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "2",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "13289126390": {
+      "nome": "RENATA FELIX BASILIO GOMES",
+      "cpf": "\t13289126390",
+      "cns": "\t700004498367906",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "2",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C2": true
+      },
+      "pendencias": [],
+      "c1Ok": true,
+      "c2_visitas": 10,
+      "c2_vacinasOk": true,
+      "c2Ok": true
+    },
+    "11403757330": {
+      "nome": "ANNA VITORIA RAMALHO MATOS",
+      "cpf": "\t11403757330",
+      "cns": "\t700000868264207",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "20",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "63027076337": {
+      "nome": "GABRIEL PINTO DE MIRANDA",
+      "cpf": "\t63027076337",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "20",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "13640416341": {
+      "nome": "ÁVILLA CLARA RAMALHO MENDES",
+      "cpf": "\t13640416341",
+      "cns": "\t700008786385105",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "20",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C2": true
+      },
+      "pendencias": [],
+      "c1Ok": true,
+      "c2_visitas": 9,
+      "c2_vacinasOk": true,
+      "c2Ok": true
+    },
+    "61091151342": {
+      "nome": "THAFNNY DE SOUSA PACHECO",
+      "cpf": "\t61091151342",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "21",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "93433280363": {
+      "nome": "JADSON DOURADO PACHECO",
+      "cpf": "\t93433280363",
+      "cns": "\t707605257334697",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "21",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "00512116377": {
+      "nome": "FRANCISCO BARBOSA DE SOUSA BEZERRA",
+      "cpf": "\t00512116377",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "22",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C6": true
+      },
+      "pendencias": [
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
+      ],
+      "c1Ok": true,
+      "c6_visitas": 35,
+      "c6Ok": false
+    },
+    "50801481368": {
+      "nome": "NILZETE NASCIMENTO COSTA",
+      "cpf": "\t50801481368",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "26",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "04860859375": {
+      "nome": "ADEMILSON DA SILVA TEODORIO",
+      "cpf": "\t04860859375",
+      "cns": "\t700504344326857",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "28",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "48850861320": {
+      "nome": "DANIEL DE LIRA",
+      "cpf": "\t48850861320",
+      "cns": "\t898003418557084",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "31",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "04113414300": {
+      "nome": "FRANCISCO DA ENCARNAÇÃO",
+      "cpf": "\t04113414300",
+      "cns": "\t708007333212629",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "34",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62563354307": {
+      "nome": "ANANIAS MOURAO SOUSA",
+      "cpf": "\t62563354307",
+      "cns": "\t898002991434084",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "35",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "13267683360": {
+      "nome": "ARTHUR OLIVEIRA MOURÃO",
+      "cpf": "\t13267683360",
+      "cns": "\t704200755828483",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "35",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C2": true
+      },
+      "pendencias": [],
+      "c1Ok": true,
+      "c2_visitas": 16,
+      "c2_vacinasOk": true,
+      "c2Ok": true
+    },
+    "01373548789": {
+      "nome": "JOÃO BATISTA RIBEIRO DA COSTA",
+      "cpf": "\t01373548789",
+      "cns": "\t898004014422897",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "36",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62862131393": {
+      "nome": "GEOVANA DOS SANTOS RIBEIRO",
+      "cpf": "\t62862131393",
+      "cns": "\t898004170969997",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "36",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "72686537353": {
+      "nome": "FRANCISCO CANDIDO DA SILVA",
+      "cpf": "\t72686537353",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "37",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62831513375": {
+      "nome": "EMANUEL DIAS DE ABREU TIMOTEO",
+      "cpf": "\t62831513375",
+      "cns": "\t898005814958083",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "38",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "12642730379": {
+      "nome": "HELOISA DIAS DE ABREU TIMOTÉO",
+      "cpf": "\t12642730379",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "38",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C2": true
+      },
+      "pendencias": [],
+      "c1Ok": true,
+      "c2_visitas": 16,
+      "c2_vacinasOk": true,
+      "c2Ok": true
+    },
+    "17879291750": {
+      "nome": "RODRIGO TIMOTÉO DA SILVA",
+      "cpf": "\t17879291750",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "38",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "YURIMAR ESTEFANIA RODRIGUEZ VENAVIDES": {
+      "nome": "YURIMAR ESTEFANIA RODRIGUEZ VENAVIDES",
+      "cpf": "-",
+      "cns": "\t705001415998456",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "4",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "04518982304": {
+      "nome": "MANOEL DE GRACIANO ALMEIDA DE SOUSA",
+      "cpf": "\t04518982304",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "4",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
       "c1Ok": true
     },
     "13573849393": {
       "nome": "ISABELLA RAYSLLA ALMEIDA VENAVIDES",
-      "cpf": "135.738.493-93",
-      "cns": "",
+      "cpf": "\t13573849393",
+      "cns": "\t898006438753388",
       "rua": "RUA SÃO PEDRO",
-      "numero": "",
-      "telefone": "(99) 98514-2365",
+      "numero": "4",
+      "telefone": "",
       "condicoes": {},
       "indicadores": {
         "C1": true
       },
       "pendencias": [],
-      "dt_cadastral": "30/04/2026",
+      "c1Ok": true
+    },
+    "05035652378": {
+      "nome": "FRANCISCO DE ASSIS DA CONCEIÇÃO CORREIA",
+      "cpf": "\t05035652378",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "40",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "12821678398": {
+      "nome": "ANA LIVIA FERREIRA CORREIA",
+      "cpf": "\t12821678398",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "40",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C2": true
+      },
+      "pendencias": [],
+      "c1Ok": true,
+      "c2_visitas": 10,
+      "c2_vacinasOk": true,
+      "c2Ok": true
+    },
+    "11782997326": {
+      "nome": "LUIS FERNANDO FERREIRA DOS SANTOS",
+      "cpf": "\t11782997326",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "40",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62912831318": {
+      "nome": "DAVI SOUSA VERAS",
+      "cpf": "\t62912831318",
+      "cns": "\t898004543388714",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "42",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "60478447310": {
+      "nome": "FRANCISCO RICARDO DE SOUSA VERAS",
+      "cpf": "\t60478447310",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "42",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "03907611330": {
+      "nome": "REINALDO DE SOUSA VERAS",
+      "cpf": "\t03907611330",
+      "cns": "\t703406280992700",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "42",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "63086160365": {
+      "nome": "VINICIUS BATISTA DA CONCEIÇÃO",
+      "cpf": "\t63086160365",
+      "cns": "\t700009575196400",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "43",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62869894392": {
+      "nome": "DAVI MIGUEL RIBEIRO ANDRADE",
+      "cpf": "\t62869894392",
+      "cns": "\t898005126071124",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "48",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "97212644315": {
+      "nome": "FRANCIMAURO ALVES RODRIGUES PEREIRA",
+      "cpf": "\t97212644315",
+      "cns": "\t700505936114759",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "49",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "63024327312": {
+      "nome": "MAURO HENRIQUE MELO PEREIRA",
+      "cpf": "\t63024327312",
+      "cns": "\t708002344753826",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "49",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "63024331344": {
+      "nome": "LUCAS ELIEL MELO PEREIRA",
+      "cpf": "\t63024331344",
+      "cns": "\t898003439417141",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "49",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "60263716309": {
+      "nome": "DEUSIMAR ALVES PEREIRA",
+      "cpf": "\t60263716309",
+      "cns": "-",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "50",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "03075848360": {
+      "nome": "ELCIEL DIAS DE ABREU",
+      "cpf": "\t03075848360",
+      "cns": "\t702907565405070",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "74",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62840155346": {
+      "nome": "ELIAB PEREIRA DIAS",
+      "cpf": "\t62840155346",
+      "cns": "\t707405045935079",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "74",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "06254228300": {
+      "nome": "KARINE MORAIS BARROS DE ABREU CAMPELO",
+      "cpf": "\t06254228300",
+      "cns": "\t701203022775211",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "76",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "12328072305": {
+      "nome": "REBECA MORAIS DIAS CAMPELO",
+      "cpf": "\t12328072305",
+      "cns": "\t898005111588789",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "76",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "10341344346": {
+      "nome": "ISABELLE MORAIS DIAS CAMPELO",
+      "cpf": "\t10341344346",
+      "cns": "\t898005934933908",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "76",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "60212130331": {
+      "nome": "JAILSON DIAS CAMPELO",
+      "cpf": "\t60212130331",
+      "cns": "\t898003736862506",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "76",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "00316987352": {
+      "nome": "RAIMUNDO DE SOUSA QUEIROZ",
+      "cpf": "\t00316987352",
+      "cns": "\t898003741082858",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "78A",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "63018173384": {
+      "nome": "ALLAN DA SILVEIRA QUEIROZ",
+      "cpf": "\t63018173384",
+      "cns": "\t700200428116623",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "78A",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "10382831322": {
+      "nome": "AGATHA SOPHIA SILVEIRA GOMES",
+      "cpf": "\t10382831322",
+      "cns": "\t898005909174225",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "78A",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "00397034369": {
+      "nome": "JOSÉ FERREIRA LIMA",
+      "cpf": "\t00397034369",
+      "cns": "\t898003741006426",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "80",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C6": true
+      },
+      "pendencias": [
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
+      ],
+      "c1Ok": true,
+      "c6_visitas": 59,
+      "c6Ok": false
+    },
+    "62869593350": {
+      "nome": "WENDEL DE SOUSA MORAES",
+      "cpf": "\t62869593350",
+      "cns": "\t898003414616647",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "86",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62869575378": {
+      "nome": "LAYS DE SOUSA MORAES",
+      "cpf": "\t62869575378",
+      "cns": "\t898004804625692",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "86",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "77072111387": {
+      "nome": "ERIVAN FERREIRA VIANA",
+      "cpf": "\t77072111387",
+      "cns": "\t708906763281317",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "87",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "62857694350": {
+      "nome": "DAVI LUCCA ABREU CAETANO",
+      "cpf": "\t62857694350",
+      "cns": "\t898004085125569",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "87",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "05824496340": {
+      "nome": "JOÃO PEQUENO DE SOUSA",
+      "cpf": "\t05824496340",
+      "cns": "\t706003333708144",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "89",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "13025032359": {
+      "nome": "ALEF RAVI SOUSA DA CONCEICAO",
+      "cpf": "\t13025032359",
+      "cns": "\t705008492171257",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "89",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C2": true
+      },
+      "pendencias": [],
+      "c1Ok": true,
+      "c2_visitas": 9,
+      "c2_vacinasOk": true,
+      "c2Ok": true
+    },
+    "17210127291": {
+      "nome": "JOSÉ ISAÍAS DA SILVA",
+      "cpf": "\t17210127291",
+      "cns": "\t898002978460549",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "91",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C6": true
+      },
+      "pendencias": [
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
+      ],
+      "c1Ok": true,
+      "c6_visitas": 52,
+      "c6Ok": false
+    },
+    "95106294304": {
+      "nome": "ANTÔNIO MENESES DE SOUSA",
+      "cpf": "\t95106294304",
+      "cns": "\t898002978124751",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "92",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "07624623374": {
+      "nome": "FRANCISCO ALVES MOURÃO NETO",
+      "cpf": "\t07624623374",
+      "cns": "\t898002991428521",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "92",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "07035175385": {
+      "nome": "TIAGO MOURÃO SOUSA",
+      "cpf": "\t07035175385",
+      "cns": "\t898002991422671",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "92",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "50801562368": {
+      "nome": "JOÃO MARCOS DA SILVA",
+      "cpf": "\t50801562368",
+      "cns": "\t898002982800944",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "96",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C6": true
+      },
+      "pendencias": [
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
+      ],
+      "c1Ok": true,
+      "c6_visitas": 50,
+      "c6Ok": false
+    },
+    "63027758330": {
+      "nome": "NICOLAS DINIZ DA SILVA LIMA",
+      "cpf": "\t63027758330",
+      "cns": "\t898005155447307",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "96",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
+      "c1Ok": true
+    },
+    "00481758380": {
+      "nome": "RITA MARIA RODRIGUES DA SILVA",
+      "cpf": "\t00481758380",
+      "cns": "\t898002977737733",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "96",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C6": true
+      },
+      "pendencias": [
+        "C6: Busca Ativa - Vacina contra Influenza atrasada"
+      ],
+      "c1Ok": true,
+      "c6_visitas": 25,
+      "c6Ok": false
+    },
+    "23652756304": {
+      "nome": "MARIA JOSÉ BARBOSA SILVA",
+      "cpf": "\t23652756304",
+      "cns": "\t706404618631686",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "97",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C6": true
+      },
+      "pendencias": [
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
+      ],
+      "c1Ok": true,
+      "c6_visitas": 50,
+      "c6Ok": false
+    },
+    "68547650300": {
+      "nome": "VALDIR BARBOSA SILVA",
+      "cpf": "\t68547650300",
+      "cns": "\t898003420907453",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "99",
+      "telefone": "",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true,
+        "C6": true
+      },
+      "pendencias": [
+        "C6: Busca Ativa - Vacina contra Influenza atrasada",
+        "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
+      ],
+      "c1Ok": true,
+      "c6_visitas": 53,
+      "c6Ok": false
+    },
+    "63047965366": {
+      "nome": "LORENZO SILVA SOUSA",
+      "cpf": "630.479.653-66",
+      "cns": "898005861146529",
+      "rua": "RUA SÃO PEDRO",
+      "numero": "18",
+      "telefone": "(99) 99999-9999",
+      "condicoes": {},
+      "indicadores": {
+        "C1": true
+      },
+      "pendencias": [],
       "c1Ok": true
     }
   },

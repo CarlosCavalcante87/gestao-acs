@@ -58,7 +58,7 @@ def processar_csvs_da_pasta():
         print("[-] Nenhum arquivo .csv encontrado na pasta atual.")
         return
 
-    print(f"[*] Processando {len(csv_files)} relatórios CSV do PEC (Incluindo C7 - Saúde da Mulher)...")
+    print(f"[*] Processando {len(csv_files)} relatórios CSV do PEC...")
     
     anotacoes_salvas = {}
     if os.path.exists(ARQUIVO_DADOS):
@@ -167,16 +167,32 @@ def processar_csvs_da_pasta():
                 except: vis_inf = 0
                 try: cons_inf = int(reg.get('Quantidade de consultas até 24 meses', 0) or 0)
                 except: cons_inf = 0
+                
                 penta = reg.get('Difteria, Tétano, Pertusis, Hepatite B, Haemophilus Influenza B', '')
                 polio = reg.get('Poliomielite', '')
-                vac_ok = bool(penta and penta != '-' and polio and polio != '-')
+                
+                penta_ok = bool(penta and penta != '-')
+                polio_ok = bool(polio and polio != '-')
+                vac_ok = (penta_ok and polio_ok)
 
                 cid['c2_visitas'] = vis_inf
+                cid['c2_vacinasOk'] = vac_ok
                 cid['c2Ok'] = (vis_inf >= 2 and vac_ok and cons_inf >= 1)
+                
                 cid['pendencias'] = [p for p in cid['pendencias'] if not p.startswith("C2:")]
-                if vis_inf < 2: cid['pendencias'].append(f"C2: Visita Domiciliar pendente ({vis_inf}/2 visitas)")
-                if not vac_ok: cid['pendencias'].append("C2: Busca Ativa - Vacinas atrasadas (Penta/Polio)")
-                if cons_inf == 0: cid['pendencias'].append("C2: Busca Ativa - Agendar consulta de puericultura")
+                
+                if vis_inf < 2: 
+                    cid['pendencias'].append(f"C2: Visita Domiciliar pendente ({vis_inf}/2 visitas)")
+                
+                if not penta_ok and not polio_ok:
+                    cid['pendencias'].append("C2: Busca Ativa - Faltam vacinas Penta e Pólio")
+                elif not penta_ok:
+                    cid['pendencias'].append("C2: Busca Ativa - Falta vacina Penta")
+                elif not polio_ok:
+                    cid['pendencias'].append("C2: Busca Ativa - Falta vacina Pólio")
+                
+                if cons_inf == 0: 
+                    cid['pendencias'].append("C2: Busca Ativa - Agendar consulta de puericultura")
 
             # C3: Gestantes
             elif tema == "Gestação e puerpério":
@@ -260,7 +276,7 @@ def processar_csvs_da_pasta():
                 if not cons_anual: cid['pendencias'].append("C6: Busca Ativa - Consulta anual pendente (>12 meses)")
                 if not ivcf_ok: cid['pendencias'].append("C6: Busca Ativa - Avaliação multidimensional (IVCF-20)")
 
-            # C7: Saúde da Mulher (Preventivo / Citopatológico)
+            # C7: Saúde da Mulher
             elif tema == "Saúde da mulher":
                 cid['indicadores']['C7'] = True
                 av = reg.get("Exame de rastreamento de câncer de colo de útero data última avaliação", "")

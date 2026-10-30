@@ -25,7 +25,7 @@
       --c4: #f59e0b;
       --c5: #ef4444;
       --c6: #10b981;
-      --c7: #db2777; /* Rosa Forte */
+      --c7: #db2777;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
     body { background: var(--bg); color: var(--text); padding-bottom: 75px; }
@@ -43,7 +43,7 @@
     .btn-sync { background: #0369a1; margin-bottom: 8px; font-size: 0.85rem; }
     .btn-danger { background: var(--danger); margin-top: 8px; }
 
-    /* GRID DE CARDS DOS INDICADORES */
+    /* GRID DE CARDS DOS INDICADORES ORDENADOS DE C1 A C7 */
     .grid-indicadores { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
     .card-meta { background: var(--card); padding: 9px 11px; border-radius: 8px; border: 1px solid var(--border); border-left: 4px solid var(--primary); cursor: pointer; transition: transform 0.1s, box-shadow 0.1s; position: relative; }
     .card-meta:active { transform: scale(0.98); }
@@ -89,14 +89,14 @@
 
     .tag { display: inline-block; font-size: 0.68rem; font-weight: 700; padding: 2px 6px; border-radius: 4px; margin-right: 3px; margin-bottom: 3px; }
     .tag-danger { background: #fee2e2; color: #b91c1c; }
-    .tag-ok { background: #dcfce7; color: #15803d; }
+    .tag-ok { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
     .tag-c1 { background: #e0f2fe; color: #0369a1; }
     .tag-c2 { background: #f3e8ff; color: #7e22ce; }
     .tag-c3 { background: #fce7f3; color: #be185d; }
     .tag-c4 { background: #fef3c7; color: #b45309; }
     .tag-c5 { background: #fee2e2; color: #b91c1c; }
     .tag-c6 { background: #dcfce7; color: #15803d; }
-    .tag-c7 { background: #fdf2f8; color: #be185d; border: 1px solid #fbcfe8; } /* Rosa Mulher */
+    .tag-c7 { background: #fdf2f8; color: #be185d; border: 1px solid #fbcfe8; }
 
     .pendencia-item { font-size: 0.74rem; font-weight: 600; color: #991b1b; background: #fff1f2; border: 1px solid #fecdd3; border-radius: 4px; padding: 3px 6px; margin-top: 3px; }
 
@@ -119,10 +119,11 @@
       📲 Instalar Aplicativo no Celular
     </button>
 
-    <!-- Tela 1: Painel dos Indicadores C1 a C7 -->
+    <!-- Tela 1: Painel dos Indicadores em Ordem Numérica C1 a C7 -->
     <div id="view-dashboard">
       <div class="grid-indicadores">
 
+        <!-- C1 -->
         <div class="card-meta" id="card-c1" style="border-left-color: var(--c1);" onclick="selecionarFiltroIndicador('C1')">
           <div class="header-card">
             <h4>C1 · Cadastro</h4>
@@ -134,6 +135,7 @@
           <div class="regra-acs">Meta: Territorialização &lt;24m</div>
         </div>
 
+        <!-- C2 -->
         <div class="card-meta" id="card-c2" style="border-left-color: var(--c2);" onclick="selecionarFiltroIndicador('C2')">
           <div class="header-card">
             <h4>C2 · Criança (0-24m)</h4>
@@ -145,6 +147,7 @@
           <div class="regra-acs">Meta: Visitas + Vacinas + Pueric.</div>
         </div>
 
+        <!-- C3 -->
         <div class="card-meta" id="card-c3" style="border-left-color: var(--c3);" onclick="selecionarFiltroIndicador('C3')">
           <div class="header-card">
             <h4>C3 · Pré-Natal</h4>
@@ -156,17 +159,7 @@
           <div class="regra-acs">Meta: 3 PN + 1 Pós-parto + Odonto</div>
         </div>
 
-        <div class="card-meta" id="card-c7" style="border-left-color: var(--c7);" onclick="selecionarFiltroIndicador('C7')">
-          <div class="header-card">
-            <h4>C7 · Mulher (25-64)</h4>
-            <span class="badge-meta" id="c7-tot">0</span>
-          </div>
-          <div class="valor" id="c7-pct">0%</div>
-          <div class="barra-fundo"><div class="barra-progresso" id="c7-bar"></div></div>
-          <div class="rodape-card"><span class="status-meta" id="c7-pend">Aguardando...</span></div>
-          <div class="regra-acs">Meta: Preventivo Citopatológico</div>
-        </div>
-
+        <!-- C4 -->
         <div class="card-meta" id="card-c4" style="border-left-color: var(--c4);" onclick="selecionarFiltroIndicador('C4')">
           <div class="header-card">
             <h4>C4 · Diabetes</h4>
@@ -178,6 +171,7 @@
           <div class="regra-acs">Meta: 2 Visitas + HbA1c + Pés</div>
         </div>
 
+        <!-- C5 -->
         <div class="card-meta" id="card-c5" style="border-left-color: var(--c5);" onclick="selecionarFiltroIndicador('C5')">
           <div class="header-card">
             <h4>C5 · Hipertensão</h4>
@@ -189,6 +183,7 @@
           <div class="regra-acs">Meta: 2 Visitas + Aferição PA</div>
         </div>
 
+        <!-- C6 -->
         <div class="card-meta" id="card-c6" style="border-left-color: var(--c6);" onclick="selecionarFiltroIndicador('C6')">
           <div class="header-card">
             <h4>C6 · Pessoa Idosa</h4>
@@ -199,18 +194,31 @@
           <div class="rodape-card"><span class="status-meta" id="c6-pend">Aguardando...</span></div>
           <div class="regra-acs">Meta: 2 Visitas + Vacina Influenza</div>
         </div>
+
+        <!-- C7 -->
+        <div class="card-meta" id="card-c7" style="border-left-color: var(--c7);" onclick="selecionarFiltroIndicador('C7')">
+          <div class="header-card">
+            <h4>C7 · Mulher (25-64)</h4>
+            <span class="badge-meta" id="c7-tot">0</span>
+          </div>
+          <div class="valor" id="c7-pct">0%</div>
+          <div class="barra-fundo"><div class="barra-progresso" id="c7-bar"></div></div>
+          <div class="rodape-card"><span class="status-meta" id="c7-pend">Aguardando...</span></div>
+          <div class="regra-acs">Meta: Preventivo Citopatológico</div>
+        </div>
+
       </div>
 
-      <!-- Filtros Rápidos em Chips -->
+      <!-- Filtros Rápidos em Chips Sequenciais -->
       <div class="chips-indicadores">
         <button class="chip active" id="chip-todos" onclick="selecionarFiltroIndicador('todos')">Todos</button>
         <button class="chip" id="chip-C1" onclick="selecionarFiltroIndicador('C1')">C1: Cadastros</button>
         <button class="chip" id="chip-C2" onclick="selecionarFiltroIndicador('C2')">C2: Crianças</button>
         <button class="chip" id="chip-C3" onclick="selecionarFiltroIndicador('C3')">C3: Gestantes</button>
-        <button class="chip" id="chip-C7" onclick="selecionarFiltroIndicador('C7')">C7: Mulheres</button>
         <button class="chip" id="chip-C4" onclick="selecionarFiltroIndicador('C4')">C4: Diabéticos</button>
         <button class="chip" id="chip-C5" onclick="selecionarFiltroIndicador('C5')">C5: Hipertensos</button>
         <button class="chip" id="chip-C6" onclick="selecionarFiltroIndicador('C6')">C6: Idosos</button>
+        <button class="chip" id="chip-C7" onclick="selecionarFiltroIndicador('C7')">C7: Mulheres</button>
       </div>
 
       <input type="text" id="campoBusca" class="search-bar" placeholder="🔍 Buscar por nome, CPF ou número da casa..." oninput="filtrarLista()">
@@ -540,11 +548,16 @@
                 const consInf = parseInt(reg["Quantidade de consultas até 24 meses"]) || 0;
                 const penta = reg["Difteria, Tétano, Pertusis, Hepatite B, Haemophilus Influenza B"] || "";
                 const polio = reg["Poliomielite"] || "";
-                const vacOk = (penta !== "" && penta !== "-" && polio !== "" && polio !== "-");
-                cid.c2_visitas = visInf; cid.c2Ok = (visInf >= 2 && vacOk && consInf >= 1);
+                const pentaOk = (penta !== "" && penta !== "-");
+                const polioOk = (polio !== "" && polio !== "-");
+                const vacOk = (pentaOk && polioOk);
+                cid.c2_visitas = visInf; cid.c2_vacinasOk = vacOk;
+                cid.c2Ok = (visInf >= 2 && vacOk && consInf >= 1);
                 cid.pendencias = cid.pendencias.filter(p => !p.startsWith("C2:"));
                 if (visInf < 2) cid.pendencias.push(`C2: Visita Domiciliar pendente (${visInf}/2 visitas)`);
-                if (!vacOk) cid.pendencias.push("C2: Busca Ativa - Vacinas atrasadas (Penta/Polio)");
+                if (!pentaOk && !polioOk) cid.pendencias.push("C2: Busca Ativa - Faltam vacinas Penta e Pólio");
+                else if (!pentaOk) cid.pendencias.push("C2: Busca Ativa - Falta vacina Penta");
+                else if (!polioOk) cid.pendencias.push("C2: Busca Ativa - Falta vacina Pólio");
                 if (consInf === 0) cid.pendencias.push("C2: Busca Ativa - Agendar consulta de puericultura");
               }
               else if (tema === "Gestação e puerpério") {
@@ -726,7 +739,12 @@
         let tagsHtml = '';
         if (c.indicadores) {
           if (c.indicadores['C1']) tagsHtml += `<span class="tag tag-c1">C1: Cadastrado</span>`;
-          if (c.indicadores['C2']) tagsHtml += `<span class="tag tag-c2">C2: Criança (${c.c2_visitas || 0}/2 vis)</span>`;
+          if (c.indicadores['C2']) {
+            tagsHtml += `<span class="tag tag-c2">C2: Criança (${c.c2_visitas || 0}/2 vis)</span>`;
+            if (c.c2_vacinasOk) {
+              tagsHtml += `<span class="tag tag-ok">💉 Vacinas em dia</span>`;
+            }
+          }
           if (c.indicadores['C3']) tagsHtml += `<span class="tag tag-c3">C3: Gestante (${c.c3_vis_pn || 0}/3 vis)</span>`;
           if (c.indicadores['C7']) tagsHtml += `<span class="tag tag-c7">C7: Mulher 25-64</span>`;
           if (c.indicadores['C4']) tagsHtml += `<span class="tag tag-c4">C4: Diabetes (${c.c4_visitas || 0}/2 vis)</span>`;
