@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#0284c7">
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icone-192.png">
+  <title>Gestão ACS Offline</title>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --danger: #ef4444;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+    body { background: var(--bg); color: var(--text); padding-bottom: 75px; }
+    header { background: var(--primary); color: white; padding: 14px 16px; position: sticky; top: 0; z-index: 10; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    header h1 { font-size: 1.15rem; font-weight: 700; }
+    header p { font-size: 0.8rem; opacity: 0.9; margin-top: 2px; }
+
+    .container { padding: 12px; max-width: 650px; margin: 0 auto; }
+    .card { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 14px; margin-bottom: 12px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); }
+    
+    .btn { background: var(--primary); color: white; border: none; padding: 11px 14px; border-radius: 6px; font-weight: 600; font-size: 0.9rem; cursor: pointer; display: inline-block; width: 100%; text-align: center; }
+    .btn-install { background: #10b981; margin-bottom: 12px; font-size: 0.95rem; display: none; }
+    .btn-sync { background: #0284c7; margin-bottom: 12px; font-size: 0.95rem; }
+    .btn-danger { background: var(--danger); margin-top: 8px; }
+
+    .upload-area { border: 2px dashed var(--primary); border-radius: 8px; padding: 22px 14px; text-align: center; cursor: pointer; background: #f0f9ff; }
+    .upload-area input { display: none; }
+
+    .grid-indicadores { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+    .card-meta { background: var(--card); padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); border-left: 4px solid var(--primary); }
+    .card-meta h4 { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-meta .valor { font-size: 1.35rem; font-weight: 700; margin-top: 2px; }
+    .card-meta .pendentes { color: var(--danger); font-size: 0.75rem; font-weight: 600; margin-top: 2px; }
+
+    .search-bar { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem; margin-bottom: 8px; outline: none; background: white; }
+    select.filter-select { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; margin-bottom: 10px; background: white; font-size: 0.9rem; }
+
+    .item-cidadao { background: var(--card); border-radius: 8px; border: 1px solid var(--border); padding: 12px; margin-bottom: 8px; }
+    .item-cidadao .nome { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; color: #0f172a; }
+    .item-cidadao .endereco { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 8px; line-height: 1.3; }
+    .tag { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 2px 7px; border-radius: 4px; margin-right: 4px; margin-bottom: 4px; }
+    .tag-danger { background: #fee2e2; color: #b91c1c; }
+    .tag-ok { background: #dcfce7; color: #15803d; }
+
+    nav.tab-bar { position: fixed; bottom: 0; left: 0; right: 0; background: white; border-top: 1px solid var(--border); display: flex; height: 56px; z-index: 20; }
+    nav.tab-bar button { flex: 1; border: none; background: transparent; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); cursor: pointer; }
+    nav.tab-bar button.active { color: var(--primary); font-weight: 700; border-top: 2px solid var(--primary); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Gestão ACS — Microárea</h1>
+    <p id="subtitulo">Aguardando dados...</p>
+  </header>
+
+  <div class="container">
+    <!-- Botão de Instalação no Topo -->
+    <button id="btnInstalarApp" class="btn btn-install" onclick="acionarInstalacaoPWA()">
+      📲 Instalar Aplicativo no Celular
+    </button>
+
+    <!-- Tela 1: Visitas e Metas -->
+    <div id="view-dashboard">
+      <div class="grid-indicadores">
+        <div class="card-meta" style="border-left-color: #ef4444;">
+          <h4>Hipertensão</h4>
+          <div class="valor" id="ind-hip-pct">0%</div>
+          <div class="pendentes" id="ind-hip-pend">0 pendentes</div>
+        </div>
+        <div class="card-meta" style="border-left-color: #f59e0b;">
+          <h4>Diabetes</h4>
+          <div class="valor" id="ind-dia-pct">0%</div>
+          <div class="pendentes" id="ind-dia-pend">0 pendentes</div>
+        </div>
+        <div class="card-meta" style="border-left-color: #ec4899;">
+          <h4>Gestantes</h4>
+          <div class="valor" id="ind-ges-pct">0%</div>
+          <div class="pendentes" id="ind-ges-pend">0 pendentes</div>
+        </div>
+        <div class="card-meta" style="border-left-color: #10b981;">
+          <h4>Mulheres (Citopat.)</h4>
+          <div class="valor" id="ind-mul-pct">0%</div>
+          <div class="pendentes" id="ind-mul-pend">0 pendentes</div>
+        </div>
+      </div>
+
+      <input type="text" id="campoBusca" class="search-bar" placeholder="🔍 Pesquisar por nome ou CPF..." oninput="filtrarLista()">
+      <select id="filtroRua" class="filter-select" onchange="filtrarLista()">
+        <option value="">Todas as ruas</option>
+      </select>
+      <select id="filtroPendencia" class="filter-select" onchange="filtrarLista()">
+        <option value="pendentes" selected>Apenas com pendências</option>
+        <option value="todos">Exibir todos os cadastrados</option>
+      </select>
+
+      <div id="listaUtentes"></div>
+    </div>
+
+    <!-- Tela 2: Importar e Sincronizar -->
+    <div id="view-upload" style="display: none;">
+      <div class="card">
+        <h3>Sincronização Wi-Fi</h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin: 6px 0 12px;">
+          Se importou as planilhas no computador, sincronize o telemóvel conectado à mesma rede Wi-Fi.
+        </p>
+        <button class="btn btn-sync" onclick="sincronizarComPC()">
+          🔄 Sincronizar com o Computador
+        </button>
+      </div>
+
+      <div class="card">
+        <h3>Importar Relatórios do PEC</h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin: 6px 0 12px;">
+          Selecione todos os arquivos .csv gerados pelo e-SUS PEC de uma única vez.
+        </p>
+        <div class="upload-area" onclick="document.getElementById('inputArquivos').click()">
+          <span style="font-size: 2.2rem;">📁</span>
+          <p style="font-weight: 600; margin-top: 6px;">Clique para carregar os CSVs</p>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Formatos .csv exportados do PEC</span>
+          <input type="file" id="inputArquivos" multiple accept=".csv" onchange="processarFicheiros(this.files)">
+        </div>
+        <div id="progressoUpload" style="margin-top: 12px; font-size: 0.85rem; font-weight: 600;"></div>
+      </div>
+
+      <div class="card">
+        <h3>Base de Dados Local</h3>
+        <p style="font-size: 0.82rem; color: var(--text-muted); margin: 6px 0 8px;">
+          Limpa todas as informações gravadas na memória deste dispositivo.
+        </p>
+        <button class="btn btn-danger" onclick="limparBase()">Limpar Todos os Dados</button>
+      </div>
+    </div>
+  </div>
+
+  <nav class="tab-bar">
+    <button id="btnTabDash" class="active" onclick="alternarAba('dashboard')">📋 Visitas e Metas</button>
+    <button id="btnTabUp" onclick="alternarAba('upload')">⚙️ Importar / Sincronizar</button>
+  </nav>
+
+  <script>
+    // Gerenciamento da Instalação do PWA
+    let eventoInstalacao = null;
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      eventoInstalacao = e;
+      const btn = document.getElementById('btnInstalarApp');
+      if (btn) btn.style.display = 'block';
+    });
+
+    async function acionarInstalacaoPWA() {
+      if (!eventoInstalacao) {
+        alert("Para instalar: toque no menu (três pontos) do Chrome e selecione 'Adicionar à tela inicial' ou 'Instalar aplicativo'.");
+        return;
+      }
+      eventoInstalacao.prompt();
+      const { outcome } = await eventoInstalacao.userChoice;
+      if (outcome === 'accepted') {
+        document.getElementById('btnInstalarApp').style.display = 'none';
+      }
+      eventoInstalacao = null;
+    }
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./sw.js').catch(err => console.log("SW:", err));
+    }
+
+    let BASE_DADOS = {
+      cidadaos: {},
+      ruas: new Set()
+    };
+
+    let cpfToChave = {};
+    let nomeToChave = {};
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const salvo = localStorage.getItem('gestao_acs_dados');
+      if (salvo) {
+        try {
+          const parseado = JSON.parse(salvo);
+          BASE_DADOS.cidadaos = parseado.cidadaos || {};
+          BASE_DADOS.ruas = new Set(parseado.ruas || []);
+          atualizarInterface();
+        } catch(e) { console.error(e); }
+      }
+    });
+
+    function alternarAba(aba) {
+      document.getElementById('view-dashboard').style.display = aba === 'dashboard' ? 'block' : 'none';
+      document.getElementById('view-upload').style.display = aba === 'upload' ? 'block' : 'none';
+      document.getElementById('btnTabDash').className = aba === 'dashboard' ? 'active' : '';
+      document.getElementById('btnTabUp').className = aba === 'upload' ? 'active' : '';
+    }
+
+    function normalizarRuaJS(nomeRua) {
+      if (!nomeRua) return "";
+      let r = nomeRua.trim().toUpperCase();
+      if (r === "-" || !r) return "";
+      if (r.includes("SÃO FRANCISCO") || r.includes("SAO FRANCISCO")) return "RUA SÃO FRANCISCO";
+      if (r.includes("SÃO PEDRO") || r.includes("SAO PEDRO")) return "RUA SÃO PEDRO";
+      if (!r.startsWith("RUA ") && !r.startsWith("AVENIDA ") && !r.startsWith("TRAVESSA ")) return "RUA " + r;
+      return r;
+    }
+
+    async function processarFicheiros(files) {
+      if (!files.length) return;
+      const prog = document.getElementById('progressoUpload');
+      prog.style.color = "#0284c7";
+      prog.innerHTML = `Processando ${files.length} arquivo(s)...`;
+
+      cpfToChave = {};
+      nomeToChave = {};
+
+      for (let file of files) {
+        await new Promise((resolve) => {
+          const reader = new FileReader();
+          reader.readAsText(file, 'ISO-8859-1');
+          reader.onload = () => {
+            interpretarRelatorioPEC(reader.result);
+            resolve();
+          };
+        });
+      }
+
+      const payload = {
+        cidadaos: BASE_DADOS.cidadaos,
+        ruas: Array.from(BASE_DADOS.ruas).sort()
+      };
+
+      localStorage.setItem('gestao_acs_dados', JSON.stringify(payload));
+
+      fetch('/api/salvar', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      }).catch(() => console.log("Servidor local não conectado"));
+
+      prog.style.color = "#10b981";
+      prog.innerHTML = "✅ Arquivos processados e salvos com sucesso!";
+      atualizarInterface();
+    }
+
+    function interpretarRelatorioPEC(texto) {
+      const linhas = texto.split(/\r?\n/);
+      let tema = "";
+      let cabecalhoIdx = -1;
+
+      for (let i = 0; i < Math.min(linhas.length, 35); i++) {
+        const l = linhas[i].trim();
+        if (l.includes("Lista temática;")) {
+          tema = l.split(";")[1]?.trim();
+        }
+        if (l.startsWith("Nome;") || l.startsWith("NOME CIDADÃO;") || l.startsWith("Nome equipe;") || l.startsWith("TIPO DE LOGRADOURO;")) {
+          cabecalhoIdx = i;
+          break;
+        }
+      }
+
+      if (cabecalhoIdx === -1) return;
+
+      const colunas = linhas[cabecalhoIdx].split(";").map(c => c.trim().replace(/^"|"$/g, ''));
+      
+      for (let i = cabecalhoIdx + 1; i < linhas.length; i++) {
+        const linha = linhas[i].trim();
+        if (!linha) continue;
+        const valores = linha.split(";").map(v => v.trim().replace(/^"|"$/g, ''));
+        const reg = {};
+        colunas.forEach((col, idx) => { reg[col] = valores[idx] || ""; });
+
+        const nome = (reg["Nome"] || reg["NOME CIDADÃO"] || "").trim().toUpperCase();
+        if (!nome || nome === "-" || nome === "SEM MORADORES" || nome === "NÃO INFORMADO" || nome.length < 3) {
+          continue;
+        }
+
+        const cpfBruto = reg["CPF"] || reg["CPF/CNS"] || "";
+        const cpfLimpo = cpfBruto.replace(/\D/g, "");
+        const cpfValido = (cpfLimpo.length === 11) ? cpfLimpo : "";
+
+        let chave = null;
+        if (cpfValido && cpfToChave[cpfValido]) {
+          chave = cpfToChave[cpfValido];
+        } else if (nomeToChave[nome]) {
+          chave = nomeToChave[nome];
+        } else {
+          chave = cpfValido ? cpfValido : nome;
+        }
+
+        if (cpfValido) cpfToChave[cpfValido] = chave;
+        if (nome) nomeToChave[nome] = chave;
+
+        const ruaBruta = reg["Rua"] || reg["LOGRADOURO"] || "";
+        const ruaFormatada = normalizarRuaJS(ruaBruta);
+
+        if (!BASE_DADOS.cidadaos[chave]) {
+          BASE_DADOS.cidadaos[chave] = {
+            nome: nome,
+            cpf: (cpfBruto && cpfBruto !== "-") ? cpfBruto : "",
+            cns: (reg["CNS"] && reg["CNS"] !== "-") ? reg["CNS"] : "",
+            rua: ruaFormatada,
+            numero: reg["Número"] || reg["NÚMERO"] || "",
+            telefone: (reg["Telefone celular"] && reg["Telefone celular"] !== "-") ? reg["Telefone celular"] : "",
+            condicoes: {},
+            pendencias: []
+          };
+        }
+
+        const cid = BASE_DADOS.cidadaos[chave];
+        if (nome && !cid.nome) cid.nome = nome;
+        if (cpfBruto && cpfBruto !== "-" && !cid.cpf) cid.cpf = cpfBruto;
+        if (reg["CNS"] && reg["CNS"] !== "-" && !cid.cns) cid.cns = reg["CNS"];
+        if (ruaFormatada) cid.rua = ruaFormatada;
+        if (reg["Número"]) cid.numero = reg["Número"];
+        if (reg["NÚMERO"] && !cid.numero) cid.numero = reg["NÚMERO"];
+        if (reg["Telefone celular"] && reg["Telefone celular"] !== "-" && !cid.telefone) cid.telefone = reg["Telefone celular"];
+        if (cid.rua) BASE_DADOS.ruas.add(cid.rua);
+
+        if (tema === "Hipertensão") {
+          const paQtd = parseInt(reg["Quantidade de medições de pressão arterial"]) || 0;
+          const consQtd = parseInt(reg["Quantidade de consultas"]) || 0;
+          cid.condicoes['Hipertensao'] = true;
+          cid.hipertensaoOk = (paQtd >= 1 && consQtd >= 1);
+          
+          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("Hipertensão:"));
+          if (!cid.hipertensaoOk) {
+            if (consQtd === 0) cid.pendencias.push("Hipertensão: Consulta pendente");
+            if (paQtd === 0) cid.pendencias.push("Hipertensão: Aferir PA no semestre");
+          }
+        } else if (tema === "Diabetes") {
+          const hg = reg["Hemoglobina glicada"] || "";
+          cid.condicoes['Diabetes'] = true;
+          cid.diabetesOk = (hg !== "" && hg !== "-");
+          
+          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("Diabetes:"));
+          if (!cid.diabetesOk) cid.pendencias.push("Diabetes: Exame de Hemoglobina Glicada");
+        } else if (tema === "Gestação e puerpério") {
+          const consPreNatal = parseInt(reg["Quantidade de atendimentos no pré-natal"]) || 0;
+          const odonto = parseInt(reg["Quantidade de atendimentos odontológicos no pré-natal"]) || 0;
+          cid.condicoes['Gestante'] = true;
+          cid.gestanteOk = (consPreNatal >= 6 && odonto >= 1);
+          
+          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("Pré-natal:"));
+          if (consPreNatal < 6) cid.pendencias.push(`Pré-natal: ${consPreNatal}/6 consultas`);
+          if (odonto === 0) cid.pendencias.push("Pré-natal: Odonto pendente");
+        } else if (tema === "Saúde da mulher") {
+          const avaliacao = reg["Exame de rastreamento de câncer de colo de útero data última avaliação"] || "";
+          cid.condicoes['Mulher'] = true;
+          cid.citopatologicoOk = (avaliacao !== "" && avaliacao !== "-");
+          
+          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("Saúde da Mulher:"));
+          if (!cid.citopatologicoOk) cid.pendencias.push("Saúde da Mulher: Coleta de Preventivo");
+        } else if (tema === "Desenvolvimento infantil") {
+          cid.condicoes['Crianca'] = true;
+          const penta = reg["Difteria, Tétano, Pertusis, Hepatite B, Haemophilus Influenza B"] || "";
+          const polio = reg["Poliomielite"] || "";
+          cid.criancaOk = (penta !== "" && penta !== "-" && polio !== "" && polio !== "-");
+          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("Criança:"));
+          if (!cid.criancaOk) cid.pendencias.push("Criança: Vacinas pendentes (Penta/Polio)");
+        } else if (tema === "Pessoa idosa") {
+          cid.condicoes['Idoso'] = true;
+          const ivcf = reg["IVCF-20 Índice"] || "";
+          cid.ivcfOk = (ivcf !== "" && ivcf !== "-" && ivcf !== "Sem registro");
+          cid.pendencias = cid.pendencias.filter(p => !p.startsWith("Idoso:"));
+          if (!cid.ivcfOk) cid.pendencias.push("Idoso: Avaliação IVCF-20 pendente");
+        }
+      }
+    }
+
+    async function sincronizarComPC() {
+      const prog = document.getElementById('progressoUpload');
+      prog.style.color = "#0284c7";
+      prog.innerHTML = "Conectando ao computador...";
+
+      try {
+        const res = await fetch('/api/dados');
+        const dados = await res.json();
+        
+        if (dados.cidadaos && Object.keys(dados.cidadaos).length > 0) {
+          BASE_DADOS.cidadaos = dados.cidadaos;
+          BASE_DADOS.ruas = new Set(dados.ruas || []);
+          localStorage.setItem('gestao_acs_dados', JSON.stringify(dados));
+          
+          prog.style.color = "#10b981";
+          prog.innerHTML = "✅ Sincronizado com sucesso! Pronto para uso na rua.";
+          atualizarInterface();
+          setTimeout(() => alternarAba('dashboard'), 800);
+        } else {
+          prog.style.color = "#f59e0b";
+          prog.innerHTML = "⚠️ Nenhum dado encontrado no PC. Inicie o servidor.py no computador.";
+        }
+      } catch (e) {
+        prog.style.color = "#ef4444";
+        prog.innerHTML = "❌ Não foi possível conectar ao PC. Certifique-se de que estão no mesmo Wi-Fi.";
+      }
+    }
+
+    function atualizarInterface() {
+      const lista = Object.values(BASE_DADOS.cidadaos);
+      document.getElementById('subtitulo').innerText = `${lista.length} cidadãos acompanhados`;
+
+      const selectRua = document.getElementById('filtroRua');
+      const ruaAtual = selectRua.value;
+      selectRua.innerHTML = '<option value="">Todas as ruas</option>';
+      Array.from(BASE_DADOS.ruas).sort().forEach(r => {
+        selectRua.innerHTML += `<option value="${r}">${r}</option>`;
+      });
+      selectRua.value = ruaAtual;
+
+      let hipTot = 0, hipOk = 0;
+      let diaTot = 0, diaOk = 0;
+      let gesTot = 0, gesOk = 0;
+      let mulTot = 0, mulOk = 0;
+
+      lista.forEach(c => {
+        if (c.condicoes['Hipertensao']) { hipTot++; if (c.hipertensaoOk) hipOk++; }
+        if (c.condicoes['Diabetes']) { diaTot++; if (c.diabetesOk) diaOk++; }
+        if (c.condicoes['Gestante']) { gesTot++; if (c.gestanteOk) gesOk++; }
+        if (c.condicoes['Mulher']) { mulTot++; if (c.citopatologicoOk) mulOk++; }
+      });
+
+      document.getElementById('ind-hip-pct').innerText = hipTot ? `${Math.round((hipOk/hipTot)*100)}%` : "0%";
+      document.getElementById('ind-hip-pend').innerText = `${hipTot - hipOk} pendentes`;
+
+      document.getElementById('ind-dia-pct').innerText = diaTot ? `${Math.round((diaOk/diaTot)*100)}%` : "0%";
+      document.getElementById('ind-dia-pend').innerText = `${diaTot - diaOk} pendentes`;
+
+      document.getElementById('ind-ges-pct').innerText = gesTot ? `${Math.round((gesOk/gesTot)*100)}%` : "0%";
+      document.getElementById('ind-ges-pend').innerText = `${gesTot - gesOk} pendentes`;
+
+      document.getElementById('ind-mul-pct').innerText = mulTot ? `${Math.round((mulOk/mulTot)*100)}%` : "0%";
+      document.getElementById('ind-mul-pend').innerText = `${mulTot - mulOk} pendentes`;
+
+      filtrarLista();
+    }
+
+    function filtrarLista() {
+      const termo = document.getElementById('campoBusca').value.toLowerCase();
+      const ruaSel = document.getElementById('filtroRua').value;
+      const apenasPendentes = document.getElementById('filtroPendencia').value === 'pendentes';
+
+      const content = document.getElementById('listaUtentes');
+      content.innerHTML = "";
+
+      const filtrados = Object.values(BASE_DADOS.cidadaos).filter(c => {
+        const matchesBusca = c.nome.toLowerCase().includes(termo) || (c.cpf && c.cpf.includes(termo));
+        const matchesRua = !ruaSel || c.rua === ruaSel;
+        const matchesPend = !apenasPendentes || (c.pendencias && c.pendencias.length > 0);
+        return matchesBusca && matchesRua && matchesPend;
+      });
+
+      if (!filtrados.length) {
+        content.innerHTML = '<p style="text-align:center; padding: 24px; color: var(--text-muted); font-size: 0.9rem;">Nenhum registo encontrado.</p>';
+        return;
+      }
+
+      filtrados.forEach(c => {
+        let tagsHtml = '';
+        if (c.condicoes['Hipertensao']) tagsHtml += `<span class="tag ${c.hipertensaoOk ? 'tag-ok' : 'tag-danger'}">Hipertenso</span>`;
+        if (c.condicoes['Diabetes']) tagsHtml += `<span class="tag ${c.diabetesOk ? 'tag-ok' : 'tag-danger'}">Diabético</span>`;
+        if (c.condicoes['Gestante']) tagsHtml += `<span class="tag ${c.gestanteOk ? 'tag-ok' : 'tag-danger'}">Gestante</span>`;
+        if (c.condicoes['Mulher']) tagsHtml += `<span class="tag ${c.citopatologicoOk ? 'tag-ok' : 'tag-danger'}">Mulher 25-64</span>`;
+        if (c.condicoes['Crianca']) tagsHtml += `<span class="tag ${c.criancaOk ? 'tag-ok' : 'tag-danger'}">Criança</span>`;
+        if (c.condicoes['Idoso']) tagsHtml += `<span class="tag ${c.ivcfOk ? 'tag-ok' : 'tag-danger'}">Idoso</span>`;
+
+        let pendenciasHtml = '';
+        if (c.pendencias && c.pendencias.length > 0) {
+          pendenciasHtml = '<div style="margin-top: 6px;">' + 
+            c.pendencias.map(p => `<span class="tag tag-danger">⚠️ ${p}</span>`).join('') + 
+          '</div>';
+        } else {
+          pendenciasHtml = '<div style="margin-top: 6px;"><span class="tag tag-ok">✓ Metas em dia</span></div>';
+        }
+
+        content.innerHTML += `
+          <div class="item-cidadao">
+            <div class="nome">${c.nome}</div>
+            <div class="endereco">📍 ${c.rua || 'Sem logradouro'}, nº ${c.numero || 'S/N'} ${c.telefone ? ' | 📞 ' + c.telefone : ''}</div>
+            <div>${tagsHtml}</div>
+            ${pendenciasHtml}
+          </div>
+        `;
+      });
+    }
+
+    function limparBase() {
+      if (confirm("Tem certeza que deseja apagar todos os dados guardados no telemóvel?")) {
+        localStorage.removeItem('gestao_acs_dados');
+        BASE_DADOS = { cidadaos: {}, ruas: new Set() };
+        atualizarInterface();
+        alternarAba('dashboard');
+      }
+    }
+  </script>
+</body>
+</html>
