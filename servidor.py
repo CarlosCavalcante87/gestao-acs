@@ -184,7 +184,7 @@ def processar_csvs_da_pasta():
                 if vis_inf < 2: 
                     cid['pendencias'].append(f"C2: Visita Domiciliar pendente ({vis_inf}/2 visitas)")
                 
-                if not penta_ok and not polio_ok:
+                if not penta_ok e not polio_ok:
                     cid['pendencias'].append("C2: Busca Ativa - Faltam vacinas Penta e Pólio")
                 elif not penta_ok:
                     cid['pendencias'].append("C2: Busca Ativa - Falta vacina Penta")

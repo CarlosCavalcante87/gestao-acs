@@ -16,10 +16,12 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 2,
       "c5Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "17/08/2026"
     },
     "01720427399": {
       "nome": "ANTONIA MENDES DO NASCIMENTO",
@@ -35,10 +37,12 @@
         "C7": true
       },
       "pendencias": [],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 12,
       "c5Ok": true,
-      "c7Ok": true
+      "c7Ok": true,
+      "dt_cadastral": "08/10/2026"
     },
     "90848365372": {
       "nome": "ANTÔNIO CAVALCANTE MELO",
@@ -57,11 +61,13 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 27,
       "c5Ok": true,
       "c6_visitas": 67,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "20/03/2026"
     },
     "48850829353": {
       "nome": "ANTÔNIO JOSÉ DE PAULA",
@@ -81,13 +87,15 @@
         "C4: Busca Ativa - Exame de Hemoglobina Glicada",
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 16,
       "c5Ok": true,
       "c4_visitas": 3,
       "c4Ok": false,
       "c6_visitas": 26,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "27/03/2026"
     },
     "00389721824": {
       "nome": "CANDIDO MONTEIRO DA SILVA",
@@ -105,11 +113,13 @@
       "pendencias": [
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 16,
       "c5Ok": true,
       "c6_visitas": 49,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "20/03/2026"
     },
     "28256948353": {
       "nome": "CICERA PEREIRA DA SILVA",
@@ -129,12 +139,14 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso",
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 7,
       "c5Ok": true,
       "c7Ok": false,
       "c6_visitas": 45,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "21/09/2026"
     },
     "03835946340": {
       "nome": "DIOMAR DE BARROS",
@@ -152,10 +164,12 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 14,
       "c5Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "08/04/2026"
     },
     "72557052191": {
       "nome": "EDINALVA BEZERRA DOS SANTOS",
@@ -175,12 +189,14 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso",
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 40,
       "c5Ok": true,
       "c7Ok": false,
       "c6_visitas": 68,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "06/05/2026"
     },
     "24854212349": {
       "nome": "EDSON GOMES DE MELO",
@@ -199,11 +215,13 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 20,
       "c5Ok": true,
       "c6_visitas": 60,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "27/03/2026"
     },
     "86094840330": {
       "nome": "ERINEIDE ALVES BATISTA",
@@ -222,12 +240,14 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 24,
       "c5Ok": true,
       "c7Ok": false,
       "c4_visitas": 23,
-      "c4Ok": true
+      "c4Ok": true,
+      "dt_cadastral": "20/03/2026"
     },
     "17363454272": {
       "nome": "FRANCISCO DO NASCIMENTO NETO",
@@ -246,11 +266,13 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 42,
       "c5Ok": true,
       "c6_visitas": 98,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "08/04/2026"
     },
     "45249652387": {
       "nome": "GESSI RAMALHO BERNARDO",
@@ -273,6 +295,7 @@
         "C4: Busca Ativa - Exame de Hemoglobina Glicada",
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 0,
       "c5Ok": false,
@@ -280,7 +303,8 @@
       "c4_visitas": 47,
       "c4Ok": false,
       "c6_visitas": 104,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "06/04/2026"
     },
     "01804500348": {
       "nome": "JADSON VIEIRA DE MORAES",
@@ -295,9 +319,11 @@
         "C5": true
       },
       "pendencias": [],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 22,
-      "c5Ok": true
+      "c5Ok": true,
+      "dt_cadastral": "20/03/2026"
     },
     "91581672349": {
       "nome": "JOSÉ BORGES DA SILVA",
@@ -316,11 +342,13 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 36,
       "c5Ok": true,
       "c6_visitas": 87,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "06/04/2026"
     },
     "18281109149": {
       "nome": "JOSE FRANCISCO DE OLIVEIRA PACHECO",
@@ -341,13 +369,15 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 36,
       "c5Ok": true,
       "c4_visitas": 34,
       "c4Ok": false,
       "c6_visitas": 43,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "13/03/2026"
     },
     "40606520325": {
       "nome": "JOSIVAL FRANCISCO DA SILVA",
@@ -367,13 +397,15 @@
         "C4: Busca Ativa - Exame de Hemoglobina Glicada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 50,
       "c5Ok": true,
       "c4_visitas": 51,
       "c4Ok": false,
       "c6_visitas": 115,
-      "c6Ok": true
+      "c6Ok": true,
+      "dt_cadastral": "13/03/2026"
     },
     "02753183112": {
       "nome": "LUCILANIO ROSA BASILIO",
@@ -388,9 +420,11 @@
         "C5": true
       },
       "pendencias": [],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 10,
-      "c5Ok": true
+      "c5Ok": true,
+      "dt_cadastral": "08/10/2026"
     },
     "01530620376": {
       "nome": "LUSANIRA DA CONCEICAO VIEIRA GOMES",
@@ -408,10 +442,12 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 42,
       "c5Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "08/04/2026"
     },
     "94089698391": {
       "nome": "MARIA CILENE FREIRES MOARES",
@@ -429,10 +465,12 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 28,
       "c5Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "29/10/2026"
     },
     "46668977391": {
       "nome": "MARIA CONCEBIDA BARBOSA",
@@ -450,11 +488,13 @@
       "pendencias": [
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 44,
       "c5Ok": true,
       "c6_visitas": 59,
-      "c6Ok": true
+      "c6Ok": true,
+      "dt_cadastral": "13/06/2026"
     },
     "43802745353": {
       "nome": "MARIA DA CONCEIÇÃO CARDOSO DOURADO",
@@ -477,6 +517,7 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 40,
       "c5Ok": true,
@@ -484,7 +525,8 @@
       "c4_visitas": 38,
       "c4Ok": false,
       "c6_visitas": 87,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "13/03/2026"
     },
     "55759980378": {
       "nome": "MARIA DA PAZ DA ENCARNAÇÃO",
@@ -503,13 +545,15 @@
       "pendencias": [
         "C4: Busca Ativa - Exame de Hemoglobina Glicada"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 39,
       "c5Ok": true,
       "c4_visitas": 38,
       "c4Ok": false,
       "c6_visitas": 88,
-      "c6Ok": true
+      "c6Ok": true,
+      "dt_cadastral": "22/06/2026"
     },
     "17607248315": {
       "nome": "MARIA ELENA MARQUES DOS SANTOS",
@@ -530,12 +574,14 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 7,
       "c5Ok": true,
       "c7Ok": false,
       "c6_visitas": 111,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "21/09/2026"
     },
     "72212810334": {
       "nome": "MARIA GORETH FERREIRA PRIMO DA SILVA",
@@ -558,13 +604,15 @@
         "C4: Busca Ativa - Avaliação periódica dos pés",
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 0,
       "c5Ok": false,
       "c4_visitas": 0,
       "c4Ok": false,
       "c6_visitas": 59,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "14/08/2026"
     },
     "18394728391": {
       "nome": "MARIA JOSÉ CAMPELO DA SILVA",
@@ -583,11 +631,13 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 23,
       "c5Ok": true,
       "c6_visitas": 68,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "22/06/2026"
     },
     "70598304304": {
       "nome": "MARIA MARLY DE LIRA SOUSA",
@@ -607,12 +657,14 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso",
         "C4: Busca Ativa - Exame de Hemoglobina Glicada"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 36,
       "c5Ok": true,
       "c7Ok": false,
       "c4_visitas": 34,
-      "c4Ok": false
+      "c4Ok": false,
+      "dt_cadastral": "05/05/2026"
     },
     "96820462387": {
       "nome": "MARIA MATOS SILVA",
@@ -632,13 +684,15 @@
         "C4: Busca Ativa - Exame de Hemoglobina Glicada",
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 26,
       "c5Ok": true,
       "c4_visitas": 25,
       "c4Ok": false,
       "c6_visitas": 66,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "27/03/2026"
     },
     "16748833825": {
       "nome": "MIGUEL LOPES DOS SANTOS",
@@ -658,11 +712,13 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 0,
       "c5Ok": false,
       "c6_visitas": 91,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "17/03/2026"
     },
     "76432378915": {
       "nome": "PAULO DE SOUZA",
@@ -682,11 +738,13 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 7,
       "c5Ok": false,
       "c6_visitas": 18,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "13/02/2026"
     },
     "15874958304": {
       "nome": "PAULO FREIRE MENDANHA",
@@ -702,11 +760,13 @@
         "C6": true
       },
       "pendencias": [],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 46,
       "c5Ok": true,
       "c6_visitas": 103,
-      "c6Ok": true
+      "c6Ok": true,
+      "dt_cadastral": "13/06/2026"
     },
     "00419830332": {
       "nome": "RAIMUNDO NONATO DA CONCEIÇÃO",
@@ -721,9 +781,11 @@
         "C5": true
       },
       "pendencias": [],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 26,
-      "c5Ok": true
+      "c5Ok": true,
+      "dt_cadastral": "20/03/2026"
     },
     "88390659387": {
       "nome": "RAIMUNDO NONATO MOURA GOMES",
@@ -738,9 +800,11 @@
         "C5": true
       },
       "pendencias": [],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 43,
-      "c5Ok": true
+      "c5Ok": true,
+      "dt_cadastral": "08/04/2026"
     },
     "02473391300": {
       "nome": "RAIMUNDO RIBEIRO ANASTACIO",
@@ -757,9 +821,11 @@
       "pendencias": [
         "C5: Visitas Domiciliares pendentes (0/2 no ano)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 0,
-      "c5Ok": false
+      "c5Ok": false,
+      "dt_cadastral": "08/04/2026"
     },
     "99509016349": {
       "nome": "TERESA FRANCISCO DA SILVA MOREIRA",
@@ -781,6 +847,7 @@
         "C4: Busca Ativa - Exame de Hemoglobina Glicada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 39,
       "c5Ok": true,
@@ -788,7 +855,8 @@
       "c4_visitas": 39,
       "c4Ok": false,
       "c6_visitas": 93,
-      "c6Ok": true
+      "c6Ok": true,
+      "dt_cadastral": "13/03/2026"
     },
     "61964743320": {
       "nome": "VALDECIR ROCHA DE LIMA",
@@ -806,11 +874,13 @@
       "pendencias": [
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 48,
       "c5Ok": true,
       "c6_visitas": 57,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "08/10/2026"
     },
     "02531774300": {
       "nome": "VANUBIA ALMEIDA FERNANDES MENESES",
@@ -828,10 +898,12 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 42,
       "c5Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "06/04/2026"
     },
     "01376032317": {
       "nome": "VILMARIA LIMA DE MESQUITA",
@@ -851,12 +923,14 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso",
         "C4: Busca Ativa - Exame de Hemoglobina Glicada"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c5_visitas": 20,
       "c5Ok": true,
       "c7Ok": false,
       "c4_visitas": 21,
-      "c4Ok": false
+      "c4Ok": false,
+      "dt_cadastral": "27/03/2026"
     },
     "62816925358": {
       "nome": "AGIVANIA MARIA LIMA DE OLIVEIRA MOURÃO",
@@ -873,8 +947,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "02/06/2026"
     },
     "61781005311": {
       "nome": "ALANA DIAS DE ABREU MELO SILVA",
@@ -891,8 +967,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "03/02/2026"
     },
     "06727490333": {
       "nome": "ALANE KAREN DE ABREU VIANA",
@@ -909,8 +987,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "24/08/2026"
     },
     "00576201308": {
       "nome": "ALBERLEILA NOBRE ROCHA",
@@ -927,8 +1007,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "06/04/2026"
     },
     "63112960394": {
       "nome": "ALICYA KEMILLY ROCHA DE CASTRO",
@@ -945,8 +1027,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "06/04/2026"
     },
     "62857679394": {
       "nome": "ANA LARA DE ABREU VIANA",
@@ -963,8 +1047,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "24/08/2026"
     },
     "05834871305": {
       "nome": "ANAIZA BARROS DE ANDRADE BRANDÃO",
@@ -981,8 +1067,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "12/06/2026"
     },
     "04923623357": {
       "nome": "ANTONIA DE SOUSA ARAUJO",
@@ -997,8 +1085,10 @@
         "C7": true
       },
       "pendencias": [],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": true
+      "c7Ok": true,
+      "dt_cadastral": "13/03/2026"
     },
     "99988321368": {
       "nome": "ANTÔNIA DOS SANTOS GERMANO DA COSTA",
@@ -1015,8 +1105,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "18/08/2026"
     },
     "00459637380": {
       "nome": "ANTÔNIA FREITAS DA SILVA",
@@ -1033,8 +1125,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "13/02/2026"
     },
     "00077403363": {
       "nome": "ANTONIA NASCIMENTO DA SILVA",
@@ -1053,10 +1147,12 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso",
         "C4: Busca Ativa - Exame de Hemoglobina Glicada"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c7Ok": false,
       "c4_visitas": 7,
-      "c4Ok": false
+      "c4Ok": false,
+      "dt_cadastral": "20/02/2026"
     },
     "63260729305": {
       "nome": "ARCLEIA DE SOUSA SILVA",
@@ -1073,8 +1169,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "04/03/2026"
     },
     "08412476336": {
       "nome": "AURITÂNIA LIMA SOUSA",
@@ -1091,8 +1189,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "20/03/2026"
     },
     "63473202312": {
       "nome": "BRUNA CARLA DA SILVA CAMELO",
@@ -1109,8 +1209,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "11/06/2026"
     },
     "63106525320": {
       "nome": "BRUNA DE SOUSA LIMA",
@@ -1127,8 +1229,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "13/03/2026"
     },
     "93888066387": {
       "nome": "CLEONICE DAMACENA DE ANDRADE FEITOSA",
@@ -1145,8 +1249,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "14/03/2026"
     },
     "03645574352": {
       "nome": "CLEUDIANA DOS SANTOS MELO",
@@ -1161,8 +1267,10 @@
         "C7": true
       },
       "pendencias": [],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": true
+      "c7Ok": true,
+      "dt_cadastral": "13/03/2026"
     },
     "96820470304": {
       "nome": "DEUZA DA SILVA CASTRO",
@@ -1179,8 +1287,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "28/04/2026"
     },
     "60211292370": {
       "nome": "DIANA DE SOUSA RODRIGUES",
@@ -1197,8 +1307,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "16/03/2026"
     },
     "81443013315": {
       "nome": "ELDENIR DIAS DE ABREU VIANA",
@@ -1215,8 +1327,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "24/08/2026"
     },
     "60963898302": {
       "nome": "ELIDA DE SOUSA RIBEIRO",
@@ -1233,8 +1347,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "12/08/2026"
     },
     "94220760300": {
       "nome": "ELIENE CONCEIÇÃO DE SOUSA VERAS",
@@ -1253,10 +1369,12 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso",
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c7Ok": false,
       "c6_visitas": 67,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "20/03/2026"
     },
     "94793131387": {
       "nome": "ELIETE PEREIRA DA SILVA",
@@ -1273,8 +1391,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "14/03/2026"
     },
     "45268851349": {
       "nome": "ELZENIR DIAS DE ABREU MELO",
@@ -1291,8 +1411,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "19/08/2026"
     },
     "62290555380": {
       "nome": "EMILLY PEREIRA DIAS",
@@ -1309,8 +1431,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "17/08/2026"
     },
     "03273692308": {
       "nome": "FRANCISCA DE SOUSA",
@@ -1327,8 +1451,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "20/03/2026"
     },
     "47555840359": {
       "nome": "FRANCISCA JESUS SILVA",
@@ -1345,8 +1471,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "27/03/2026"
     },
     "00430457316": {
       "nome": "GRAÇA DE MARIA SANTOS DE JESUS",
@@ -1365,10 +1493,12 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso",
         "C4: Busca Ativa - Exame de Hemoglobina Glicada"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c7Ok": false,
       "c4_visitas": 3,
-      "c4Ok": false
+      "c4Ok": false,
+      "dt_cadastral": "15/07/2026"
     },
     "03462162306": {
       "nome": "IRANILDE BORGES DA SILVA",
@@ -1385,8 +1515,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "30/10/2026"
     },
     "62838429337": {
       "nome": "ISABELA TEIXEIRA DOS SANTOS",
@@ -1403,8 +1535,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "14/04/2026"
     },
     "12104338344": {
       "nome": "JESSICA GALVAO MOREIRA",
@@ -1425,10 +1559,12 @@
         "C3: Visita no Puerpério pendente (0/1)",
         "C3: Busca Ativa - Captação precoce (<12 semanas)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c7Ok": false,
       "c3_vis_pn": 2,
-      "c3Ok": false
+      "c3Ok": false,
+      "dt_cadastral": "29/10/2026"
     },
     "62914437323": {
       "nome": "KAMYLA KAWANNY ARAUJO DA ENCARNAÇAO",
@@ -1445,8 +1581,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "06/07/2026"
     },
     "09880392221": {
       "nome": "KAWANE MIRANDA DA SILVA",
@@ -1463,8 +1601,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "15/07/2026"
     },
     "62914441355": {
       "nome": "KEMILLY MARIANE ARAUJO DA ENCARNAÇÃO",
@@ -1481,8 +1621,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "22/06/2026"
     },
     "01874836396": {
       "nome": "LADIA DA CONCEICAO MELO PEREIRA",
@@ -1499,8 +1641,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "20/03/2026"
     },
     "02498803343": {
       "nome": "LAIS DE PAIVA MARTINS",
@@ -1517,8 +1661,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "27/03/2026"
     },
     "62869586302": {
       "nome": "LARA LORRANY DE SOUSA MORAES",
@@ -1535,8 +1681,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "20/03/2026"
     },
     "60863677363": {
       "nome": "LUCILEIA BORGES DA SILVA",
@@ -1553,8 +1701,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "11/06/2026"
     },
     "07546010306": {
       "nome": "LUCILENE DO NASCIMENTO BASILIO",
@@ -1571,8 +1721,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "08/10/2026"
     },
     "00130724394": {
       "nome": "LUIZA RODRIGUES DOS SANTOS MELO",
@@ -1591,10 +1743,12 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso",
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c7Ok": false,
       "c6_visitas": 91,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "13/03/2026"
     },
     "70049602349": {
       "nome": "LUZIA ANDRADE DA CONCEIÇÃO",
@@ -1611,8 +1765,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "08/04/2026"
     },
     "93290985334": {
       "nome": "LUZINETE DE SOUSA",
@@ -1629,8 +1785,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "27/03/2026"
     },
     "05395795308": {
       "nome": "MANUELA FERREIRA SANTOS",
@@ -1647,8 +1805,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "16/06/2026"
     },
     "02416266330": {
       "nome": "MARIA DE JESUS EMIDIO DA COSTA",
@@ -1665,8 +1825,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "08/04/2026"
     },
     "00924493364": {
       "nome": "MARIA DO SOCORRO DA SILVA MELO",
@@ -1685,10 +1847,12 @@
         "C7: Busca Ativa - Coleta de Preventivo em atraso",
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c7Ok": false,
       "c6_visitas": 35,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "20/03/2026"
     },
     "48852082387": {
       "nome": "MARIA DO SOCORRO PEREIRA DO VALE",
@@ -1705,8 +1869,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "11/05/2026"
     },
     "61782772375": {
       "nome": "MARIA EDUARDA DE JESUS BATISTA",
@@ -1723,8 +1889,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "21/08/2026"
     },
     "84723041168": {
       "nome": "MARIA IRISMAR MARQUES DOS SANTOS",
@@ -1741,8 +1909,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "28/10/2026"
     },
     "00386807345": {
       "nome": "MARIA JUCINEIDE CARLOS DE SOUSA",
@@ -1759,8 +1929,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "08/04/2026"
     },
     "94521034349": {
       "nome": "MARIA LINDALVA RODRIGUES DA SILVA PAULA",
@@ -1777,8 +1949,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "12/06/2026"
     },
     "62827813378": {
       "nome": "MARIA VERONICA RAMALHO PINTO",
@@ -1795,8 +1969,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "26/06/2026"
     },
     "40309657334": {
       "nome": "MARINALVA PEQUENO DE SOUSA",
@@ -1813,8 +1989,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "02/06/2026"
     },
     "61198324325": {
       "nome": "MARTA SILVA SANTOS TEODORIO",
@@ -1831,8 +2009,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "06/06/2026"
     },
     "60213538385": {
       "nome": "MIRIAN DA SILVA ARAUJO",
@@ -1849,8 +2029,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "19/06/2026"
     },
     "00395006325": {
       "nome": "MISSILENE OLIVEIRA DE SOUSA",
@@ -1867,8 +2049,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "13/03/2026"
     },
     "06085498357": {
       "nome": "RAIANE PEREIRA DOS SANTOS DIAS",
@@ -1885,8 +2069,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "17/08/2026"
     },
     "RAIMUNDA DA SILVA PAULA": {
       "nome": "RAIMUNDA DA SILVA PAULA",
@@ -1906,10 +2092,12 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada",
         "C6: Busca Ativa - Consulta anual pendente (>12 meses)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c7Ok": false,
       "c6_visitas": 62,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "20/03/2026"
     },
     "RAIZA JOSEFINA VENAVIDES": {
       "nome": "RAIZA JOSEFINA VENAVIDES",
@@ -1926,8 +2114,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "29/04/2026"
     },
     "62970929317": {
       "nome": "RAYLA VITORIA DA COSTA ANASTACIO",
@@ -1944,8 +2134,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "08/04/2026"
     },
     "62856814301": {
       "nome": "RAYSSA DIAS DE ABREU MELO",
@@ -1962,8 +2154,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "02/02/2026"
     },
     "00372540309": {
       "nome": "ROSILENE MAGALHÃES DE ALMADA",
@@ -1980,8 +2174,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "05/05/2026"
     },
     "05941246382": {
       "nome": "SAMARA SILVEIRA DE MATOS",
@@ -1998,8 +2194,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "13/03/2026"
     },
     "02277436364": {
       "nome": "SUZETE FIRME TOMÉ",
@@ -2020,12 +2218,14 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c7Ok": true,
       "c4_visitas": 37,
       "c4Ok": false,
       "c6_visitas": 92,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "14/04/2026"
     },
     "62952057397": {
       "nome": "THAIS DA CONCEICAO MOURA",
@@ -2042,8 +2242,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "08/04/2026"
     },
     "00288725336": {
       "nome": "VANDICREIDE DA SILVEIRA QUEIROZ",
@@ -2060,8 +2262,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "20/03/2026"
     },
     "00880734329": {
       "nome": "VANETE DE SOUSA MOURÃO",
@@ -2078,8 +2282,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "06/07/2026"
     },
     "60302919392": {
       "nome": "VANUSA SILVA DOS SANTOS",
@@ -2096,8 +2302,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "27/03/2026"
     },
     "62431240371": {
       "nome": "VILMARA DE LIMA BARBOSA",
@@ -2114,8 +2322,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "24/02/2026"
     },
     "63086154390": {
       "nome": "VITORIA ALVES DA CONCEIÇÃO",
@@ -2132,8 +2342,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "20/03/2026"
     },
     "62443778347": {
       "nome": "WATILA SOUSA DA CONCEICAO",
@@ -2150,8 +2362,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "02/06/2026"
     },
     "62856845371": {
       "nome": "YASMIM DA SILVA BARROS",
@@ -2168,8 +2382,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "08/04/2026"
     },
     "06040246308": {
       "nome": "YASMIM MICHELLY DOS SANTOS GOMES",
@@ -2186,8 +2402,10 @@
       "pendencias": [
         "C7: Busca Ativa - Coleta de Preventivo em atraso"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
-      "c7Ok": false
+      "c7Ok": false,
+      "dt_cadastral": "21/09/2026"
     },
     "60214647374": {
       "nome": "FRANCISCO JHONNY DE BRITO BRANDÃO",
@@ -2201,7 +2419,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "12/06/2026"
     },
     "10797671340": {
       "nome": "IANA ELIZA ANDRADE BRANDÃO",
@@ -2215,7 +2435,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "12/06/2026"
     },
     "12176878310": {
       "nome": "JOÃO MIGUEL SOUSA BRANDÃO",
@@ -2229,7 +2451,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "17/07/2026"
     },
     "09387229300": {
       "nome": "JOÃO VICTOR MARQUES MOREIRA MORAIS",
@@ -2243,7 +2467,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "27/06/2026"
     },
     "02765853304": {
       "nome": "JHONATAN GALVAO MOREIRA",
@@ -2260,10 +2486,12 @@
       "pendencias": [
         "C2: Busca Ativa - Agendar consulta de puericultura"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c2_visitas": 20,
       "c2_vacinasOk": true,
-      "c2Ok": false
+      "c2Ok": false,
+      "dt_cadastral": "27/06/2026"
     },
     "00553949306": {
       "nome": "MILTON BORGES DA SILVA",
@@ -2277,7 +2505,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "08/04/2026"
     },
     "62981959395": {
       "nome": "SUELEN NAZARETH FERNANDES DE ASSIS",
@@ -2291,7 +2521,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "06/04/2026"
     },
     "62981956370": {
       "nome": "JOSÉ LUIZ FERNANDES DE ASSIS",
@@ -2305,7 +2537,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "06/04/2026"
     },
     "46669752334": {
       "nome": "WHILISTON CHARLES PEREIRADE ASSIS",
@@ -2319,7 +2553,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "06/04/2026"
     },
     "63112953347": {
       "nome": "ALANE KELLY ROCHA DE CASTRO",
@@ -2333,7 +2569,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "06/04/2026"
     },
     "04393114388": {
       "nome": "ANTONIO MOURA",
@@ -2347,7 +2585,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "25/09/2026"
     },
     "07696397397": {
       "nome": "ERIKA VIEIRA ALMEIDA",
@@ -2361,7 +2601,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "08/04/2026"
     },
     "11060283336": {
       "nome": "IRISNALDO DA SILVA",
@@ -2375,7 +2617,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "30/10/2026"
     },
     "11844828379": {
       "nome": "LUNA VALENTINA DA SILVA BARROS",
@@ -2389,7 +2633,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "08/04/2026"
     },
     "62844658318": {
       "nome": "RIKELME DOS SANTOS GOMES",
@@ -2403,7 +2649,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "21/09/2026"
     },
     "06863334380": {
       "nome": "FELIPE NASCIMENTO DA SILVA",
@@ -2417,7 +2665,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "17/07/2026"
     },
     "46668985300": {
       "nome": "MANOEL VANDERLEY PEREIRA DA SILVA",
@@ -2431,7 +2681,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "17/07/2026"
     },
     "03926955376": {
       "nome": "PEDRO LUCAS FERNANDES CARLOS DE SOUSA",
@@ -2445,7 +2697,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "08/04/2026"
     },
     "91180856368": {
       "nome": "MARIA DAS GRAÇAS SILVA NASCIMENTO",
@@ -2465,11 +2719,13 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c4_visitas": 40,
       "c4Ok": false,
       "c6_visitas": 49,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "08/04/2026"
     },
     "05679983397": {
       "nome": "FRANCIELDE MARTINS",
@@ -2483,7 +2739,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "04/03/2026"
     },
     "00152382372": {
       "nome": "PIETRO MARTINS DE SOUSA",
@@ -2498,10 +2756,12 @@
         "C2": true
       },
       "pendencias": [],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c2_visitas": 5,
       "c2_vacinasOk": true,
-      "c2Ok": true
+      "c2Ok": true,
+      "dt_cadastral": "04/03/2026"
     },
     "63199753345": {
       "nome": "FRANCISCO HIGOR EMIDIO DA COSTA",
@@ -2515,7 +2775,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "08/04/2026"
     },
     "62970922304": {
       "nome": "DIEGO EMIDIO DA COSTA",
@@ -2529,7 +2791,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "08/04/2026"
     },
     "00728058383": {
       "nome": "OSIMAR PEREIRA DA SILVA",
@@ -2543,7 +2807,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "21/09/2026"
     },
     "JOSE VIEIRA DA SILVA": {
       "nome": "JOSE VIEIRA DA SILVA",
@@ -2557,7 +2823,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "21/09/2026"
     },
     "00692385371": {
       "nome": "FRANCISCA NEUMA DA SILVA E SILVA",
@@ -2571,7 +2839,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "08/04/2026"
     },
     "95079068353": {
       "nome": "FRANCISCO RODRIGUES TOMÉ",
@@ -2589,9 +2859,11 @@
         "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c6_visitas": 46,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "13/02/2026"
     },
     "17813549368": {
       "nome": "JOSE EVARISTO CAVALCANTE",
@@ -2611,11 +2883,13 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c4_visitas": 8,
       "c4Ok": false,
       "c6_visitas": 98,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "20/02/2026"
     },
     "01103912330": {
       "nome": "JUNIOR MARLON DE LIRA",
@@ -2629,7 +2903,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "07/10/2026"
     },
     "62202279300": {
       "nome": "THALISSA LAIS LIRA MAIA",
@@ -2643,7 +2919,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "05/05/2026"
     },
     "62987068360": {
       "nome": "BENJAMIN ASAFE DE LIMA MATIAS",
@@ -2657,7 +2935,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "05/05/2026"
     },
     "62979687308": {
       "nome": "PEDRO EMANUEL DE LIRA SOUSA",
@@ -2671,7 +2951,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "05/05/2026"
     },
     "06106909300": {
       "nome": "JOHN RAMON SILVA CRUZ",
@@ -2685,7 +2967,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "13/03/2026"
     },
     "03660648353": {
       "nome": "ZAIRA LOUISE SILVEIRA CRUZ",
@@ -2700,10 +2984,12 @@
         "C2": true
       },
       "pendencias": [],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c2_visitas": 14,
       "c2_vacinasOk": true,
-      "c2Ok": true
+      "c2Ok": true,
+      "dt_cadastral": "13/03/2026"
     },
     "LOURINALDO ALVES DE ANDRADE": {
       "nome": "LOURINALDO ALVES DE ANDRADE",
@@ -2717,7 +3003,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "14/08/2026"
     },
     "01535090316": {
       "nome": "MARIA DIAS DA SILVA",
@@ -2737,11 +3025,13 @@
         "C4: Busca Ativa - Avaliação periódica dos pés",
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c4_visitas": 45,
       "c4Ok": false,
       "c6_visitas": 56,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "13/03/2026"
     },
     "10595892302": {
       "nome": "ANA CECÍLIA DE SOUSA LIMA",
@@ -2755,7 +3045,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "13/03/2026"
     },
     "24025482827": {
       "nome": "GEANDERSON DOS SANTOS CONCEIÇÃO",
@@ -2769,7 +3061,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "13/03/2026"
     },
     "03468858337": {
       "nome": "SIVIRINO DE SOUSA MELO",
@@ -2788,9 +3082,11 @@
         "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c6_visitas": 43,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "13/03/2026"
     },
     "62824713380": {
       "nome": "ALAN DOS SANTOS MELO",
@@ -2804,7 +3100,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "13/03/2026"
     },
     "62825761303": {
       "nome": "KAUAN MELO CONCEIÇÃO",
@@ -2818,7 +3116,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "13/03/2026"
     },
     "42632333873": {
       "nome": "SAMARA GOMES DA CONCEIÇÃO",
@@ -2832,7 +3132,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "13/03/2026"
     },
     "06907183307": {
       "nome": "FRANCISCO RODRIGUES MELO",
@@ -2846,7 +3148,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "13/03/2026"
     },
     "08045608382": {
       "nome": "JOÃO VITOR BARBOSA DE SOUZA",
@@ -2860,7 +3164,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "01/09/2026"
     },
     "62870733305": {
       "nome": "ALICIA RODRIGUES OLIVEIRA",
@@ -2874,7 +3180,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "16/03/2026"
     },
     "10308193350": {
       "nome": "GABRIEL DE SOUSA RODRIGUES CARVALHO",
@@ -2888,7 +3196,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "16/03/2026"
     },
     "05182585306": {
       "nome": "VALDEMIR CARVALHO DE SOUSA",
@@ -2902,7 +3212,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "16/03/2026"
     },
     "62870738374": {
       "nome": "RHUAN GUILHERME DE SOUSA BARBOSA",
@@ -2916,7 +3228,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "16/03/2026"
     },
     "93290950387": {
       "nome": "FRANCINILDO DA SILVA CHAVES",
@@ -2930,7 +3244,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "27/03/2026"
     },
     "62434202306": {
       "nome": "DIOGO DE SOUZA CHAVES",
@@ -2944,7 +3260,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "27/03/2026"
     },
     "08467435313": {
       "nome": "RODRIGO DE ALMADA FERREIRA",
@@ -2958,7 +3276,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "05/05/2026"
     },
     "01660529301": {
       "nome": "EMANUEL WENDEL POOL GAT RODRIGUES",
@@ -2972,7 +3292,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "27/03/2026"
     },
     "63212389370": {
       "nome": "PAULO HENRIQUE SILVA SANTOS",
@@ -2986,7 +3308,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "27/03/2026"
     },
     "03856016384": {
       "nome": "RENILDO DA SILVA OLIVEIRA",
@@ -3000,7 +3324,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "14/08/2026"
     },
     "00091842360": {
       "nome": "ANTONIO JOSE DE PAULO FILHO",
@@ -3014,7 +3340,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "27/03/2026"
     },
     "08699503393": {
       "nome": "DHOSEFHY VIANE DE SOUSA FRANÇA",
@@ -3028,7 +3356,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "21/08/2026"
     },
     "12686149396": {
       "nome": "MARIA DHORRANA DE JESUS FRANÇA",
@@ -3043,10 +3373,12 @@
         "C2": true
       },
       "pendencias": [],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c2_visitas": 17,
       "c2_vacinasOk": true,
-      "c2Ok": true
+      "c2Ok": true,
+      "dt_cadastral": "21/08/2026"
     },
     "63122756390": {
       "nome": "MILENE DE SOUZA CARVALHO",
@@ -3060,7 +3392,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "13/03/2026"
     },
     "08115379352": {
       "nome": "MARIA CARLA FEITOSA SOUSA",
@@ -3074,7 +3408,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "13/03/2026"
     },
     "08115394319": {
       "nome": "LUCAS GABRIEL FEITOSA SOUZA",
@@ -3088,7 +3424,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "13/03/2026"
     },
     "08695636372": {
       "nome": "KAIQUE DE SOUZA CARVALHO",
@@ -3102,7 +3440,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "13/03/2026"
     },
     "12413599380": {
       "nome": "ALICE DE SOUSA CARVALHO",
@@ -3116,7 +3456,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "13/03/2026"
     },
     "09103599388": {
       "nome": "GUYLBTY FREITAS DA SILVA SOUSA",
@@ -3130,7 +3472,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "13/02/2026"
     },
     "04077897319": {
       "nome": "VALDERI MATOS SILVA",
@@ -3144,7 +3488,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "27/03/2026"
     },
     "02713021359": {
       "nome": "JOSÉ PEDRO DOS SANTOS",
@@ -3163,9 +3509,11 @@
         "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c6_visitas": 10,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "20/08/2026"
     },
     "62851372343": {
       "nome": "ERISVAN SANTOS DE JESUS",
@@ -3179,7 +3527,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "15/07/2026"
     },
     "62851386301": {
       "nome": "DENISVAN SANTOS DE JESUS",
@@ -3193,7 +3543,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "15/07/2026"
     },
     "02441285378": {
       "nome": "RAIMUNDO NONATO DE MORAIS BAIMA",
@@ -3207,7 +3559,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "11/06/2026"
     },
     "63473193305": {
       "nome": "JARDIELTO BORGES DA SILVA",
@@ -3221,7 +3575,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "11/06/2026"
     },
     "63473199346": {
       "nome": "ALEXIA DA SILVA CAMELO",
@@ -3235,7 +3591,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "11/06/2026"
     },
     "13278952340": {
       "nome": "MAITÊ HADASSAH BORGES DE MORAIS BAIMA",
@@ -3250,10 +3608,12 @@
         "C2": true
       },
       "pendencias": [],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c2_visitas": 15,
       "c2_vacinasOk": true,
-      "c2Ok": true
+      "c2Ok": true,
+      "dt_cadastral": "11/06/2026"
     },
     "05525205351": {
       "nome": "ANTONIO SOBRINHO DE SOUSA NETO",
@@ -3267,7 +3627,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "11/05/2026"
     },
     "08465735395": {
       "nome": "FERNANDO FERREIRA DE MATOS",
@@ -3281,7 +3643,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "14/04/2026"
     },
     "00963026313": {
       "nome": "JANES FRAN OLIVEIRA MELO",
@@ -3295,7 +3659,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "11/03/2026"
     },
     "62968800302": {
       "nome": "RODRIGO SILVA MELO",
@@ -3309,7 +3675,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "11/03/2026"
     },
     "62843950350": {
       "nome": "AGATHA RIANA DE SOUSA BASILIO",
@@ -3323,7 +3691,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "08/10/2026"
     },
     "10317530364": {
       "nome": "LUARA KEVILLY FELIX BASILIO",
@@ -3337,7 +3707,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "08/10/2026"
     },
     "04884619102": {
       "nome": "ROMARIO DO NASCIMENTO BASILIO",
@@ -3351,7 +3723,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "08/10/2026"
     },
     "13289126390": {
       "nome": "RENATA FELIX BASILIO GOMES",
@@ -3366,10 +3740,12 @@
         "C2": true
       },
       "pendencias": [],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c2_visitas": 10,
       "c2_vacinasOk": true,
-      "c2Ok": true
+      "c2Ok": true,
+      "dt_cadastral": "08/10/2026"
     },
     "11403757330": {
       "nome": "ANNA VITORIA RAMALHO MATOS",
@@ -3383,7 +3759,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "26/06/2026"
     },
     "63027076337": {
       "nome": "GABRIEL PINTO DE MIRANDA",
@@ -3397,7 +3775,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "26/06/2026"
     },
     "13640416341": {
       "nome": "ÁVILLA CLARA RAMALHO MENDES",
@@ -3412,10 +3792,12 @@
         "C2": true
       },
       "pendencias": [],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c2_visitas": 9,
       "c2_vacinasOk": true,
-      "c2Ok": true
+      "c2Ok": true,
+      "dt_cadastral": "13/07/2026"
     },
     "61091151342": {
       "nome": "THAFNNY DE SOUSA PACHECO",
@@ -3429,7 +3811,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "13/03/2026"
     },
     "93433280363": {
       "nome": "JADSON DOURADO PACHECO",
@@ -3443,7 +3827,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "18/08/2026"
     },
     "00512116377": {
       "nome": "FRANCISCO BARBOSA DE SOUSA BEZERRA",
@@ -3462,9 +3848,11 @@
         "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c6_visitas": 35,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "23/04/2026"
     },
     "50801481368": {
       "nome": "NILZETE NASCIMENTO COSTA",
@@ -3478,7 +3866,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "14/03/2026"
     },
     "04860859375": {
       "nome": "ADEMILSON DA SILVA TEODORIO",
@@ -3492,7 +3882,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "06/06/2026"
     },
     "48850861320": {
       "nome": "DANIEL DE LIRA",
@@ -3506,7 +3898,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "14/03/2026"
     },
     "04113414300": {
       "nome": "FRANCISCO DA ENCARNAÇÃO",
@@ -3520,7 +3914,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "22/06/2026"
     },
     "62563354307": {
       "nome": "ANANIAS MOURAO SOUSA",
@@ -3534,7 +3930,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "02/06/2026"
     },
     "13267683360": {
       "nome": "ARTHUR OLIVEIRA MOURÃO",
@@ -3549,10 +3947,12 @@
         "C2": true
       },
       "pendencias": [],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c2_visitas": 16,
       "c2_vacinasOk": true,
-      "c2Ok": true
+      "c2Ok": true,
+      "dt_cadastral": "02/06/2026"
     },
     "01373548789": {
       "nome": "JOÃO BATISTA RIBEIRO DA COSTA",
@@ -3566,7 +3966,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "18/08/2026"
     },
     "62862131393": {
       "nome": "GEOVANA DOS SANTOS RIBEIRO",
@@ -3580,7 +3982,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "18/08/2026"
     },
     "72686537353": {
       "nome": "FRANCISCO CANDIDO DA SILVA",
@@ -3594,7 +3998,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "08/04/2026"
     },
     "62831513375": {
       "nome": "EMANUEL DIAS DE ABREU TIMOTEO",
@@ -3608,7 +4014,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "02/02/2026"
     },
     "12642730379": {
       "nome": "HELOISA DIAS DE ABREU TIMOTÉO",
@@ -3623,10 +4031,12 @@
         "C2": true
       },
       "pendencias": [],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c2_visitas": 16,
       "c2_vacinasOk": true,
-      "c2Ok": true
+      "c2Ok": true,
+      "dt_cadastral": "02/02/2026"
     },
     "17879291750": {
       "nome": "RODRIGO TIMOTÉO DA SILVA",
@@ -3640,7 +4050,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "02/02/2026"
     },
     "YURIMAR ESTEFANIA RODRIGUEZ VENAVIDES": {
       "nome": "YURIMAR ESTEFANIA RODRIGUEZ VENAVIDES",
@@ -3654,7 +4066,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "30/04/2026"
     },
     "04518982304": {
       "nome": "MANOEL DE GRACIANO ALMEIDA DE SOUSA",
@@ -3668,7 +4082,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "30/04/2026"
     },
     "13573849393": {
       "nome": "ISABELLA RAYSLLA ALMEIDA VENAVIDES",
@@ -3682,7 +4098,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "30/04/2026"
     },
     "05035652378": {
       "nome": "FRANCISCO DE ASSIS DA CONCEIÇÃO CORREIA",
@@ -3696,7 +4114,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "16/06/2026"
     },
     "12821678398": {
       "nome": "ANA LIVIA FERREIRA CORREIA",
@@ -3711,10 +4131,12 @@
         "C2": true
       },
       "pendencias": [],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c2_visitas": 10,
       "c2_vacinasOk": true,
-      "c2Ok": true
+      "c2Ok": true,
+      "dt_cadastral": "16/06/2026"
     },
     "11782997326": {
       "nome": "LUIS FERNANDO FERREIRA DOS SANTOS",
@@ -3728,7 +4150,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "16/06/2026"
     },
     "62912831318": {
       "nome": "DAVI SOUSA VERAS",
@@ -3742,7 +4166,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "20/03/2026"
     },
     "60478447310": {
       "nome": "FRANCISCO RICARDO DE SOUSA VERAS",
@@ -3756,7 +4182,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "20/03/2026"
     },
     "03907611330": {
       "nome": "REINALDO DE SOUSA VERAS",
@@ -3770,7 +4198,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "20/03/2026"
     },
     "63086160365": {
       "nome": "VINICIUS BATISTA DA CONCEIÇÃO",
@@ -3784,7 +4214,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "20/03/2026"
     },
     "62869894392": {
       "nome": "DAVI MIGUEL RIBEIRO ANDRADE",
@@ -3798,7 +4230,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "26/02/2026"
     },
     "97212644315": {
       "nome": "FRANCIMAURO ALVES RODRIGUES PEREIRA",
@@ -3812,7 +4246,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "20/03/2026"
     },
     "63024327312": {
       "nome": "MAURO HENRIQUE MELO PEREIRA",
@@ -3826,7 +4262,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "05/08/2026"
     },
     "63024331344": {
       "nome": "LUCAS ELIEL MELO PEREIRA",
@@ -3840,7 +4278,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "20/03/2026"
     },
     "60263716309": {
       "nome": "DEUSIMAR ALVES PEREIRA",
@@ -3854,7 +4294,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "25/02/2026"
     },
     "03075848360": {
       "nome": "ELCIEL DIAS DE ABREU",
@@ -3868,7 +4310,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "17/08/2026"
     },
     "62840155346": {
       "nome": "ELIAB PEREIRA DIAS",
@@ -3882,7 +4326,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "17/08/2026"
     },
     "06254228300": {
       "nome": "KARINE MORAIS BARROS DE ABREU CAMPELO",
@@ -3896,7 +4342,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "02/06/2026"
     },
     "12328072305": {
       "nome": "REBECA MORAIS DIAS CAMPELO",
@@ -3910,7 +4358,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "02/06/2026"
     },
     "10341344346": {
       "nome": "ISABELLE MORAIS DIAS CAMPELO",
@@ -3924,7 +4374,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "02/06/2026"
     },
     "60212130331": {
       "nome": "JAILSON DIAS CAMPELO",
@@ -3938,7 +4390,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "02/06/2026"
     },
     "00316987352": {
       "nome": "RAIMUNDO DE SOUSA QUEIROZ",
@@ -3952,7 +4406,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "20/03/2026"
     },
     "63018173384": {
       "nome": "ALLAN DA SILVEIRA QUEIROZ",
@@ -3966,7 +4422,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "20/03/2026"
     },
     "10382831322": {
       "nome": "AGATHA SOPHIA SILVEIRA GOMES",
@@ -3980,7 +4438,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "31/03/2026"
     },
     "00397034369": {
       "nome": "JOSÉ FERREIRA LIMA",
@@ -3998,9 +4458,11 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c6_visitas": 59,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "20/03/2026"
     },
     "62869593350": {
       "nome": "WENDEL DE SOUSA MORAES",
@@ -4014,7 +4476,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "20/03/2026"
     },
     "62869575378": {
       "nome": "LAYS DE SOUSA MORAES",
@@ -4028,7 +4492,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "30/03/2026"
     },
     "77072111387": {
       "nome": "ERIVAN FERREIRA VIANA",
@@ -4042,7 +4508,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "24/08/2026"
     },
     "62857694350": {
       "nome": "DAVI LUCCA ABREU CAETANO",
@@ -4056,7 +4524,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "24/08/2026"
     },
     "05824496340": {
       "nome": "JOÃO PEQUENO DE SOUSA",
@@ -4070,7 +4540,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "02/06/2026"
     },
     "13025032359": {
       "nome": "ALEF RAVI SOUSA DA CONCEICAO",
@@ -4085,10 +4557,12 @@
         "C2": true
       },
       "pendencias": [],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c2_visitas": 9,
       "c2_vacinasOk": true,
-      "c2Ok": true
+      "c2Ok": true,
+      "dt_cadastral": "02/06/2026"
     },
     "17210127291": {
       "nome": "JOSÉ ISAÍAS DA SILVA",
@@ -4107,9 +4581,11 @@
         "C6: Busca Ativa - Consulta anual pendente (>12 meses)",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c6_visitas": 52,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "02/10/2026"
     },
     "95106294304": {
       "nome": "ANTÔNIO MENESES DE SOUSA",
@@ -4123,7 +4599,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "27/03/2026"
     },
     "07624623374": {
       "nome": "FRANCISCO ALVES MOURÃO NETO",
@@ -4137,7 +4615,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "27/03/2026"
     },
     "07035175385": {
       "nome": "TIAGO MOURÃO SOUSA",
@@ -4151,7 +4631,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "27/03/2026"
     },
     "50801562368": {
       "nome": "JOÃO MARCOS DA SILVA",
@@ -4169,9 +4651,11 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c6_visitas": 50,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "12/06/2026"
     },
     "63027758330": {
       "nome": "NICOLAS DINIZ DA SILVA LIMA",
@@ -4185,7 +4669,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "12/06/2026"
     },
     "00481758380": {
       "nome": "RITA MARIA RODRIGUES DA SILVA",
@@ -4202,9 +4688,11 @@
       "pendencias": [
         "C6: Busca Ativa - Vacina contra Influenza atrasada"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c6_visitas": 25,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "12/06/2026"
     },
     "23652756304": {
       "nome": "MARIA JOSÉ BARBOSA SILVA",
@@ -4222,9 +4710,11 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c6_visitas": 50,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "24/02/2026"
     },
     "68547650300": {
       "nome": "VALDIR BARBOSA SILVA",
@@ -4242,9 +4732,11 @@
         "C6: Busca Ativa - Vacina contra Influenza atrasada",
         "C6: Busca Ativa - Avaliação multidimensional (IVCF-20)"
       ],
+      "bolsaFamilia": false,
       "c1Ok": true,
       "c6_visitas": 53,
-      "c6Ok": false
+      "c6Ok": false,
+      "dt_cadastral": "27/03/2026"
     },
     "63047965366": {
       "nome": "LORENZO SILVA SOUSA",
@@ -4258,7 +4750,9 @@
         "C1": true
       },
       "pendencias": [],
-      "c1Ok": true
+      "bolsaFamilia": false,
+      "c1Ok": true,
+      "dt_cadastral": "14/10/2025"
     }
   },
   "ruas": [
