@@ -1,4 +1,5 @@
-const CACHE_NAME = 'gestao-acs-v3';
+const CACHE_NAME = 'gestao-acs-v17';
+const CACHE_FONTES = 'gestao-acs-fontes';
 const RECURSOS = [
   './',
   './index.html',
@@ -19,7 +20,7 @@ self.addEventListener('activate', (e) => {
     caches.keys().then((chaves) => {
       return Promise.all(
         chaves.map((chave) => {
-          if (chave !== CACHE_NAME) return caches.delete(chave);
+          if (chave !== CACHE_NAME && chave !== CACHE_FONTES) return caches.delete(chave);
         })
       );
     })
@@ -31,7 +32,25 @@ self.addEventListener('fetch', (e) => {
   if (e.request.url.includes('/api/')) {
     return;
   }
-  
+
+  const url = new URL(e.request.url);
+
+  // Fontes Inter/Roboto (Google Fonts): guarda na primeira vez e usa offline depois
+  if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com') {
+    e.respondWith(
+      caches.open(CACHE_FONTES).then((cache) =>
+        cache.match(e.request).then((guardado) => {
+          const rede = fetch(e.request).then((resp) => {
+            if (resp && (resp.ok || resp.type === 'opaque')) cache.put(e.request, resp.clone());
+            return resp;
+          }).catch(() => guardado);
+          return guardado || rede;
+        })
+      )
+    );
+    return;
+  }
+
   e.respondWith(
     caches.match(e.request).then((res) => res || fetch(e.request))
   );

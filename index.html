@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="theme-color" content="#0284c7">
+  <meta name="theme-color" content="#0369a1">
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" type="image/png" sizes="192x192" href="./icone-192.png">
   <title>Gestão ACS — Indicadores</title>
@@ -11,7 +11,7 @@
   <!-- IMPORTAÇÃO DA FONTE INTER -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
   
   <style>
     :root {
@@ -19,11 +19,15 @@
       --primary-dark: #0369a1;
       --danger: #ef4444;
       --success: #10b981;
-      --bg: #94a3b8; 
-      --card: rgba(255, 255, 255, 0.85);
-      --text: #1e293b;
-      --text-muted: #475569;
-      --border: rgba(255, 255, 255, 0.9);
+      --bg: #b7c5dd;
+      --surface: #ffffff;
+      --card: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 16px;
+      --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06), 0 1px 3px rgba(15, 23, 42, 0.04);
+      --shadow-md: 0 4px 14px rgba(15, 23, 42, 0.08);
 
       --c1: #0284c7;
       --c2: #8b5cf6;
@@ -34,216 +38,258 @@
       --c7: #db2777;
       --bf: #eab308;
     }
-    
-    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
-    
-    body { 
-      background: linear-gradient(135deg, #94a3b8 0%, #cbd5e1 100%);
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      background:
+        radial-gradient(70% 45% at 8% 0%, rgba(99, 160, 255, 0.40) 0%, transparent 70%),
+        radial-gradient(60% 40% at 100% 22%, rgba(167, 139, 250, 0.32) 0%, transparent 70%),
+        radial-gradient(70% 40% at 0% 100%, rgba(45, 212, 191, 0.22) 0%, transparent 70%),
+        linear-gradient(180deg, #b7c5dd 0%, #d1dbec 100%);
       background-attachment: fixed;
-      color: var(--text); 
-      padding-bottom: 75px; 
-    }
-    
-    header { background: var(--primary); color: white; padding: 14px 16px; position: sticky; top: 0; z-index: 10; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
-    header h1 { font-size: 1.15rem; font-weight: 700; }
-    header p { font-size: 0.8rem; opacity: 0.95; margin-top: 2px; }
-
-    .container { padding: 10px; max-width: 650px; margin: 0 auto; }
-    
-    .card, .item-cidadao { 
-      background: var(--card); 
-      border-radius: 12px; 
-      border: 1px solid var(--border); 
-      padding: 16px 12px; 
-      margin-bottom: 10px; 
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05); 
-      backdrop-filter: blur(12px); 
-      -webkit-backdrop-filter: blur(12px); 
+      color: var(--text);
+      padding-bottom: 84px;
     }
 
-    .card-meta { 
-      border-radius: 12px; 
-      border: 1px solid var(--border); 
-      border-top: 4px solid var(--primary); 
-      padding: 12px 10px; 
-      margin-bottom: 10px; 
-      backdrop-filter: blur(12px); 
-      -webkit-backdrop-filter: blur(12px); 
-      cursor: pointer; 
-      transition: transform 0.2s, box-shadow 0.2s, background 0.2s; 
-      
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
+    /* ---------- CABEÇALHO ---------- */
+    header {
+      background: linear-gradient(135deg, #0369a1 0%, #0284c7 55%, #0ea5e9 100%);
+      color: white;
+      padding: 18px 18px 22px;
+      position: sticky; top: 0; z-index: 10;
+      box-shadow: 0 6px 20px rgba(3, 105, 161, 0.28);
+      border-radius: 0 0 22px 22px;
     }
+    header h1 { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em; }
+    header p { font-size: 0.8rem; opacity: 0.92; margin-top: 3px; font-weight: 500; }
 
+    .container { padding: 14px 12px; max-width: 650px; margin: 0 auto; }
+
+    .card, .item-cidadao {
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      padding: 16px 14px;
+      margin-bottom: 12px;
+      box-shadow: var(--shadow-sm);
+    }
+    .card h3 { font-size: 1rem; font-weight: 700; letter-spacing: -0.01em; }
+
+    /* ---------- CARDS DE INDICADORES ---------- */
+    .grid-indicadores { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px; }
+
+    .card-meta {
+      --accent: var(--primary);
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      border-top: 1px solid var(--border);
+      padding: 12px 12px 10px;
+      cursor: pointer;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.15s, box-shadow 0.2s, border-color 0.2s;
+      display: flex; flex-direction: column; align-items: stretch; text-align: left;
+      position: relative; overflow: hidden;
+    }
+    .card-meta::before {
+      content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px; background: var(--accent);
+    }
     .card-meta:active { transform: scale(0.97); }
-    
-    #card-c1 { background: rgba(239, 246, 255, 0.85); border-top-color: var(--c1); }
-    #card-c1.active { background: rgba(219, 234, 254, 0.95); box-shadow: 0 4px 12px rgba(2, 132, 199, 0.2); }
 
-    #card-c2 { background: rgba(245, 243, 255, 0.85); border-top-color: var(--c2); }
-    #card-c2.active { background: rgba(237, 233, 254, 0.95); box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2); }
+    #card-c1 { --accent: var(--c1); }
+    #card-c2 { --accent: var(--c2); }
+    #card-c3 { --accent: var(--c3); }
+    #card-c4 { --accent: var(--c4); }
+    #card-c5 { --accent: var(--c5); }
+    #card-c6 { --accent: var(--c6); }
+    #card-c7 { --accent: var(--c7); }
+    #card-bf { --accent: var(--bf); }
 
-    #card-c3 { background: rgba(253, 242, 248, 0.85); border-top-color: var(--c3); }
-    #card-c3.active { background: rgba(252, 231, 243, 0.95); box-shadow: 0 4px 12px rgba(236, 72, 153, 0.2); }
+    .card-meta.active { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent), var(--shadow-md); }
 
-    #card-c4 { background: rgba(255, 251, 235, 0.85); border-top-color: var(--c4); }
-    #card-c4.active { background: rgba(254, 243, 199, 0.95); box-shadow: 0 4px 12px rgba(245, 158, 11, 0.2); }
+    .card-meta .header-card { display: flex; justify-content: space-between; align-items: center; gap: 6px; width: 100%; padding-left: 4px; }
+    .card-meta h4 { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.02em; display: flex; align-items: center; gap: 5px; }
+    .card-meta .icon-card { font-size: 1.1em; }
+    .card-meta .badge-meta { font-size: 0.68rem; padding: 2px 8px; border-radius: 999px; font-weight: 800; background: var(--bg); color: #334155; }
 
-    #card-c5 { background: rgba(254, 242, 242, 0.85); border-top-color: var(--c5); }
-    #card-c5.active { background: rgba(254, 226, 226, 0.95); box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2); }
+    .card-meta .valor { font-size: 1.85rem; font-weight: 800; margin: 6px 0 2px 4px; letter-spacing: -0.04em; line-height: 1.1; }
+    .card-meta .valor, .card-meta .badge-meta { font-family: 'Roboto', 'Inter', sans-serif; }
+    .card-meta .valor.ok { color: var(--accent); }
+    .card-meta .valor.danger { color: var(--text); }
 
-    #card-c6 { background: rgba(236, 253, 245, 0.85); border-top-color: var(--c6); }
-    #card-c6.active { background: rgba(209, 250, 229, 0.95); box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2); }
+    .card-meta .barra-fundo { width: calc(100% - 4px); height: 7px; background: #e2e8f0; border-radius: 999px; margin: 8px 0 8px 4px; overflow: hidden; }
+    .card-meta .barra-progresso { height: 100%; width: 0%; border-radius: 999px; background: var(--accent) !important; transition: width 0.5s ease; }
 
-    #card-c7 { background: rgba(255, 241, 242, 0.85); border-top-color: var(--c7); }
-    #card-c7.active { background: rgba(255, 228, 230, 0.95); box-shadow: 0 4px 12px rgba(219, 39, 119, 0.2); }
+    .card-meta .rodape-card { display: flex; align-items: center; width: 100%; min-height: 22px; padding-left: 4px; }
+    .card-meta .status-meta { display: block; font-size: 0.72rem; font-weight: 700; line-height: 1.3; text-align: left; }
+    .card-meta .status-meta.ok { color: #059669; font-weight: 700; }
+    .card-meta .status-meta.danger { color: #dc2626; font-weight: 700; }
 
-    #card-bf { background: rgba(254, 252, 232, 0.85); border-top-color: var(--bf); }
-    #card-bf .valor { color: #ca8a04 !important; font-size: 1.7rem; margin: 12px 0 6px 0; }
-    #card-bf .status-meta { color: #854d0e !important; font-size: 0.75rem; }
-    #card-bf.active { background: rgba(254, 240, 138, 0.95); box-shadow: 0 4px 12px rgba(234, 179, 8, 0.2); }
+    .card-meta .linha-valor { display: flex; align-items: center; justify-content: space-between; gap: 6px; width: 100%; padding-left: 4px; margin-top: 4px; }
+    .card-meta .linha-valor .valor { margin: 0; flex-shrink: 0; }
+    .card-meta .linha-valor .rodape-card { width: auto; min-height: 0; padding-left: 0; margin-top: 0; justify-content: flex-end; flex: 1; }
+    .card-meta .linha-valor .status-meta { text-align: right; font-size: 0.68rem; line-height: 1.2; }
+    .card-meta .barra-fundo { margin-top: 6px !important; margin-bottom: 4px !important; }
+    #card-bf .linha-valor .valor { margin: 0 !important; }
+    .card-meta .regra-acs { font-size: 0.64rem; color: var(--text-muted); margin-top: 6px; border-top: 1px dashed var(--border); padding-top: 6px; width: 100%; padding-left: 4px; line-height: 1.3; }
 
-    .card-meta .header-card { display: flex; justify-content: center; align-items: center; gap: 8px; width: 100%; }
-    .card-meta h4 { font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: -0.01em; display: flex; align-items: center; gap: 4px; }
-    .card-meta .icon-card { font-size: 1.15em; }
-    .card-meta .badge-meta { font-size: 0.68rem; padding: 2px 8px; border-radius: 12px; font-weight: 800; background: rgba(255, 255, 255, 0.95); color: #334155; border: 1px solid rgba(0,0,0,0.05); }
-    
-    .card-meta .valor { font-size: 1.5rem; font-weight: 800; margin-top: 6px; letter-spacing: -0.03em; }
-    .card-meta .valor.ok { color: #0284c7; }
-    .card-meta .valor.danger { color: #ef4444; }
+    #card-bf .valor { color: #a16207 !important; font-size: 1.85rem; margin: 6px 0 2px 4px; }
+    #card-bf .status-meta { color: #854d0e !important; font-size: 0.72rem; }
+    #card-bf h4 { color: #a16207 !important; }
+    #card-bf .regra-acs { color: #a16207 !important; border-top-color: rgba(202, 138, 4, 0.25) !important; }
 
-    .card-meta .barra-fundo { width: 100%; height: 5px; background: rgba(0,0,0,0.08); border-radius: 3px; margin: 8px 0; overflow: hidden; }
-    .card-meta .barra-progresso { height: 100%; width: 0%; border-radius: 3px; background: #0284c7; transition: width 0.3s ease; }
-
-    .card-meta .rodape-card { display: flex; justify-content: center; align-items: center; width: 100%; min-height: 28px; margin-top: 4px; }
-    .card-meta .status-meta { text-align: center; display: block; width: 100%; font-size: 0.72rem; font-weight: 700; line-height: 1.35; }
-    .card-meta .status-meta.ok { color: #10b981; font-weight: 800; }
-    .card-meta .status-meta.danger { color: #ef4444; font-weight: 700; }
-    
-    .card-meta .regra-acs { font-size: 0.65rem; color: var(--text-muted); margin-top: auto; border-top: 1px dashed rgba(0,0,0,0.1); padding-top: 6px; width: 100%; }
-
-    .btn { background: var(--primary); color: white; border: none; padding: 10px 14px; border-radius: 8px; font-weight: 600; font-size: 0.88rem; cursor: pointer; display: inline-block; width: 100%; text-align: center; text-decoration: none; box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3); }
-    .btn-install { background: #10b981; margin-bottom: 10px; font-size: 0.92rem; display: none; box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3); }
+    /* ---------- BOTÕES ---------- */
+    .btn { background: var(--primary); color: white; border: none; padding: 12px 14px; border-radius: 12px; font-weight: 600; font-size: 0.9rem; cursor: pointer; display: inline-block; width: 100%; text-align: center; text-decoration: none; box-shadow: 0 2px 8px rgba(2, 132, 199, 0.28); transition: transform 0.1s, filter 0.2s; }
+    .btn:active { transform: scale(0.98); filter: brightness(0.95); }
+    .btn-install { background: #10b981; margin-bottom: 12px; font-size: 0.92rem; display: none; box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3); }
     .btn-json-in { background: #0284c7; margin-bottom: 8px; }
-    .btn-json-out { background: #475569; margin-bottom: 8px; }
+    .btn-json-out { background: #475569; margin-bottom: 8px; box-shadow: 0 2px 8px rgba(71, 85, 105, 0.25); }
     .btn-sync { background: #0369a1; margin-bottom: 8px; font-size: 0.85rem; }
-    .btn-danger { background: var(--danger); margin-top: 8px; }
+    .btn-danger { background: var(--danger); margin-top: 8px; box-shadow: 0 2px 8px rgba(239, 68, 68, 0.25); }
 
-    .grid-indicadores { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; }
-    
-    .chips-indicadores { display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 8px; -webkit-overflow-scrolling: touch; }
-    .chip { font-size: 0.72rem; font-weight: 600; padding: 6px 12px; border-radius: 20px; border: 1px solid var(--border); background: var(--card); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); color: var(--text-muted); white-space: nowrap; cursor: pointer; box-shadow: 0 2px 4px rgba(0,0,0,0.02); display: flex; align-items: center; gap: 4px; transition: background 0.2s, color 0.2s; }
-    
-    #chip-todos.active { background: var(--primary); color: white; border-color: var(--primary); box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3); }
-    #chip-C1.active { background: var(--c1); color: white; border-color: var(--c1); box-shadow: 0 2px 6px rgba(2, 132, 199, 0.3); }
-    #chip-C2.active { background: var(--c2); color: white; border-color: var(--c2); box-shadow: 0 2px 6px rgba(139, 92, 246, 0.3); }
-    #chip-C3.active { background: var(--c3); color: white; border-color: var(--c3); box-shadow: 0 2px 6px rgba(236, 72, 153, 0.3); }
-    #chip-C4.active { background: var(--c4); color: white; border-color: var(--c4); box-shadow: 0 2px 6px rgba(245, 158, 11, 0.3); }
-    #chip-C5.active { background: var(--c5); color: white; border-color: var(--c5); box-shadow: 0 2px 6px rgba(239, 68, 68, 0.3); }
-    #chip-C6.active { background: var(--c6); color: white; border-color: var(--c6); box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3); }
-    #chip-C7.active { background: var(--c7); color: white; border-color: var(--c7); box-shadow: 0 2px 6px rgba(219, 39, 119, 0.3); }
-    #chip-BF.active { background: var(--bf); color: #713f12; border-color: #ca8a04; box-shadow: 0 2px 6px rgba(234, 179, 8, 0.3); }
+    /* ---------- CHIPS ---------- */
+    .chips-indicadores { display: flex; gap: 8px; overflow-x: auto; padding: 2px 2px 8px; margin-bottom: 8px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+    .chips-indicadores::-webkit-scrollbar { display: none; }
+    .chip { font-size: 0.76rem; font-weight: 600; padding: 8px 14px; border-radius: 999px; border: 1px solid var(--border); background: var(--surface); color: var(--text-muted); white-space: nowrap; cursor: pointer; box-shadow: var(--shadow-sm); display: flex; align-items: center; gap: 4px; transition: background 0.2s, color 0.2s; }
 
+    #chip-C1.active { background: var(--c1); color: white; border-color: var(--c1); }
+    #chip-C2.active { background: var(--c2); color: white; border-color: var(--c2); }
+    #chip-C3.active { background: var(--c3); color: white; border-color: var(--c3); }
+    #chip-C4.active { background: var(--c4); color: white; border-color: var(--c4); }
+    #chip-C5.active { background: var(--c5); color: white; border-color: var(--c5); }
+    #chip-C6.active { background: var(--c6); color: white; border-color: var(--c6); }
+    #chip-C7.active { background: var(--c7); color: white; border-color: var(--c7); }
+    #chip-BF.active { background: var(--bf); color: #713f12; border-color: #ca8a04; }
+
+    /* ---------- FILTROS ---------- */
     .barra-filtros { display: block; }
-    .search-bar { width: 100%; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 0.92rem; margin-bottom: 8px; outline: none; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); box-shadow: 0 2px 4px rgba(0,0,0,0.02); color: var(--text); }
-    .search-bar:focus { border-color: var(--primary); box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2); background: #ffffff; }
-    
-    .filtros-duplos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
-    select.filter-select { width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); font-size: 0.82rem; color: var(--text); box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
+    .search-bar { width: 100%; padding: 13px 14px; border: 1px solid var(--border); border-radius: 14px; font-size: 0.95rem; margin-bottom: 8px; outline: none; background: var(--surface); box-shadow: var(--shadow-sm); color: var(--text); }
+    .search-bar:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18); }
 
-    .contador-resultados { font-size: 0.76rem; color: var(--text-muted); font-weight: 600; margin-bottom: 8px; padding-left: 2px; }
-    
+    .filtros-duplos { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+    select.filter-select { width: 100%; padding: 11px 10px; border: 1px solid var(--border); border-radius: 12px; background: var(--surface); font-size: 0.84rem; color: var(--text); box-shadow: var(--shadow-sm); }
+
+    .contador-resultados { font-size: 0.78rem; color: #1e293b; font-weight: 600; margin-bottom: 10px; padding-left: 4px; }
+
+    /* ---------- LISTA DE CIDADÃOS ---------- */
     #listaUtentes { display: block; }
-    .item-cidadao { display: flex; flex-direction: column; }
+    .item-cidadao { display: flex; flex-direction: column; position: relative; padding-left: 18px; overflow: hidden; }
+    .item-cidadao::before { content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: #10b981; }
+    .item-cidadao.tem-pend::before { background: #ef4444; }
+
     .item-cidadao .topo { display: flex; justify-content: space-between; align-items: baseline; }
-    .item-cidadao .nome { font-weight: 700; font-size: 0.94rem; color: #0f172a; margin-bottom: 3px; letter-spacing: -0.01em; }
-    .item-cidadao .endereco { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 5px; line-height: 1.4; }
+    .item-cidadao .nome { font-weight: 700; font-size: 0.97rem; color: var(--text); margin-bottom: 4px; letter-spacing: -0.01em; }
+    .item-cidadao .idade { font-size: 0.78rem; font-weight: 600; color: var(--text-muted); letter-spacing: 0; white-space: nowrap; }
+    .item-cidadao .endereco { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 6px; line-height: 1.45; }
     .item-cidadao .telefone a { color: var(--primary); text-decoration: none; font-weight: 600; }
-    .item-cidadao .info-cadastral { font-size: 0.74rem; color: #64748b; margin-bottom: 6px; }
+    .item-cidadao .info-cadastral { font-size: 0.74rem; color: var(--text-muted); margin-bottom: 8px; }
 
-    .area-anotacao { width: 100%; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; padding: 10px; font-size: 0.82rem; margin-top: 10px; background: rgba(255,255,255,0.7); resize: vertical; min-height: 40px; color: var(--text); line-height: 1.4; }
-    .area-anotacao:focus { border-color: var(--primary); outline: none; background: #ffffff; box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.15); }
+    .area-anotacao { width: 100%; border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; font-size: 0.84rem; margin-top: 12px; background: #f8fafc; resize: vertical; min-height: 44px; color: var(--text); line-height: 1.4; }
+    .area-anotacao:focus { border-color: var(--primary); outline: none; background: #fff; box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15); }
 
-    .tag { display: inline-block; font-size: 0.68rem; font-weight: 600; padding: 2px 6px; border-radius: 4px; margin-right: 3px; margin-bottom: 3px; }
-    .tag-danger { background: rgba(254, 226, 226, 0.9); color: #b91c1c; }
-    .tag-ok { background: rgba(220, 252, 231, 0.9); color: #15803d; border: 1px solid rgba(187, 247, 208, 0.9); }
-    .tag-c1 { background: rgba(224, 242, 254, 0.9); color: #0369a1; }
-    .tag-c2 { background: rgba(243, 232, 255, 0.9); color: #7e22ce; }
-    .tag-c3 { background: rgba(252, 231, 243, 0.9); color: #be185d; }
-    .tag-c4 { background: rgba(254, 243, 199, 0.9); color: #b45309; }
-    .tag-c5 { background: rgba(254, 226, 226, 0.9); color: #b91c1c; }
-    .tag-c6 { background: rgba(220, 252, 231, 0.9); color: #15803d; }
-    .tag-c7 { background: rgba(253, 242, 248, 0.9); color: #be185d; border: 1px solid rgba(251, 207, 232, 0.9); }
-    .tag-bf { background: rgba(254, 240, 138, 0.9); color: #854d0e; border: 1px solid rgba(253, 224, 71, 0.9); }
+    .tag { display: inline-block; font-size: 0.68rem; font-weight: 600; padding: 3px 8px; border-radius: 999px; margin-right: 4px; margin-bottom: 4px; }
+    .tag-danger { background: #fee2e2; color: #b91c1c; border: 1px solid #fca5a5; }
+    .tag-ok { background: #dcfce7; color: #15803d; border: 1px solid #86efac; }
+    .tag-c1 { background: #e0f2fe; color: #0369a1; }
+    .tag-c2 { background: #ede9fe; color: #6d28d9; }
+    .tag-c3 { background: #fce7f3; color: #be185d; }
+    .tag-c4 { background: #fef3c7; color: #b45309; }
+    .tag-c5 { background: #fee2e2; color: #b91c1c; }
+    .tag-c6 { background: #dcfce7; color: #15803d; }
+    .tag-c7 { background: #fdf2f8; color: #be185d; border: 1px solid #fbcfe8; }
+    .tag-bf { background: #fef08a; color: #854d0e; }
 
-    .pendencia-item { font-size: 0.74rem; font-weight: 600; color: #991b1b; background: rgba(255, 241, 242, 0.9); border: 1px solid rgba(254, 205, 211, 0.9); border-radius: 6px; padding: 5px 8px; margin-top: 4px; line-height: 1.3; }
+    .bloco-meta { margin-top: 6px; }
+    .bloco-meta .tag { font-size: 0.72rem; padding: 4px 10px; margin: 0; }
+    .acoes-meta { margin: 5px 0 2px 6px; padding: 7px 10px; background: #fef2f2; border-left: 3px solid #ef4444; border-radius: 0 10px 10px 0; }
+    .acoes-titulo { font-size: 0.68rem; font-weight: 700; color: #991b1b; text-transform: uppercase; letter-spacing: 0.02em; margin-bottom: 3px; }
+    .acao-item { font-size: 0.78rem; font-weight: 600; color: #7f1d1d; line-height: 1.4; padding-left: 12px; position: relative; }
+    .acao-item::before { content: "•"; position: absolute; left: 2px; }
+    .pendencia-item { font-size: 0.76rem; font-weight: 600; color: #991b1b; background: #fef2f2; border: 1px solid #fecaca; border-radius: 10px; padding: 7px 10px; margin-top: 5px; line-height: 1.35; }
 
-    nav.tab-bar { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-top: 1px solid var(--border); display: flex; height: 60px; z-index: 20; box-shadow: 0 -2px 10px rgba(0,0,0,0.05); }
-    nav.tab-bar button { flex: 1; border: none; background: transparent; font-size: 0.76rem; font-weight: 600; color: var(--text-muted); cursor: pointer; transition: color 0.2s; }
-    nav.tab-bar button.active { color: var(--primary); font-weight: 700; border-top: 3px solid var(--primary); }
+    /* ---------- BARRA INFERIOR ---------- */
+    nav.tab-bar { position: fixed; bottom: 10px; left: 12px; right: 12px; background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border: 1px solid var(--border); border-radius: 18px; display: flex; height: 58px; z-index: 20; box-shadow: 0 8px 24px rgba(15, 23, 42, 0.16); padding: 5px; gap: 4px; max-width: 626px; margin: 0 auto; }
+    nav.tab-bar button { flex: 1; border: none; background: transparent; font-size: 0.78rem; font-weight: 600; color: var(--text-muted); cursor: pointer; border-radius: 13px; transition: background 0.2s, color 0.2s; }
+    nav.tab-bar button.active { color: white; background: var(--primary); font-weight: 700; box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35); }
 
-    /* ======================================================== */
-    /* NOVOS ESTILOS PARA A TELA DE IMPORTAÇÃO                  */
-    /* ======================================================== */
-    .warning-box { background-color: #fef9c3; border: 1px solid #fde047; color: #854d0e; padding: 12px; border-radius: 8px; font-size: 0.8rem; margin: 12px 0 16px 0; line-height: 1.45; }
-    .warning-box strong { font-weight: 700; color: #713f12; }
+    /* ---------- TELA DE IMPORTAÇÃO ---------- */
+    .warning-box { background: #fffbeb; border: 1px solid #fde68a; color: #92400e; padding: 12px 14px; border-radius: 12px; font-size: 0.8rem; margin: 12px 0 16px 0; line-height: 1.5; }
+    .warning-box strong { font-weight: 700; color: #78350f; }
 
-    .btn-selecionar { background: #5b21b6; color: white; border: none; padding: 14px; border-radius: 12px; font-weight: 600; font-size: 0.95rem; width: 100%; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; box-shadow: 0 4px 10px rgba(91, 33, 182, 0.25); transition: background 0.2s; }
+    .btn-selecionar { background: #5b21b6; color: white; border: none; padding: 15px; border-radius: 14px; font-weight: 600; font-size: 0.95rem; width: 100%; cursor: pointer; display: flex; justify-content: center; align-items: center; gap: 8px; box-shadow: 0 4px 12px rgba(91, 33, 182, 0.28); transition: background 0.2s; }
     .btn-selecionar:active { background: #4c1d95; transform: scale(0.98); }
 
-    .file-list-container { margin-top: 20px; display: flex; flex-direction: column; gap: 8px; }
-    .file-list-header { font-weight: 700; font-size: 0.85rem; color: var(--text-muted); padding-bottom: 6px; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; }
+    .file-list-container { margin-top: 20px; display: flex; flex-direction: column; gap: 4px; }
+    .file-list-header { font-weight: 700; font-size: 0.85rem; color: var(--text-muted); padding-bottom: 8px; margin-bottom: 4px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
     .file-list-header .btn-limpar { color: var(--primary); cursor: pointer; font-size: 0.8rem; }
     .file-list-header .btn-limpar:hover { text-decoration: underline; }
-    
-    .file-item { display: flex; align-items: flex-start; gap: 12px; background: transparent; padding: 8px 0; border-bottom: 1px solid rgba(0,0,0,0.06); }
+
+    .file-item { display: flex; align-items: flex-start; gap: 12px; background: transparent; padding: 10px 0; border-bottom: 1px solid #f1f5f9; }
     .file-item:last-child { border-bottom: none; }
-    
+
     .file-item-icon { font-size: 0.85rem; display: flex; align-items: center; justify-content: center; width: 22px; height: 22px; background: #10b981; color: white; border-radius: 50%; flex-shrink: 0; font-weight: bold; margin-top: 2px; }
     .file-item-icon.pending { background: #e2e8f0; color: #64748b; }
     .file-item-icon.error { background: #ef4444; }
-    
+
     .file-item-content { flex: 1; min-width: 0; }
     .file-item-title { font-weight: 700; font-size: 0.88rem; color: var(--text); margin-bottom: 2px; display: flex; align-items: center; gap: 6px; }
     .file-item-name { font-size: 0.72rem; color: #94a3b8; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; margin-bottom: 2px; }
-    
+
     .file-item-status { font-size: 0.75rem; color: #10b981; font-weight: 600; display: flex; align-items: flex-start; gap: 4px; line-height: 1.3; }
     .file-item-status.pending { color: #64748b; font-weight: 500; }
     .file-item-status.error { color: #ef4444; }
 
-    /* ======================================================== */
-    /* OTIMIZAÇÃO PARA DESKTOP E ECRÃS GRANDES (>768px)         */
-    /* ======================================================== */
+    /* ---------- CONFIRMAÇÃO SIM / NÃO ---------- */
+    .modal-fundo { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.6); display: none; align-items: center; justify-content: center; z-index: 100; padding: 20px; }
+    .modal-fundo.aberto { display: flex; }
+    .modal-caixa { background: #fff; border-radius: 20px; padding: 22px 20px 18px; width: 100%; max-width: 360px; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35); text-align: center; }
+    .modal-caixa .modal-icone { font-size: 2.2rem; margin-bottom: 6px; }
+    .modal-caixa h3 { font-size: 1.1rem; font-weight: 800; color: var(--text); margin-bottom: 8px; }
+    .modal-caixa p { font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 18px; }
+    .modal-botoes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .modal-botoes button { border: none; border-radius: 14px; padding: 14px; font-size: 1rem; font-weight: 700; cursor: pointer; }
+    .modal-botoes .btn-nao { background: #e2e8f0; color: #334155; }
+    .modal-botoes .btn-sim { background: #ef4444; color: #fff; box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3); }
+    .modal-botoes button:active { transform: scale(0.97); }
+
+    .perfil-linha { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 0.86rem; font-weight: 700; background: rgba(255, 255, 255, 0.18); border: 1px solid rgba(255, 255, 255, 0.28); padding: 5px 12px; border-radius: 999px; cursor: pointer; max-width: 100%; }
+    .perfil-linha .perfil-texto { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .perfil-linha .perfil-editar { opacity: 0.85; font-size: 0.78rem; }
+    .campo-rotulo { display: block; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin: 12px 0 5px; }
+    .campo-texto { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; font-size: 1rem; color: var(--text); background: #f8fafc; outline: none; }
+    .campo-texto:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18); background: #fff; }
+    .modal-botoes .btn-salvar { background: var(--primary); color: #fff; box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3); }
+
+    /* ---------- DESKTOP ---------- */
     @media (min-width: 768px) {
+      header { border-radius: 0 0 24px 24px; padding: 20px 32px 24px; }
       .container { max-width: 1200px; padding: 24px; }
-      .grid-indicadores { grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
-      .card-meta { padding: 18px 20px; }
-      .card-meta .header-card { gap: 10px; }
-      .card-meta h4 { font-size: 0.9rem; }
-      .card-meta .badge-meta { font-size: 0.85rem; padding: 4px 12px; }
-      .card-meta .valor { font-size: 2.2rem; margin: 12px 0; }
-      .card-meta .status-meta { font-size: 0.85rem; }
-      .card-meta .regra-acs { font-size: 0.75rem; margin-top: 12px; padding-top: 10px; }
-      .chips-indicadores { flex-wrap: wrap; justify-content: center; padding-bottom: 8px; margin-bottom: 20px; }
-      .chip { font-size: 0.85rem; padding: 8px 16px; }
+      .grid-indicadores { grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+      .card-meta { padding: 16px 18px 12px; }
+      .card-meta h4 { font-size: 0.82rem; }
+      .card-meta .valor { font-size: 2.3rem; }
+      .card-meta .status-meta { font-size: 0.82rem; }
+      .card-meta .regra-acs { font-size: 0.72rem; }
+      .chips-indicadores { flex-wrap: wrap; justify-content: center; margin-bottom: 20px; }
+      .chip { font-size: 0.85rem; padding: 9px 18px; }
       .barra-filtros { display: flex; gap: 12px; margin-bottom: 20px; align-items: center; }
-      .search-bar { flex: 2; margin-bottom: 0; font-size: 1rem; padding: 12px 14px; }
+      .search-bar { flex: 2; margin-bottom: 0; font-size: 1rem; }
       .filtros-duplos { flex: 3; margin-bottom: 0; gap: 12px; }
-      select.filter-select { font-size: 0.95rem; padding: 10px 12px; }
+      select.filter-select { font-size: 0.95rem; padding: 12px; }
       #listaUtentes { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 16px; align-items: stretch; }
       .item-cidadao { margin-bottom: 0; height: 100%; }
       .area-anotacao { flex-grow: 1; font-size: 0.9rem; }
-      nav.tab-bar { max-width: 1200px; margin: 0 auto; border-radius: 12px 12px 0 0; border-bottom: none; }
+      nav.tab-bar { max-width: 520px; }
+      #view-upload { max-width: 650px; margin: 0 auto; }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Gestão ACS — Microárea</h1>
+    <h1>Gestão ACS</h1>
+    <div class="perfil-linha" id="perfilLinha" onclick="abrirModalPerfil()"></div>
     <p id="subtitulo">Aguardando dados...</p>
   </header>
 
@@ -255,14 +301,16 @@
     <div id="view-dashboard">
       <div class="grid-indicadores">
 
-        <div class="card-meta" id="card-c1" onclick="selecionarFiltroIndicador('C1')">
+        <div class="card-meta active" id="card-c1" onclick="selecionarFiltroIndicador('C1')">
           <div class="header-card">
             <h4><span class="icon-card">📋</span> C1 · Cadastro</h4>
             <span class="badge-meta" id="c1-tot">0</span>
           </div>
-          <div class="valor" id="c1-pct">0%</div>
+          <div class="linha-valor">
+            <div class="valor" id="c1-pct">0%</div>
+            <div class="rodape-card"><span class="status-meta" id="c1-pend">Aguardando...</span></div>
+          </div>
           <div class="barra-fundo"><div class="barra-progresso" id="c1-bar"></div></div>
-          <div class="rodape-card"><span class="status-meta" id="c1-pend">Aguardando...</span></div>
           <div class="regra-acs">Meta: Territorialização &lt;24m</div>
         </div>
 
@@ -271,9 +319,11 @@
             <h4><span class="icon-card">👶</span> C2 · Criança</h4>
             <span class="badge-meta" id="c2-tot">0</span>
           </div>
-          <div class="valor" id="c2-pct">0%</div>
+          <div class="linha-valor">
+            <div class="valor" id="c2-pct">0%</div>
+            <div class="rodape-card"><span class="status-meta" id="c2-pend">Aguardando...</span></div>
+          </div>
           <div class="barra-fundo"><div class="barra-progresso" id="c2-bar"></div></div>
-          <div class="rodape-card"><span class="status-meta" id="c2-pend">Aguardando...</span></div>
           <div class="regra-acs">Meta: Visitas + Vacinas (até 9a) + Pueric.</div>
         </div>
 
@@ -282,9 +332,11 @@
             <h4><span class="icon-card">🤰</span> C3 · Pré-Natal</h4>
             <span class="badge-meta" id="c3-tot">0</span>
           </div>
-          <div class="valor" id="c3-pct">0%</div>
+          <div class="linha-valor">
+            <div class="valor" id="c3-pct">0%</div>
+            <div class="rodape-card"><span class="status-meta" id="c3-pend">Aguardando...</span></div>
+          </div>
           <div class="barra-fundo"><div class="barra-progresso" id="c3-bar"></div></div>
-          <div class="rodape-card"><span class="status-meta" id="c3-pend">Aguardando...</span></div>
           <div class="regra-acs">Meta: 3 PN + 1 Pós-parto + Odonto</div>
         </div>
 
@@ -293,9 +345,11 @@
             <h4><span class="icon-card">🩸</span> C4 · Diabetes</h4>
             <span class="badge-meta" id="c4-tot">0</span>
           </div>
-          <div class="valor" id="c4-pct">0%</div>
+          <div class="linha-valor">
+            <div class="valor" id="c4-pct">0%</div>
+            <div class="rodape-card"><span class="status-meta" id="c4-pend">Aguardando...</span></div>
+          </div>
           <div class="barra-fundo"><div class="barra-progresso" id="c4-bar"></div></div>
-          <div class="rodape-card"><span class="status-meta" id="c4-pend">Aguardando...</span></div>
           <div class="regra-acs">Meta: 2 Visitas + HbA1c + Pés</div>
         </div>
 
@@ -304,9 +358,11 @@
             <h4><span class="icon-card">❤️</span> C5 · Hipertensão</h4>
             <span class="badge-meta" id="c5-tot">0</span>
           </div>
-          <div class="valor" id="c5-pct">0%</div>
+          <div class="linha-valor">
+            <div class="valor" id="c5-pct">0%</div>
+            <div class="rodape-card"><span class="status-meta" id="c5-pend">Aguardando...</span></div>
+          </div>
           <div class="barra-fundo"><div class="barra-progresso" id="c5-bar"></div></div>
-          <div class="rodape-card"><span class="status-meta" id="c5-pend">Aguardando...</span></div>
           <div class="regra-acs">Meta: 2 Visitas + Aferição PA</div>
         </div>
 
@@ -315,9 +371,11 @@
             <h4><span class="icon-card">👴</span> C6 · Idosos</h4>
             <span class="badge-meta" id="c6-tot">0</span>
           </div>
-          <div class="valor" id="c6-pct">0%</div>
+          <div class="linha-valor">
+            <div class="valor" id="c6-pct">0%</div>
+            <div class="rodape-card"><span class="status-meta" id="c6-pend">Aguardando...</span></div>
+          </div>
           <div class="barra-fundo"><div class="barra-progresso" id="c6-bar"></div></div>
-          <div class="rodape-card"><span class="status-meta" id="c6-pend">Aguardando...</span></div>
           <div class="regra-acs">Meta: 2 Visitas + Vacina Influenza</div>
         </div>
 
@@ -326,9 +384,11 @@
             <h4><span class="icon-card">👩</span> C7 · Mulheres</h4>
             <span class="badge-meta" id="c7-tot">0</span>
           </div>
-          <div class="valor" id="c7-pct">0%</div>
+          <div class="linha-valor">
+            <div class="valor" id="c7-pct">0%</div>
+            <div class="rodape-card"><span class="status-meta" id="c7-pend">Aguardando...</span></div>
+          </div>
           <div class="barra-fundo"><div class="barra-progresso" id="c7-bar"></div></div>
-          <div class="rodape-card"><span class="status-meta" id="c7-pend">Aguardando...</span></div>
           <div class="regra-acs">Meta: Preventivo Citopatológico</div>
         </div>
 
@@ -336,16 +396,17 @@
           <div class="header-card">
             <h4 style="color: #ca8a04;"><span class="icon-card">💰</span> Bolsa Família</h4>
           </div>
-          <div class="valor" id="bf-tot">0</div>
-          <div class="rodape-card"><span class="status-meta">Famílias Beneficiárias</span></div>
+          <div class="linha-valor">
+            <div class="valor" id="bf-tot">0</div>
+            <div class="rodape-card"><span class="status-meta">Famílias Beneficiárias</span></div>
+          </div>
           <div class="regra-acs" style="border-top-color: rgba(202, 138, 4, 0.2); color: #a16207;">Acompanhamento Social</div>
         </div>
 
       </div>
 
       <div class="chips-indicadores">
-        <button class="chip active" id="chip-todos" onclick="selecionarFiltroIndicador('todos')">📊 Todos</button>
-        <button class="chip" id="chip-C1" onclick="selecionarFiltroIndicador('C1')">📋 C1: Cadastros</button>
+        <button class="chip active" id="chip-C1" onclick="selecionarFiltroIndicador('C1')">📋 C1: Cadastros</button>
         <button class="chip" id="chip-C2" onclick="selecionarFiltroIndicador('C2')">👶 C2: Crianças</button>
         <button class="chip" id="chip-C3" onclick="selecionarFiltroIndicador('C3')">🤰 C3: Gestantes</button>
         <button class="chip" id="chip-C4" onclick="selecionarFiltroIndicador('C4')">🩸 C4: Diabéticos</button>
@@ -422,6 +483,32 @@
     <button id="btnTabUp" onclick="alternarAba('upload')">⚙️ Carga / Dados</button>
   </nav>
 
+  <div class="modal-fundo" id="modalLimpar" onclick="if(event.target===this) fecharModalLimpar()">
+    <div class="modal-caixa">
+      <div class="modal-icone">🗑️</div>
+      <h3>Limpar todos os dados?</h3>
+      <p>Isso apaga todos os cidadãos e as suas anotações guardadas neste aparelho. Essa ação não pode ser desfeita.</p>
+      <div class="modal-botoes">
+        <button class="btn-nao" onclick="fecharModalLimpar()">Não</button>
+        <button class="btn-sim" onclick="confirmarLimparBase()">Sim</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-fundo" id="modalPerfil" onclick="if(event.target===this) fecharModalPerfil()">
+    <div class="modal-caixa" style="text-align:left;">
+      <h3 style="text-align:center;">👤 Dados do ACS</h3>
+      <label class="campo-rotulo" for="perfilNome">Nome do ACS</label>
+      <input type="text" id="perfilNome" class="campo-texto" placeholder="Ex.: Maria da Silva" autocomplete="off">
+      <label class="campo-rotulo" for="perfilMicro">Microárea</label>
+      <input type="text" id="perfilMicro" class="campo-texto" placeholder="Ex.: 05" autocomplete="off">
+      <div class="modal-botoes" style="margin-top:16px;">
+        <button class="btn-nao" onclick="fecharModalPerfil()">Cancelar</button>
+        <button class="btn-salvar" onclick="salvarPerfil()">Salvar</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     let eventoInstalacao = null;
     window.addEventListener('beforeinstallprompt', (e) => {
@@ -446,7 +533,7 @@
     }
 
     let BASE_DADOS = { cidadaos: {}, ruas: new Set() };
-    let filtroIndicadorAtual = 'todos';
+    let filtroIndicadorAtual = 'C1';
     let cpfToChave = {};
     let nomeToChave = {};
 
@@ -468,6 +555,7 @@
     }
 
     window.addEventListener('DOMContentLoaded', () => {
+      renderPerfil();
       inicializarListaPlanilhas();
       
       const salvo = localStorage.getItem('gestao_acs_dados');
@@ -528,7 +616,7 @@
     };
 
     function exportarBaseJSON() {
-      const payload = { cidadaos: BASE_DADOS.cidadaos, ruas: Array.from(BASE_DADOS.ruas).sort() };
+      const payload = { cidadaos: BASE_DADOS.cidadaos, ruas: Array.from(BASE_DADOS.ruas).sort(), perfil: lerPerfil() };
       if (Object.keys(payload.cidadaos).length === 0) return alert("Nenhum dado cadastrado.");
       const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
@@ -554,6 +642,7 @@
           if (dados.cidadaos && Object.keys(dados.cidadaos).length > 0) {
             BASE_DADOS.cidadaos = dados.cidadaos;
             BASE_DADOS.ruas = new Set(dados.ruas || []);
+            if (dados.perfil && (dados.perfil.nome || dados.perfil.micro)) { localStorage.setItem('gestao_acs_perfil', JSON.stringify(dados.perfil)); renderPerfil(); }
             Object.values(BASE_DADOS.cidadaos).forEach(c => {
               if (!c.indicadores) c.indicadores = {};
               c.indicadores['C1'] = true;
@@ -583,6 +672,21 @@
       const pIso = dStr.split('-');
       if (pIso.length === 3) return new Date(pIso[0], pIso[1] - 1, pIso[2]);
       return null;
+    }
+
+    function calcularIdade(dtStr) {
+      const n = parseDataJS(dtStr);
+      if (!n || isNaN(n.getTime())) return '';
+      const hoje = new Date();
+      let anos = hoje.getFullYear() - n.getFullYear();
+      let meses = hoje.getMonth() - n.getMonth();
+      if (hoje.getDate() < n.getDate()) meses--;
+      if (meses < 0) { anos--; meses += 12; }
+      if (anos < 0) return '';
+      const a = anos === 1 ? '1 ano' : `${anos} anos`;
+      const m = meses === 1 ? '1 mês' : `${meses} meses`;
+      if (anos === 0) return meses === 0 ? 'menos de 1 mês' : m;
+      return meses === 0 ? a : `${a} e ${m}`;
     }
 
     function inicializarListaPlanilhas() {
@@ -615,6 +719,15 @@
       
       cpfToChave = {}; nomeToChave = {};
       let arquivosProcessados = {};
+      const perfilDetectado = {};
+      const limpaValor = (v) => (v || '').toString().replace(/^"|"$/g, '').trim();
+      const detectarPerfil = (chaveBruta, valorBruto) => {
+        const k = normalizarTexto(chaveBruta);
+        const v = limpaValor(valorBruto);
+        if (!v || v === '-' || v.length > 80) return;
+        if (!perfilDetectado.micro && (k.includes('microarea') || k.includes('micro-area') || k.includes('micro area'))) perfilDetectado.micro = v;
+        if (!perfilDetectado.nome && (k.includes('agente comunitario') || k === 'acs' || k.includes('nome do acs') || k.includes('profissional'))) perfilDetectado.nome = v;
+      };
 
       for (let file of files) {
         await new Promise((resolve) => {
@@ -625,6 +738,7 @@
             let tema = "", cabIdx = -1;
             for (let i = 0; i < Math.min(linhas.length, 35); i++) {
               const l = linhas[i].trim();
+              { const pc = l.split(';'); if (pc.length >= 2) detectarPerfil(pc[0], pc[1]); }
               if (l.includes("Lista temática;")) tema = l.split(";")[1]?.trim();
               if (l.startsWith("Nome;") || l.startsWith("NOME CIDADÃO;") || l.startsWith("Nome equipe;") || l.startsWith("TIPO DE LOGRADOURO;")) {
                 cabIdx = i; break;
@@ -662,6 +776,7 @@
                 if (!nome || nome === "-" || nome === "SEM MORADORES" || nome.length < 3) continue;
                 
                 countAtualizados++;
+                for (let kPerf in reg) detectarPerfil(kPerf, reg[kPerf]);
 
                 const cpfLimpo = (reg["CPF"] || reg["CPF/CNS"] || "").replace(/\D/g, "");
                 const cpfValido = (cpfLimpo.length === 11) ? cpfLimpo : "";
@@ -692,6 +807,26 @@
                 if (!cid.nome) cid.nome = nome;
                 if (!cid.rua && ruaBruta) cid.rua = ruaBruta;
                 if (cid.rua) BASE_DADOS.ruas.add(cid.rua);
+
+                // Data de nascimento / idade (se a planilha trouxer)
+                for (let key in reg) {
+                  const kn = normalizarTexto(key);
+                  if (kn.includes("nascimento") && reg[key] && reg[key] !== "-") {
+                    cid.dt_nascimento = reg[key];
+                  }
+                }
+                if (reg["Idade"] && reg["Idade"] !== "-") cid.idade_txt = reg["Idade"];
+                else if (reg["IDADE"] && reg["IDADE"] !== "-") cid.idade_txt = reg["IDADE"];
+
+                // Completa número da casa, telefone, CNS e CPF quando outra planilha trouxer
+                for (let key in reg) {
+                  const kn = normalizarTexto(key);
+                  const val = (reg[key] || "").trim();
+                  if (!val || val === "-") continue;
+                  if ((kn === "numero" || kn === "n°" || kn === "no" || kn.startsWith("numero ")) && !cid.numero) cid.numero = val;
+                  if (kn === "telefone celular" && !cid.telefone) cid.telefone = val;
+                  if (kn === "cns" && (!cid.cns || cid.cns === "-")) cid.cns = val;
+                }
                 if (cid.bolsaFamilia === undefined) cid.bolsaFamilia = false;
 
                 let matchedBf = false;
@@ -918,6 +1053,15 @@
       });
       listaDiv.innerHTML = html;
 
+      if (perfilDetectado.nome || perfilDetectado.micro) {
+        const atual = lerPerfil();
+        localStorage.setItem('gestao_acs_perfil', JSON.stringify({
+          nome: perfilDetectado.nome || atual.nome || '',
+          micro: perfilDetectado.micro || atual.micro || ''
+        }));
+        renderPerfil();
+      }
+
       localStorage.setItem('gestao_acs_dados', JSON.stringify({ cidadaos: BASE_DADOS.cidadaos, ruas: Array.from(BASE_DADOS.ruas).sort() }));
       prog.style.color = "#10b981"; prog.innerHTML = "";
       atualizarInterface();
@@ -1019,6 +1163,8 @@
         return true;
       });
 
+      filtrados.sort((x, y) => (x[1].nome || '').localeCompare(y[1].nome || '', 'pt-BR', { sensitivity: 'base' }));
+
       contadorEl.innerText = `Exibindo ${filtrados.length} cidadão(s)`;
 
       if (!filtrados.length) {
@@ -1027,47 +1173,55 @@
       }
 
       filtrados.forEach(([chave, c]) => {
-        let tagsHtml = '';
-        if (c.indicadores) {
-          if (c.indicadores['C1']) tagsHtml += `<span class="tag tag-c1">C1: Cadastrado</span>`;
-          if (c.indicadores['C2']) {
-            tagsHtml += `<span class="tag tag-c2">C2: Criança (${c.c2_visitas || 0}/2 vis)</span>`;
-            if (c.c2_vacinasOk) {
-              tagsHtml += `<span class="tag tag-ok">💉 Vacinas em dia</span>`;
-            }
-          }
-          if (c.indicadores['C3']) tagsHtml += `<span class="tag tag-c3">C3: Gestante (${c.c3_vis_pn || 0}/3 vis)</span>`;
-          if (c.indicadores['C4']) tagsHtml += `<span class="tag tag-c4">C4: Diabetes (${c.c4_visitas || 0}/2 vis)</span>`;
-          if (c.indicadores['C5']) tagsHtml += `<span class="tag tag-c5">C5: Hipertensão (${c.c5_visitas || 0}/2 vis)</span>`;
-          if (c.indicadores['C6']) tagsHtml += `<span class="tag tag-c6">C6: Idoso (${c.c6_visitas || 0}/2 vis)</span>`;
-          if (c.indicadores['C7']) tagsHtml += `<span class="tag tag-c7">C7: Mulher 25-64</span>`;
-        }
-        
-        if (c.bolsaFamilia) {
-          tagsHtml += `<span class="tag tag-bf">💰 Bolsa Família</span>`;
-        }
+        // Cada indicador vira um bloco: etiqueta verde (meta atingida) ou vermelha (não atendida)
+        // e, logo abaixo, o que fazer para atingir a meta.
+        const rotulos = {
+          C1: c.c1Ok === false ? 'C1: Cadastro desatualizado' : 'C1: Cadastro atualizado',
+          C2: `C2: Criança (${c.c2_visitas || 0}/2 vis)` + (c.c2_vacinasOk ? ' · 💉 vacinas em dia' : ''),
+          C3: `C3: Gestante (${c.c3_vis_pn || 0}/3 vis)`,
+          C4: `C4: Diabetes (${c.c4_visitas || 0}/2 vis)`,
+          C5: `C5: Hipertensão (${c.c5_visitas || 0}/2 vis)`,
+          C6: `C6: Idoso (${c.c6_visitas || 0}/2 vis)`,
+          C7: 'C7: Mulher 25-64 · preventivo'
+        };
+        let blocosHtml = '';
+        let algumaPendente = false;
+        ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7'].forEach(ind => {
+          if (!c.indicadores || !c.indicadores[ind]) return;
+          const acoes = (c.pendencias || [])
+            .filter(p => p.startsWith(ind + ':'))
+            .map(p => p.substring(ind.length + 1).trim());
+          const atingida = (c[ind.toLowerCase() + 'Ok'] === true) && acoes.length === 0;
+          if (!atingida) algumaPendente = true;
+          const acoesHtml = acoes.length
+            ? `<div class="acoes-meta"><div class="acoes-titulo">👉 O que fazer para atingir a meta:</div>` +
+              acoes.map(a => `<div class="acao-item">${a}</div>`).join('') + `</div>`
+            : '';
+          blocosHtml += `<div class="bloco-meta">
+              <span class="tag ${atingida ? 'tag-ok' : 'tag-danger'}">${atingida ? '✓' : '✗'} ${rotulos[ind]}</span>
+              ${acoesHtml}
+            </div>`;
+        });
 
-        let pendenciasHtml = '';
-        if (c.pendencias && c.pendencias.length > 0) {
-          pendenciasHtml = '<div style="margin-top: 6px;">' +
-            c.pendencias.map(p => `<div class="pendencia-item">⚠️ ${p}</div>`).join('') +
-          '</div>';
-        } else {
-          pendenciasHtml = '<div style="margin-top: 6px;"><span class="tag tag-ok">✓ Metas e Visitas em dia</span></div>';
+        let tagsHtml = blocosHtml;
+        if (c.bolsaFamilia) {
+          tagsHtml += `<div class="bloco-meta"><span class="tag tag-bf">💰 Bolsa Família</span></div>`;
         }
+        const pendenciasHtml = '';
 
         const linkTel = c.telefone ? `<span class="telefone"> | 📞 <a href="tel:${c.telefone.replace(/\D/g, '')}">${c.telefone}</a></span>` : '';
-        const dtCadStr = c.dt_cadastral ? `<div class="info-cadastral">🗓️ Atualização cadastral: <strong>${c.dt_cadastral}</strong></div>` : '';
         const valAnotacao = c.anotacao || '';
         const anotacaoHtml = `<textarea class="area-anotacao" placeholder="✍️ Anotações do ACS..." onchange="salvarAnotacao('${chave}', this.value)">${valAnotacao}</textarea>`;
 
+        const temPend = algumaPendente;
+        const idadeCalc = c.dt_nascimento ? calcularIdade(c.dt_nascimento) : (c.idade_txt || '');
+        const idadeHtml = idadeCalc ? ` <span class="idade">· ${idadeCalc}</span>` : '';
         content.innerHTML += `
-          <div class="item-cidadao">
+          <div class="item-cidadao ${temPend ? 'tem-pend' : 'em-dia'}">
             <div class="topo">
-              <div class="nome">${c.nome}</div>
+              <div class="nome">${c.nome}${idadeHtml}</div>
             </div>
             <div class="endereco">📍 ${c.rua || 'Sem rua cadastrada'}, nº ${c.numero || 'S/N'}${linkTel}</div>
-            ${dtCadStr}
             <div>${tagsHtml}</div>
             ${pendenciasHtml}
             ${anotacaoHtml}
@@ -1076,13 +1230,63 @@
       });
     }
 
+    // ---------- PERFIL DO ACS (nome e microárea) ----------
+    function lerPerfil() {
+      try { return JSON.parse(localStorage.getItem('gestao_acs_perfil')) || {}; } catch (e) { return {}; }
+    }
+
+    function renderPerfil() {
+      const p = lerPerfil();
+      const el = document.getElementById('perfilLinha');
+      const partes = [];
+      if (p.nome) partes.push(p.nome);
+      if (p.micro) partes.push('Microárea ' + p.micro);
+      el.innerHTML = '';
+      const t = document.createElement('span');
+      t.className = 'perfil-texto';
+      t.textContent = '👤 ' + (partes.length ? partes.join(' · ') : 'Toque para informar nome e microárea');
+      const l = document.createElement('span');
+      l.className = 'perfil-editar';
+      l.textContent = '✏️';
+      el.appendChild(t);
+      el.appendChild(l);
+    }
+
+    function abrirModalPerfil() {
+      const p = lerPerfil();
+      document.getElementById('perfilNome').value = p.nome || '';
+      document.getElementById('perfilMicro').value = p.micro || '';
+      document.getElementById('modalPerfil').classList.add('aberto');
+    }
+
+    function fecharModalPerfil() {
+      document.getElementById('modalPerfil').classList.remove('aberto');
+    }
+
+    function salvarPerfil() {
+      const perfil = {
+        nome: document.getElementById('perfilNome').value.trim(),
+        micro: document.getElementById('perfilMicro').value.trim()
+      };
+      localStorage.setItem('gestao_acs_perfil', JSON.stringify(perfil));
+      renderPerfil();
+      fecharModalPerfil();
+    }
+
     function limparBase() {
-      if (confirm("Tem certeza que deseja apagar todos os dados guardados no telemóvel?")) {
-        localStorage.removeItem('gestao_acs_dados');
-        BASE_DADOS = { cidadaos: {}, ruas: new Set() };
-        atualizarInterface();
-        alternarAba('dashboard');
-      }
+      document.getElementById('modalLimpar').classList.add('aberto');
+    }
+
+    function fecharModalLimpar() {
+      document.getElementById('modalLimpar').classList.remove('aberto');
+    }
+
+    function confirmarLimparBase() {
+      fecharModalLimpar();
+      localStorage.removeItem('gestao_acs_dados');
+      BASE_DADOS = { cidadaos: {}, ruas: new Set() };
+      atualizarInterface();
+      alternarAba('dashboard');
     }
   </script>
 </body>
