@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0369a1">
   <link rel="manifest" href="./manifest.json">
   <link rel="icon" type="image/png" sizes="192x192" href="./icone-192.png">
-  <title>Gestão ACS — Indicadores</title>
+  <title>Guia de Visitas TACS</title>
   
   <!-- IMPORTAÇÃO DA FONTE INTER -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -61,8 +61,9 @@
       box-shadow: 0 6px 20px rgba(3, 105, 161, 0.28);
       border-radius: 0 0 22px 22px;
     }
+    header { text-align: center; }
     header h1 { font-size: 1.2rem; font-weight: 800; letter-spacing: -0.02em; }
-    header p { font-size: 0.8rem; opacity: 0.92; margin-top: 3px; font-weight: 500; }
+    header p { font-size: 0.8rem; opacity: 0.92; margin-top: 6px; font-weight: 500; text-align: center; }
 
     .container { padding: 14px 12px; max-width: 650px; margin: 0 auto; }
 
@@ -180,9 +181,14 @@
 
     .item-cidadao .topo { display: flex; justify-content: space-between; align-items: baseline; }
     .item-cidadao .nome { font-weight: 700; font-size: 0.97rem; color: var(--text); margin-bottom: 4px; letter-spacing: -0.01em; }
-    .item-cidadao .idade { display: inline-block; margin-left: 6px; font-size: 0.7rem; font-weight: 700; color: #475569; background: #f1f5f9; border: 1px solid #e2e8f0; padding: 2px 8px; border-radius: 999px; letter-spacing: 0; white-space: nowrap; vertical-align: middle; }
+    .item-cidadao .linha-info { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-bottom: 6px; }
+    .item-cidadao .linha-info .tag { margin: 0; font-size: 0.7rem; padding: 2px 8px; border: 1px solid #fde047; }
+    .item-cidadao .linha-info .tag-info { background: #f1f5f9; color: #475569; border: 1px solid #e2e8f0; }
+    .item-cidadao .idade { display: inline-block; margin-left: 0; font-size: 0.7rem; font-weight: 700; color: #475569; background: #f1f5f9; border: 1px solid #e2e8f0; padding: 2px 8px; border-radius: 999px; letter-spacing: 0; white-space: nowrap; vertical-align: middle; }
     .item-cidadao .endereco { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 6px; line-height: 1.45; }
     .item-cidadao .telefone a { color: var(--primary); text-decoration: none; font-weight: 600; }
+    .item-cidadao .ico-msg { vertical-align: -4px; margin-right: 2px; }
+    .item-cidadao .ico-wa { vertical-align: -5px; margin-right: 3px; border-radius: 4px; }
     .item-cidadao .info-cadastral { font-size: 0.74rem; color: var(--text-muted); margin-bottom: 8px; }
 
     .area-anotacao { width: 100%; border: 1px solid var(--border); border-radius: 12px; padding: 10px 12px; font-size: 0.84rem; margin-top: 12px; background: #f8fafc; resize: vertical; min-height: 44px; color: var(--text); line-height: 1.4; }
@@ -257,8 +263,8 @@
     .modal-botoes .btn-sim { background: #ef4444; color: #fff; box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3); }
     .modal-botoes button:active { transform: scale(0.97); }
 
-    .perfil-linha { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; font-size: 0.86rem; font-weight: 700; background: rgba(255, 255, 255, 0.18); border: 1px solid rgba(255, 255, 255, 0.28); padding: 5px 12px; border-radius: 999px; cursor: pointer; max-width: 100%; }
-    .perfil-linha .perfil-texto { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .perfil-linha { display: flex; align-items: center; justify-content: center; gap: 6px; width: fit-content; max-width: 100%; margin: 8px auto 0; font-size: 0.86rem; font-weight: 700; line-height: 1.3; background: rgba(255, 255, 255, 0.18); border: 1px solid rgba(255, 255, 255, 0.28); padding: 6px 14px; border-radius: 18px; cursor: pointer; }
+    .perfil-linha .perfil-texto { white-space: normal; text-align: center; }
     .perfil-linha .perfil-editar { opacity: 0.85; font-size: 0.78rem; }
     .campo-rotulo { display: block; font-size: 0.78rem; font-weight: 700; color: var(--text-muted); margin: 12px 0 5px; }
     .campo-texto { width: 100%; padding: 12px 14px; border: 1px solid var(--border); border-radius: 12px; font-size: 1rem; color: var(--text); background: #f8fafc; outline: none; }
@@ -292,7 +298,7 @@
 <body>
 
   <header>
-    <h1>Gestão ACS</h1>
+    <h1>Guia de Visitas TACS</h1>
     <div class="perfil-linha" id="perfilLinha" onclick="abrirModalPerfil()"></div>
     <p id="subtitulo">Aguardando dados...</p>
   </header>
@@ -393,7 +399,7 @@
             <div class="rodape-card"><span class="status-meta" id="c7-pend">Aguardando...</span></div>
           </div>
           <div class="barra-fundo"><div class="barra-progresso" id="c7-bar"></div></div>
-          <div class="regra-acs">Meta: Colo (25-64a, 3 anos) + Mama (50-69a, 2 anos)</div>
+          <div class="regra-acs">Meta: Preventivo 25-64a · HPV 9-14a · Consulta 14-69a · Mama 50-69a</div>
         </div>
 
         <div class="card-meta" id="card-bf" onclick="selecionarFiltroIndicador('BF')">
@@ -774,6 +780,33 @@
       return r;
     }
 
+// Telefone -> link do WhatsApp (abre o WhatsApp ou o WhatsApp Business instalado no celular)
+// Ícone ao lado do telefone: usa o arquivo icone-whatsapp.png (se estiver na pasta do app) ou um ícone simples de mensagem
+    let temIconeWa = false;
+    function htmlIconeMsg() {
+      if (temIconeWa) return '<img class="ico-wa" src="./icone-whatsapp.png" alt="" width="20" height="20">';
+      return '<svg class="ico-msg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/></svg>';
+    }
+    fetch('./icone-whatsapp.png', { method: 'HEAD' }).then(r => {
+      if (r.ok) { temIconeWa = true; if (typeof filtrarLista === 'function' && Object.keys(BASE_DADOS.cidadaos).length) filtrarLista(); }
+    }).catch(() => {});
+
+    function linkWhatsApp(tel) {
+      let d = (tel || '').replace(/\D/g, '').replace(/^0+/, '');
+      if (d.length < 10 || d.slice(-8) === '00000000') return null;
+      if (d.length <= 11) d = '55' + d;
+      return `https://wa.me/${d}`;
+    }
+
+function idadeEmAnos(dtStr) {
+      const n = parseDataJS(dtStr);
+      if (!n || isNaN(n.getTime())) return null;
+      const hoje = new Date();
+      let a = hoje.getFullYear() - n.getFullYear();
+      if (hoje.getMonth() < n.getMonth() || (hoje.getMonth() === n.getMonth() && hoje.getDate() < n.getDate())) a--;
+      return a;
+    }
+
     function calcularIdade(dtStr) {
       const n = parseDataJS(dtStr);
       if (!n || isNaN(n.getTime())) return '';
@@ -1111,38 +1144,51 @@
                   if (!consAnual) cid.pendencias.push("C6: Busca Ativa - Consulta anual pendente (>12 meses)");
                 }
                 else if (tema === "Saúde da mulher") {
-                  // C7: colo do útero (25 a 64 anos, exame nos últimos 3 anos) e mama (50 a 69 anos, mamografia nos últimos 2 anos)
+                  // C7 (boas práticas da mulher): preventivo (25-64a), vacina HPV (9-14a),
+                  // consulta de saúde sexual e reprodutiva (14-69a) e mamografia (50-69a)
                   const hoje7 = new Date();
-                  const nasc7 = parseDataJS(reg["Data de nascimento"] || "");
-                  let anos7 = null;
-                  if (nasc7 && !isNaN(nasc7.getTime())) {
-                    anos7 = hoje7.getFullYear() - nasc7.getFullYear();
-                    const dm = hoje7.getMonth() - nasc7.getMonth();
-                    if (dm < 0 || (dm === 0 && hoje7.getDate() < nasc7.getDate())) anos7--;
-                  }
+                  const anos7 = idadeEmAnos(reg["Data de nascimento"] || "");
                   const precisaColo = (anos7 === null) || (anos7 >= 25 && anos7 <= 64);
+                  const precisaHpv = (anos7 !== null) && (anos7 >= 9 && anos7 <= 14);
+                  const precisaConsulta = (anos7 === null) || (anos7 >= 14 && anos7 <= 69);
                   const precisaMama = (anos7 !== null) && (anos7 >= 50 && anos7 <= 69);
                   cid.pendencias = cid.pendencias.filter(p => !p.startsWith("C7:"));
-                  if (!precisaColo && !precisaMama) {
-                    delete cid.indicadores['C7'];   // fora das faixas de rastreamento (menos de 25 anos)
-                    delete cid.c7Ok;
-                    delete cid.c7_tempo;
+                  if (!precisaColo && !precisaHpv && !precisaConsulta && !precisaMama) {
+                    delete cid.indicadores['C7']; delete cid.c7Ok; delete cid.c7_tempo;
                   } else {
                     cid.indicadores['C7'] = true;
-                    const dtColo = extrairDatas(reg["Exame de rastreamento de câncer de colo de útero data última avaliação"]).pop() || null;
-                    const dtMama = extrairDatas((reg["Exame de rastreamento de câncer de mama data última realização"] || "") + " " + (reg["Exame de rastreamento de câncer de mama data última avaliação"] || "")).pop() || null;
+                    const ultimaData = (pred) => {
+                      let ds = [];
+                      for (const k in reg) { if (pred(normalizarTexto(k))) ds = ds.concat(extrairDatas(reg[k])); }
+                      return ds.sort((a, b) => a - b).pop() || null;
+                    };
+                    const dtColo = ultimaData(k => k.includes('colo de utero') && k.includes('data'));      // solicitado ou avaliado
+                    const dtMama = ultimaData(k => k.includes('mama') && k.includes('data'));               // solicitada, realizada ou avaliada
+                    const dtConsulta = ultimaData(k => k.includes('consulta de saude sexual'));
+                    const dosesHpv = ((reg["HPV"] || "").match(/vacina hpv/gi) || []).length;
                     const coloOk = !!dtColo && dtColo >= somarMeses(hoje7, -36);
                     const mamaOk = !!dtMama && dtMama >= somarMeses(hoje7, -24);
+                    const consultaOk = !!dtConsulta && dtConsulta >= somarMeses(hoje7, -12);
+                    const hpvOk = dosesHpv >= 1;
                     const partes7 = [];
+                    const p7 = cid.pendencias;
                     if (precisaColo) {
-                      partes7.push(`Colo: ${dtColo ? fmtData(dtColo) : 'sem registro'} ${coloOk ? '✓' : '✗'}`);
-                      if (!coloOk) cid.pendencias.push("C7: Busca Ativa - Coleta de Preventivo (colo do útero) em atraso" + (dtColo ? ` (última em ${fmtData(dtColo)}, mais de 3 anos)` : " (sem registro)"));
+                      partes7.push(`Preventivo ${dtColo ? fmtData(dtColo) : 'sem registro'} ${coloOk ? '✓' : '✗'}`);
+                      if (!coloOk) p7.push("C7: Busca Ativa - Preventivo (colo do útero) solicitado ou avaliado nos últimos 3 anos" + (dtColo ? ` (último registro em ${fmtData(dtColo)})` : " (sem registro)"));
+                    }
+                    if (precisaHpv) {
+                      partes7.push(`HPV ${hpvOk ? dosesHpv + ' dose' + (dosesHpv > 1 ? 's' : '') : 'sem registro'} ${hpvOk ? '✓' : '✗'}`);
+                      if (!hpvOk) p7.push("C7: Busca Ativa - Vacina HPV (9 a 14 anos) sem registro");
+                    }
+                    if (precisaConsulta) {
+                      partes7.push(`Consulta ${dtConsulta ? fmtData(dtConsulta) : 'sem registro'} ${consultaOk ? '✓' : '✗'}`);
+                      if (!consultaOk) p7.push("C7: Busca Ativa - Consulta de saúde sexual e reprodutiva no último ano" + (dtConsulta ? ` (última em ${fmtData(dtConsulta)})` : " (sem registro)"));
                     }
                     if (precisaMama) {
-                      partes7.push(`Mama: ${dtMama ? fmtData(dtMama) : 'sem registro'} ${mamaOk ? '✓' : '✗'}`);
-                      if (!mamaOk) cid.pendencias.push("C7: Busca Ativa - Mamografia em atraso" + (dtMama ? ` (última em ${fmtData(dtMama)}, mais de 2 anos)` : " (sem registro)"));
+                      partes7.push(`Mamografia ${dtMama ? fmtData(dtMama) : 'sem registro'} ${mamaOk ? '✓' : '✗'}`);
+                      if (!mamaOk) p7.push("C7: Busca Ativa - Mamografia solicitada ou avaliada nos últimos 2 anos" + (dtMama ? ` (último registro em ${fmtData(dtMama)})` : " (sem registro)"));
                     }
-                    cid.c7Ok = (!precisaColo || coloOk) && (!precisaMama || mamaOk);
+                    cid.c7Ok = (!precisaColo || coloOk) && (!precisaHpv || hpvOk) && (!precisaConsulta || consultaOk) && (!precisaMama || mamaOk);
                     cid.c7_tempo = { texto: '🩺 ' + partes7.join(' · '), ok: cid.c7Ok };
                   }
                 }
@@ -1226,7 +1272,8 @@
       const lista = Object.values(BASE_DADOS.cidadaos);
       const totalBf = lista.filter(c => c.bolsaFamilia).length;
       
-      document.getElementById('subtitulo').innerHTML = `${lista.length} cidadãos vinculados`;
+      window.__totalVinculados = lista.length;
+      atualizarSubtitulo();
       document.getElementById('bf-tot').innerText = totalBf;
 
       const selectRua = document.getElementById('filtroRua');
@@ -1354,7 +1401,7 @@
               acoes.map(a => `<div class="acao-item">${a}</div>`).join('') + `</div>`
             : '';
           const blocoHtml = `<div class="bloco-meta">
-              <span class="tag ${atingida ? 'tag-ok' : 'tag-danger'}">${atingida ? '✓' : '✗'} ${rotulos[ind]}</span>${(ind === 'C1' && c.bolsaFamilia) ? '<span class="tag tag-bf">💰 Bolsa Família</span>' : ''}${(tempos[ind] && tempos[ind].texto) ? `<span class="tag tag-tempo ${tempos[ind].ok ? 'tempo-ok' : 'tempo-atencao'}">${tempos[ind].texto}</span>` : ''}
+              <span class="tag ${atingida ? 'tag-ok' : 'tag-danger'}">${atingida ? '✓' : '✗'} ${rotulos[ind]}</span>${(tempos[ind] && tempos[ind].texto) ? `<span class="tag tag-tempo ${tempos[ind].ok ? 'tempo-ok' : 'tempo-atencao'}">${tempos[ind].texto}</span>` : ''}
               ${acoesHtml}
             </div>`;
           if (atingida) blocosOkHtml += blocoHtml; else blocosPendHtml += blocoHtml;
@@ -1362,24 +1409,30 @@
 
         // Ordem: metas atingidas (verde), Bolsa Família e, por último, as pendências (vermelho)
         let tagsHtml = blocosOkHtml;
-        if (c.bolsaFamilia && !(c.indicadores && c.indicadores['C1'])) {
-          tagsHtml += `<div class="bloco-meta"><span class="tag tag-bf">💰 Bolsa Família</span></div>`;
-        }
         tagsHtml += blocosPendHtml;
         const pendenciasHtml = '';
 
-        const linkTel = c.telefone ? `<span class="telefone"> | 📞 <a href="tel:${c.telefone.replace(/\D/g, '')}">${c.telefone}</a></span>` : '';
+        const urlWa = linkWhatsApp(c.telefone);
+        const linkTel = c.telefone ? (urlWa ? `<span class="telefone"> | <a href="${urlWa}" target="_blank" rel="noopener">${htmlIconeMsg()} ${c.telefone}</a></span>` : `<span class="telefone"> | 📞 ${c.telefone}</span>`) : '';
         const valAnotacao = c.anotacao || '';
         const anotacaoHtml = `<textarea class="area-anotacao" placeholder="✍️ Anotações do ACS..." onchange="salvarAnotacao('${chave}', this.value)">${valAnotacao}</textarea>`;
 
         const temPend = algumaPendente;
         const idadeCalc = c.dt_nascimento ? calcularIdade(c.dt_nascimento) : (c.idade_txt || '');
-        const idadeHtml = idadeCalc ? ` <span class="idade">🎂 ${idadeCalc}</span>` : '';
+        const idadeBadge = idadeCalc ? `<span class="idade">🎂 ${idadeCalc}</span>` : '';
+        const bfBadge = c.bolsaFamilia ? `<span class="tag tag-bf">💰 Bolsa Família</span>` : '';
+        // Etiquetas de perfil para quem está fora das listas de indicadores do PEC (sem meta, só para identificar)
+        const anosC = c.dt_nascimento ? idadeEmAnos(c.dt_nascimento) : null;
+        let perfilBadge = '';
+        if (anosC !== null && anosC < 10 && !(c.indicadores && c.indicadores['C2'])) perfilBadge += '<span class="tag tag-info">👶 Criança · fora do C2</span>';
+        if (anosC !== null && anosC >= 60 && !(c.indicadores && c.indicadores['C6'])) perfilBadge += '<span class="tag tag-info">🧓 Idoso · fora do C6</span>';
+        const linhaInfoHtml = (idadeBadge || bfBadge || perfilBadge) ? `<div class="linha-info">${idadeBadge}${bfBadge}${perfilBadge}</div>` : '';
         content.innerHTML += `
           <div class="item-cidadao ${temPend ? 'tem-pend' : 'em-dia'}">
             <div class="topo">
-              <div class="nome">${c.nome}${idadeHtml}</div>
+              <div class="nome">${c.nome}</div>
             </div>
+            ${linhaInfoHtml}
             <div class="endereco">📍 ${c.rua || 'Sem rua cadastrada'}, nº ${c.numero || 'S/N'}${linkTel}</div>
             <div>${tagsHtml}</div>
             ${pendenciasHtml}
@@ -1394,12 +1447,18 @@
       try { return JSON.parse(localStorage.getItem('gestao_acs_perfil')) || {}; } catch (e) { return {}; }
     }
 
+    function atualizarSubtitulo() {
+      const total = window.__totalVinculados;
+      if (typeof total !== 'number') return;
+      const p = lerPerfil();
+      document.getElementById('subtitulo').textContent = (p.micro ? `Micro ${p.micro}: ` : '') + `${total} cidadãos vinculados`;
+    }
+
     function renderPerfil() {
       const p = lerPerfil();
       const el = document.getElementById('perfilLinha');
       const partes = [];
       if (p.nome) partes.push(p.nome);
-      if (p.micro) partes.push('Microárea ' + p.micro);
       el.innerHTML = '';
       const t = document.createElement('span');
       t.className = 'perfil-texto';
@@ -1409,6 +1468,7 @@
       l.textContent = '✏️';
       el.appendChild(t);
       el.appendChild(l);
+      atualizarSubtitulo();
     }
 
     function abrirModalPerfil() {

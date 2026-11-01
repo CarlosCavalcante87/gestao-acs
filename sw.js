@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gestao-acs-v26';
+const CACHE_NAME = 'gestao-acs-v34';
 const CACHE_FONTES = 'gestao-acs-fontes';
 const RECURSOS = [
   './',
@@ -29,6 +29,9 @@ self.addEventListener('activate', (e) => {
 });
 
 self.addEventListener('fetch', (e) => {
+  if (e.request.method !== 'GET') {
+    return;
+  }
   if (e.request.url.includes('/api/')) {
     return;
   }
@@ -51,7 +54,30 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
+  // Páginas e manifest: sempre tenta a versão nova primeiro (assim as atualizações chegam sozinhas)
+  // e só usa a cópia guardada quando estiver sem internet.
+  const ehPagina = e.request.mode === 'navigate' || url.pathname.endsWith('.html') || url.pathname.endsWith('/') || url.pathname.endsWith('manifest.json');
+  if (ehPagina) {
+    e.respondWith(
+      fetch(e.request, { cache: 'no-cache' }).then((resp) => {
+        if (resp && resp.ok) {
+          const copia = resp.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(e.request, copia));
+        }
+        return resp;
+      }).catch(() => caches.match(e.request).then((res) => res || caches.match('./index.html')))
+    );
+    return;
+  }
+
+  // Demais arquivos (ícones, imagens): usa a cópia guardada e, na primeira vez, guarda para funcionar offline
   e.respondWith(
-    caches.match(e.request).then((res) => res || fetch(e.request))
+    caches.match(e.request).then((res) => res || fetch(e.request).then((resp) => {
+      if (resp && resp.ok && url.origin === self.location.origin) {
+        const copia = resp.clone();
+        caches.open(CACHE_NAME).then((cache) => cache.put(e.request, copia));
+      }
+      return resp;
+    }))
   );
 });

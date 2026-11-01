@@ -1,7 +1,7 @@
 {
   "id": "./index.html",
-  "name": "Gestão ACS Offline",
-  "short_name": "Gestão ACS",
+  "name": "Guia de Visitas TACS",
+  "short_name": "Guia TACS",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

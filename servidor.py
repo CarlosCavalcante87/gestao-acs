@@ -184,7 +184,7 @@ def processar_csvs_da_pasta():
                 if vis_inf < 2: 
                     cid['pendencias'].append(f"C2: Visita Domiciliar pendente ({vis_inf}/2 visitas)")
                 
-                if not penta_ok e not polio_ok:
+                if not penta_ok and not polio_ok:
                     cid['pendencias'].append("C2: Busca Ativa - Faltam vacinas Penta e Pólio")
                 elif not penta_ok:
                     cid['pendencias'].append("C2: Busca Ativa - Falta vacina Penta")
@@ -308,6 +308,7 @@ def processar_csvs_da_pasta():
 class ServidorACS(SimpleHTTPRequestHandler):
     def end_headers(self):
         self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Cache-Control', 'no-cache')
         self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
         self.send_header('Access-Control-Allow-Headers', 'Content-Type')
         super().end_headers()
