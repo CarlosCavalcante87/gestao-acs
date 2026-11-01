@@ -271,6 +271,22 @@
     .campo-texto:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.18); background: #fff; }
     .modal-botoes .btn-salvar { background: var(--primary); color: #fff; box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3); }
 
+    /* ---------- AÇÕES DO DIA ---------- */
+    nav.tab-bar button { position: relative; font-size: 0.74rem; padding: 0 2px; }
+    .badge-tab { display: inline-block; margin-left: 4px; background: #ef4444; color: #fff; border-radius: 999px; font-size: 0.62rem; font-weight: 800; padding: 1px 6px; vertical-align: middle; }
+    .al-ajuda { font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 6px 0 10px; }
+    .al-horizonte { display: flex; gap: 8px; margin-bottom: 10px; }
+    #chipAl7.active, #chipAl15.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .al-status { font-size: 0.74rem; color: var(--text-muted); line-height: 1.45; margin-top: 8px; }
+    .al-grupo { font-size: 0.82rem; font-weight: 800; color: #1e293b; margin: 14px 4px 8px; }
+    .al-linha { display: flex; gap: 8px; align-items: flex-start; font-size: 0.78rem; line-height: 1.4; padding: 7px 10px; border-radius: 10px; margin-top: 6px; border: 1px solid transparent; }
+    .al-prazo { background: #fef2f2; border-color: #fecaca; color: #7f1d1d; }
+    .al-faixa { background: #fffbeb; border-color: #fde68a; color: #78350f; }
+    .al-janela { background: #eff6ff; border-color: #bfdbfe; color: #1e3a8a; }
+    .al-quando { flex-shrink: 0; font-weight: 800; font-size: 0.72rem; background: rgba(255, 255, 255, 0.75); border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
+    .al-texto { font-weight: 600; }
+    .btn-abrir { margin-top: 10px; background: #475569; font-size: 0.82rem; padding: 10px; }
+
     /* ---------- DESKTOP ---------- */
     @media (min-width: 768px) {
       header { border-radius: 0 0 24px 24px; padding: 20px 32px 24px; }
@@ -321,7 +337,7 @@
             <div class="rodape-card"><span class="status-meta" id="c1-pend">Aguardando...</span></div>
           </div>
           <div class="barra-fundo"><div class="barra-progresso" id="c1-bar"></div></div>
-          <div class="regra-acs">Meta: Territorialização &lt;24m</div>
+          <div class="regra-acs">Meta: Cadastro individual e domiciliar atualizados (até 1 ano)</div>
         </div>
 
         <div class="card-meta" id="card-c2" onclick="selecionarFiltroIndicador('C2')">
@@ -444,7 +460,22 @@
       <div id="listaUtentes"></div>
     </div>
 
-    <!-- Tela 2: Importar e Sincronizar -->
+    <!-- Tela 2: Ações do Dia -->
+    <div id="view-alertas" style="display: none;">
+      <div class="card">
+        <h3>🔔 Ações do Dia</h3>
+        <p class="al-ajuda">Prazos que vencem e mudanças de faixa etária nos próximos dias. Quem tem o prazo mais próximo aparece primeiro.</p>
+        <div class="al-horizonte">
+          <button class="chip active" id="chipAl7" onclick="definirHorizonteAlertas(7)">Próximos 7 dias</button>
+          <button class="chip" id="chipAl15" onclick="definirHorizonteAlertas(15)">Próximos 15 dias</button>
+        </div>
+        <button class="btn" id="btnLembretes" onclick="ativarLembretes()">🔔 Ativar lembretes no celular</button>
+        <div id="statusLembretes" class="al-status"></div>
+      </div>
+      <div id="listaAlertas"></div>
+    </div>
+
+    <!-- Tela 3: Importar e Sincronizar -->
     <div id="view-upload" style="display: none;">
       
       <div class="card" style="padding: 20px 16px;">
@@ -489,8 +520,9 @@
   </div>
 
   <nav class="tab-bar">
-    <button id="btnTabDash" class="active" onclick="alternarAba('dashboard')">📋 Indicadores C1-C7</button>
-    <button id="btnTabUp" onclick="alternarAba('upload')">⚙️ Carga / Dados</button>
+    <button id="btnTabDash" class="active" onclick="alternarAba('dashboard')">📋 Indicadores</button>
+    <button id="btnTabAl" onclick="alternarAba('alertas')">🔔 Ações do Dia<span id="badgeAlertas" class="badge-tab" style="display:none;"></span></button>
+    <button id="btnTabUp" onclick="alternarAba('upload')">⚙️ Dados</button>
   </nav>
 
   <div class="modal-fundo" id="modalLimpar" onclick="if(event.target===this) fecharModalLimpar()">
@@ -587,11 +619,254 @@
       }
     });
 
+    // =========================================================================
+    // AÇÕES DO DIA: prazos que vencem e faixas etárias que mudam nos próximos dias
+    // =========================================================================
+    let horizonteAlertas = 7;
+    try { if (parseInt(localStorage.getItem('guia_horizonte')) === 15) horizonteAlertas = 15; } catch (e) {}
+
+    function iniDia(d) { const x = new Date(d); x.setHours(0, 0, 0, 0); return x; }
+    function escHtml(s) { return String(s == null ? '' : s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+    function isoLocal(d) { const p = n => String(n).padStart(2, '0'); return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`; }
+
+    function datasUnicas12m(txt) {
+      const janela = somarMeses(new Date(), -12);
+      const unicas = [];
+      extrairDatas(txt).filter(d => d >= janela).forEach(d => { if (!unicas.some(u => u.getTime() === d.getTime())) unicas.push(d); });
+      return unicas;
+    }
+
+    function gerarAlertas(limite) {
+      const hoje = iniDia(new Date());
+      const out = [];
+      Object.entries(BASE_DADOS.cidadaos).forEach(([chave, c]) => {
+        const ind = c.indicadores || {};
+        const nasc = c.dt_nascimento ? parseDataJS(c.dt_nascimento) : null;
+        const temNasc = !!nasc && !isNaN(nasc.getTime());
+        const add = (data, tipo, indic, texto) => {
+          const dias = diasEntre(hoje, iniDia(data));
+          if (dias < 0 || dias > limite) return;
+          out.push({ chave, dias, data: iniDia(data), tipo, ind: indic, texto });
+        };
+        const pend = (pref, txt) => (c.pendencias || []).some(p => p.startsWith(pref + ':') && p.includes(txt));
+
+        // C1: cadastro vale 1 ano
+        [['dt_cadastral', 'individual'], ['dt_cad_dom', 'domiciliar']].forEach(([campo, nomeC]) => {
+          const d = c[campo] ? parseDataJS(c[campo]) : null;
+          if (d && !isNaN(d.getTime())) add(somarMeses(d, 12), 'prazo', 'C1', `Cadastro ${nomeC} (de ${c[campo]}) completa 1 ano: atualizar para não ficar pendente`);
+        });
+
+        // C2: crianças (1ª visita até 30 dias de vida, 2ª entre o 31º dia e 6 meses, fim dos 24 meses)
+        if (ind.C2 && temNasc) {
+          const lim1 = somarDias(nasc, 30), ini2 = somarDias(nasc, 31), lim2 = somarMeses(nasc, 6), fim24 = somarMeses(nasc, 24);
+          if (c.c2_ok1 === false && hoje <= lim1) add(lim1, 'prazo', 'C2', `1ª visita (motivo "Recém-nascido") até ${fmtData(lim1)}, quando completa 30 dias de vida`);
+          if (c.c2_ok2 === false) {
+            if (hoje <= lim2) add(lim2, 'prazo', 'C2', `2ª visita (motivo "Criança") até ${fmtData(lim2)}, quando completa 6 meses de vida`);
+            if (hoje < ini2) add(ini2, 'janela', 'C2', `2ª visita já pode ser feita a partir de ${fmtData(ini2)} (31º dia de vida)`);
+          }
+          if (c.c2Ok !== true && hoje <= fim24) add(fim24, 'faixa', 'C2', `Completa 24 meses em ${fmtData(fim24)}: acaba o prazo das visitas do C2`);
+        }
+
+        // C3: gestantes (DPP, pré-natal e puerpério)
+        if (ind.C3 && c.c3_dpp) {
+          const dpp = extrairDatas(c.c3_dpp)[0];
+          if (dpp) {
+            const visPn = c.c3_vis_pn || 0, visPu = c.c3_vis_puerp || 0;
+            if (visPn < 3) add(dpp, 'prazo', 'C3', `DPP em ${fmtData(dpp)}: faltam ${3 - visPn} visita(s) de pré-natal (motivo "Gestante")`);
+            if (visPu < 1) add(somarDias(dpp, 42), 'prazo', 'C3', `Visita de puerpério (motivo "Puérpera") até 42 dias após o parto, estimado pela DPP de ${fmtData(dpp)}`);
+          }
+        }
+
+        // C4, C5 e C6: 2 visitas nos últimos 12 meses, com 30+ dias entre elas
+        [['C4', 'Diabetes'], ['C5', 'Hipertensão'], ['C6', 'Idoso']].forEach(([k, nomeInd]) => {
+          if (!ind[k]) return;
+          const unicas = datasUnicas12m(c[k.toLowerCase() + '_vis_txt']);
+          if (!unicas.length) return;
+          const ult = unicas[unicas.length - 1];
+          const pen = unicas.length >= 2 ? unicas[unicas.length - 2] : null;
+          if (pen && diasEntre(pen, ult) >= 30) {
+            add(somarMeses(pen, 12), 'prazo', k, `${nomeInd}: a visita de ${fmtData(pen)} sai da janela de 12 meses; fazer nova visita (30+ dias depois de ${fmtData(ult)})`);
+          } else {
+            add(somarMeses(ult, 12), 'prazo', k, `${nomeInd}: a visita de ${fmtData(ult)} perde a validade (12 meses); falta outra com 30+ dias de intervalo`);
+            add(somarDias(ult, 30), 'janela', k, `${nomeInd}: a 2ª visita passa a valer a partir de ${fmtData(somarDias(ult, 30))} (30 dias depois de ${fmtData(ult)})`);
+          }
+        });
+
+        // Mudanças de faixa etária
+        if (temNasc) {
+          const aniv = (anos) => somarMeses(nasc, anos * 12);
+          add(aniv(60), 'faixa', 'C6', `Completa 60 anos em ${fmtData(aniv(60))}: passa a ser acompanhado(a) como pessoa idosa (C6)`);
+          if (pend('C7', 'HPV')) add(aniv(15), 'faixa', 'C7', `Completa 15 anos em ${fmtData(aniv(15))}: última chance da vacina HPV (9 a 14 anos)`);
+          if (pend('C7', 'Preventivo')) add(aniv(65), 'faixa', 'C7', `Completa 65 anos em ${fmtData(aniv(65))}: sai da faixa do preventivo (25 a 64 anos)`);
+          if (pend('C7', 'Mamografia')) add(aniv(70), 'faixa', 'C7', `Completa 70 anos em ${fmtData(aniv(70))}: sai da faixa da mamografia (50 a 69 anos)`);
+          if (ind.C7) {
+            add(aniv(25), 'faixa', 'C7', `Completa 25 anos em ${fmtData(aniv(25))}: entra na faixa do preventivo (25 a 64 anos)`);
+            add(aniv(50), 'faixa', 'C7', `Completa 50 anos em ${fmtData(aniv(50))}: entra na faixa da mamografia (50 a 69 anos)`);
+          }
+        }
+      });
+      return out;
+    }
+
+    function agruparAlertas(lista) {
+      const mapa = new Map();
+      lista.forEach(a => { if (!mapa.has(a.chave)) mapa.set(a.chave, []); mapa.get(a.chave).push(a); });
+      const cidadaos = [...mapa.entries()].map(([chave, itens]) => {
+        itens.sort((x, y) => x.dias - y.dias);
+        return { chave, c: BASE_DADOS.cidadaos[chave], itens, min: itens[0].dias };
+      });
+      cidadaos.sort((a, b) => a.min - b.min || (a.c.nome || '').localeCompare(b.c.nome || '', 'pt-BR', { sensitivity: 'base' }));
+      return cidadaos;
+    }
+
+    const TIPO_ALERTA = { prazo: '⏳', faixa: '🎂', janela: '🔓' };
+    function textoQuando(dias) { return dias === 0 ? 'Hoje' : dias === 1 ? 'Amanhã' : `em ${dias} dias`; }
+
+    function definirHorizonteAlertas(n) {
+      horizonteAlertas = n;
+      try { localStorage.setItem('guia_horizonte', String(n)); } catch (e) {}
+      atualizarAlertas();
+    }
+
+    function atualizarAlertas() {
+      const tem = Object.keys(BASE_DADOS.cidadaos).length > 0;
+      document.getElementById('chipAl7').className = 'chip' + (horizonteAlertas === 7 ? ' active' : '');
+      document.getElementById('chipAl15').className = 'chip' + (horizonteAlertas === 15 ? ' active' : '');
+
+      const grupos7 = tem ? agruparAlertas(gerarAlertas(7)) : [];
+      const badge = document.getElementById('badgeAlertas');
+      badge.textContent = grupos7.length;
+      badge.style.display = grupos7.length ? 'inline-block' : 'none';
+
+      const alvo = document.getElementById('listaAlertas');
+      if (!tem) { alvo.innerHTML = '<p style="text-align:center; padding: 24px; color: var(--text-muted); font-size: 0.88rem;">Importe as planilhas na aba Dados para ver as ações do dia.</p>'; return; }
+      const grupos = agruparAlertas(gerarAlertas(horizonteAlertas));
+      if (!grupos.length) { alvo.innerHTML = `<p style="text-align:center; padding: 24px; color: var(--text-muted); font-size: 0.88rem;">🎉 Nenhuma ação urgente nos próximos ${horizonteAlertas} dias.</p>`; }
+      else {
+        const secoes = [
+          { titulo: '🔴 Hoje', filtro: g => g.min === 0 },
+          { titulo: '🟠 Próximos 7 dias', filtro: g => g.min >= 1 && g.min <= 7 },
+          { titulo: '🟡 De 8 a 15 dias', filtro: g => g.min >= 8 }
+        ];
+        let html = '';
+        secoes.forEach(s => {
+          const g = grupos.filter(s.filtro);
+          if (!g.length) return;
+          html += `<div class="al-grupo">${s.titulo} · ${g.length} cidadão(s)</div>`;
+          g.forEach(({ chave, c, itens }) => {
+            const idade = c.dt_nascimento ? calcularIdade(c.dt_nascimento) : (c.idade_txt || '');
+            const urlWa = linkWhatsApp(c.telefone);
+            const tel = c.telefone ? (urlWa ? ` | <a href="${urlWa}" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;text-decoration:none;">${htmlIconeMsg()} ${escHtml(c.telefone)}</a>` : ` | 📞 ${escHtml(c.telefone)}`) : '';
+            html += `<div class="item-cidadao ${g === null ? '' : (itens[0].dias <= 7 ? 'tem-pend' : 'em-dia')}">
+              <div class="topo"><div class="nome">${escHtml(c.nome)}</div></div>
+              ${idade ? `<div class="linha-info"><span class="idade">🎂 ${escHtml(idade)}</span></div>` : ''}
+              <div class="endereco">📍 ${escHtml(c.rua || 'Sem rua cadastrada')}, nº ${escHtml(c.numero || 'S/N')}${tel}</div>
+              ${itens.map(a => `<div class="al-linha al-${a.tipo}"><span class="al-quando">${TIPO_ALERTA[a.tipo]} ${textoQuando(a.dias)}</span><span class="al-texto"><b>${a.ind}</b> · ${escHtml(a.texto)}</span></div>`).join('')}
+              <button class="btn btn-abrir" data-chave="${escHtml(chave)}">Abrir cartão do cidadão</button>
+            </div>`;
+          });
+        });
+        alvo.innerHTML = html;
+      }
+      if (lembretesAtivos()) { salvarSnapshotAlertas().catch(() => {}); avisoResumo(false).catch(() => {}); }
+    }
+
+    document.addEventListener('click', (e) => {
+      const b = e.target.closest && e.target.closest('.btn-abrir');
+      if (!b) return;
+      const c = BASE_DADOS.cidadaos[b.getAttribute('data-chave')];
+      if (!c) return;
+      alternarAba('dashboard');
+      selecionarFiltroIndicador('C1');
+      document.getElementById('campoBusca').value = c.nome;
+      filtrarLista();
+      window.scrollTo(0, 0);
+    });
+
+    // ---------- Lembretes no celular ----------
+    function lembretesSuportados() { return ('Notification' in window) && ('serviceWorker' in navigator) && window.isSecureContext; }
+    function lembretesAtivos() {
+      try { return lembretesSuportados() && localStorage.getItem('guia_lembretes') === '1' && Notification.permission === 'granted'; } catch (e) { return false; }
+    }
+
+    function atualizarStatusLembretes() {
+      const btn = document.getElementById('btnLembretes');
+      const st = document.getElementById('statusLembretes');
+      if (!btn) return;
+      btn.style.display = '';
+      if (!lembretesSuportados()) {
+        btn.style.display = 'none';
+        st.textContent = 'Os lembretes no celular só funcionam quando o app é aberto por um endereço seguro (https) ou instalado na tela inicial. Neste endereço eles não estão disponíveis, mas esta lista continua funcionando.';
+      } else if (Notification.permission === 'denied') {
+        btn.style.display = 'none';
+        st.textContent = 'As notificações deste app estão bloqueadas. Libere nas configurações do navegador (permissões do site) para receber lembretes.';
+      } else if (lembretesAtivos()) {
+        btn.textContent = '🔕 Desativar lembretes';
+        st.textContent = '✅ Lembretes ativados: um resumo aparece uma vez por dia quando você abre o app. Em celulares Android com o app instalado, o Chrome também pode avisar sozinho, em horário que ele decide.';
+      } else {
+        btn.textContent = '🔔 Ativar lembretes no celular';
+        st.textContent = '';
+      }
+    }
+
+    async function ativarLembretes() {
+      if (!lembretesSuportados()) { atualizarStatusLembretes(); return; }
+      const reg = await navigator.serviceWorker.ready;
+      if (lembretesAtivos()) {
+        localStorage.removeItem('guia_lembretes');
+        try { if (reg.periodicSync) await reg.periodicSync.unregister('alertas-diarios'); } catch (e) {}
+        atualizarStatusLembretes();
+        return;
+      }
+      const perm = await Notification.requestPermission();
+      if (perm !== 'granted') { atualizarStatusLembretes(); return; }
+      localStorage.setItem('guia_lembretes', '1');
+      try { if (reg.periodicSync) await reg.periodicSync.register('alertas-diarios', { minInterval: 12 * 60 * 60 * 1000 }); } catch (e) {}
+      await salvarSnapshotAlertas();
+      await avisoResumo(true);
+      atualizarStatusLembretes();
+    }
+
+    async function salvarSnapshotAlertas() {
+      if (!('caches' in window)) return;
+      const arr = gerarAlertas(30).map(a => ({ d: isoLocal(a.data), n: BASE_DADOS.cidadaos[a.chave].nome, i: a.ind, x: a.texto }));
+      const cache = await caches.open('guia-alertas');
+      await cache.put('./alertas.json', new Response(JSON.stringify(arr), { headers: { 'Content-Type': 'application/json' } }));
+    }
+
+    async function avisoResumo(forcar) {
+      if (!lembretesAtivos()) return;
+      const hojeIso = isoLocal(new Date());
+      if (!forcar && localStorage.getItem('guia_ultimo_aviso') === hojeIso) return;
+      const grupos = agruparAlertas(gerarAlertas(7));
+      let titulo, corpo;
+      if (grupos.length) {
+        titulo = `🔔 ${grupos.length} cidadão(s) com ação nos próximos 7 dias`;
+        corpo = grupos.slice(0, 3).map(g => `${(g.c.nome || '').split(' ')[0]}: ${g.itens[0].texto}`.slice(0, 90)).join('\n');
+      } else if (forcar) {
+        titulo = '🔔 Lembretes ativados';
+        corpo = 'Nenhuma ação urgente nos próximos 7 dias.';
+      } else return;
+      const reg = await navigator.serviceWorker.ready;
+      await reg.showNotification(titulo, { body: corpo, tag: 'resumo-diario', icon: './icone-192.png', badge: './icone-192.png', data: { url: './index.html#alertas' } });
+      localStorage.setItem('guia_ultimo_aviso', hojeIso);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      atualizarStatusLembretes();
+      atualizarAlertas();
+      if (location.hash === '#alertas') alternarAba('alertas');
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.addEventListener('message', (e) => { if (e.data && e.data.abrir === 'alertas') alternarAba('alertas'); });
+      }
+    });
+
     function alternarAba(aba) {
-      document.getElementById('view-dashboard').style.display = aba === 'dashboard' ? 'block' : 'none';
-      document.getElementById('view-upload').style.display = aba === 'upload' ? 'block' : 'none';
+      ['dashboard', 'alertas', 'upload'].forEach(a => { document.getElementById('view-' + a).style.display = a === aba ? 'block' : 'none'; });
       document.getElementById('btnTabDash').className = aba === 'dashboard' ? 'active' : '';
+      document.getElementById('btnTabAl').className = aba === 'alertas' ? 'active' : '';
       document.getElementById('btnTabUp').className = aba === 'upload' ? 'active' : '';
+      if (aba === 'alertas') { atualizarAlertas(); window.scrollTo(0, 0); }
     }
 
     function selecionarFiltroIndicador(ind) {
@@ -754,6 +1029,7 @@
       const d2 = v2 ? diasEntre(nasc, v2) : null;
       const ok1 = !!v1 && d1 >= 0 && d1 <= 30;
       const ok2 = !!v2 && d2 > 30 && v2 <= lim2;
+      r.ok1 = ok1; r.ok2 = ok2;
       const partes = [];
       const marca = ok => (hoje > fim24) ? '' : (ok ? ' ✓' : ' ✗');   // acima de 24 meses só informa, sem cobrar prazo
       if (v1) partes.push(`1ª aos ${d1} dias${marca(ok1)}`);
@@ -998,10 +1274,23 @@ function idadeEmAnos(dtStr) {
                 if (reg["Última atualização cadastral"] && reg["Última atualização cadastral"] !== "-") {
                   cid.dt_cadastral = reg["Última atualização cadastral"];
                 }
-                const diffDias = cid.dt_cadastral ? (new Date() - parseDataJS(cid.dt_cadastral)) / (1000 * 60 * 60 * 24) : 0;
-                cid.c1Ok = (cid.dt_cadastral == null || diffDias <= 730);
+                // C1: cadastro individual (data do relatório) e, se o relatório trouxer, cadastro domiciliar. Vale até 1 ano.
+                for (let key in reg) {
+                  const kn = normalizarTexto(key);
+                  const v = (reg[key] || "").trim();
+                  if (kn.includes("atualiza") && kn.includes("cadastr") && (kn.includes("domicil") || kn.includes("famili") || kn.includes("moradia")) && /\d/.test(v)) cid.dt_cad_dom = v;
+                }
+                const diasDe = (s) => { const d = s ? parseDataJS(s) : null; return (d && !isNaN(d.getTime())) ? Math.floor((new Date() - d) / 86400000) : null; };
+                const diasInd = diasDe(cid.dt_cadastral), diasDom = diasDe(cid.dt_cad_dom);
+                const indVenceu = diasInd === null || diasInd > 365;
+                const domVenceu = diasDom !== null && diasDom > 365;
+                cid.c1_ind_ok = !indVenceu; cid.c1_dom_ok = (diasDom === null) ? null : !domVenceu;
+                cid.c1Ok = !indVenceu && !domVenceu;
                 cid.pendencias = (cid.pendencias || []).filter(p => !p.startsWith("C1:"));
-                if (!cid.c1Ok) cid.pendencias.push(`C1: Cadastro desatualizado há mais de 2 anos (${cid.dt_cadastral || "Sem data"})`);
+                if (indVenceu) cid.pendencias.push(diasInd === null
+                  ? "C1: Cadastro INDIVIDUAL sem data de atualização: refazer/atualizar o cadastro individual do cidadão (CDS ou PEC) e conferir o cadastro domiciliar da família"
+                  : `C1: Cadastro INDIVIDUAL desatualizado (última atualização em ${cid.dt_cadastral}, há mais de 1 ano): atualizar o cadastro individual do cidadão e, na mesma visita, conferir o cadastro domiciliar da família`);
+                if (domVenceu) cid.pendencias.push(`C1: Cadastro DOMICILIAR desatualizado (última atualização em ${cid.dt_cad_dom}, há mais de 1 ano): atualizar o cadastro do domicílio/família`);
 
                 // =========================================================================
                 // C2: CRIANÇAS DE 0 A 4 ANOS (LISTA DESENVOLVIMENTO INFANTIL)
@@ -1049,6 +1338,7 @@ function idadeEmAnos(dtStr) {
                   cid.c2_vacinasOk = !temVacinasAtrasadas;
                   cid.c2Ok = (av2.ok && cid.c2_vacinasOk);
                   cid.c2_tempo = { texto: av2.tempo, ok: av2.tempoOk };
+                  cid.c2_ok1 = av2.ok1; cid.c2_ok2 = av2.ok2;
                   
                   cid.pendencias = cid.pendencias.filter(p => !p.startsWith("C2:"));
                   
@@ -1084,7 +1374,7 @@ function idadeEmAnos(dtStr) {
                   const ultTxt = !temUlt ? '' : ((mVis || 0) > 0 ? `${mVis} mês(es)${(dVis || 0) ? ' e ' + dVis + ' dia(s)' : ''}` : `${dVis || 0} dia(s)`);
                   const ultDias = temUlt ? (mVis || 0) * 30 + (dVis || 0) : null;
                   cid.c3_tempo = { texto: temUlt ? `⏱ Última visita há ${ultTxt}` : '⏱ Sem visita domiciliar registrada', ok: (visPn >= 3 && visPuerp >= 1) || (ultDias !== null && ultDias < 30) };
-                  cid.c3_vis_pn = visPn; cid.c3Ok = (visPn >= 3 && visPuerp >= 1 && consPn >= 6 && odonto >= 1 && cons12sem >= 1);
+                  cid.c3_vis_pn = visPn; cid.c3_vis_puerp = visPuerp; cid.c3_dpp = extrairDatas(reg["DPP (DUM)"]).length ? reg["DPP (DUM)"] : (reg["DPP (ecografia obstétrica)"] || ""); cid.c3Ok = (visPn >= 3 && visPuerp >= 1 && consPn >= 6 && odonto >= 1 && cons12sem >= 1);
                   cid.pendencias = cid.pendencias.filter(p => !p.startsWith("C3:"));
                   if (visPn < 3) cid.pendencias.push(`C3: Visitas Pré-Natal pendentes (${visPn}/3)` + (temUlt ? ` — última visita há ${ultTxt}; espaçar as visitas ao longo da gestação (motivo: "Gestante")` : ` (motivo: "Gestante")`));
                   if (visPuerp < 1) cid.pendencias.push('C3: Visita no Puerpério pendente (0/1) (motivo: "Puérpera")');
@@ -1101,7 +1391,7 @@ function idadeEmAnos(dtStr) {
                   const dtPes = reg["Data da avaliação dos pés"] || "";
                   const hgOk = (hg !== "" && hg !== "-") || (dtHg !== "" && dtHg !== "-");
                   const pesOk = (dtPes !== "" && dtPes !== "-");
-                  cid.c4_visitas = visDia; cid.c4_tempo = { texto: av4.tempo, ok: av4.tempoOk }; cid.c4Ok = (av4.ok && hgOk && pesOk);
+                  cid.c4_visitas = visDia; cid.c4_vis_txt = reg["Últimas visitas domiciliares"] || ""; cid.c4_tempo = { texto: av4.tempo, ok: av4.tempoOk }; cid.c4Ok = (av4.ok && hgOk && pesOk);
                   cid.pendencias = cid.pendencias.filter(p => !p.startsWith("C4:"));
                   if (av4.pend) cid.pendencias.push(`C4: ${av4.pend}`);
                   if (!hgOk) cid.pendencias.push("C4: Busca Ativa - Exame de Hemoglobina Glicada");
@@ -1113,7 +1403,7 @@ function idadeEmAnos(dtStr) {
                   const av5 = avaliarVisitas30(reg["Últimas visitas domiciliares"], visHip, "Pessoa com hipertensão");
                   const paQtd = parseInt(reg["Quantidade de medições de pressão arterial"]) || 0;
                   const consQtd = parseInt(reg["Quantidade de consultas"]) || 0;
-                  cid.c5_visitas = visHip; cid.c5_tempo = { texto: av5.tempo, ok: av5.tempoOk }; cid.c5Ok = (av5.ok && paQtd >= 1 && consQtd >= 1);
+                  cid.c5_visitas = visHip; cid.c5_vis_txt = reg["Últimas visitas domiciliares"] || ""; cid.c5_tempo = { texto: av5.tempo, ok: av5.tempoOk }; cid.c5Ok = (av5.ok && paQtd >= 1 && consQtd >= 1);
                   cid.pendencias = cid.pendencias.filter(p => !p.startsWith("C5:"));
                   if (av5.pend) cid.pendencias.push(`C5: ${av5.pend}`);
                   if (paQtd === 0) cid.pendencias.push("C5: Busca Ativa - Aferição de PA no semestre");
@@ -1136,6 +1426,7 @@ function idadeEmAnos(dtStr) {
                   
                   cid.c6_visitas = visIdo; 
                   cid.c6_tempo = { texto: av6.tempo, ok: av6.tempoOk };
+                  cid.c6_vis_txt = reg["Últimas visitas domiciliares"] || "";
                   cid.c6Ok = (av6.ok && !infPendente && consAnual);
                   
                   cid.pendencias = cid.pendencias.filter(p => !p.startsWith("C6:"));
@@ -1297,7 +1588,7 @@ function idadeEmAnos(dtStr) {
         const t = stats[ind].tot;
         const o = stats[ind].ok;
         const pend = t - o;
-        const pctOk = t > 0 ? Math.round((o / t) * 100) : 100;
+        const pctOk = t > 0 ? Math.min(Math.round((o / t) * 100), pend > 0 ? 99 : 100) : 100;
         const idLow = ind.toLowerCase();
 
         document.getElementById(`${idLow}-tot`).innerText = t;
@@ -1320,6 +1611,7 @@ function idadeEmAnos(dtStr) {
       });
 
       filtrarLista();
+      atualizarAlertas();
     }
 
     function filtrarLista() {
@@ -1377,7 +1669,7 @@ function idadeEmAnos(dtStr) {
         // Cada indicador vira um bloco: etiqueta verde (meta atingida) ou vermelha (não atendida)
         // e, logo abaixo, o que fazer para atingir a meta.
         const rotulos = {
-          C1: c.c1Ok === false ? 'C1: Cadastro desatualizado' : 'C1: Cadastro atualizado',
+          C1: c.c1Ok === false ? ('C1: Cadastro Individual desatualizado' + (c.c1_dom_ok === false ? ' e domiciliar' : '')) : 'C1: Cadastro Individual',
           C2: 'C2: Criança' + (c.c2_vacinasOk ? ' · 💉 vacinas em dia' : ''),
           C3: 'C3: Gestante',
           C4: 'C4: Diabetes',

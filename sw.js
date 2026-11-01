@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gestao-acs-v34';
+const CACHE_NAME = 'gestao-acs-v37';
 const CACHE_FONTES = 'gestao-acs-fontes';
 const RECURSOS = [
   './',
@@ -20,7 +20,7 @@ self.addEventListener('activate', (e) => {
     caches.keys().then((chaves) => {
       return Promise.all(
         chaves.map((chave) => {
-          if (chave !== CACHE_NAME && chave !== CACHE_FONTES) return caches.delete(chave);
+          if (chave !== CACHE_NAME && chave !== CACHE_FONTES && chave !== 'guia-alertas') return caches.delete(chave);
         })
       );
     })
@@ -80,4 +80,40 @@ self.addEventListener('fetch', (e) => {
       return resp;
     }))
   );
+});
+
+// ---------- Lembretes ----------
+function isoLocalSW(d) { const p = n => String(n).padStart(2, '0'); return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`; }
+
+self.addEventListener('periodicsync', (e) => {
+  if (e.tag !== 'alertas-diarios') return;
+  e.waitUntil((async () => {
+    const cache = await caches.open('guia-alertas');
+    const resp = await cache.match('./alertas.json');
+    if (!resp) return;
+    const lista = await resp.json();
+    const hoje = new Date();
+    const limite = new Date(hoje.getFullYear(), hoje.getMonth(), hoje.getDate() + 7);
+    const hojeIso = isoLocalSW(hoje), limIso = isoLocalSW(limite);
+    const prox = lista.filter(a => a.d >= hojeIso && a.d <= limIso).sort((a, b) => a.d.localeCompare(b.d));
+    if (!prox.length) return;
+    const nomes = [...new Set(prox.map(a => a.n))];
+    await self.registration.showNotification(`🔔 ${nomes.length} cidadão(s) com ação nos próximos 7 dias`, {
+      body: prox.slice(0, 3).map(a => `${a.n.split(' ')[0]}: ${a.x}`.slice(0, 90)).join('\n'),
+      tag: 'resumo-diario', icon: './icone-192.png', badge: './icone-192.png',
+      data: { url: './index.html#alertas' }
+    });
+  })());
+});
+
+self.addEventListener('notificationclick', (e) => {
+  e.notification.close();
+  e.waitUntil((async () => {
+    const lista = await self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+    if (lista.length) {
+      lista[0].postMessage({ abrir: 'alertas' });
+      return lista[0].focus();
+    }
+    return self.clients.openWindow((e.notification.data && e.notification.data.url) || './index.html#alertas');
+  })());
 });
