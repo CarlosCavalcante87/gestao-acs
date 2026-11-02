@@ -293,7 +293,7 @@
     .badge-tab { display: inline-block; margin-left: 4px; background: #ef4444; color: #fff; border-radius: 999px; font-size: 0.62rem; font-weight: 800; padding: 1px 6px; vertical-align: middle; }
     .al-ajuda { font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 6px 0 10px; }
     .al-horizonte { display: flex; gap: 8px; margin-bottom: 10px; }
-    #chipAl7.active, #chipAl15.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    #chipModoUrg.active, #chipModoRua.active, #chipAl7.active, #chipAl15.active { background: var(--primary); color: #fff; border-color: var(--primary); }
     .al-status { font-size: 0.74rem; color: var(--text-muted); line-height: 1.45; margin-top: 8px; }
     .al-grupo { font-size: 0.82rem; font-weight: 800; color: #1e293b; margin: 14px 4px 8px; }
     .al-linha { display: flex; gap: 8px; align-items: flex-start; font-size: 0.78rem; line-height: 1.4; padding: 7px 10px; border-radius: 10px; margin-top: 6px; border: 1px solid transparent; }
@@ -305,6 +305,30 @@
     .al-quando { flex-shrink: 0; font-weight: 800; font-size: 0.72rem; background: rgba(255, 255, 255, 0.75); border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
     .al-texto { font-weight: 600; }
     .btn-abrir { margin-top: 10px; background: #475569; font-size: 0.82rem; padding: 10px; }
+
+    /* ---------- MEDIDAS ---------- */
+    .medidas { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: 6px; font-size: 0.78rem; color: #334155; font-weight: 600; }
+    .medidas .med-item i { font-style: normal; font-weight: 500; color: var(--text-muted); font-size: 0.72rem; }
+
+    /* ---------- O QUE MUDOU ---------- */
+    .mud-bloco { padding: 12px 14px; margin-bottom: 14px; }
+    .mud-bloco summary { font-weight: 800; font-size: 0.9rem; cursor: pointer; color: var(--text); list-style: none; }
+    .mud-bloco summary::-webkit-details-marker { display: none; }
+    .mud-bloco summary::after { content: ' ▾'; color: var(--text-muted); }
+    .mud-linhas { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; margin-top: 10px; font-size: 0.82rem; }
+    .mud-linhas span.sobe { color: #059669; font-weight: 800; } .mud-linhas span.desce { color: #dc2626; font-weight: 800; } .mud-linhas span.igual { color: var(--text-muted); font-weight: 700; }
+    .mud-sub { font-size: 0.8rem; font-weight: 800; margin: 12px 0 4px; }
+    .mud-lista { font-size: 0.78rem; line-height: 1.5; color: var(--text); }
+    .mud-nota { font-size: 0.72rem; color: var(--text-muted); margin-top: 10px; }
+
+    /* ---------- REGISTRO DE VISITA ---------- */
+    .btn-visita { display: block; width: 100%; margin-top: 10px; padding: 11px; border: 1.5px solid var(--primary); background: #f0f9ff; color: var(--primary); font: inherit; font-weight: 700; font-size: 0.86rem; border-radius: 12px; cursor: pointer; }
+    .visita-app-linha { margin-top: 8px; font-size: 0.78rem; color: #0f5132; background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 10px; padding: 7px 10px; display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .btn-rm-visita { margin-left: auto; border: none; background: transparent; color: #b91c1c; font-size: 1rem; font-weight: 800; cursor: pointer; padding: 2px 6px; }
+    .visita-opcao { display: flex; align-items: center; gap: 10px; padding: 11px 12px; border: 1px solid var(--border); border-radius: 12px; margin-top: 8px; font-size: 0.9rem; font-weight: 600; }
+    .visita-opcao input { width: 20px; height: 20px; flex-shrink: 0; }
+    #toastApp { position: fixed; left: 50%; bottom: 96px; transform: translate(-50%, 20px); background: #0f172a; color: #fff; padding: 12px 18px; border-radius: 999px; font-size: 0.88rem; font-weight: 600; opacity: 0; pointer-events: none; transition: opacity 0.25s, transform 0.25s; z-index: 200; max-width: 90vw; text-align: center; }
+    #toastApp.mostrar { opacity: 1; transform: translate(-50%, 0); }
 
     /* ---------- DESKTOP ---------- */
     @media (min-width: 768px) {
@@ -450,6 +474,7 @@
         </div>
 
       </div>
+      <details id="blocoMudancas" class="card mud-bloco" style="display:none;"></details>
       </div>
 
       <div id="painel-lista" style="display: none;">
@@ -496,6 +521,10 @@
         <div class="al-horizonte">
           <button class="chip active" id="chipAl7" onclick="definirHorizonteAlertas(7)">Próximos 7 dias</button>
           <button class="chip" id="chipAl15" onclick="definirHorizonteAlertas(15)">Próximos 15 dias</button>
+        </div>
+        <div class="al-horizonte" id="alModo">
+          <button class="chip" id="chipModoUrg" onclick="definirModoAlertas('urgencia')">⏳ Por urgência</button>
+          <button class="chip" id="chipModoRua" onclick="definirModoAlertas('rua')">📍 Roteiro por rua</button>
         </div>
         <button class="btn" id="btnLembretes" onclick="ativarLembretes()">🔔 Ativar lembretes no celular</button>
         <div id="statusLembretes" class="al-status"></div>
@@ -561,6 +590,22 @@
       <div class="modal-botoes">
         <button class="btn-nao" onclick="fecharModalLimpar()">Não</button>
         <button class="btn-sim" onclick="confirmarLimparBase()">Sim</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-fundo" id="modalVisita" onclick="if(event.target===this) fecharModalVisita()">
+    <div class="modal-caixa" style="text-align:left;">
+      <h3 style="text-align:center;">📝 Registrar visita</h3>
+      <p style="text-align:center; margin-bottom: 10px;" id="visitaNome"></p>
+      <label class="campo-rotulo" for="visitaData">Data da visita</label>
+      <input type="date" id="visitaData" class="campo-texto">
+      <label class="campo-rotulo" style="margin-top:12px; display:block;">Motivo (indicador)</label>
+      <div id="visitaMotivos"></div>
+      <p style="margin: 12px 0 14px; font-size: 0.76rem;">A visita entra nos cálculos agora. Registre também no PEC: ao importar os relatórios de novo, o app une as duas sem contar em dobro.</p>
+      <div class="modal-botoes">
+        <button class="btn-nao" onclick="fecharModalVisita()">Cancelar</button>
+        <button class="btn-sim" style="background:#0284c7;" onclick="salvarVisita()">Salvar</button>
       </div>
     </div>
   </div>
@@ -699,7 +744,7 @@
         if (ind.C3 && c.c3_dpp) {
           const dpp = extrairDatas(c.c3_dpp)[0];
           if (dpp) {
-            const visPn = c.c3_vis_pn || 0, visPu = c.c3_vis_puerp || 0;
+            const visPn = (c.c3_pn_ef !== undefined ? c.c3_pn_ef : c.c3_vis_pn) || 0, visPu = (c.c3_pu_ef !== undefined ? c.c3_pu_ef : c.c3_vis_puerp) || 0;
             if (visPn < 3) add(dpp, 'prazo', 'C3', `DPP em ${fmtData(dpp)}: faltam ${3 - visPn} visita(s) de pré-natal (motivo "Gestante")`);
             if (visPu < 1) {
               add(somarDias(dpp, 7), 'prazo', 'C3', `Puérpera: visita domiciliar até o 7º dia após o parto (DPP estimada em ${fmtData(dpp)}): avaliar amamentação, cicatrização e sinais de depressão pós-parto; confirmar a data real do parto`);
@@ -711,10 +756,10 @@
         // C4, C5 e C6: 2 visitas nos últimos 12 meses, com 30+ dias entre elas
         [['C4', 'Diabetes'], ['C5', 'Hipertensão'], ['C6', 'Idoso']].forEach(([k, nomeInd]) => {
           if (!ind[k]) return;
-          const unicas = datasUnicas12m(c[k.toLowerCase() + '_vis_txt']);
+          const unicas = datasUnicas12m(textoVisitas(c, k));
           if (!unicas.length) return;
           const ult = unicas[unicas.length - 1];
-          const pen = unicas.length >= 2 ? unicas[unicas.length - 2] : null;
+          const pen = unicas.length >= 2 ? unicas[0] : null;
           if (pen && diasEntre(pen, ult) >= 30) {
             add(somarMeses(pen, 12), 'prazo', k, `${nomeInd}: a visita de ${fmtData(pen)} sai da janela de 12 meses; fazer nova visita (30+ dias depois de ${fmtData(ult)})`);
           } else {
@@ -777,7 +822,27 @@
       atualizarAlertas();
     }
 
+    let modoAlertas = 'urgencia';
+    try { if (localStorage.getItem('guia_modo_alertas') === 'rua') modoAlertas = 'rua'; } catch (e) {}
+    function definirModoAlertas(m) { modoAlertas = m; try { localStorage.setItem('guia_modo_alertas', m); } catch (e) {} atualizarAlertas(); }
+
+    function cardAlerta({ chave, c, itens }) {
+      const idade = c.dt_nascimento ? calcularIdade(c.dt_nascimento) : (c.idade_txt || '');
+      const urlWa = linkWhatsApp(c.telefone);
+      const tel = c.telefone ? (urlWa ? ` | <a href="${urlWa}" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;text-decoration:none;">${htmlIconeMsg()} ${escHtml(c.telefone)}</a>` : ` | 📞 ${escHtml(c.telefone)}`) : '';
+      return `<div class="item-cidadao ${itens[0].dias <= 7 ? 'tem-pend' : 'em-dia'}">
+        <div class="topo"><div class="nome">${escHtml(c.nome)}</div></div>
+        ${idade ? `<div class="linha-info"><span class="idade">🎂 ${escHtml(idade)}</span></div>` : ''}
+        <div class="endereco">📍 ${escHtml(c.rua || 'Sem rua cadastrada')}, nº ${escHtml(c.numero || 'S/N')}${tel}</div>
+        ${itens.map(a => `<div class="al-linha al-${a.tipo}"><span class="al-quando">${TIPO_ALERTA[a.tipo]} ${textoQuando(a.dias)}</span><span class="al-texto"><b>${a.ind}</b> · ${escHtml(a.texto)}</span></div>`).join('')}
+        ${podeRegistrarVisita(c) ? `<button class="btn-visita" data-chave="${escHtml(chave)}">📝 Registrar visita</button>` : ''}
+        <button class="btn btn-abrir" data-chave="${escHtml(chave)}">Abrir cartão do cidadão</button>
+      </div>`;
+    }
+
     function atualizarAlertas() {
+      document.getElementById('chipModoUrg').className = 'chip' + (modoAlertas === 'urgencia' ? ' active' : '');
+      document.getElementById('chipModoRua').className = 'chip' + (modoAlertas === 'rua' ? ' active' : '');
       const tem = Object.keys(BASE_DADOS.cidadaos).length > 0;
       document.getElementById('chipAl7').className = 'chip' + (horizonteAlertas === 7 ? ' active' : '');
       document.getElementById('chipAl15').className = 'chip' + (horizonteAlertas === 15 ? ' active' : '');
@@ -798,26 +863,30 @@
           { titulo: '🟡 De 8 a 15 dias', filtro: g => g.min >= 8 }
         ];
         let html = '';
+        if (modoAlertas === 'rua') {
+          const porRua = new Map();
+          grupos.forEach(g => { const r = g.c.rua || 'Sem rua cadastrada'; if (!porRua.has(r)) porRua.set(r, []); porRua.get(r).push(g); });
+          [...porRua.keys()].sort((a, b) => a.localeCompare(b, 'pt-BR', { sensitivity: 'base' })).forEach(rua => {
+            const lista = porRua.get(rua).sort((a, b) => {
+              const na = parseInt(a.c.numero), nb = parseInt(b.c.numero);
+              return ((isNaN(na) ? 1e9 : na) - (isNaN(nb) ? 1e9 : nb)) || (a.c.nome || '').localeCompare(b.c.nome || '', 'pt-BR', { sensitivity: 'base' });
+            });
+            const casas = new Set(lista.map(g => (g.c.numero || 'S/N'))).size;
+            html += `<div class="al-grupo">📍 ${escHtml(rua)} · ${lista.length} cidadão(s) em ${casas} casa(s)</div>`;
+            lista.forEach(g => { html += cardAlerta(g); });
+          });
+          alvo.innerHTML = html;
+        } else {
         secoes.forEach(s => {
           const g = grupos.filter(s.filtro);
           if (!g.length) return;
           html += `<div class="al-grupo">${s.titulo} · ${g.length} cidadão(s)</div>`;
-          g.forEach(({ chave, c, itens }) => {
-            const idade = c.dt_nascimento ? calcularIdade(c.dt_nascimento) : (c.idade_txt || '');
-            const urlWa = linkWhatsApp(c.telefone);
-            const tel = c.telefone ? (urlWa ? ` | <a href="${urlWa}" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;text-decoration:none;">${htmlIconeMsg()} ${escHtml(c.telefone)}</a>` : ` | 📞 ${escHtml(c.telefone)}`) : '';
-            html += `<div class="item-cidadao ${g === null ? '' : (itens[0].dias <= 7 ? 'tem-pend' : 'em-dia')}">
-              <div class="topo"><div class="nome">${escHtml(c.nome)}</div></div>
-              ${idade ? `<div class="linha-info"><span class="idade">🎂 ${escHtml(idade)}</span></div>` : ''}
-              <div class="endereco">📍 ${escHtml(c.rua || 'Sem rua cadastrada')}, nº ${escHtml(c.numero || 'S/N')}${tel}</div>
-              ${itens.map(a => `<div class="al-linha al-${a.tipo}"><span class="al-quando">${TIPO_ALERTA[a.tipo]} ${textoQuando(a.dias)}</span><span class="al-texto"><b>${a.ind}</b> · ${escHtml(a.texto)}</span></div>`).join('')}
-              <button class="btn btn-abrir" data-chave="${escHtml(chave)}">Abrir cartão do cidadão</button>
-            </div>`;
-          });
+          g.forEach(gr => { html += cardAlerta(gr); });
         });
         alvo.innerHTML = html;
+        }
       }
-      const faltaDados = Object.values(BASE_DADOS.cidadaos).some(c => c.indicadores && ((c.indicadores.C4 && c.c4_vis_txt === undefined) || (c.indicadores.C5 && c.c5_vis_txt === undefined) || (c.indicadores.C6 && c.c6_vis_txt === undefined) || (c.indicadores.C2 && c.c2_ok1 === undefined)));
+      const faltaDados = Object.values(BASE_DADOS.cidadaos).some(c => c.indicadores && ((!c.ex && ['C2','C3','C4','C5','C6'].some(k => c.indicadores[k])) || (c.indicadores.C4 && c.c4_vis_txt === undefined) || (c.indicadores.C5 && c.c5_vis_txt === undefined) || (c.indicadores.C6 && c.c6_vis_txt === undefined) || (c.indicadores.C2 && c.c2_ok1 === undefined)));
       if (faltaDados) alvo.innerHTML = '<div class="card" style="border-left:5px solid #f59e0b;"><b>⚠️ Reimporte as planilhas</b><p class="al-ajuda">Os dados guardados no app são de uma versão anterior e não têm as datas das visitas. Vá na aba <b>Dados</b>, importe os 9 relatórios de novo e os lembretes de visita voltam a aparecer aqui.</p></div>' + alvo.innerHTML;
       const anivs = gerarAniversarios(horizonteAlertas);
       if (anivs.length) {
@@ -1102,7 +1171,7 @@
       const quando = minima <= hoje ? 'já pode fazer a 2ª visita (passaram 30 dias)' : `fazer a partir de ${fmtData(minima)}`;
       const nota = qtd > 2 ? ' — o relatório traz só as 2 últimas datas' : '';
       if (unicas.length >= 2) {
-        const pen = unicas[unicas.length - 2];
+        const pen = unicas[0];   // vale qualquer par de visitas com 30+ dias: compara a mais antiga da janela com a mais recente
         const n = diasEntre(pen, ult);
         r.tempo = `⏱ ${fmtData(pen)} e ${fmtData(ult)} · ${n} dias entre visitas`;
         if (n >= 30) { r.ok = true; r.tempoOk = true; return r; }
@@ -1113,6 +1182,207 @@
       r.pend = `Só uma data de visita no relatório (${fmtData(ult)}): fazer outra com 30+ dias de intervalo, ${quando} (motivo: "${motivo}")${nota}`;
       return r;
     }
+
+    // =========================================================================
+    // MEDIDAS (peso, altura, pressão, hemoglobina glicada): vale a medição mais recente entre os relatórios
+    // =========================================================================
+    function numBR(v) { const t = String(v == null ? '' : v).trim().replace(',', '.'); const n = parseFloat(t); return (t === '' || t === '-' || isNaN(n)) ? null : n; }
+    function absorverMedidas(cid, reg) {
+      cid.med = cid.med || {};
+      const m = cid.med;
+      const dataMs = (s) => { const d = (s && s !== '-') ? parseDataJS(s) : null; return d && !isNaN(d.getTime()) ? d.getTime() : 0; };
+      const peso = numBR(reg['Última medição de peso']), alt = numBR(reg['Última medição de altura']);
+      const dPA_ = reg['Data da última medição de peso e altura'];
+      if ((peso || alt) && dataMs(dPA_) >= (m.dtPesoMs || 0)) {
+        if (peso) m.peso = peso; if (alt) m.altura = alt;
+        m.dtPeso = dPA_ && dPA_ !== '-' ? dPA_ : ''; m.dtPesoMs = dataMs(dPA_);
+      }
+      const pa = (reg['Última medição de pressão arterial'] || '').trim();
+      const dPr = reg['Data da última medição de pressão arterial'];
+      if (/\d/.test(pa) && dataMs(dPr) >= (m.dtPaMs || 0)) { m.pa = pa; m.dtPa = dPr && dPr !== '-' ? dPr : ''; m.dtPaMs = dataMs(dPr); }
+      const hg = numBR(reg['Hemoglobina glicada']);
+      const dHg = reg['Data da última avaliação de hemoglobina glicada'];
+      if (hg !== null && dataMs(dHg) >= (m.dtHgMs || 0)) { m.hg = hg; m.dtHg = dHg && dHg !== '-' ? dHg : ''; m.dtHgMs = dataMs(dHg); }
+    }
+    function fmtNum(n, casas) { return Number(n).toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: casas }); }
+    function htmlMedidas(c) {
+      const m = c.med; if (!m) return '';
+      const partes = [];
+      if (m.peso || m.altura) {
+        const p = [];
+        if (m.peso) p.push(`⚖️ ${fmtNum(m.peso, 1)} kg`);
+        if (m.altura) p.push(`📏 ${fmtNum(m.altura, 0)} cm`);
+        const anos = c.dt_nascimento ? idadeEmAnos(c.dt_nascimento) : null;
+        if (m.peso && m.altura && m.altura > 50 && anos !== null && anos >= 19) p.push(`IMC ${fmtNum(m.peso / Math.pow(m.altura / 100, 2), 1)}`);
+        partes.push(`<span class="med-item">${p.join(' · ')}${m.dtPeso ? ` <i>(${m.dtPeso})</i>` : ''}</span>`);
+      }
+      if (m.pa) partes.push(`<span class="med-item">🩺 PA ${escHtml(m.pa)}${m.dtPa ? ` <i>(${m.dtPa})</i>` : ''}</span>`);
+      if (m.hg !== undefined) partes.push(`<span class="med-item">🩸 HbA1c ${fmtNum(m.hg, 1)}%${m.dtHg ? ` <i>(${m.dtHg})</i>` : ''}</span>`);
+      return partes.length ? `<div class="medidas">${partes.join('')}</div>` : '';
+    }
+
+    // =========================================================================
+    // VISITAS REGISTRADAS NO APP (somam-se às datas do relatório, sem duplicar)
+    // =========================================================================
+    const MOTIVOS_VISITA = { C2: 'Criança (C2)', C3PN: 'Gestante, pré-natal (C3)', C3PU: 'Puérpera (C3)', C4: 'Pessoa com diabetes (C4)', C5: 'Pessoa com hipertensão (C5)', C6: 'Pessoa idosa (C6)' };
+    function datasVisitaApp(c, chaveMotivo) { return (c.visitasApp || []).filter(v => v.inds.includes(chaveMotivo)).map(v => v.d); }
+    function textoVisitas(c, k) { return (c[k.toLowerCase() + '_vis_txt'] || '') + ' ' + datasVisitaApp(c, k).join(' '); }
+    function podeRegistrarVisita(c) { return !!(c.ex && c.indicadores && ['C2', 'C3', 'C4', 'C5', 'C6'].some(k => c.indicadores[k] && c.ex[k])); }
+
+    function aplicarVisitasApp(c) {
+      if (!c || !c.ex) return;
+      const ind = c.indicadores || {};
+      c.pendencias = c.pendencias || [];
+      [['C4', 'Pessoa com diabetes'], ['C5', 'Pessoa com hipertensão'], ['C6', 'Pessoa idosa']].forEach(([k, motivo]) => {
+        if (!ind[k] || !c.ex[k]) return;
+        const lk = k.toLowerCase();
+        const rep = extrairDatas(c[lk + '_vis_txt']).map(fmtData);
+        const novas = datasVisitaApp(c, k).filter(d => !rep.includes(d));
+        const av = avaliarVisitas30(textoVisitas(c, k), (c[lk + '_visitas'] || 0) + novas.length, motivo);
+        c[lk + '_tempo'] = { texto: av.tempo, ok: av.tempoOk };
+        c[lk + 'Ok'] = av.ok && c.ex[k].okExtra;
+        c.pendencias = c.pendencias.filter(p => !p.startsWith(k + ':'));
+        if (av.pend) c.pendencias.push(`${k}: ${av.pend}`);
+        c.ex[k].pend.forEach(p => c.pendencias.push(p));
+      });
+
+      if (ind.C2 && c.ex.C2) {
+        const nasc = c.dt_nascimento ? parseDataJS(c.dt_nascimento) : null;
+        const rep = extrairDatas((c.c2_v1 || '') + ' ' + (c.c2_v2 || ''));
+        const app = extrairDatas(datasVisitaApp(c, 'C2').join(' '));
+        const todas = [];
+        rep.concat(app).sort((a, b) => a - b).forEach(d => { if (!todas.some(u => u.getTime() === d.getTime())) todas.push(d); });
+        const novas = app.filter(d => !rep.some(r => r.getTime() === d.getTime())).length;
+        const v1 = todas[0] || null;
+        let v2 = null;
+        if (todas.length > 1) v2 = (nasc && !isNaN(nasc.getTime())) ? (todas.slice(1).find(d => diasEntre(nasc, d) > 30) || todas[1]) : todas[1];
+        const av2 = avaliarVisitasC2(nasc, v1, v2, (c.c2_visitas || 0) + novas);
+        c.c2_tempo = { texto: av2.tempo, ok: av2.tempoOk };
+        c.c2_ok1 = av2.ok1; c.c2_ok2 = av2.ok2;
+        c.c2Ok = av2.ok && c.ex.C2.okExtra;
+        c.pendencias = c.pendencias.filter(p => !p.startsWith('C2:'));
+        av2.pend.forEach(p => c.pendencias.push('C2: ' + p));
+        c.ex.C2.pend.forEach(p => c.pendencias.push(p));
+      }
+
+      if (ind.C3 && c.ex.C3) {
+        const validas = (k, base) => (c.visitasApp || []).filter(v => v.inds.includes(k) && !((base || 0) > ((v.base && v.base[k]) || 0)));
+        const repPn = c.c3_vis_pn || 0, repPu = c.c3_vis_puerp || 0;
+        const vPn = (c.visitasApp || []).filter(v => v.inds.includes('C3PN') && repPn <= ((v.base && v.base.C3PN) || 0));
+        const vPu = (c.visitasApp || []).filter(v => v.inds.includes('C3PU') && repPu <= ((v.base && v.base.C3PU) || 0));
+        const visPn = repPn + vPn.length, visPu = repPu + vPu.length;
+        c.c3_pn_ef = visPn; c.c3_pu_ef = visPu;
+        const todasApp = extrairDatas(vPn.concat(vPu).map(v => v.d).join(' '));
+        if (todasApp.length) {
+          const dias = diasEntre(todasApp[todasApp.length - 1], new Date());
+          c.c3_tempo = { texto: `⏱ Última visita há ${dias} dia(s) (registrada no app)`, ok: (visPn >= 3 && visPu >= 1) || dias < 30 };
+        } else if (c.c3_tempo_rep) c.c3_tempo = c.c3_tempo_rep;
+        c.c3Ok = (visPn >= 3 && visPu >= 1 && c.ex.C3.okExtra);
+        c.pendencias = c.pendencias.filter(p => !p.startsWith('C3:'));
+        if (visPn < 3) c.pendencias.push(`C3: Visitas Pré-Natal pendentes (${visPn}/3)` + (c.c3_ult ? ` — última visita há ${c.c3_ult}; espaçar as visitas ao longo da gestação (motivo: "Gestante")` : ` (motivo: "Gestante")`));
+        if (visPu < 1) c.pendencias.push('C3: Visita no Puerpério pendente (0/1): visitar a mãe e o bebê até o 7º dia após o parto (motivo: "Puérpera"), articular a consulta de puerpério na UBS em até 42 dias e atualizar o cadastro do recém-nascido');
+        c.ex.C3.pend.forEach(p => c.pendencias.push(p));
+      }
+    }
+
+    function salvarBaseLocal() {
+      try { localStorage.setItem('gestao_acs_dados', JSON.stringify({ cidadaos: BASE_DADOS.cidadaos, ruas: Array.from(BASE_DADOS.ruas).sort() })); } catch (e) {}
+    }
+    function avisoToast(txt) {
+      let t = document.getElementById('toastApp');
+      if (!t) { t = document.createElement('div'); t.id = 'toastApp'; document.body.appendChild(t); }
+      t.textContent = txt; t.className = 'mostrar';
+      clearTimeout(window.__toastT); window.__toastT = setTimeout(() => { t.className = ''; }, 2600);
+    }
+
+    // =========================================================================
+    // O QUE MUDOU DESDE A IMPORTAÇÃO ANTERIOR
+    // =========================================================================
+    const IND_LISTA = ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7'];
+    function fotoIndicadores() {
+      const s = { cid: {}, st: {} };
+      IND_LISTA.forEach(k => { s.st[k] = { ok: 0, tot: 0 }; });
+      Object.entries(BASE_DADOS.cidadaos).forEach(([ch, c]) => {
+        const o = {};
+        IND_LISTA.forEach(k => {
+          if (c.indicadores && c.indicadores[k]) { const ok = !!c[k.toLowerCase() + 'Ok']; o[k] = ok; s.st[k].tot++; if (ok) s.st[k].ok++; }
+        });
+        s.cid[ch] = { n: c.nome, o };
+      });
+      return s;
+    }
+    function compararImportacao(antes, depois) {
+      if (!antes || !Object.keys(antes.cid).length) return null;
+      const res = { quando: fmtData(new Date()), antes: antes.st, depois: depois.st, resolvidos: [], novos: [], novosCid: 0 };
+      Object.entries(depois.cid).forEach(([ch, d]) => {
+        const a = antes.cid[ch];
+        if (!a) { res.novosCid++; return; }
+        Object.keys(d.o).forEach(k => {
+          if (a.o[k] === false && d.o[k] === true) res.resolvidos.push({ n: d.n, k });
+          else if (a.o[k] === true && d.o[k] === false) res.novos.push({ n: d.n, k });
+        });
+      });
+      return res;
+    }
+    function renderMudancas() {
+      const el = document.getElementById('blocoMudancas'); if (!el) return;
+      let m = null; try { m = JSON.parse(localStorage.getItem('guia_mudancas')); } catch (e) {}
+      if (!m || !Object.keys(BASE_DADOS.cidadaos).length) { el.style.display = 'none'; return; }
+      const pct = (s) => s && s.tot ? (s.ok < s.tot ? Math.min(Math.round(s.ok / s.tot * 100), 99) : 100) : 0;
+      const linhas = IND_LISTA.filter(k => (m.antes[k] && m.antes[k].tot) || (m.depois[k] && m.depois[k].tot)).map(k => {
+        const a = pct(m.antes[k]), d = pct(m.depois[k]), dif = (m.depois[k].ok - m.antes[k].ok);
+        const cls = dif > 0 ? 'sobe' : (dif < 0 ? 'desce' : 'igual');
+        return `<div><b>${k}</b> ${a}% → ${d}%</div><span class="${cls}">${dif > 0 ? '+' : ''}${dif} ${Math.abs(dif) === 1 ? 'cidadão' : 'cidadãos'} em dia</span>`;
+      }).join('');
+      const lista = (arr) => arr.slice(0, 15).map(x => `${escHtml(x.n)} (${x.k})`).join('<br>') + (arr.length > 15 ? `<br>e mais ${arr.length - 15}...` : '');
+      el.innerHTML = `<summary>📈 O que mudou desde a importação anterior</summary>
+        <div class="mud-linhas">${linhas}</div>
+        <div class="mud-sub" style="color:#059669;">✅ Saíram das pendências: ${m.resolvidos.length}</div>
+        <div class="mud-lista">${m.resolvidos.length ? lista(m.resolvidos) : 'Nenhum.'}</div>
+        <div class="mud-sub" style="color:#dc2626;">⚠️ Entraram nas pendências: ${m.novos.length}</div>
+        <div class="mud-lista">${m.novos.length ? lista(m.novos) : 'Nenhum.'}</div>
+        ${m.novosCid ? `<div class="mud-sub">➕ Cidadãos novos nos relatórios: ${m.novosCid}</div>` : ''}
+        <div class="mud-nota">Comparação feita em ${escHtml(m.quando)}, entre a importação anterior e a última.</div>`;
+      el.style.display = '';
+    }
+
+    let chaveVisita = null;
+    function abrirModalVisita(chave) {
+      const c = BASE_DADOS.cidadaos[chave]; if (!c || !podeRegistrarVisita(c)) return;
+      chaveVisita = chave;
+      const hoje = new Date(); const iso = `${hoje.getFullYear()}-${String(hoje.getMonth() + 1).padStart(2, '0')}-${String(hoje.getDate()).padStart(2, '0')}`;
+      const campo = document.getElementById('visitaData'); campo.value = iso; campo.max = iso;
+      document.getElementById('visitaNome').textContent = c.nome;
+      const opcoes = [];
+      ['C2', 'C4', 'C5', 'C6'].forEach(k => { if (c.indicadores[k] && c.ex[k]) opcoes.push([k, k !== 'C2']); });
+      if (c.indicadores.C3 && c.ex.C3) { opcoes.push(['C3PN', true]); opcoes.push(['C3PU', false]); }
+      const unicos = opcoes.length === 1;
+      document.getElementById('visitaMotivos').innerHTML = opcoes.map(([k, marcado]) =>
+        `<label class="visita-opcao"><input type="checkbox" value="${k}" ${(marcado || unicos || k === 'C2') ? 'checked' : ''}> <span>${MOTIVOS_VISITA[k]}</span></label>`).join('');
+      document.getElementById('modalVisita').classList.add('aberto');
+    }
+    function fecharModalVisita() { document.getElementById('modalVisita').classList.remove('aberto'); chaveVisita = null; }
+    function salvarVisita() {
+      const c = BASE_DADOS.cidadaos[chaveVisita]; if (!c) return fecharModalVisita();
+      const inds = [...document.querySelectorAll('#visitaMotivos input:checked')].map(i => i.value);
+      const dtv = document.getElementById('visitaData').value;
+      if (!inds.length) { avisoToast('Marque pelo menos um motivo da visita.'); return; }
+      if (!dtv) { avisoToast('Informe a data da visita.'); return; }
+      const [a, m, d] = dtv.split('-');
+      if (new Date(+a, +m - 1, +d) > new Date()) { avisoToast('A data da visita não pode ser futura.'); return; }
+      c.visitasApp = c.visitasApp || [];
+      c.visitasApp.push({ d: `${d}/${m}/${a}`, inds, base: { C3PN: c.c3_vis_pn || 0, C3PU: c.c3_vis_puerp || 0 } });
+      aplicarVisitasApp(c); salvarBaseLocal(); fecharModalVisita(); atualizarInterface(); avisoToast('✅ Visita registrada.');
+    }
+    function removerVisitaApp(chave, i) {
+      const c = BASE_DADOS.cidadaos[chave]; if (!c || !c.visitasApp || !c.visitasApp[i]) return;
+      if (!confirm(`Remover a visita de ${c.visitasApp[i].d}?`)) return;
+      c.visitasApp.splice(i, 1); aplicarVisitasApp(c); salvarBaseLocal(); atualizarInterface(); avisoToast('Visita removida.');
+    }
+    document.addEventListener('click', (e) => {
+      const b = e.target.closest && e.target.closest('.btn-visita'); if (b) { abrirModalVisita(b.getAttribute('data-chave')); return; }
+      const r = e.target.closest && e.target.closest('.btn-rm-visita'); if (r) removerVisitaApp(r.getAttribute('data-chave'), +r.getAttribute('data-i'));
+    });
 
     // C2: 1ª visita até 30 dias de vida; 2ª depois do 30º dia e até 6 meses
     function avaliarVisitasC2(nasc, v1, v2, qtd) {
@@ -1225,6 +1495,7 @@ function idadeEmAnos(dtStr) {
       prog.style.color = "#0284c7";
       prog.innerHTML = `⏳ Lendo ${files.length} arquivo(s)...`;
       
+      const fotoAntes = fotoIndicadores();
       cpfToChave = {}; nomeToChave = {};
       let arquivosProcessados = {};
       const perfilDetectado = {};
@@ -1320,6 +1591,7 @@ function idadeEmAnos(dtStr) {
                 }
                 
                 const cid = BASE_DADOS.cidadaos[chave];
+                absorverMedidas(cid, reg);
                 cid.indicadores['C1'] = true;
                 if (!cid.nome) cid.nome = nome;
                 if (!cid.rua && ruaBruta) cid.rua = ruaBruta;
@@ -1443,6 +1715,8 @@ function idadeEmAnos(dtStr) {
                   
                   av2.pend.forEach(p => cid.pendencias.push("C2: " + p));
                   
+                  const nAntesC2 = cid.pendencias.length;
+                  cid.c2_v1 = reg["Data da primeira visita domiciliar"] || ""; cid.c2_v2 = reg["Data da segunda visita domiciliar"] || "";
                   if (pentaPendente) cid.pendencias.push(`C2: Vacina Penta 💉 (${penta || "Pendente"})`);
                   if (polioPendente) cid.pendencias.push(`C2: Vacina Pólio 💉 (${polio || "Pendente"})`);
                   
@@ -1458,6 +1732,7 @@ function idadeEmAnos(dtStr) {
                       cid.pendencias.push(`C2: Verificar caderneta de vacinação infantil 💉 (Pecando por excesso)`);
                     }
                   }
+                  cid.ex = cid.ex || {}; cid.ex.C2 = { okExtra: cid.c2_vacinasOk, pend: cid.pendencias.slice(nAntesC2) };
                 }
 
                 if (tema === "Gestação e puerpério") {
@@ -1480,6 +1755,8 @@ function idadeEmAnos(dtStr) {
                   if (cons12sem === 0) cid.pendencias.push("C3: Busca Ativa - Captação precoce (<12 semanas)");
                   if (consPn < 6) cid.pendencias.push(`C3: Busca Ativa - Consultas Pré-Natal (${consPn}/6)`);
                   if (odonto < 1) cid.pendencias.push("C3: Busca Ativa - Avaliação Odontológica pendente");
+                  cid.ex = cid.ex || {}; cid.ex.C3 = { okExtra: (consPn >= 6 && odonto >= 1 && cons12sem >= 1), pend: cid.pendencias.filter(p => p.startsWith("C3: Busca Ativa")) };
+                  cid.c3_ult = temUlt ? ultTxt : ""; cid.c3_ultDias = ultDias; cid.c3_tempo_rep = cid.c3_tempo;
                 }
                 else if (tema === "Diabetes") {
                   cid.indicadores['C4'] = true;
@@ -1495,6 +1772,7 @@ function idadeEmAnos(dtStr) {
                   if (av4.pend) cid.pendencias.push(`C4: ${av4.pend}`);
                   if (!hgOk) cid.pendencias.push("C4: Busca Ativa - Exame de Hemoglobina Glicada");
                   if (!pesOk) cid.pendencias.push("C4: Busca Ativa - Avaliação periódica dos pés");
+                  cid.ex = cid.ex || {}; cid.ex.C4 = { okExtra: (hgOk && pesOk), pend: cid.pendencias.filter(p => p.startsWith("C4: Busca Ativa")) };
                 }
                 else if (tema === "Hipertensão") {
                   cid.indicadores['C5'] = true;
@@ -1507,6 +1785,7 @@ function idadeEmAnos(dtStr) {
                   if (av5.pend) cid.pendencias.push(`C5: ${av5.pend}`);
                   if (paQtd === 0) cid.pendencias.push("C5: Busca Ativa - Aferição de PA no semestre");
                   if (consQtd === 0) cid.pendencias.push("C5: Busca Ativa - Agendar Consulta semestral");
+                  cid.ex = cid.ex || {}; cid.ex.C5 = { okExtra: (paQtd >= 1 && consQtd >= 1), pend: cid.pendencias.filter(p => p.startsWith("C5: Busca Ativa")) };
                 }
                 // ==========================================
                 // C6: PESSOA IDOSA E VACINA INFLUENZA
@@ -1532,6 +1811,7 @@ function idadeEmAnos(dtStr) {
                   if (av6.pend) cid.pendencias.push(`C6: ${av6.pend}`);
                   if (infPendente) cid.pendencias.push(`C6: Vacina Influenza 💉 (${inf || "Não realizada / Sem registro"})`);
                   if (!consAnual) cid.pendencias.push("C6: Busca Ativa - Consulta anual pendente (>12 meses)");
+                  cid.ex = cid.ex || {}; cid.ex.C6 = { okExtra: (!infPendente && consAnual), pend: cid.pendencias.filter(p => p.startsWith("C6: Vacina") || p.startsWith("C6: Busca Ativa")) };
                 }
                 else if (tema === "Saúde da mulher") {
                   // C7 (boas práticas da mulher): preventivo (25-64a), vacina HPV (9-14a),
@@ -1653,6 +1933,8 @@ function idadeEmAnos(dtStr) {
         renderPerfil();
       }
 
+      Object.values(BASE_DADOS.cidadaos).forEach(aplicarVisitasApp);
+      try { const cmp = compararImportacao(fotoAntes, fotoIndicadores()); if (cmp) localStorage.setItem('guia_mudancas', JSON.stringify(cmp)); } catch (e) {}
       localStorage.setItem('gestao_acs_dados', JSON.stringify({ cidadaos: BASE_DADOS.cidadaos, ruas: Array.from(BASE_DADOS.ruas).sort() }));
       prog.style.color = "#10b981"; prog.innerHTML = "";
       atualizarInterface();
@@ -1717,6 +1999,7 @@ function idadeEmAnos(dtStr) {
 
       filtrarLista();
       atualizarAlertas();
+      renderMudancas();
     }
 
     function filtrarLista() {
@@ -1818,6 +2101,8 @@ function idadeEmAnos(dtStr) {
         const urlWa = linkWhatsApp(c.telefone);
         const linkTel = c.telefone ? (urlWa ? `<span class="telefone"> | <a href="${urlWa}" target="_blank" rel="noopener">${htmlIconeMsg()} ${c.telefone}</a></span>` : `<span class="telefone"> | 📞 ${c.telefone}</span>`) : '';
         const valAnotacao = c.anotacao || '';
+        const visApp = (c.visitasApp || []).map((v, i) => `<div class="visita-app-linha">📝 Visita registrada no app: <b>${v.d}</b> · ${v.inds.map(k => (MOTIVOS_VISITA[k] || k).replace(/ \(.*$/, '')).join(', ')} <button class="btn-rm-visita" data-chave="${escHtml(chave)}" data-i="${i}" aria-label="Remover visita">✕</button></div>`).join('');
+        const visitaHtml = podeRegistrarVisita(c) ? `${visApp}<button class="btn-visita" data-chave="${escHtml(chave)}">📝 Registrar visita</button>` : '';
         const anotacaoHtml = `<textarea class="area-anotacao" placeholder="✍️ Anotações do ACS..." onchange="salvarAnotacao('${chave}', this.value)">${valAnotacao}</textarea>`;
 
         const temPend = algumaPendente;
@@ -1837,8 +2122,10 @@ function idadeEmAnos(dtStr) {
             </div>
             ${linhaInfoHtml}
             <div class="endereco">📍 ${c.rua || 'Sem rua cadastrada'}, nº ${c.numero || 'S/N'}${linkTel}</div>
+            ${htmlMedidas(c)}
             <div>${tagsHtml}</div>
             ${pendenciasHtml}
+            ${visitaHtml}
             ${anotacaoHtml}
           </div>
         `;
@@ -1907,6 +2194,7 @@ function idadeEmAnos(dtStr) {
     function confirmarLimparBase() {
       fecharModalLimpar();
       localStorage.removeItem('gestao_acs_dados');
+      try { localStorage.removeItem('guia_mudancas'); } catch (e) {}
       BASE_DADOS = { cidadaos: {}, ruas: new Set() };
       atualizarInterface();
       alternarAba('dashboard');
