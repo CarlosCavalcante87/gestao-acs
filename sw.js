@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gestao-acs-v37';
+const CACHE_NAME = 'gestao-acs-v52';
 const CACHE_FONTES = 'gestao-acs-fontes';
 const RECURSOS = [
   './',
@@ -97,9 +97,16 @@ self.addEventListener('periodicsync', (e) => {
     const hojeIso = isoLocalSW(hoje), limIso = isoLocalSW(limite);
     const prox = lista.filter(a => a.d >= hojeIso && a.d <= limIso).sort((a, b) => a.d.localeCompare(b.d));
     if (!prox.length) return;
-    const nomes = [...new Set(prox.map(a => a.n))];
-    await self.registration.showNotification(`🔔 ${nomes.length} cidadão(s) com ação nos próximos 7 dias`, {
-      body: prox.slice(0, 3).map(a => `${a.n.split(' ')[0]}: ${a.x}`.slice(0, 90)).join('\n'),
+    const aniv = prox.filter(a => a.a && a.d === hojeIso);
+    const outros = prox.filter(a => !a.a);
+    if (!aniv.length && !outros.length) return;
+    const nomes = [...new Set(outros.map(a => a.n))];
+    const partes = [];
+    if (nomes.length) partes.push(`🔔 ${nomes.length} cidadão(s) com ação nos próximos 7 dias`);
+    if (aniv.length) partes.push(`🎉 ${aniv.length} aniversariante(s) hoje`);
+    const linhas = aniv.map(a => `🎉 ${a.n} faz aniversário hoje`).concat(outros.slice(0, 3).map(a => `${a.n.split(' ')[0]}: ${a.x}`.slice(0, 90)));
+    await self.registration.showNotification(partes.join(' · '), {
+      body: linhas.join('\n'),
       tag: 'resumo-diario', icon: './icone-192.png', badge: './icone-192.png',
       data: { url: './index.html#alertas' }
     });

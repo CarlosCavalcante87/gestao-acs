@@ -107,7 +107,23 @@
     #card-c7 { --accent: var(--c7); }
     #card-bf { --accent: var(--bf); }
 
-    .card-meta.active { border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent), var(--shadow-md); }
+    .card-meta { transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.15s ease; }
+    .card-meta.active { border-color: var(--accent); background-color: #fff; background-color: color-mix(in srgb, var(--accent) 12%, #ffffff); box-shadow: 0 0 0 2px var(--accent), 0 6px 18px color-mix(in srgb, var(--accent) 28%, transparent), var(--shadow-md); }
+    #chip-C1 { --accent: var(--c1); } #chip-C2 { --accent: var(--c2); } #chip-C3 { --accent: var(--c3); } #chip-C4 { --accent: var(--c4); }
+    #chip-C5 { --accent: var(--c5); } #chip-C6 { --accent: var(--c6); } #chip-C7 { --accent: var(--c7); } #chip-BF { --accent: var(--bf); }
+    .chips-indicadores .chip { border-color: color-mix(in srgb, var(--accent) 45%, #ffffff); }
+    .chips-indicadores .chip.active { background: var(--accent); border-color: var(--accent); color: #fff; box-shadow: 0 4px 12px color-mix(in srgb, var(--accent) 40%, transparent); }
+    .chip-ativo { font-size: 0.85rem; font-weight: 700; padding: 10px 16px; border-radius: 999px; color: #fff; background: var(--accent, var(--primary)); box-shadow: 0 4px 12px color-mix(in srgb, var(--accent, #0284c7) 40%, transparent); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+    .chips-indicadores .chip.active { display: none; }
+    #card-bf { align-self: stretch; }
+    .card-meta { cursor: pointer; }
+    .barra-voltar { display: flex; align-items: center; gap: 10px; position: sticky; top: 0; z-index: 5; margin: 0 0 12px; padding: 8px 0; }
+    .btn-voltar { flex-shrink: 0; border: 1px solid var(--border); background: var(--surface); color: var(--text); font: inherit; font-weight: 700; font-size: 0.85rem; padding: 10px 14px; border-radius: 12px; box-shadow: var(--shadow-sm); cursor: pointer; }
+    .titulo-indicador { font-weight: 800; font-size: 1rem; color: var(--text); }
+    #painel-lista { animation: entraLista 0.3s ease; }
+    @keyframes entraLista { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: none; } }   /* Bolsa Família acompanha a altura do C7 (mesma linha) */
+    .card-meta.active .badge-meta { background: color-mix(in srgb, var(--accent) 22%, #ffffff); }
+    .card-meta.active .barra-fundo { background: color-mix(in srgb, var(--accent) 20%, #ffffff); }
 
     .card-meta .header-card { display: flex; justify-content: space-between; align-items: center; gap: 6px; width: 100%; padding-left: 4px; }
     .card-meta h4 { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.02em; display: flex; align-items: center; gap: 5px; }
@@ -282,6 +298,8 @@
     .al-linha { display: flex; gap: 8px; align-items: flex-start; font-size: 0.78rem; line-height: 1.4; padding: 7px 10px; border-radius: 10px; margin-top: 6px; border: 1px solid transparent; }
     .al-prazo { background: #fef2f2; border-color: #fecaca; color: #7f1d1d; }
     .al-faixa { background: #fffbeb; border-color: #fde68a; color: #78350f; }
+    .al-aniv { background: #fdf2f8; border-color: #fbcfe8; color: #831843; }
+    .btn-parabens { display: inline-block; margin-top: 8px; padding: 9px 14px; border-radius: 12px; background: #db2777; color: #fff; font-weight: 700; font-size: 0.82rem; text-decoration: none; }
     .al-janela { background: #eff6ff; border-color: #bfdbfe; color: #1e3a8a; }
     .al-quando { flex-shrink: 0; font-weight: 800; font-size: 0.72rem; background: rgba(255, 255, 255, 0.75); border-radius: 999px; padding: 2px 8px; white-space: nowrap; }
     .al-texto { font-weight: 600; }
@@ -325,9 +343,10 @@
     </button>
 
     <div id="view-dashboard">
+      <div id="painel-cards">
       <div class="grid-indicadores">
 
-        <div class="card-meta active" id="card-c1" onclick="selecionarFiltroIndicador('C1')">
+        <div class="card-meta active" id="card-c1" onclick="abrirIndicador('C1')">
           <div class="header-card">
             <h4><span class="icon-card">📋</span> C1 · Cadastro</h4>
             <span class="badge-meta" id="c1-tot">0</span>
@@ -337,10 +356,10 @@
             <div class="rodape-card"><span class="status-meta" id="c1-pend">Aguardando...</span></div>
           </div>
           <div class="barra-fundo"><div class="barra-progresso" id="c1-bar"></div></div>
-          <div class="regra-acs">Meta: Cadastro individual e domiciliar atualizados (até 1 ano)</div>
+          <div class="regra-acs">Meta: Cadastro individual atualizado (até 1 ano)</div>
         </div>
 
-        <div class="card-meta" id="card-c2" onclick="selecionarFiltroIndicador('C2')">
+        <div class="card-meta" id="card-c2" onclick="abrirIndicador('C2')">
           <div class="header-card">
             <h4><span class="icon-card">👶</span> C2 · Criança</h4>
             <span class="badge-meta" id="c2-tot">0</span>
@@ -353,7 +372,7 @@
           <div class="regra-acs">Meta: 2 Visitas (até 30 dias e 31 dias–6 meses) + Vacinas + Pueric. (0 a 4 anos)</div>
         </div>
 
-        <div class="card-meta" id="card-c3" onclick="selecionarFiltroIndicador('C3')">
+        <div class="card-meta" id="card-c3" onclick="abrirIndicador('C3')">
           <div class="header-card">
             <h4><span class="icon-card">🤰</span> C3 · Pré-Natal</h4>
             <span class="badge-meta" id="c3-tot">0</span>
@@ -363,10 +382,10 @@
             <div class="rodape-card"><span class="status-meta" id="c3-pend">Aguardando...</span></div>
           </div>
           <div class="barra-fundo"><div class="barra-progresso" id="c3-bar"></div></div>
-          <div class="regra-acs">Meta: 3 PN + 1 Pós-parto (visitas espaçadas) + Odonto</div>
+          <div class="regra-acs">Meta: Captar a gestante antes de 3 meses + 3 visitas PN + visita ao puerpério até o 7º dia + consulta na UBS até 42 dias</div>
         </div>
 
-        <div class="card-meta" id="card-c4" onclick="selecionarFiltroIndicador('C4')">
+        <div class="card-meta" id="card-c4" onclick="abrirIndicador('C4')">
           <div class="header-card">
             <h4><span class="icon-card">🩸</span> C4 · Diabetes</h4>
             <span class="badge-meta" id="c4-tot">0</span>
@@ -379,7 +398,7 @@
           <div class="regra-acs">Meta: 2 Visitas (30+ dias entre elas) + HbA1c + Pés</div>
         </div>
 
-        <div class="card-meta" id="card-c5" onclick="selecionarFiltroIndicador('C5')">
+        <div class="card-meta" id="card-c5" onclick="abrirIndicador('C5')">
           <div class="header-card">
             <h4><span class="icon-card">❤️</span> C5 · Hipertensão</h4>
             <span class="badge-meta" id="c5-tot">0</span>
@@ -392,7 +411,7 @@
           <div class="regra-acs">Meta: 2 Visitas (30+ dias entre elas) + Aferição PA</div>
         </div>
 
-        <div class="card-meta" id="card-c6" onclick="selecionarFiltroIndicador('C6')">
+        <div class="card-meta" id="card-c6" onclick="abrirIndicador('C6')">
           <div class="header-card">
             <h4><span class="icon-card">👴</span> C6 · Idosos</h4>
             <span class="badge-meta" id="c6-tot">0</span>
@@ -405,7 +424,7 @@
           <div class="regra-acs">Meta: 2 Visitas (30+ dias entre elas) + Vacina Influenza</div>
         </div>
 
-        <div class="card-meta" id="card-c7" onclick="selecionarFiltroIndicador('C7')">
+        <div class="card-meta" id="card-c7" onclick="abrirIndicador('C7')">
           <div class="header-card">
             <h4><span class="icon-card">👩</span> C7 · Mulheres</h4>
             <span class="badge-meta" id="c7-tot">0</span>
@@ -418,7 +437,7 @@
           <div class="regra-acs">Meta: Preventivo 25-64a · HPV 9-14a · Consulta 14-69a · Mama 50-69a</div>
         </div>
 
-        <div class="card-meta" id="card-bf" onclick="selecionarFiltroIndicador('BF')">
+        <div class="card-meta" id="card-bf" onclick="abrirIndicador('BF')">
           <div class="header-card">
             <h4 style="color: #ca8a04;"><span class="icon-card">💰</span> Bolsa Família</h4>
           </div>
@@ -429,6 +448,13 @@
           <div class="regra-acs" style="border-top-color: rgba(202, 138, 4, 0.2); color: #a16207;">Acompanhamento Social</div>
         </div>
 
+      </div>
+      </div>
+
+      <div id="painel-lista" style="display: none;">
+      <div class="barra-voltar">
+        <button class="btn-voltar" onclick="voltarAosCards()">← Voltar</button>
+        <span class="chip-ativo" id="chipAtivo"></span>
       </div>
 
       <div class="chips-indicadores">
@@ -458,6 +484,7 @@
 
       <div class="contador-resultados" id="contadorResultados"></div>
       <div id="listaUtentes"></div>
+      </div>
     </div>
 
     <!-- Tela 2: Ações do Dia -->
@@ -488,7 +515,7 @@
           ⚠️ Sempre importe <strong>todas as 9 planilhas, exportadas no mesmo dia.</strong> Se faltar alguma, os indicadores daquele grupo ficam desatualizados e a conferência de quem saiu do PEC fica incompleta.
         </div>
 
-        <button class="btn-selecionar" onclick="document.getElementById('inputArquivosCSV').click()">
+        <button class="btn-selecionar" onclick="const i = document.getElementById('inputArquivosCSV'); i.value = ''; i.click()">
           📁 Selecionar planilhas
         </button>
         <input type="file" id="inputArquivosCSV" multiple accept=".csv" onchange="processarFicheiros(this.files)" style="display: none;">
@@ -499,16 +526,16 @@
       </div>
 
       <div class="card">
-        <h3>Transferência por Arquivo JSON (Recomendado)</h3>
+        <h3>💾 Backup e Restauração</h3>
         <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0 10px;">
-          As suas anotações serão incluídas no arquivo exportado.
+          O backup guarda todos os cidadãos, os indicadores e as suas anotações. Guarde o arquivo em local seguro e use "Restaurar backup" para recuperar tudo, inclusive em outro celular.
         </p>
         <input type="file" id="inputArquivoJSON" accept=".json" style="display: none;" onchange="importarBaseJSON(this.files[0])">
-        <button class="btn btn-json-in" onclick="document.getElementById('inputArquivoJSON').click()">
-          📤 Carregar Arquivo (.json) no Celular
+        <button class="btn btn-json-in" onclick="const i = document.getElementById('inputArquivoJSON'); i.value = ''; i.click()">
+          📤 Restaurar backup
         </button>
         <button class="btn btn-json-out" onclick="exportarBaseJSON()">
-          📥 Baixar Arquivo (.json) do Computador
+          📥 Realizar backup
         </button>
       </div>
 
@@ -673,7 +700,10 @@
           if (dpp) {
             const visPn = c.c3_vis_pn || 0, visPu = c.c3_vis_puerp || 0;
             if (visPn < 3) add(dpp, 'prazo', 'C3', `DPP em ${fmtData(dpp)}: faltam ${3 - visPn} visita(s) de pré-natal (motivo "Gestante")`);
-            if (visPu < 1) add(somarDias(dpp, 42), 'prazo', 'C3', `Visita de puerpério (motivo "Puérpera") até 42 dias após o parto, estimado pela DPP de ${fmtData(dpp)}`);
+            if (visPu < 1) {
+              add(somarDias(dpp, 7), 'prazo', 'C3', `Puérpera: visita domiciliar até o 7º dia após o parto (DPP estimada em ${fmtData(dpp)}): avaliar amamentação, cicatrização e sinais de depressão pós-parto; confirmar a data real do parto`);
+              add(somarDias(dpp, 42), 'prazo', 'C3', `Puérpera: consulta de puerpério na UBS até 42 dias após o parto (DPP ${fmtData(dpp)}): articular o agendamento com a enfermagem`);
+            }
           }
         }
 
@@ -708,6 +738,24 @@
       return out;
     }
 
+    // Aniversariantes: lista à parte, não mistura com os prazos
+    function gerarAniversarios(limite) {
+      const hoje = iniDia(new Date());
+      const out = [];
+      Object.entries(BASE_DADOS.cidadaos).forEach(([chave, c]) => {
+        const nasc = c.dt_nascimento ? parseDataJS(c.dt_nascimento) : null;
+        if (!nasc || isNaN(nasc.getTime())) return;
+        let prox = new Date(hoje.getFullYear(), nasc.getMonth(), nasc.getDate());
+        if (prox < hoje) prox = new Date(hoje.getFullYear() + 1, nasc.getMonth(), nasc.getDate());
+        const dias = diasEntre(hoje, prox);
+        if (dias > limite) return;
+        const anos = prox.getFullYear() - nasc.getFullYear();
+        out.push({ chave, c, dias, data: prox, anos, dd: String(prox.getDate()).padStart(2, '0') + '/' + String(prox.getMonth() + 1).padStart(2, '0') });
+      });
+      out.sort((a, b) => a.dias - b.dias || (a.c.nome || '').localeCompare(b.c.nome || '', 'pt-BR', { sensitivity: 'base' }));
+      return out;
+    }
+
     function agruparAlertas(lista) {
       const mapa = new Map();
       lista.forEach(a => { if (!mapa.has(a.chave)) mapa.set(a.chave, []); mapa.get(a.chave).push(a); });
@@ -719,7 +767,7 @@
       return cidadaos;
     }
 
-    const TIPO_ALERTA = { prazo: '⏳', faixa: '🎂', janela: '🔓' };
+    const TIPO_ALERTA = { prazo: '⏳', faixa: '📅', janela: '🔓', aniv: '🎉' };
     function textoQuando(dias) { return dias === 0 ? 'Hoje' : dias === 1 ? 'Amanhã' : `em ${dias} dias`; }
 
     function definirHorizonteAlertas(n) {
@@ -768,6 +816,22 @@
         });
         alvo.innerHTML = html;
       }
+      const faltaDados = Object.values(BASE_DADOS.cidadaos).some(c => c.indicadores && ((c.indicadores.C4 && c.c4_vis_txt === undefined) || (c.indicadores.C5 && c.c5_vis_txt === undefined) || (c.indicadores.C6 && c.c6_vis_txt === undefined) || (c.indicadores.C2 && c.c2_ok1 === undefined)));
+      if (faltaDados) alvo.innerHTML = '<div class="card" style="border-left:5px solid #f59e0b;"><b>⚠️ Reimporte as planilhas</b><p class="al-ajuda">Os dados guardados no app são de uma versão anterior e não têm as datas das visitas. Vá na aba <b>Dados</b>, importe os 9 relatórios de novo e os lembretes de visita voltam a aparecer aqui.</p></div>' + alvo.innerHTML;
+      const anivs = gerarAniversarios(horizonteAlertas);
+      if (anivs.length) {
+        let ha = `<div class="al-grupo">🎉 Aniversariantes · ${anivs.length}</div>`;
+        anivs.forEach(a => {
+          const c = a.c, w = linkWhatsApp(c.telefone);
+          const msg = 'Parabéns, ' + (c.nome || '').split(' ')[0] + '! 🎉 Desejo muita saúde e felicidades neste dia. Um abraço do seu agente de saúde, ' + ((lerPerfil().nome || '').split(' ')[0] || 'TACS') + '.';
+          ha += `<div class="item-cidadao em-dia">
+            <div class="topo"><div class="nome">${escHtml(c.nome)}</div></div>
+            <div class="al-linha al-aniv"><span class="al-quando">🎉 ${a.dias === 0 ? 'Hoje' : (a.dias === 1 ? 'Amanhã' : a.dd)}</span><span class="al-texto">${a.dias === 0 ? 'Aniversariante do dia: faz' : 'Faz'} ${a.anos} ${a.anos === 1 ? 'ano' : 'anos'}${a.dias === 0 ? '. Mande os parabéns!' : ` em ${a.dd} (em ${a.dias} dias)`}</span></div>
+            ${a.dias === 0 && w ? `<a class="btn-parabens" href="${w}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">🎉 Enviar parabéns no WhatsApp</a>` : ''}
+          </div>`;
+        });
+        alvo.innerHTML += ha;
+      }
       if (lembretesAtivos()) { salvarSnapshotAlertas().catch(() => {}); avisoResumo(false).catch(() => {}); }
     }
 
@@ -776,8 +840,8 @@
       if (!b) return;
       const c = BASE_DADOS.cidadaos[b.getAttribute('data-chave')];
       if (!c) return;
-      alternarAba('dashboard');
-      selecionarFiltroIndicador('C1');
+      window.__abrindoCartao = true; alternarAba('dashboard'); window.__abrindoCartao = false;
+      abrirIndicador('C1');
       document.getElementById('campoBusca').value = c.nome;
       filtrarLista();
       window.scrollTo(0, 0);
@@ -829,7 +893,8 @@
 
     async function salvarSnapshotAlertas() {
       if (!('caches' in window)) return;
-      const arr = gerarAlertas(30).map(a => ({ d: isoLocal(a.data), n: BASE_DADOS.cidadaos[a.chave].nome, i: a.ind, x: a.texto }));
+      const arr = gerarAlertas(30).map(a => ({ d: isoLocal(a.data), n: BASE_DADOS.cidadaos[a.chave].nome, i: a.ind, x: a.texto, a: 0 }))
+        .concat(gerarAniversarios(30).map(a => ({ d: isoLocal(a.data), n: a.c.nome, i: '🎉', x: 'aniversário', a: 1 })));
       const cache = await caches.open('guia-alertas');
       await cache.put('./alertas.json', new Response(JSON.stringify(arr), { headers: { 'Content-Type': 'application/json' } }));
     }
@@ -846,7 +911,12 @@
       } else if (forcar) {
         titulo = '🔔 Lembretes ativados';
         corpo = 'Nenhuma ação urgente nos próximos 7 dias.';
-      } else return;
+      } else if (!gerarAniversarios(0).length) return;
+      const hojeAn = gerarAniversarios(0);
+      if (hojeAn.length) {
+        titulo = (titulo ? titulo + ' · ' : '') + `🎉 ${hojeAn.length} aniversariante(s) hoje`;
+        corpo = (hojeAn.map(a => `🎉 ${a.c.nome} faz ${a.anos} anos hoje`).join('\n') + (corpo ? '\n' + corpo : '')).trim();
+      }
       const reg = await navigator.serviceWorker.ready;
       await reg.showNotification(titulo, { body: corpo, tag: 'resumo-diario', icon: './icone-192.png', badge: './icone-192.png', data: { url: './index.html#alertas' } });
       localStorage.setItem('guia_ultimo_aviso', hojeIso);
@@ -866,16 +936,43 @@
       document.getElementById('btnTabDash').className = aba === 'dashboard' ? 'active' : '';
       document.getElementById('btnTabAl').className = aba === 'alertas' ? 'active' : '';
       document.getElementById('btnTabUp').className = aba === 'upload' ? 'active' : '';
-      if (aba === 'alertas') { atualizarAlertas(); window.scrollTo(0, 0); }
+      if (aba === 'dashboard' && document.getElementById('painel-lista').style.display !== 'none' && !window.__abrindoCartao) mostrarCards();
+      if (aba === 'alertas') atualizarAlertas();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
+    const NOMES_IND = { C1: '📋 C1 · Cadastro', C2: '👶 C2 · Criança', C3: '🤰 C3 · Pré-natal', C4: '🩸 C4 · Diabetes', C5: '❤️ C5 · Hipertensão', C6: '👴 C6 · Idosos', C7: '👩 C7 · Mulheres', BF: '💰 Bolsa Família', todos: 'Todos' };
+    function abrirIndicador(ind) {
+      selecionarFiltroIndicador(ind);
+      document.getElementById('painel-cards').style.display = 'none';
+      document.getElementById('painel-lista').style.display = 'block';
+      try { if (!(history.state && history.state.lista)) history.pushState({ lista: 1 }, ''); } catch (e) {}
+      window.scrollTo(0, 0);
+    }
+    function mostrarCards() {
+      document.getElementById('painel-lista').style.display = 'none';
+      document.getElementById('painel-cards').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+    function voltarAosCards() {
+      try { if (history.state && history.state.lista) { history.back(); return; } } catch (e) {}
+      mostrarCards();
+    }
+    window.addEventListener('popstate', () => mostrarCards());
+
     function selecionarFiltroIndicador(ind) {
+
       filtroIndicadorAtual = ind;
-      document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+      document.querySelectorAll('.chips-indicadores .chip').forEach(c => c.classList.remove('active'));
       document.querySelectorAll('.card-meta').forEach(c => c.classList.remove('active'));
 
       const chip = document.getElementById(`chip-${ind}`);
-      if (chip) chip.classList.add('active');
+      if (chip) {
+        chip.classList.add('active');
+        const ca = document.getElementById('chipAtivo');
+        if (ca) { ca.textContent = chip.textContent; ca.style.setProperty('--accent', getComputedStyle(chip).getPropertyValue('--accent')); }
+        const trilho = chip.parentElement; if (trilho) trilho.scrollLeft = 0;
+      }
 
       const cardId = ind === 'BF' ? 'card-bf' : `card-${ind.toLowerCase()}`;
       const card = document.getElementById(cardId);
@@ -902,12 +999,12 @@
 
     function exportarBaseJSON() {
       const payload = { cidadaos: BASE_DADOS.cidadaos, ruas: Array.from(BASE_DADOS.ruas).sort(), perfil: lerPerfil() };
-      if (Object.keys(payload.cidadaos).length === 0) return alert("Nenhum dado cadastrado.");
+      if (Object.keys(payload.cidadaos).length === 0) return alert("Nenhum dado para fazer backup.");
       const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "dados_microarea.json";
+      a.download = "backup_guia_tacs_" + new Date().toISOString().slice(0, 10) + ".json";
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -916,9 +1013,10 @@
 
     function importarBaseJSON(arquivo) {
       if (!arquivo) return;
+      if (Object.keys(BASE_DADOS.cidadaos).length > 0 && !confirm('Restaurar o backup vai substituir os dados atuais do app. Deseja continuar?')) { document.getElementById('inputArquivoJSON').value = ''; return; }
       const prog = document.getElementById('progressoUpload');
       prog.style.color = "#0284c7";
-      prog.innerHTML = "Carregando base JSON...";
+      prog.innerHTML = "Restaurando backup...";
       const leitor = new FileReader();
       leitor.readAsText(arquivo, 'utf-8');
       leitor.onload = () => {
@@ -939,13 +1037,13 @@
               ruas: Array.from(BASE_DADOS.ruas).sort()
             }));
             prog.style.color = "#10b981";
-            prog.innerHTML = `✅ ${Object.keys(BASE_DADOS.cidadaos).length} cidadãos carregados com sucesso!`;
+            prog.innerHTML = `✅ ${Object.keys(BASE_DADOS.cidadaos).length} cidadãos restaurados com sucesso!`;
             atualizarInterface();
             setTimeout(() => alternarAba('dashboard'), 800);
           }
         } catch (e) {
           prog.style.color = "#ef4444";
-          prog.innerHTML = "❌ Erro ao ler JSON: " + e.message;
+          prog.innerHTML = "❌ Arquivo de backup inválido: " + e.message;
         }
       };
     }
@@ -1377,7 +1475,7 @@ function idadeEmAnos(dtStr) {
                   cid.c3_vis_pn = visPn; cid.c3_vis_puerp = visPuerp; cid.c3_dpp = extrairDatas(reg["DPP (DUM)"]).length ? reg["DPP (DUM)"] : (reg["DPP (ecografia obstétrica)"] || ""); cid.c3Ok = (visPn >= 3 && visPuerp >= 1 && consPn >= 6 && odonto >= 1 && cons12sem >= 1);
                   cid.pendencias = cid.pendencias.filter(p => !p.startsWith("C3:"));
                   if (visPn < 3) cid.pendencias.push(`C3: Visitas Pré-Natal pendentes (${visPn}/3)` + (temUlt ? ` — última visita há ${ultTxt}; espaçar as visitas ao longo da gestação (motivo: "Gestante")` : ` (motivo: "Gestante")`));
-                  if (visPuerp < 1) cid.pendencias.push('C3: Visita no Puerpério pendente (0/1) (motivo: "Puérpera")');
+                  if (visPuerp < 1) cid.pendencias.push('C3: Visita no Puerpério pendente (0/1): visitar a mãe e o bebê até o 7º dia após o parto (motivo: "Puérpera"), articular a consulta de puerpério na UBS em até 42 dias e atualizar o cadastro do recém-nascido');
                   if (cons12sem === 0) cid.pendencias.push("C3: Busca Ativa - Captação precoce (<12 semanas)");
                   if (consPn < 6) cid.pendencias.push(`C3: Busca Ativa - Consultas Pré-Natal (${consPn}/6)`);
                   if (odonto < 1) cid.pendencias.push("C3: Busca Ativa - Avaliação Odontológica pendente");
@@ -1648,7 +1746,11 @@ function idadeEmAnos(dtStr) {
         if (ruaSel && c.rua !== ruaSel) return false;
 
         if (!temTermoBusca && filtroIndicadorAtual !== 'BF') {
-          const temPendencias = (c.pendencias && c.pendencias.length > 0);
+          // A pendência considerada é a do indicador selecionado (C1 = só cadastro individual)
+          const pends = c.pendencias || [];
+          const temPendencias = (filtroIndicadorAtual === 'todos')
+            ? pends.length > 0
+            : (filtroIndicadorAtual === 'C1' ? (c.c1Ok === false || pends.some(p => p.startsWith('C1:'))) : pends.some(p => p.startsWith(filtroIndicadorAtual + ':')));
           if (situacaoSel === 'pendentes' && !temPendencias) return false;
           if (situacaoSel === 'emdia' && temPendencias) return false;
         }
@@ -1665,6 +1767,7 @@ function idadeEmAnos(dtStr) {
         return;
       }
 
+      let htmlLista = '';
       filtrados.forEach(([chave, c]) => {
         // Cada indicador vira um bloco: etiqueta verde (meta atingida) ou vermelha (não atendida)
         // e, logo abaixo, o que fazer para atingir a meta.
@@ -1683,6 +1786,7 @@ function idadeEmAnos(dtStr) {
         let algumaPendente = false;
         ['C1', 'C2', 'C3', 'C4', 'C5', 'C6', 'C7'].forEach(ind => {
           if (!c.indicadores || !c.indicadores[ind]) return;
+          if (situacaoSel === 'pendentes' && /^C[1-7]$/.test(filtroIndicadorAtual) && ind !== filtroIndicadorAtual) return;   // em "somente pendências" mostra só o indicador escolhido
           const acoes = (c.pendencias || [])
             .filter(p => p.startsWith(ind + ':'))
             .map(p => p.substring(ind.length + 1).trim());
@@ -1719,7 +1823,7 @@ function idadeEmAnos(dtStr) {
         if (anosC !== null && anosC < 10 && !(c.indicadores && c.indicadores['C2'])) perfilBadge += '<span class="tag tag-info">👶 Criança · fora do C2</span>';
         if (anosC !== null && anosC >= 60 && !(c.indicadores && c.indicadores['C6'])) perfilBadge += '<span class="tag tag-info">🧓 Idoso · fora do C6</span>';
         const linhaInfoHtml = (idadeBadge || bfBadge || perfilBadge) ? `<div class="linha-info">${idadeBadge}${bfBadge}${perfilBadge}</div>` : '';
-        content.innerHTML += `
+        htmlLista += `
           <div class="item-cidadao ${temPend ? 'tem-pend' : 'em-dia'}">
             <div class="topo">
               <div class="nome">${c.nome}</div>
@@ -1732,6 +1836,7 @@ function idadeEmAnos(dtStr) {
           </div>
         `;
       });
+      content.innerHTML = htmlLista;
     }
 
     // ---------- PERFIL DO ACS (nome e microárea) ----------
