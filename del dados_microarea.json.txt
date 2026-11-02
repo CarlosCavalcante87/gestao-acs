@@ -1,2 +1,0 @@
-del dados_microarea.json
-python servidor.py
