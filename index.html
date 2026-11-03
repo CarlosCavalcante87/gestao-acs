@@ -222,19 +222,19 @@
     <div id="view-upload" style="display: none;">
       
       <div class="card" style="padding: 20px 16px;">
-        <h3 style="font-size: 1.05rem; display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">📦 Importar todas as planilhas</h3>
+        <h3 style="font-size: 1.05rem; display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">📦 Importar todas as planilhas (CSV e XLSX)</h3>
         <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0 12px; line-height: 1.45;">
-          Exporte as planilhas no PEC, depois toque abaixo e selecione <strong>todas de uma vez</strong> (segure o dedo em uma e marque as outras). O app descobre sozinho qual é cada uma e importa na ordem certa.
+          Exporte as planilhas no PEC (incluindo Busca Ativa de Vacinação em <strong>.csv</strong> ou <strong>.xlsx</strong>), depois toque abaixo e selecione <strong>todas de uma vez</strong>. O app identifica automaticamente o TACS e a Microárea pelas planilhas CSV e filtra somente os cidadãos da sua área.
         </p>
 
         <div class="warning-box">
-          ⚠️ Sempre importe <strong>todas as 9 planilhas, exportadas no mesmo dia.</strong> Se faltar alguma, os indicadores daquele grupo ficam desatualizados e a conferência de quem saiu do PEC fica incompleta.
+          ⚠️ Sempre importe <strong>todas as planilhas, exportadas no mesmo dia.</strong> A planilha de vacinação (.csv ou .xlsx) atualiza automaticamente o monitoramento de HPV (9 a 14 anos) e as vacinas de rotina apenas da sua microárea.
         </div>
 
         <button class="btn-selecionar" onclick="const i = document.getElementById('inputArquivosCSV'); i.value = ''; i.click()">
-          📁 Selecionar planilhas
+          📁 Selecionar planilhas (.csv e .xlsx)
         </button>
-        <input type="file" id="inputArquivosCSV" multiple accept=".csv" onchange="processarFicheiros(this.files)" style="display: none;">
+        <input type="file" id="inputArquivosCSV" multiple accept=".csv,.xlsx,.xls" onchange="processarFicheiros(this.files)" style="display: none;">
         
         <div id="progressoUpload" style="margin-top: 12px; font-size: 0.82rem; font-weight: 600; text-align: center;"></div>
         
