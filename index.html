@@ -4,7 +4,13 @@
   <script>try { var _t = localStorage.getItem('guia_tema') || 'auto', _f = localStorage.getItem('guia_fonte') || '0', _r = document.documentElement.classList;
     if (_t === 'escuro' || (_t === 'auto' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)) _r.add('escuro');
     if (_f !== '0') _r.add('fonte' + _f); } catch (e) {}</script>
-  <script>try { if (localStorage.getItem('guia_senha') && window.isSecureContext) document.documentElement.classList.add('travado'); } catch (e) {}</script>
+  <script>try {
+    var _hj = new Date();
+    var _dia = _hj.getFullYear() + '-' + String(_hj.getMonth() + 1).padStart(2, '0') + '-' + String(_hj.getDate()).padStart(2, '0');
+    if (localStorage.getItem('guia_senha') && window.isSecureContext && localStorage.getItem('guia_desbloqueio_dia') !== _dia) {
+      document.documentElement.classList.add('travado');
+    }
+  } catch (e) {}</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="theme-color" content="#0369a1">
@@ -187,7 +193,7 @@
             <option value="">Todas as ruas</option>
           </select>
           <select id="filtroPendencia" class="filter-select" onchange="filtrarLista()">
-            <option value="todos" selected>Exibir Todos</option>
+            <option value="todos" selected>Todos</option>
             <option value="pendentes">⚠️ Apenas Pendências</option>
             <option value="emdia">✓ Em Dia</option>
           </select>
@@ -261,13 +267,13 @@
       <div class="card" id="cardSenha">
         <h3>🔒 Senha do app e do backup</h3>
         <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0 10px;">
-          Uma única senha (6 ou mais caracteres) bloqueia o app ao abrir, e de novo depois de 1 minuto fora dele, e é a mesma senha que protege os arquivos de backup.
+          Uma única senha (6 ou mais caracteres) bloqueia o app apenas no primeiro acesso do dia, e é a mesma senha que protege os arquivos de backup.
         </p>
         <div class="al-status" id="statusSenha" style="margin: 0 0 8px;"></div>
         <button class="btn" id="btnSenhaDef" onclick="abrirModalSenha('definir')">🔒 Definir senha</button>
         <button class="btn" id="btnSenhaAlt" style="display:none;" onclick="abrirModalSenha('alterar')">✏️ Alterar senha</button>
         <button class="btn btn-danger" id="btnSenhaRem" style="display:none;" onclick="abrirModalSenha('remover')">🔓 Remover senha</button>
-        <div class="al-status">O bloqueio impede o uso do app por quem pegar o celular desbloqueado. Ele não criptografa os dados guardados no aparelho: quem protege o arquivo de backup é a senha.</div>
+        <div class="al-status">O bloqueio diário impede o uso do app por terceiros. Ele não criptografa os dados guardados no aparelho: quem protege o arquivo de backup é a senha.</div>
       </div>
 
       <div class="card">
