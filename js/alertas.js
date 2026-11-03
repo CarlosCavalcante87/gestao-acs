@@ -204,7 +204,7 @@
         }
       }
       const faltaDados = Object.values(BASE_DADOS.cidadaos).some(c => c.indicadores && ((!c.ex && ['C2','C3','C4','C5','C6'].some(k => c.indicadores[k])) || (c.indicadores.C4 && c.c4_vis_txt === undefined) || (c.indicadores.C5 && c.c5_vis_txt === undefined) || (c.indicadores.C6 && c.c6_vis_txt === undefined) || (c.indicadores.C2 && c.c2_ok1 === undefined)));
-      if (faltaDados) alvo.innerHTML = '<div class="card" style="border-left:5px solid #f59e0b;"><b>⚠️ Reimporte as planilhas</b><p class="al-ajuda">Os dados guardados no app são de uma versão anterior e não têm as datas das visitas. Vá na aba <b>Configurações</b>, importe os 9 relatórios de novo e os lembretes de visita voltam a aparecer aqui.</p></div>' + alvo.innerHTML;
+      if (faltaDados) alvo.innerHTML = '<div class="card" style="border-left:5px solid #f59e0b;"><b>⚠️ Reimporte as planilhas</b><p class="al-ajuda">Os dados guardados no app são de uma versão anterior e não têm as datas das visitas. Vá na aba <b>Configurações</b>, importe os relatórios de novo e os lembretes de visita voltam a aparecer aqui.</p></div>' + alvo.innerHTML;
       const anivs = gerarAniversarios(horizonteAlertas);
       if (anivs.length) {
         let ha = `<div class="al-grupo">🎉 Aniversariantes · ${anivs.length}</div>`;
@@ -349,8 +349,18 @@
     }
     window.addEventListener('popstate', () => mostrarCards());
 
-    function selecionarFiltroIndicador(ind) {
+    // Verifica se o indicador possui pelo menos 1 cidadão com pendência
+    function indicadorTemPendencias(ind) {
+      if (!/^C[1-7]$/.test(ind)) return false;
+      const lista = Object.values((typeof BASE_DADOS !== 'undefined' && BASE_DADOS.cidadaos) ? BASE_DADOS.cidadaos : {});
+      return lista.some(c => {
+        if (!c.indicadores || !c.indicadores[ind]) return false;
+        const pends = c.pendencias || [];
+        return c[ind.toLowerCase() + 'Ok'] === false || pends.some(p => p.startsWith(ind + ':'));
+      });
+    }
 
+    function selecionarFiltroIndicador(ind) {
       filtroIndicadorAtual = ind;
       document.querySelectorAll('.chips-indicadores .chip').forEach(c => c.classList.remove('active'));
       document.querySelectorAll('.card-meta').forEach(c => c.classList.remove('active'));
@@ -368,10 +378,11 @@
       if (card) card.classList.add('active');
 
       const selectPend = document.getElementById('filtroPendencia');
-      if (ind === 'C1' || ind === 'todos' || ind === 'BF') {
-        selectPend.value = 'todos';
-      } else {
+      // Se o card clicado tiver pendências, abre direto em "Apenas Pendências"; se estiver 100% em dia (sem falhas) ou for BF, abre em "Todos"
+      if (indicadorTemPendencias(ind)) {
         selectPend.value = 'pendentes';
+      } else {
+        selectPend.value = 'todos';
       }
       filtrarLista();
     }

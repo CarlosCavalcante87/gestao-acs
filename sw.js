@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gestao-acs-v71';
+const CACHE_NAME = 'gestao-acs-v70';
 const CACHE_FONTES = 'gestao-acs-fontes';
 const RECURSOS = [
   './',
