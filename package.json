@@ -1,0 +1,6 @@
+{
+  "name": "guia-visitas-tacs",
+  "private": true,
+  "scripts": { "test": "node tests/run.js" },
+  "devDependencies": { "playwright": "^1.40.0" }
+}
