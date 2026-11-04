@@ -277,7 +277,6 @@
     .badge-tab { display: inline-block; margin-left: 4px; background: #ef4444; color: #fff; border-radius: 999px; font-size: 0.62rem; font-weight: 800; padding: 1px 6px; vertical-align: middle; }
     .al-ajuda { font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 6px 0 10px; }
     .al-horizonte { display: flex; gap: 8px; margin-bottom: 10px; }
-    #chipModoUrg.active, #chipModoRua.active, #chipAl7.active, #chipAl15.active { background: var(--primary); color: #fff; border-color: var(--primary); }
     .al-status { font-size: 0.74rem; color: var(--text-muted); line-height: 1.45; margin-top: 8px; }
     .al-grupo { font-size: 0.82rem; font-weight: 800; color: #1e293b; margin: 14px 4px 8px; }
     .al-linha { display: flex; gap: 8px; align-items: flex-start; font-size: 0.78rem; line-height: 1.4; padding: 7px 10px; border-radius: 10px; margin-top: 6px; border: 1px solid transparent; }
@@ -389,7 +388,7 @@
 /* =====================================================================
    VISUAL "A · CLARO E LIMPO" (mobile first)
    ===================================================================== */
-body { background: #f3f5f8 !important; padding-bottom: 96px; }
+body { background: #d8dfea !important; padding-bottom: 96px; }
 .so-leitor { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 header { background: #ffffff; color: var(--text); text-align: left; border-radius: 0; box-shadow: none; border-bottom: 1px solid #e3e8ef; padding: 22px 20px 16px; }
 .cab-linha { display: flex; align-items: center; justify-content: space-between; gap: 12px; max-width: 650px; margin: 0 auto; }
@@ -589,3 +588,45 @@ nav.tab-bar .badge-tab[style*="display: none"] { display: none !important; }
 
     .alerta-cpf { margin-top: 8px; padding: 5px 9px; border-radius: 8px; font-size: 0.78rem; font-weight: 700; background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
 .alerta-cpf-lista { margin: 8px 0; cursor: pointer; }
+
+/* ===== Padrão único de botões e cores (v85.10) =====
+   Azul (--primary)  = ação principal e item selecionado
+   Cinza (slate)     = ação secundária / cancelar
+   Verde (--success) = confirmar / instalar / enviar parabéns
+   Vermelho          = excluir / remover
+   Roxo              = só o fluxo de retorno agendado
+   Cores C1–C7 aparecem apenas nos cartões e filtros dos indicadores.
+   Todo botão tem: hover (borda/cor), foco visível pelo teclado e pressionado. */
+:root { --primary-soft: #e0f2fe; --slate-hover: #e2e8f0; --focus-ring: rgba(2, 132, 199, 0.5); }
+
+button:focus-visible, [role="button"]:focus-visible, .chip:focus-visible, .btn:focus-visible { outline: 3px solid var(--focus-ring); outline-offset: 2px; }
+
+/* Abas segmentadas (período, visualização, abas do alcance, opções de acessibilidade) */
+.seg-btn, .alc-abas button, .opcoes-acess button { border: 1.5px solid transparent; transition: background .18s, color .18s, border-color .18s, box-shadow .18s; }
+.opcoes-acess button { border-color: var(--border); }
+.seg-btn.active, .alc-abas button.on, .opcoes-acess button.ativo { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 2px 8px rgba(2, 132, 199, 0.35); }
+.seg-modo .seg-btn svg { color: currentColor; }
+.seg-modo .seg-btn.active svg { color: #fff; }
+.seg-btn.active b { color: #fff; }
+
+@media (hover: hover) {
+  .seg-btn:not(.active):hover, .alc-abas button:not(.on):hover, .opcoes-acess button:not(.ativo):hover { background: #fff; border-color: var(--primary); color: var(--primary-dark); }
+  .seg-btn.active:hover, .alc-abas button.on:hover, .opcoes-acess button.ativo:hover { background: var(--primary-dark); border-color: var(--primary-dark); }
+  nav.tab-bar button:not(.active):hover { background: #f1f5f9; color: var(--primary-dark); }
+  .chip:hover { border-color: var(--accent, var(--primary)); color: var(--text); }
+  .btn-voltar:hover { border-color: var(--primary); color: var(--primary-dark); }
+  /* botões cheios */
+  .btn:hover, .btn-selecionar:hover, .btn-parabens:hover, .modal-botoes .btn-salvar:hover, .modal-botoes .btn-sim:hover, .btn-sim-mini:hover { filter: brightness(0.92); }
+  .btn-nao:hover, .btn-nao-mini:hover { background: var(--slate-hover); box-shadow: inset 0 0 0 1.5px #94a3b8; }
+  /* botões com contorno */
+  .btn-visita:hover { background: var(--primary-soft); }
+  .btn-retorno:hover { background: #ede9fe; }
+  .btn-ret-feito:hover { background: #f5f3ff; border-color: #7c3aed; }
+  .btn-ret-rm:hover, .btn-rm-visita:hover { background: #fef2f2; border-color: #ef4444; }
+  .btn-al-feito:hover { background: #fee2e2; }
+  .alerta-cpf-lista:hover { background: #fee2e2; }
+}
+.btn-selecionar { background: var(--primary); box-shadow: 0 4px 12px rgba(2, 132, 199, 0.28); }
+.btn-selecionar:active { background: var(--primary-dark); }
+.btn-parabens { background: var(--success); }
+.btn-json-in, .btn-sync { background: var(--primary); }
