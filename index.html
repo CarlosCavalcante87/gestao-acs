@@ -48,7 +48,7 @@
       📲 Instalar Aplicativo no Celular
     </button>
 
-    <div id="view-dashboard">
+    <div id="view-dashboard" style="display: none;">
       <div id="painel-cards">
       <div id="avisoBackup" class="card aviso-backup" style="display:none;">
         <div id="avisoBackupTexto"></div>
@@ -163,9 +163,13 @@
       <details id="blocoHistorico" class="card mud-bloco" style="display:none;"></details>
       </div>
 
-      <div id="painel-lista" style="display: none;">
+    </div>
+
+    <!-- Tela: Cidadãos -->
+    <div id="view-cidadaos" style="display: none;">
+      <div id="painel-lista">
       <div class="barra-voltar">
-        <button class="btn-voltar" onclick="voltarAosCards()">← Voltar</button>
+        <button class="btn-voltar" onclick="alternarAba('dashboard')">← Indicadores</button>
         <span class="chip-ativo" id="chipAtivo"></span>
       </div>
 
@@ -187,7 +191,7 @@
             <option value="">Todas as ruas</option>
           </select>
           <select id="filtroPendencia" class="filter-select" onchange="filtrarLista()">
-            <option value="todos" selected>Todos</option>
+            <option value="todos" selected>Exibir Todos</option>
             <option value="pendentes">⚠️ Apenas Pendências</option>
             <option value="emdia">✓ Em Dia</option>
           </select>
@@ -200,21 +204,32 @@
     </div>
 
     <!-- Tela 2: Ações do Dia -->
-    <div id="view-alertas" style="display: none;">
-      <div class="card">
-        <h3>🔔 Ações do Dia</h3>
-        <p class="al-ajuda">Prazos que vencem e mudanças de faixa etária nos próximos dias. Quem tem o prazo mais próximo aparece primeiro.</p>
-        <div class="al-horizonte">
-          <button class="chip active" id="chipAl7" onclick="definirHorizonteAlertas(7)">Próximos 7 dias</button>
-          <button class="chip" id="chipAl15" onclick="definirHorizonteAlertas(15)">Próximos 15 dias</button>
+    <div id="view-alertas">
+      <section class="hero-hoje" aria-live="polite">
+        <div class="hero-data" id="heroData"></div>
+        <div class="hero-titulo" id="heroTitulo">Importe as planilhas para começar</div>
+        <div class="hero-kpis">
+          <div class="hero-kpi"><b id="kpiHoje">0</b><span>hoje</span></div>
+          <div class="hero-kpi"><b id="kpiSemana">0</b><span>próximos 7 dias</span></div>
+          <div class="hero-kpi"><b id="kpiRet">0</b><span>retorno atrasado</span></div>
         </div>
-        <div class="al-horizonte" id="alModo">
-          <button class="chip" id="chipModoUrg" onclick="definirModoAlertas('urgencia')">⏳ Por urgência</button>
-          <button class="chip" id="chipModoRua" onclick="definirModoAlertas('rua')">📍 Roteiro por rua</button>
+      </section>
+      <div class="faixa-ind" id="faixaInd"></div>
+      <details class="opcoes-hoje">
+        <summary>Opções da lista e lembretes</summary>
+        <div class="opcoes-corpo">
+          <div class="al-horizonte">
+            <button class="chip active" id="chipAl7" onclick="definirHorizonteAlertas(7)">Próximos 7 dias</button>
+            <button class="chip" id="chipAl15" onclick="definirHorizonteAlertas(15)">Próximos 15 dias</button>
+          </div>
+          <div class="al-horizonte" id="alModo">
+            <button class="chip" id="chipModoUrg" onclick="definirModoAlertas('urgencia')">⏳ Por urgência</button>
+            <button class="chip" id="chipModoRua" onclick="definirModoAlertas('rua')">📍 Roteiro por rua</button>
+          </div>
+          <button class="btn" id="btnLembretes" onclick="ativarLembretes()">🔔 Ativar lembretes no celular</button>
+          <div id="statusLembretes" class="al-status"></div>
         </div>
-        <button class="btn" id="btnLembretes" onclick="ativarLembretes()">🔔 Ativar lembretes no celular</button>
-        <div id="statusLembretes" class="al-status"></div>
-      </div>
+      </details>
       <div id="listaAlertas"></div>
     </div>
 
@@ -222,19 +237,19 @@
     <div id="view-upload" style="display: none;">
       
       <div class="card" style="padding: 20px 16px;">
-        <h3 style="font-size: 1.05rem; display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">📦 Importar todas as planilhas (CSV e XLSX)</h3>
+        <h3 style="font-size: 1.05rem; display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">📦 Importar todas as planilhas</h3>
         <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0 12px; line-height: 1.45;">
-          Exporte as planilhas no PEC (incluindo Busca Ativa de Vacinação em <strong>.csv</strong> ou <strong>.xlsx</strong>), depois toque abaixo e selecione <strong>todas de uma vez</strong>. O app identifica automaticamente o TACS e a Microárea pelas planilhas CSV e filtra somente os cidadãos da sua área.
+          Exporte as planilhas no PEC, depois toque abaixo e selecione <strong>todas de uma vez</strong> (segure o dedo em uma e marque as outras). O app descobre sozinho qual é cada uma e importa na ordem certa.
         </p>
 
         <div class="warning-box">
-          ⚠️ Sempre importe <strong>todas as planilhas, exportadas no mesmo dia.</strong> A planilha de vacinação (.csv ou .xlsx) atualiza automaticamente o monitoramento de HPV (9 a 14 anos) e as vacinas de rotina apenas da sua microárea.
+          ⚠️ Sempre importe <strong>todas as planilhas, exportadas no mesmo dia</strong> (as 9 de sempre mais a <b>busca ativa de vacinação</b>, que passa a monitorar vacinas e o HPV). Se faltar alguma, os indicadores daquele grupo ficam desatualizados e a conferência de quem saiu do PEC fica incompleta.
         </div>
 
         <button class="btn-selecionar" onclick="const i = document.getElementById('inputArquivosCSV'); i.value = ''; i.click()">
-          📁 Selecionar planilhas (.csv e .xlsx)
+          📁 Selecionar planilhas
         </button>
-        <input type="file" id="inputArquivosCSV" multiple accept=".csv,.xlsx,.xls" onchange="processarFicheiros(this.files)" style="display: none;">
+        <input type="file" id="inputArquivosCSV" multiple accept=".csv,.xlsx,.xls,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,text/csv" onchange="processarFicheiros(this.files)" style="display: none;">
         
         <div id="progressoUpload" style="margin-top: 12px; font-size: 0.82rem; font-weight: 600; text-align: center;"></div>
         
@@ -299,8 +314,9 @@
   </div>
 
   <nav class="tab-bar">
-    <button id="btnTabDash" class="active" onclick="alternarAba('dashboard')"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9zM9 12h6M9 16h4"/></svg><span>Indicadores</span></button>
-    <button id="btnTabAl" onclick="alternarAba('alertas')"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4zM10 21h4"/></svg><span>Ações do Dia</span><span id="badgeAlertas" class="badge-tab" style="display:none;"></span></button>
+    <button id="btnTabAl" class="active" onclick="alternarAba('alertas')"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4zM10 21h4"/></svg><span>Ações do Dia</span><span id="badgeAlertas" class="badge-tab" style="display:none;"></span></button>
+    <button id="btnTabDash" onclick="alternarAba('dashboard')"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4h6v3H9zM9 12h6M9 16h4"/></svg><span>Indicadores</span></button>
+    <button id="btnTabCid" onclick="alternarAba('cidadaos')"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20v-1a5 5 0 0 1 5-5h2a5 5 0 0 1 5 5v1"/><path d="M16 5.2a3.2 3.2 0 0 1 0 5.6M18 14.3A5 5 0 0 1 21 19v1"/></svg><span>Cidadãos</span></button>
     <button id="btnTabUp" onclick="alternarAba('upload')"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.5-2-3.4-2.3.9a7 7 0 0 0-2-1.2L14 3h-4l-.6 2.6a7 7 0 0 0-2 1.2l-2.3-.9-2 3.4 2 1.5A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.5 2 3.4 2.3-.9a7 7 0 0 0 2 1.2L10 21h4l.6-2.6a7 7 0 0 0 2-1.2l2.3.9 2-3.4-2-1.5c.1-.4.1-.8.1-1.2z"/></svg><span>Configurações</span></button>
   </nav>
 
@@ -435,11 +451,13 @@
   <script src="./js/senha.js"></script>
   <script src="./js/resumo.js"></script>
   <script src="./js/acessibilidade.js"></script>
+  <script src="./js/vacinacao.js"></script>
   <script src="./js/retornos.js"></script>
   <script src="./js/medidas.js"></script>
   <script src="./js/visitas.js"></script>
   <script src="./js/mudancas.js"></script>
   <script src="./js/historico.js"></script>
+  <script src="./js/xlsx.js"></script>
   <script src="./js/indicadores.js"></script>
   <script src="./js/interface.js"></script>
 </body>

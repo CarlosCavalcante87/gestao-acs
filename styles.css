@@ -418,3 +418,43 @@ nav.tab-bar button { display: flex; flex-direction: column; align-items: center;
 nav.tab-bar button.active { background: #e0f2fe; color: #075985; box-shadow: none; font-weight: 700; }
 nav.tab-bar .badge-tab { position: absolute; top: 2px; left: 50%; margin: 0 0 0 10px; min-width: 20px; height: 20px; padding: 0 5px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.68rem; }
 nav.tab-bar .badge-tab[style*="display: none"] { display: none !important; }
+
+.vac-bloco { margin-top: 8px; padding: 9px 11px; border-radius: 12px; background: #eff6ff; border: 1px solid #bfdbfe; color: #1e3a8a; font-size: 0.8rem; line-height: 1.4; }
+.vac-bloco small { display: block; margin-top: 4px; color: #475569; font-size: 0.72rem; }
+.al-vacina { background: #eff6ff; border-color: #bfdbfe; color: #1e3a8a; }
+
+/* =====================================================================
+   AÇÕES DO DIA · "HOJE EM FOCO"
+   ===================================================================== */
+.hero-hoje { background: #14532d; color: #ffffff; border-radius: 22px; padding: 20px 18px 18px; margin-bottom: 12px; }
+.hero-data { font-size: 0.84rem; font-weight: 600; color: #bbf7d0; }
+.hero-titulo { font-size: 1.55rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-top: 4px; }
+.hero-kpis { display: flex; gap: 8px; margin-top: 16px; }
+.hero-kpi { flex: 1; min-width: 0; background: rgba(255, 255, 255, 0.13); border-radius: 14px; padding: 10px 12px; }
+.hero-kpi b { display: block; font-size: 1.55rem; font-weight: 800; line-height: 1.1; }
+.hero-kpi span { display: block; font-size: 0.74rem; font-weight: 600; color: #dcfce7; margin-top: 2px; line-height: 1.2; }
+.faixa-ind { display: flex; gap: 8px; overflow-x: auto; padding: 2px 2px 8px; margin-bottom: 4px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.faixa-ind::-webkit-scrollbar { display: none; }
+.faixa-chip { flex: none; min-width: 78px; text-align: left; background: #ffffff; border: 1px solid #e3e8ef; border-radius: 14px; padding: 8px 12px; font: inherit; cursor: pointer; }
+.faixa-chip span { display: block; font-size: 0.74rem; font-weight: 800; color: color-mix(in srgb, var(--cor) 70%, #000); }
+.faixa-chip b { display: block; font-size: 1.25rem; font-weight: 800; color: var(--text); font-family: 'Roboto', 'Inter', sans-serif; }
+.opcoes-hoje { background: #ffffff; border: 1px solid #e3e8ef; border-radius: 14px; margin: 4px 0 8px; }
+.opcoes-hoje summary { cursor: pointer; padding: 12px 14px; font-size: 0.84rem; font-weight: 700; color: #475569; min-height: 44px; display: flex; align-items: center; }
+.opcoes-corpo { padding: 0 14px 14px; }
+#view-alertas .al-grupo { font-size: 1.02rem; font-weight: 800; letter-spacing: -0.01em; color: var(--text); margin: 18px 2px 10px; }
+.al-card { background: #ffffff; border: 1px solid #e3e8ef; border-left: 6px solid #cbd5e1; border-radius: 18px; padding: 14px 14px 12px; margin-bottom: 12px; box-shadow: var(--shadow-sm); }
+.al-card.c-verm { border-left-color: #b91c1c; } .al-card.c-amar { border-left-color: #b45309; } .al-card.c-verde { border-left-color: #15803d; } .al-card.c-azul { border-left-color: #1d4ed8; }
+.al-topo { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+.al-id { min-width: 0; }
+.al-nome { font-size: 1.02rem; font-weight: 700; line-height: 1.25; overflow-wrap: anywhere; }
+.al-sub { font-size: 0.82rem; color: #57534e; margin-top: 2px; line-height: 1.35; }
+.al-pilula { flex: none; padding: 4px 10px; border-radius: 999px; font-size: 0.76rem; font-weight: 700; white-space: nowrap; }
+.p-verm { background: #fee2e2; color: #991b1b; } .p-amar { background: #fef3c7; color: #92400e; } .p-verde { background: #dcfce7; color: #166534; } .p-azul { background: #dbeafe; color: #1e40af; }
+.al-item { display: flex; gap: 8px; align-items: flex-start; margin-top: 10px; font-size: 0.84rem; line-height: 1.4; color: #3f3f46; }
+.al-item.al-retorno { background: #f5f3ff; border-radius: 10px; padding: 8px 10px; color: #4c1d95; }
+.al-item.al-vacina { background: #eff6ff; border-radius: 10px; padding: 8px 10px; color: #1e3a8a; }
+.al-ico { flex: none; }
+.al-acoes { display: flex; gap: 8px; margin-top: 12px; }
+.al-prim { flex: 1; min-height: 48px; border: none; border-radius: 12px; background: #14532d; color: #ffffff; font: inherit; font-weight: 700; font-size: 0.92rem; cursor: pointer; margin: 0; }
+.al-icone { flex: none; width: 48px; height: 48px; border: 1px solid #cbd5c8; border-radius: 12px; background: #ffffff; color: #14532d; display: flex; align-items: center; justify-content: center; }
+.al-link { display: block; width: 100%; min-height: 44px; margin-top: 4px; background: none; border: none; color: #475569; font: inherit; font-size: 0.82rem; font-weight: 600; text-decoration: underline; cursor: pointer; }

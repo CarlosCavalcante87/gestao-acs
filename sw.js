@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gestao-acs-v70';
+const CACHE_NAME = 'gestao-acs-v74';
 const CACHE_FONTES = 'gestao-acs-fontes';
 const RECURSOS = [
   './',
@@ -12,6 +12,8 @@ const RECURSOS = [
   './js/resumo.js',
   './js/acessibilidade.js',
   './js/retornos.js',
+  './js/vacinacao.js',
+  './js/xlsx.js',
   './js/medidas.js',
   './js/visitas.js',
   './js/mudancas.js',
@@ -53,6 +55,7 @@ self.addEventListener('fetch', (e) => {
 
   const url = new URL(e.request.url);
 
+  // Fontes Inter/Roboto (Google Fonts): guarda na primeira vez e usa offline depois
   if (url.hostname === 'fonts.googleapis.com' || url.hostname === 'fonts.gstatic.com') {
     e.respondWith(
       caches.open(CACHE_FONTES).then((cache) =>
@@ -68,6 +71,8 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
+  // Páginas e manifest: sempre tenta a versão nova primeiro (assim as atualizações chegam sozinhas)
+  // e só usa a cópia guardada quando estiver sem internet.
   const ehPagina = e.request.mode === 'navigate' || url.pathname.endsWith('.html') || url.pathname.endsWith('.js') || url.pathname.endsWith('.css') || url.pathname.endsWith('/') || url.pathname.endsWith('manifest.json');
   if (ehPagina) {
     e.respondWith(
@@ -82,6 +87,7 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
+  // Demais arquivos (ícones, imagens): usa a cópia guardada e, na primeira vez, guarda para funcionar offline
   e.respondWith(
     caches.match(e.request).then((res) => res || fetch(e.request).then((resp) => {
       if (resp && resp.ok && url.origin === self.location.origin) {
@@ -93,6 +99,7 @@ self.addEventListener('fetch', (e) => {
   );
 });
 
+// ---------- Lembretes ----------
 function isoLocalSW(d) { const p = n => String(n).padStart(2, '0'); return `${d.getFullYear()}-${p(d.getMonth() + 1)}-${p(d.getDate())}`; }
 
 self.addEventListener('periodicsync', (e) => {
