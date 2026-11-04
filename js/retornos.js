@@ -164,7 +164,7 @@
       if (!todas.length) {
         r.ok = qtd >= 2;
         r.tempo = qtd === 0 ? '⏱ Sem visita registrada' : '';
-        if (!r.ok) r.pend = `Nenhuma visita registrada nos últimos 12 meses: fazer 2 visitas com 30+ dias de intervalo (motivo: "${motivo}")`;
+        if (!r.ok) r.pend = `Visitar agora (2 visitas, 30+ dias entre elas) · motivo: "${motivo}"`;
         return r;
       }
       const janela = somarMeses(hoje, -12);
@@ -172,22 +172,21 @@
       todas.filter(d => d >= janela).forEach(d => { if (!unicas.some(u => u.getTime() === d.getTime())) unicas.push(d); });
       if (unicas.length === 0) {
         r.tempo = '⏱ Sem visita nos últimos 12 meses';
-        r.pend = `Nenhuma visita nos últimos 12 meses (última em ${fmtData(todas[todas.length - 1])}): fazer 2 visitas com 30+ dias de intervalo (motivo: "${motivo}")`;
+        r.pend = `Visitar agora (2 visitas, 30+ dias entre elas) · motivo: "${motivo}"`;
         return r;
       }
       const ult = unicas[unicas.length - 1];
       const minima = somarDias(ult, 30);
-      const quando = minima <= hoje ? 'já pode fazer a 2ª visita (passaram 30 dias)' : `fazer a partir de ${fmtData(minima)}`;
-      const nota = qtd > 2 ? ' — o relatório traz só as 2 últimas datas' : '';
+      const quando = minima <= hoje ? 'Visitar agora' : `Visitar a partir de ${fmtData(minima)}`;
       if (unicas.length >= 2) {
         const pen = unicas[0];   // vale qualquer par de visitas com 30+ dias: compara a mais antiga da janela com a mais recente
         const n = diasEntre(pen, ult);
         r.tempo = `⏱ ${fmtData(pen)} e ${fmtData(ult)} · ${n} dias entre visitas`;
         if (n >= 30) { r.ok = true; r.tempoOk = true; return r; }
-        r.pend = `Só ${n} dia(s) entre as 2 últimas visitas (${fmtData(pen)} e ${fmtData(ult)}), o mínimo é 30: ${quando} (motivo: "${motivo}")${nota}`;
+        r.pend = `${quando} · motivo: "${motivo}"`;
         return r;
       }
       r.tempo = `⏱ Última visita: ${fmtData(ult)}`;
-      r.pend = `Só uma data de visita no relatório (${fmtData(ult)}): fazer outra com 30+ dias de intervalo, ${quando} (motivo: "${motivo}")${nota}`;
+      r.pend = `${quando} · motivo: "${motivo}"`;
       return r;
     }

@@ -566,3 +566,19 @@ header p#subtitulo { white-space: pre-line; line-height: 1.35; }
 .cab-status .cs-txt b { font-size: 0.82rem; }
 .cab-status .cs-txt small { font-size: 0.72rem; }
 .cab-status .cs-ponto { width: 10px; height: 10px; }
+
+/* Número da notificação centralizado na bolinha */
+nav.tab-bar .badge-tab { display: inline-flex !important; align-items: center; justify-content: center; box-sizing: border-box; min-width: 20px; height: 20px; padding: 0 5px; line-height: 1; text-align: center; font-variant-numeric: tabular-nums; }
+nav.tab-bar .badge-tab[style*="display: none"] { display: none !important; }
+
+/* "O que fazer": cada etapa separada da anterior para facilitar a leitura */
+.acao-item + .acao-item { margin-top: 9px; padding-top: 9px; border-top: 1px dashed #fca5a5; }
+.acao-item + .acao-item::before { top: 9px; }
+
+/* Etiqueta da influenza (idosos) dentro da linha de informações */
+.item-cidadao .linha-info .tag-ok { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+.item-cidadao .linha-info .tag-danger { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+
+/* Emojis de condição (diabetes, hipertensão, gestante) ao lado da idade */
+.cond-emoji { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: #f1f5f9; border: 1px solid #e2e8f0; font-size: 0.8rem; line-height: 1; }
+.tag-sem { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }

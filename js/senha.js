@@ -3,7 +3,7 @@
     // SENHA ÚNICA: bloqueia o app e protege o backup
     // =========================================================================
     const SENHA_KEY = 'guia_senha';
-    let senhaSessao = null, tentativasSenha = 0, bloqueadoAte = 0, ocultoDesde = 0;
+    let senhaSessao = null, tentativasSenha = 0, bloqueadoAte = 0;
     function senhaDefinida() { try { return !!localStorage.getItem(SENHA_KEY); } catch (e) { return false; } }
     function cryptoOk() { return !!(window.crypto && crypto.subtle && window.isSecureContext); }
     async function hashSenha(senha, salt, iter) {
@@ -42,9 +42,12 @@
       document.documentElement.classList.remove('travado');
       atualizarInterface(); atualizarCardSenha(); alternarAba('alertas');
     }
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) ocultoDesde = Date.now();
-      else if (senhaDefinida() && ocultoDesde && Date.now() - ocultoDesde > 60000) travarApp();
-    });
+    // Bloqueio por inatividade: 1 hora sem tocar no app (também vale se ele ficou em segundo plano)
+    const LIMITE_INATIVIDADE = 60 * 60 * 1000;
+    let ultimaAtividade = Date.now();
+    function conferirInatividade() { if (senhaDefinida() && !document.documentElement.classList.contains('travado') && Date.now() - ultimaAtividade > LIMITE_INATIVIDADE) travarApp(); }
+    ['pointerdown', 'keydown', 'touchstart', 'scroll', 'wheel'].forEach(ev => document.addEventListener(ev, () => { if (!document.documentElement.classList.contains('travado')) ultimaAtividade = Date.now(); }, { passive: true, capture: true }));
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) conferirInatividade(); });
+    setInterval(conferirInatividade, 30000);
 
     let modoSenha = 'definir';

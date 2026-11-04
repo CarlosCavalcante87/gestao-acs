@@ -210,3 +210,21 @@
       }
       if (c.c7_base) montarC7(c);
     }
+
+    // Influenza das pessoas idosas (60 anos ou mais), com ou sem lista de idosos: em dia, em atraso ou sem informação.
+    // Fontes: lista "Pessoa idosa" (c.infC6) e relatório de busca ativa de vacinação (c.vacAtraso / c.vacCob).
+    function estadoInfluenza(c) {
+      const atraso = (c.vacAtraso || []).some(x => /influenza/.test(normalizarTexto(x.v || '')));
+      const lista = c.infC6;
+      if (atraso || (lista && lista.pend)) return { tipo: 'atrasada' };
+      if (lista) return { tipo: 'ok', txt: lista.txt && lista.txt !== '-' ? lista.txt : '' };
+      if (c.vacCob && c.vacCob.todas) return { tipo: 'ok', txt: '' };
+      return { tipo: 'sem' };
+    }
+    function badgeInfluenza(c) {
+      const anos = c.dt_nascimento ? idadeEmAnos(c.dt_nascimento) : null;
+      if (anos === null || anos < 60) return '';
+      const st = estadoInfluenza(c);
+      const t = st.tipo === 'ok' ? ['tag-ok', '✓ Influenza em dia'] : st.tipo === 'atrasada' ? ['tag-danger', '✗ Influenza em atraso'] : ['tag-sem', '? Influenza sem informação'];
+      return `<span class="tag ${t[0]}" title="${escHtml(st.txt || 'Vacina influenza')}">${t[1]} 💉</span>`;
+    }

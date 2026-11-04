@@ -57,8 +57,8 @@
         } else if (c.c3_tempo_rep) c.c3_tempo = c.c3_tempo_rep;
         c.c3Ok = (visPn >= 3 && visPu >= 1 && c.ex.C3.okExtra);
         c.pendencias = c.pendencias.filter(p => !p.startsWith('C3:'));
-        if (visPn < 3) c.pendencias.push(`C3: Visitas Pré-Natal pendentes (${visPn}/3)` + (c.c3_ult ? ` — última visita há ${c.c3_ult}; espaçar as visitas ao longo da gestação (motivo: "Gestante")` : ` (motivo: "Gestante")`));
-        if (visPu < 1) c.pendencias.push('C3: Visita no Puerpério pendente (0/1): visitar a mãe e o bebê até o 7º dia após o parto (motivo: "Puérpera"), articular a consulta de puerpério na UBS em até 42 dias e atualizar o cadastro do recém-nascido');
+        if (visPn < 3) c.pendencias.push(`C3: Visitar (pré-natal ${visPn}/3) · motivo: "Gestante"` + (c.c3_ult ? ` · última há ${c.c3_ult}` : ''));
+        if (visPu < 1) c.pendencias.push('C3: Visitar a mãe e o bebê até o 7º dia após o parto · motivo: "Puérpera"');
         c.ex.C3.pend.forEach(p => c.pendencias.push(p));
       }
     }

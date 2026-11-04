@@ -26,16 +26,15 @@
       }
       r.ok = ok1 && ok2;
       r.tempoOk = r.ok;
-      const nota = qtd > 2 ? ` — o relatório traz só as 2 primeiras datas (há ${qtd} visitas): confira se alguma cai nesse período` : '';
-      const janela2 = `entre ${fmtData(ini2)} e ${fmtData(lim2)}`;
+            const janela2 = `entre ${fmtData(ini2)} e ${fmtData(lim2)}`;
       if (!ok1) {
-        if (!v1) r.pend.push(hoje <= lim1 ? `1ª visita (motivo: "Recém-nascido"): fazer até ${fmtData(lim1)} (30 dias de vida)` : `1ª visita não consta no relatório e o prazo (30 dias de vida) terminou em ${fmtData(lim1)}`);
-        else r.pend.push(`1ª visita foi aos ${d1} dias de vida, fora do prazo (até 30 dias)`);
+        if (!v1) r.pend.push(hoje <= lim1 ? `Visitar até ${fmtData(lim1)} · motivo: "Recém-nascido"` : `1ª visita não registrada (prazo terminou em ${fmtData(lim1)})`);
+        else r.pend.push(`1ª visita foi aos ${d1} dias de vida (fora do prazo de 30 dias)`);
       }
       if (!ok2) {
-        if (!v2) r.pend.push(hoje <= lim2 ? `2ª visita (motivo: "Criança"): fazer ${janela2} (depois dos 30 dias e até 6 meses de vida)${nota}` : `2ª visita não consta no relatório e o prazo (6 meses de vida) terminou em ${fmtData(lim2)}${nota}`);
-        else if (d2 <= 30) r.pend.push(hoje <= lim2 ? `2ª visita foi aos ${d2} dias de vida (antes do 31º dia, não conta): fazer outra ${janela2}${nota}` : `2ª visita foi aos ${d2} dias de vida (não conta) e o prazo de 6 meses terminou em ${fmtData(lim2)}${nota}`);
-        else r.pend.push(`2ª visita foi aos ${d2} dias de vida, depois dos 6 meses: fora do prazo${nota}`);
+        if (!v2) r.pend.push(hoje <= lim2 ? `Visitar ${janela2} · motivo: "Criança"` : `2ª visita não registrada (prazo terminou em ${fmtData(lim2)})`);
+        else if (d2 <= 30) r.pend.push(hoje <= lim2 ? `Visitar ${janela2} (a visita aos ${d2} dias não conta) · motivo: "Criança"` : `2ª visita aos ${d2} dias não conta (prazo terminou em ${fmtData(lim2)})`);
+        else r.pend.push(`2ª visita foi aos ${d2} dias de vida (fora do prazo de 6 meses)`);
       }
       return r;
     }
@@ -377,8 +376,8 @@ function idadeEmAnos(dtStr) {
                   cid.c3_tempo = { texto: temUlt ? `⏱ Última visita há ${ultTxt}` : '⏱ Sem visita domiciliar registrada', ok: (visPn >= 3 && visPuerp >= 1) || (ultDias !== null && ultDias < 30) };
                   cid.c3_vis_pn = visPn; cid.c3_vis_puerp = visPuerp; cid.c3_dpp = extrairDatas(reg["DPP (DUM)"]).length ? reg["DPP (DUM)"] : (reg["DPP (ecografia obstétrica)"] || ""); cid.c3Ok = (visPn >= 3 && visPuerp >= 1 && consPn >= 6 && odonto >= 1 && cons12sem >= 1);
                   cid.pendencias = cid.pendencias.filter(p => !p.startsWith("C3:"));
-                  if (visPn < 3) cid.pendencias.push(`C3: Visitas Pré-Natal pendentes (${visPn}/3)` + (temUlt ? ` — última visita há ${ultTxt}; espaçar as visitas ao longo da gestação (motivo: "Gestante")` : ` (motivo: "Gestante")`));
-                  if (visPuerp < 1) cid.pendencias.push('C3: Visita no Puerpério pendente (0/1): visitar a mãe e o bebê até o 7º dia após o parto (motivo: "Puérpera"), articular a consulta de puerpério na UBS em até 42 dias e atualizar o cadastro do recém-nascido');
+                  if (visPn < 3) cid.pendencias.push(`C3: Visitar (pré-natal ${visPn}/3) · motivo: "Gestante"` + (temUlt ? ` · última há ${ultTxt}` : ''));
+                  if (visPuerp < 1) cid.pendencias.push('C3: Visitar a mãe e o bebê até o 7º dia após o parto · motivo: "Puérpera"');
                   if (cons12sem === 0) cid.pendencias.push("C3: Busca Ativa - Captação precoce (<12 semanas)");
                   if (consPn < 6) cid.pendencias.push(`C3: Busca Ativa - Consultas Pré-Natal (${consPn}/6)`);
                   if (odonto < 1) cid.pendencias.push("C3: Busca Ativa - Avaliação Odontológica pendente");
@@ -431,6 +430,7 @@ function idadeEmAnos(dtStr) {
                   const mEnf = parseInt(reg["Meses desde o último atendimento de enfermagem"]) || 99;
                   const consAnual = (mMed <= 12 || mEnf <= 12);
                   
+                  cid.infC6 = { pend: infPendente, txt: inf };   // situação da influenza segundo a lista de pessoa idosa
                   cid.c6_visitas = visIdo; 
                   cid.c6_tempo = { texto: av6.tempo, ok: av6.tempoOk };
                   cid.c6_vis_txt = reg["Últimas visitas domiciliares"] || "";
@@ -731,6 +731,7 @@ function idadeEmAnos(dtStr) {
         // Ordem: metas atingidas (verde), Bolsa Família e, por último, as pendências (vermelho)
         let tagsHtml = blocosOkHtml;
         tagsHtml += blocosPendHtml;
+        { const inf = badgeInfluenza(c); if (inf) tagsHtml += `<div class="bloco-meta">${inf}</div>`; }   // influenza (idosos), no mesmo campo das etiquetas C1 a C7
         const pendenciasHtml = '';
 
         const urlWa = linkWhatsApp(c.telefone);
@@ -751,7 +752,11 @@ function idadeEmAnos(dtStr) {
         let perfilBadge = '';
         if (anosC !== null && anosC < 10 && !(c.indicadores && c.indicadores['C2'])) perfilBadge += '<span class="tag tag-info">👶 Criança · fora do C2</span>';
         if (anosC !== null && anosC >= 60 && !(c.indicadores && c.indicadores['C6'])) perfilBadge += '<span class="tag tag-info">🧓 Idoso · fora do C6</span>';
-        const linhaInfoHtml = (idadeBadge || bfBadge || perfilBadge) ? `<div class="linha-info">${idadeBadge}${bfBadge}${perfilBadge}</div>` : '';
+        // Condições do cidadão (emojis logo após a idade): diabetes, hipertensão, gestação/puerpério
+        const indC = c.indicadores || {};
+        const condicoesBadge = [['C4', '🩸', 'Diabetes'], ['C5', '❤️', 'Hipertensão'], ['C3', '🤰', 'Gestante / puérpera']]
+          .filter(([k]) => indC[k]).map(([k, em, nome]) => `<span class="cond-emoji" role="img" title="${nome}" aria-label="${nome}">${em}</span>`).join('');
+        const linhaInfoHtml = (idadeBadge || condicoesBadge || bfBadge || perfilBadge) ? `<div class="linha-info">${idadeBadge}${condicoesBadge}${bfBadge}${perfilBadge}</div>` : '';
         htmlLista += `
           <div class="item-cidadao ${temPend ? 'tem-pend' : 'em-dia'}">
             <div class="topo">
