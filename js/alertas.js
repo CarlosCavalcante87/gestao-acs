@@ -23,9 +23,17 @@
         const ind = c.indicadores || {};
         const nasc = c.dt_nascimento ? parseDataJS(c.dt_nascimento) : null;
         const temNasc = !!nasc && !isNaN(nasc.getTime());
-        const add = (data, tipo, indic, texto) => {
+        // textoAtraso: quando informado, o alerta que já passou continua na lista como "Atrasado" até o ACS marcar "Feito"
+        const add = (data, tipo, indic, texto, textoAtraso) => {
           const dias = diasEntre(hoje, iniDia(data));
-          if (dias < 0 || dias > limite) return;
+          if (dias > limite) return;
+          if (dias < 0) {
+            if (!textoAtraso) return;
+            const afKey = `${indic}|${tipo}|${isoLocal(iniDia(data))}`;
+            if (c.alertasFeitos && c.alertasFeitos[afKey]) return;
+            out.push({ chave, dias: 0, data: iniDia(data), tipo, ind: indic, texto: textoAtraso, atrasado: true, afKey });
+            return;
+          }
           out.push({ chave, dias, data: iniDia(data), tipo, ind: indic, texto });
         };
         const pend = (pref, txt) => (c.pendencias || []).some(p => p.startsWith(pref + ':') && p.includes(txt));
@@ -86,7 +94,8 @@
             add(somarMeses(pen, 12), 'prazo', k, `${nomeInd}: a visita de ${fmtData(pen)} sai da janela de 12 meses; fazer nova visita (30+ dias depois de ${fmtData(ult)})`);
           } else {
             add(somarMeses(ult, 12), 'prazo', k, `${nomeInd}: a visita de ${fmtData(ult)} perde a validade (12 meses); falta outra com 30+ dias de intervalo`);
-            add(somarDias(ult, 30), 'janela', k, `${nomeInd}: a 2ª visita passa a valer a partir de ${fmtData(somarDias(ult, 30))} (30 dias depois de ${fmtData(ult)})`);
+            add(somarDias(ult, 30), 'janela', k, `${nomeInd}: a 2ª visita passa a valer a partir de ${fmtData(somarDias(ult, 30))} (30 dias depois de ${fmtData(ult)})`,
+              `${nomeInd}: a 2ª visita já valia desde ${fmtData(somarDias(ult, 30))} (30 dias depois de ${fmtData(ult)}) e ainda não foi registrada`);
           }
         });
 
@@ -138,6 +147,16 @@
     const TIPO_ALERTA = { prazo: '⏳', faixa: '📅', janela: '🔓', aniv: '🎉', retorno: '🔁', vacina: '💉' };
     function textoQuando(dias) { return dias === 999 ? 'Em atraso' : dias === 0 ? 'Hoje' : dias === 1 ? 'Amanhã' : `em ${dias} dias`; }
 
+    // Marca um alerta atrasado como feito (some da lista; se a data mudar, um novo alerta pode aparecer)
+    function marcarAlertaFeito(chave, afKey) {
+      const c = BASE_DADOS.cidadaos[chave]; if (!c || !afKey) return;
+      c.alertasFeitos = c.alertasFeitos || {}; c.alertasFeitos[afKey] = isoLocal(new Date());
+      salvarBaseLocal(); atualizarInterface(); avisoToast('Marcado como feito.');
+    }
+    document.addEventListener('click', (e) => {
+      const b = e.target.closest && e.target.closest('.btn-al-feito'); if (b) marcarAlertaFeito(b.getAttribute('data-chave'), b.getAttribute('data-k'));
+    });
+
     function definirHorizonteAlertas(n) {
       horizonteAlertas = n;
       try { localStorage.setItem('guia_horizonte', String(n)); } catch (e) {}
@@ -145,7 +164,7 @@
     }
 
     let modoAlertas = 'urgencia';
-    try { if (localStorage.getItem('guia_modo_alertas') === 'rua') modoAlertas = 'rua'; } catch (e) {}
+    try { const mSalvo = localStorage.getItem('guia_modo_alertas'); if (mSalvo === 'rua' || mSalvo === 'aniv') modoAlertas = mSalvo; } catch (e) {}
     function definirModoAlertas(m) { modoAlertas = m; try { localStorage.setItem('guia_modo_alertas', m); } catch (e) {} atualizarAlertas(); }
 
     function pilulaAlerta(itens) {
@@ -167,6 +186,7 @@
       return `<div class="al-card ${cCls}">
         <div class="al-topo"><div class="al-id"><div class="al-nome">${escHtml(c.nome)}</div><div class="al-sub">${escHtml(sub)}</div></div><span class="al-pilula ${pCls}">${pTxt}</span></div>
         ${itens.map(a => `<div class="al-item al-${a.tipo}"><span class="al-ico" aria-hidden="true">${TIPO_ALERTA[a.tipo]}</span><span class="al-texto"><b>${a.ind}</b> · ${escHtml(a.texto)}</span></div>`).join('')}
+        ${itens.filter(a => a.afKey).map(a => `<button class="btn-al-feito" data-chave="${k}" data-k="${escHtml(a.afKey)}">✓ Feito (${escHtml(a.ind)})</button>`).join('')}
         ${itens.filter(a => a.tipo === 'retorno').map(a => `<button class="btn-ret-feito grande" data-chave="${k}" data-i="${a.ri}">✓ Retorno feito (${a.data.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })})</button>`).join('')}
         <div class="al-acoes">
           ${podeVisita ? `<button class="btn-visita al-prim" data-chave="${k}">Registrar visita</button>` : `<button class="al-prim btn-abrir" data-chave="${k}">Abrir cartão do cidadão</button>`}
@@ -190,11 +210,12 @@
     }
 
     function atualizarAlertas() {
-      document.getElementById('chipModoUrg').className = 'chip' + (modoAlertas === 'urgencia' ? ' active' : '');
-      document.getElementById('chipModoRua').className = 'chip' + (modoAlertas === 'rua' ? ' active' : '');
+      document.getElementById('chipModoUrg').className = 'seg-btn' + (modoAlertas === 'urgencia' ? ' active' : '');
+      document.getElementById('chipModoRua').className = 'seg-btn' + (modoAlertas === 'rua' ? ' active' : '');
+      document.getElementById('chipModoAniv').className = 'seg-btn' + (modoAlertas === 'aniv' ? ' active' : '');
       const tem = Object.keys(BASE_DADOS.cidadaos).length > 0;
-      document.getElementById('chipAl7').className = 'chip' + (horizonteAlertas === 7 ? ' active' : '');
-      document.getElementById('chipAl15').className = 'chip' + (horizonteAlertas === 15 ? ' active' : '');
+      document.getElementById('chipAl7').className = 'seg-btn' + (horizonteAlertas === 7 ? ' active' : '');
+      document.getElementById('chipAl15').className = 'seg-btn' + (horizonteAlertas === 15 ? ' active' : '');
 
       const grupos7 = tem ? agruparAlertas(gerarAlertas(7)) : [];
       atualizarHero(tem, grupos7);
@@ -203,15 +224,22 @@
       badge.style.display = grupos7.length ? 'inline-block' : 'none';
 
       const alvo = document.getElementById('listaAlertas');
+      const anivsLista = tem ? gerarAniversarios(horizonteAlertas) : [];
+      const gruposCnt = tem ? agruparAlertas(gerarAlertas(horizonteAlertas, true)) : [];
+      document.getElementById('cntUrg').textContent = gruposCnt.length ? '(' + gruposCnt.length + ')' : '';
+      document.getElementById('cntAniv').textContent = anivsLista.length ? '(' + anivsLista.length + ')' : '';
       if (!tem) { alvo.innerHTML = '<p style="text-align:center; padding: 24px; color: var(--text-muted); font-size: 0.88rem;">Importe as planilhas na aba Configurações para ver as ações do dia.</p>'; return; }
-      const grupos = agruparAlertas(gerarAlertas(horizonteAlertas, true));
-      if (!grupos.length) { alvo.innerHTML = `<p style="text-align:center; padding: 24px; color: var(--text-muted); font-size: 0.88rem;">🎉 Nenhuma ação urgente nos próximos ${horizonteAlertas} dias.</p>`; }
+      const grupos = gruposCnt;
+      if (modoAlertas === 'aniv') { alvo.innerHTML = ''; }
+      else if (!grupos.length) { alvo.innerHTML = `<p style="text-align:center; padding: 24px; color: var(--text-muted); font-size: 0.88rem;">🎉 Nenhuma ação urgente nos próximos ${horizonteAlertas} dias.</p>`; }
       else {
+        const temAtraso = g => g.itens.some(a => a.atrasado);
         const secoes = [
-          { titulo: 'Hoje', filtro: g => g.min === 0 },
-          { titulo: 'Próximos 7 dias', filtro: g => g.min >= 1 && g.min <= 7 },
-          { titulo: 'De 8 a 15 dias', filtro: g => g.min >= 8 && g.min < 999 },
-          { titulo: 'Busca ativa de vacinação', filtro: g => g.min === 999 }
+          { titulo: 'Atrasados', filtro: temAtraso },
+          { titulo: 'Hoje', filtro: g => g.min === 0 && !temAtraso(g) },
+          { titulo: 'Próximos 7 dias', filtro: g => g.min >= 1 && g.min <= 7 && !temAtraso(g) },
+          { titulo: 'De 8 a 15 dias', filtro: g => g.min >= 8 && g.min < 999 && !temAtraso(g) },
+          { titulo: 'Busca ativa de vacinação', filtro: g => g.min === 999 && !temAtraso(g) }
         ];
         let html = '';
         if (modoAlertas === 'rua') {
@@ -238,9 +266,10 @@
         }
       }
       const faltaDados = Object.values(BASE_DADOS.cidadaos).some(c => c.indicadores && ((!c.ex && ['C2','C3','C4','C5','C6'].some(k => c.indicadores[k])) || (c.indicadores.C4 && c.c4_vis_txt === undefined) || (c.indicadores.C5 && c.c5_vis_txt === undefined) || (c.indicadores.C6 && c.c6_vis_txt === undefined) || (c.indicadores.C2 && c.c2_ok1 === undefined)));
-      if (faltaDados) alvo.innerHTML = '<div class="card" style="border-left:5px solid #f59e0b;"><b>⚠️ Reimporte as planilhas</b><p class="al-ajuda">Os dados guardados no app são de uma versão anterior e não têm as datas das visitas. Vá na aba <b>Configurações</b>, importe os 9 relatórios de novo e os lembretes de visita voltam a aparecer aqui.</p></div>' + alvo.innerHTML;
-      const anivs = gerarAniversarios(horizonteAlertas);
-      if (anivs.length) {
+      if (faltaDados && modoAlertas !== 'aniv') alvo.innerHTML = '<div class="card" style="border-left:5px solid #f59e0b;"><b>⚠️ Reimporte as planilhas</b><p class="al-ajuda">Os dados guardados no app são de uma versão anterior e não têm as datas das visitas. Vá na aba <b>Configurações</b>, importe os 9 relatórios de novo e os lembretes de visita voltam a aparecer aqui.</p></div>' + alvo.innerHTML;
+      const anivs = anivsLista;
+      if (modoAlertas === 'aniv' && !anivs.length) alvo.innerHTML = `<p style="text-align:center; padding: 24px; color: var(--text-muted); font-size: 0.88rem;">Nenhum aniversariante nos próximos ${horizonteAlertas} dias.</p>`;
+      if (modoAlertas === 'aniv' && anivs.length) {
         let ha = `<div class="al-grupo">🎉 Aniversariantes · ${anivs.length}</div>`;
         anivs.forEach(a => {
           const c = a.c, w = linkWhatsApp(c.telefone);

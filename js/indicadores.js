@@ -422,7 +422,9 @@ function idadeEmAnos(dtStr) {
                   const visIdo = parseInt(reg["Quantidade de visitas domiciliares"]) || 0;
                   const av6 = avaliarVisitas30(reg["Últimas visitas domiciliares"], visIdo, "Pessoa idosa");
                   
-                  const inf = reg["Influenza (últimos 12 meses)"] || reg["Vacina influenza"] || reg["Influenza"] || "";
+                  // Procura a coluna de influenza pelo nome (ignora a pentavalente, que cita "Haemophilus Influenza B")
+                  const chaveInf = Object.keys(reg).find(k => /influenza/i.test(k) && !/haemophilus|difteria/i.test(k));
+                  const inf = (chaveInf ? reg[chaveInf] : "") || "";
                   const infPendente = (inf === "" || inf === "-" || inf.toLowerCase().includes("não") || inf.toLowerCase().includes("sem registro") || inf.toLowerCase().includes("atrasad"));
                   
                   const mMed = parseInt(reg["Meses desde o último atendimento médico"]) || 99;
@@ -562,6 +564,7 @@ function idadeEmAnos(dtStr) {
 
       Object.values(BASE_DADOS.cidadaos).forEach(aplicarVisitasApp);
       try { const cmp = compararImportacao(fotoAntes, fotoIndicadores()); if (cmp) localStorage.setItem('guia_mudancas', JSON.stringify(cmp)); } catch (e) {}
+      try { localStorage.setItem('guia_ultima_importacao', JSON.stringify({ ts: Date.now(), arquivos: files.length })); } catch (e) {}
       await salvarBaseLocal();
       await registrarHistorico();
       prog.style.color = "#10b981"; prog.innerHTML = "";
@@ -574,6 +577,7 @@ function idadeEmAnos(dtStr) {
       
       window.__totalVinculados = lista.length;
       atualizarSubtitulo();
+      if (typeof atualizarStatusCab === 'function') atualizarStatusCab();
       document.getElementById('bf-tot').innerText = totalBf;
 
       const selectRua = document.getElementById('filtroRua');

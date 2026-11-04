@@ -61,3 +61,53 @@
       atualizarInterface();
       alternarAba('alertas');
     }
+
+
+    // ---------- STATUS DOS DADOS NO CABEÇALHO (última importação + resumo do banco) ----------
+    function lerImportacao() { try { return JSON.parse(localStorage.getItem('guia_ultima_importacao')) || null; } catch (e) { return null; } }
+    function fmtDM(ts) { const d = new Date(ts); return String(d.getDate()).padStart(2, '0') + '/' + String(d.getMonth() + 1).padStart(2, '0'); }
+    function fmtHM(ts) { const d = new Date(ts); return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0'); }
+    function fmtHa(ts) {
+      const min = Math.max(0, Math.round((Date.now() - ts) / 60000));
+      if (min < 1) return 'agora mesmo'; if (min < 60) return `há ${min} min`;
+      const h = Math.round(min / 60); if (h < 24) return `há ${h} h`;
+      const d = Math.round(h / 24); return `há ${d} ${d === 1 ? 'dia' : 'dias'}`;
+    }
+    function atualizarStatusCab() {
+      const l1 = document.getElementById('csL1'); if (!l1) return;
+      const total = Object.keys(BASE_DADOS.cidadaos).length, imp = lerImportacao(), g = window.__gravacao;
+      const ponto = document.getElementById('csPonto');
+      if (!total) { l1.textContent = 'Sem dados'; document.getElementById('csL2').textContent = 'importe as planilhas'; ponto.className = 'cs-ponto'; }
+      else {
+        const erro = g && g.erro;
+        l1.textContent = erro ? 'Não salvo' : 'Salvo';
+        document.getElementById('csL2').textContent = imp ? 'Importado ' + fmtDM(imp.ts) + ' · ' + fmtHM(imp.ts) : 'importação sem data';
+        ponto.className = 'cs-ponto ' + (erro ? 'erro' : 'ok');
+      }
+      if (!document.getElementById('popStatus').hidden) renderPopStatus();
+    }
+    function renderPopStatus() {
+      const pop = document.getElementById('popStatus');
+      const total = Object.keys(BASE_DADOS.cidadaos).length, imp = lerImportacao(), g = window.__gravacao;
+      let st = {}; try { st = fotoIndicadores().st || {}; } catch (e) {}
+      const chips = IND_LISTA.filter(k => st[k] && st[k].tot).map(k => `<span class="ps-chip" style="--cor: var(--${k.toLowerCase()})"><b>${k}</b> ${st[k].tot}</span>`).join('');
+      const linha = (r, v) => `<div class="ps-lin"><span>${r}</span><b>${v}</b></div>`;
+      pop.innerHTML = `
+        ${linha('Última importação', imp ? `${fmtDM(imp.ts)}/${new Date(imp.ts).getFullYear()} às ${fmtHM(imp.ts)} <small>(${fmtHa(imp.ts)})</small>` : 'sem registro')}
+        ${linha('Gravado neste aparelho', g ? (g.erro ? 'falhou ⚠️' : `às ${fmtHM(g.ts)}`) : (total ? 'dados carregados' : '—'))}
+        ${linha('Cidadãos · Ruas', `${total} · ${BASE_DADOS.ruas ? BASE_DADOS.ruas.size : 0}`)}
+        ${chips ? `<div class="ps-chips">${chips}</div>` : ''}
+        <div class="ps-acoes">
+          <button type="button" onclick="fecharPopStatus(); alternarAba('upload')">Importar</button>
+          <button type="button" class="prim" onclick="salvarBaseLocal().then(() => avisoToast && avisoToast('Dados salvos.'))">Salvar agora</button>
+        </div>`;
+    }
+    function alternarPopStatus(ev) {
+      if (ev) ev.stopPropagation();
+      const pop = document.getElementById('popStatus');
+      if (!pop.hidden) { fecharPopStatus(); return; }
+      renderPopStatus(); pop.hidden = false; document.getElementById('cabStatus').setAttribute('aria-expanded', 'true');
+    }
+    function fecharPopStatus() { document.getElementById('popStatus').hidden = true; document.getElementById('cabStatus').setAttribute('aria-expanded', 'false'); }
+    document.addEventListener('click', (e) => { const pop = document.getElementById('popStatus'); if (pop && !pop.hidden && !pop.contains(e.target)) fecharPopStatus(); });
+    window.addEventListener('DOMContentLoaded', atualizarStatusCab);

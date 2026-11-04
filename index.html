@@ -36,11 +36,16 @@
     <h1 class="so-leitor">Guia de Visitas TACS</h1>
     <div class="cab-linha">
       <div class="cab-texto">
-        <p id="subtitulo">Aguardando dados...</p>
         <div class="cab-saudacao" id="saudacao">Guia de Visitas TACS</div>
+        <p id="subtitulo">Aguardando dados...</p>
       </div>
+      <button type="button" class="cab-status" id="cabStatus" onclick="alternarPopStatus(event)" aria-label="Estado dos dados salvos" aria-expanded="false">
+        <span class="cs-ponto" id="csPonto"></span>
+        <span class="cs-txt"><b id="csL1">Sem dados</b><small id="csL2">importe as planilhas</small></span>
+      </button>
       <button type="button" class="perfil-avatar" id="perfilLinha" onclick="abrirModalPerfil()" aria-label="Editar nome e microárea">?</button>
     </div>
+    <div class="pop-status" id="popStatus" hidden></div>
   </header>
 
   <div class="container">
@@ -132,7 +137,7 @@
             <div class="rodape-card"><span class="status-meta" id="c6-pend">Aguardando...</span></div>
           </div>
           <div class="barra-fundo"><div class="barra-progresso" id="c6-bar"></div></div>
-          <div class="regra-acs">Meta: 2 Visitas (30+ dias entre elas) + Vacina Influenza</div>
+          <div class="regra-acs">Meta: 2 Visitas (30+ dias entre elas) + Consulta no ano + Vacina Influenza (12 meses)</div>
         </div>
 
         <div class="card-meta" id="card-c7" onclick="abrirIndicador('C7')">
@@ -216,22 +221,40 @@
         </div>
       </section>
       <div class="faixa-ind" id="faixaInd"></div>
+      <section class="card-acoes" aria-label="Ações e Prazos do Dia">
+        <div class="ca-titulo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 17V11a6 6 0 0 1 12 0v6l2 2H4zM10 21h4"/></svg>
+          <h2>Ações e Prazos do Dia</h2>
+        </div>
+        <p class="ca-sub">Prazos de visitas a vencer, mudanças de faixas etárias e retornos agendados.</p>
+        <div class="seg" role="tablist" aria-label="Período">
+          <button class="seg-btn active" id="chipAl7" onclick="definirHorizonteAlertas(7)">Próximos 7 dias</button>
+          <button class="seg-btn" id="chipAl15" onclick="definirHorizonteAlertas(15)">Próximos 15 dias</button>
+        </div>
+        <div class="seg seg-modo" id="alModo" role="tablist" aria-label="Visualização">
+          <button class="seg-btn" id="chipModoUrg" onclick="definirModoAlertas('urgencia')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span>Por Urgência <b id="cntUrg"></b></span>
+          </button>
+          <button class="seg-btn" id="chipModoRua" onclick="definirModoAlertas('rua')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 3 10.5l7.5 3L13.5 21z"/></svg>
+            <span>Roteiro por Rua</span>
+          </button>
+          <button class="seg-btn" id="chipModoAniv" onclick="definirModoAlertas('aniv')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21h16v-7H4zM12 14V8M12 8c-1.2 0-2-.8-2-2 0-1 1-2 2-3 1 1 2 2 2 3 0 1.2-.8 2-2 2zM4 17.5c2 1.5 4 1.5 8 0s6-1.5 8 0"/></svg>
+            <span>Aniversários <b id="cntAniv"></b></span>
+          </button>
+        </div>
+      </section>
       <details class="opcoes-hoje">
-        <summary>Opções da lista e lembretes</summary>
+        <summary>Lembretes no celular</summary>
         <div class="opcoes-corpo">
-          <div class="al-horizonte">
-            <button class="chip active" id="chipAl7" onclick="definirHorizonteAlertas(7)">Próximos 7 dias</button>
-            <button class="chip" id="chipAl15" onclick="definirHorizonteAlertas(15)">Próximos 15 dias</button>
-          </div>
-          <div class="al-horizonte" id="alModo">
-            <button class="chip" id="chipModoUrg" onclick="definirModoAlertas('urgencia')">⏳ Por urgência</button>
-            <button class="chip" id="chipModoRua" onclick="definirModoAlertas('rua')">📍 Roteiro por rua</button>
-          </div>
           <button class="btn" id="btnLembretes" onclick="ativarLembretes()">🔔 Ativar lembretes no celular</button>
           <div id="statusLembretes" class="al-status"></div>
         </div>
       </details>
       <div id="listaAlertas"></div>
+      <div class="app-versao" aria-label="Versão do sistema"></div>
     </div>
 
     <!-- Tela 3: Importar e Sincronizar -->
@@ -310,6 +333,11 @@
       <div class="card">
         <h3>Base de Dados Local</h3>
         <button class="btn btn-danger" onclick="limparBase()">Limpar Todos os Dados</button>
+      </div>
+
+      <div class="card sobre-app">
+        <h3>Sobre o sistema</h3>
+        <div class="app-versao app-versao-grande"></div>
       </div>
     </div>
   </div>

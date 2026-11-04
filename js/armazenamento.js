@@ -28,10 +28,11 @@
     let filaSalvar = Promise.resolve();
     function salvarBaseLocal() {
       const foto = { cidadaos: BASE_DADOS.cidadaos, ruas: Array.from(BASE_DADOS.ruas).sort() };
-      filaSalvar = filaSalvar.then(() => BaseIDB.set('base', JSON.parse(JSON.stringify(foto)))).catch((e) => {
+      filaSalvar = filaSalvar.then(() => BaseIDB.set('base', JSON.parse(JSON.stringify(foto))).then(() => { window.__gravacao = { ts: Date.now(), onde: 'IndexedDB', erro: false }; })).catch((e) => {
         console.error('IndexedDB falhou, usando localStorage', e);
-        try { localStorage.setItem('gestao_acs_dados', JSON.stringify(foto)); } catch (e2) { avisoToast && avisoToast('⚠️ Não foi possível salvar os dados neste aparelho.'); }
-      });
+        try { localStorage.setItem('gestao_acs_dados', JSON.stringify(foto)); window.__gravacao = { ts: Date.now(), onde: 'localStorage', erro: false }; }
+        catch (e2) { window.__gravacao = { ts: Date.now(), onde: '', erro: true }; avisoToast && avisoToast('⚠️ Não foi possível salvar os dados neste aparelho.'); }
+      }).then(() => { if (typeof atualizarStatusCab === 'function') atualizarStatusCab(); });
       return filaSalvar;
     }
     async function carregarBaseSalva() {

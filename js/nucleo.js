@@ -1,4 +1,15 @@
 /* Estado da base, perfil, utilidades de data e telas */
+    // Versão do sistema: ao publicar uma nova, altere aqui E em CACHE_NAME no sw.js (mesmo número)
+    const APP_VERSAO = 'v84';
+    const APP_DEV = 'Carlos Cavalcante';
+    function mostrarVersaoApp() {
+      document.querySelectorAll('.app-versao').forEach(el => {
+        el.innerHTML = el.classList.contains('app-versao-grande')
+          ? `<div><span>Versão</span><b>${APP_VERSAO}</b></div><div><span>Desenvolvedor</span><b>${APP_DEV}</b></div>`
+          : `Guia TACS · <b>${APP_VERSAO}</b> · Desenvolvedor: ${APP_DEV}`;
+      });
+    }
+    mostrarVersaoApp();
     let eventoInstalacao = null;
     window.addEventListener('beforeinstallprompt', (e) => {
       e.preventDefault();
