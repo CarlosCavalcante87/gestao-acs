@@ -59,5 +59,5 @@
       filaSalvar = filaSalvar.then(() => BaseIDB.del('base')).then(() => BaseIDB.del('historico')).catch(() => {});
       BASE_DADOS = { cidadaos: {}, ruas: new Set() };
       atualizarInterface();
-      alternarAba('dashboard');
+      alternarAba('alertas');
     }

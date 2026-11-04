@@ -64,7 +64,8 @@
       { id: 'idosos', icone: '👴', titulo: 'Pessoas idosas', desc: 'Falta · PEC: Condições de saúde → Pessoa idosa' },
       { id: 'mulher', icone: '👩', titulo: 'Saúde da mulher', desc: 'Falta · PEC: Condições de saúde → Saúde da mulher' },
       { id: 'criancas', icone: '👶', titulo: 'Crianças (puericultura)', desc: 'Falta · PEC: Condições de saúde → Desenvolvimento infantil' },
-      { id: 'territorio', icone: '🗺️', titulo: 'Território / famílias', desc: 'Falta · PEC: Território → Cadastro domiciliar' }
+      { id: 'territorio', icone: '🗺️', titulo: 'Território / famílias', desc: 'Falta · PEC: Território → Cadastro domiciliar' },
+      { id: 'vacinacao', icone: '💉', titulo: 'Busca ativa de vacinação', desc: 'Falta · PEC: Busca ativa → Vacinação (status Atrasada)' }
     ];
 
     function normalizarTexto(txt) {
@@ -90,6 +91,10 @@
             if (c.c1Ok === undefined) c.c1Ok = true;
             if (c.bolsaFamilia === undefined) c.bolsaFamilia = false;
           });
+          // dados guardados por uma versão anterior: reaplica a vacinação (HPV das meninas de 9 a 14 anos, C2)
+          let mudou = false;
+          Object.values(BASE_DADOS.cidadaos).forEach(c => { const antes = !!c.c7_base; try { aplicarVacinacaoCidadao(c); } catch (e) { console.error(e); } if (!antes && c.c7_base) mudou = true; });
+          if (mudou) salvarBaseLocal();
           atualizarInterface();
         } catch (e) { console.error(e); }
       }).then(() => carregarHistorico());

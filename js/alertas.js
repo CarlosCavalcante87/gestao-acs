@@ -16,7 +16,7 @@
       return unicas;
     }
 
-    function gerarAlertas(limite) {
+    function gerarAlertas(limite, comVacina) {
       const hoje = iniDia(new Date());
       const out = [];
       Object.entries(BASE_DADOS.cidadaos).forEach(([chave, c]) => {
@@ -38,6 +38,12 @@
           out.push({ chave, dias: Math.max(0, dias), data: iniDia(dt), tipo: 'retorno', ind: 'Retorno', ri, atrasado: dias < 0,
             texto: (dias < 0 ? `Retorno atrasado (era dia ${dataBR(r.d)}).` : `Retorno agendado para ${dataBR(r.d)}.`) + (r.nota ? ' ' + r.nota : '') });
         });
+
+        // Busca ativa de vacinação: vacinas em atraso segundo o relatório do PEC
+        if (comVacina && c.vacAtraso && c.vacAtraso.length) {
+          const l = c.vacAtraso.map(textoDoseVacina);
+          out.push({ chave, dias: 999, data: iniDia(hoje), tipo: 'vacina', ind: 'Vacinas', texto: `${l.length} vacina(s) em atraso: ${l.slice(0, 4).join(', ')}${l.length > 4 ? ' e mais ' + (l.length - 4) : ''}.` });
+        }
 
         // C1: cadastro vale 1 ano
         [['dt_cadastral', 'individual'], ['dt_cad_dom', 'domiciliar']].forEach(([campo, nomeC]) => {
@@ -129,8 +135,8 @@
       return cidadaos;
     }
 
-    const TIPO_ALERTA = { prazo: '⏳', faixa: '📅', janela: '🔓', aniv: '🎉', retorno: '🔁' };
-    function textoQuando(dias) { return dias === 0 ? 'Hoje' : dias === 1 ? 'Amanhã' : `em ${dias} dias`; }
+    const TIPO_ALERTA = { prazo: '⏳', faixa: '📅', janela: '🔓', aniv: '🎉', retorno: '🔁', vacina: '💉' };
+    function textoQuando(dias) { return dias === 999 ? 'Em atraso' : dias === 0 ? 'Hoje' : dias === 1 ? 'Amanhã' : `em ${dias} dias`; }
 
     function definirHorizonteAlertas(n) {
       horizonteAlertas = n;
@@ -142,19 +148,45 @@
     try { if (localStorage.getItem('guia_modo_alertas') === 'rua') modoAlertas = 'rua'; } catch (e) {}
     function definirModoAlertas(m) { modoAlertas = m; try { localStorage.setItem('guia_modo_alertas', m); } catch (e) {} atualizarAlertas(); }
 
+    function pilulaAlerta(itens) {
+      const min = itens[0].dias, atras = itens.some(a => a.atrasado);
+      if (atras) return ['Atrasado', 'p-verm', 'c-verm'];
+      if (min === 999) return ['Em atraso', 'p-azul', 'c-azul'];
+      if (min === 0) return ['Hoje', 'p-verm', 'c-verm'];
+      if (min <= 7) return [textoQuando(min), 'p-amar', 'c-amar'];
+      return [textoQuando(min), 'p-verde', 'c-verde'];
+    }
     function cardAlerta({ chave, c, itens }) {
       const idade = c.dt_nascimento ? calcularIdade(c.dt_nascimento) : (c.idade_txt || '');
       const urlWa = linkWhatsApp(c.telefone);
-      const tel = c.telefone ? (urlWa ? ` | <a href="${urlWa}" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;text-decoration:none;">${htmlIconeMsg()} ${escHtml(c.telefone)}</a>` : ` | 📞 ${escHtml(c.telefone)}`) : '';
-      return `<div class="item-cidadao ${itens[0].dias <= 7 ? 'tem-pend' : 'em-dia'}">
-        <div class="topo"><div class="nome">${escHtml(c.nome)}</div></div>
-        ${idade ? `<div class="linha-info"><span class="idade">🎂 ${escHtml(idade)}</span></div>` : ''}
-        <div class="endereco">📍 ${escHtml(c.rua || 'Sem rua cadastrada')}, nº ${escHtml(c.numero || 'S/N')}${tel}</div>
-        ${itens.map(a => `<div class="al-linha al-${a.tipo}"><span class="al-quando">${TIPO_ALERTA[a.tipo]} ${a.atrasado ? 'Atrasado' : textoQuando(a.dias)}</span><span class="al-texto"><b>${a.ind}</b> · ${escHtml(a.texto)}</span></div>`).join('')}
-        ${itens.filter(a => a.tipo === 'retorno').map(a => `<button class="btn-ret-feito grande" data-chave="${escHtml(chave)}" data-i="${a.ri}">✓ Retorno feito (${a.data.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })})</button>`).join('')}
-        ${podeRegistrarVisita(c) ? `<button class="btn-visita" data-chave="${escHtml(chave)}">📝 Registrar visita</button>` : ''}
-        <button class="btn btn-abrir" data-chave="${escHtml(chave)}">Abrir cartão do cidadão</button>
+      const [pTxt, pCls, cCls] = pilulaAlerta(itens);
+      const sub = [idade, `${c.rua || 'Sem rua cadastrada'}, nº ${c.numero || 'S/N'}`].filter(Boolean).join(' · ');
+      const k = escHtml(chave);
+      const iconeWa = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.7-5.2A8.5 8.5 0 1 1 21 12z"/></svg>';
+      const podeVisita = podeRegistrarVisita(c);
+      return `<div class="al-card ${cCls}">
+        <div class="al-topo"><div class="al-id"><div class="al-nome">${escHtml(c.nome)}</div><div class="al-sub">${escHtml(sub)}</div></div><span class="al-pilula ${pCls}">${pTxt}</span></div>
+        ${itens.map(a => `<div class="al-item al-${a.tipo}"><span class="al-ico" aria-hidden="true">${TIPO_ALERTA[a.tipo]}</span><span class="al-texto"><b>${a.ind}</b> · ${escHtml(a.texto)}</span></div>`).join('')}
+        ${itens.filter(a => a.tipo === 'retorno').map(a => `<button class="btn-ret-feito grande" data-chave="${k}" data-i="${a.ri}">✓ Retorno feito (${a.data.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })})</button>`).join('')}
+        <div class="al-acoes">
+          ${podeVisita ? `<button class="btn-visita al-prim" data-chave="${k}">Registrar visita</button>` : `<button class="al-prim btn-abrir" data-chave="${k}">Abrir cartão do cidadão</button>`}
+          ${urlWa ? `<a class="al-icone" href="${urlWa}" target="_blank" rel="noopener" aria-label="Chamar ${escHtml((c.nome || '').split(' ')[0])} no WhatsApp">${iconeWa}</a>` : ''}
+        </div>
+        ${podeVisita ? `<button class="al-link btn-abrir" data-chave="${k}">Abrir cartão do cidadão</button>` : ''}
       </div>`;
+    }
+
+    function atualizarHero(tem, grupos7) {
+      const d = new Date(); const dt = d.toLocaleDateString('pt-BR', { weekday: 'long', day: 'numeric', month: 'long' });
+      document.getElementById('heroData').textContent = dt.charAt(0).toUpperCase() + dt.slice(1);
+      const hoje = grupos7.filter(g => g.min === 0).length, sem = grupos7.filter(g => g.min >= 1).length;
+      let atras = 0; if (tem) Object.values(BASE_DADOS.cidadaos).forEach(c => (c.retornos || []).forEach(r => { if (!r.feito && r.d && r.d < isoLocal(d)) atras++; }));
+      document.getElementById('kpiHoje').textContent = hoje; document.getElementById('kpiSemana').textContent = sem; document.getElementById('kpiRet').textContent = atras;
+      document.getElementById('heroTitulo').textContent = !tem ? 'Importe as planilhas para começar' : grupos7.length ? `${grupos7.length} ${grupos7.length === 1 ? 'pessoa para' : 'pessoas para'} acompanhar esta semana` : 'Nenhuma ação urgente esta semana';
+      const faixa = document.getElementById('faixaInd');
+      if (!tem) { faixa.innerHTML = ''; return; }
+      const st = fotoIndicadores().st;
+      faixa.innerHTML = IND_LISTA.filter(k => st[k] && st[k].tot).map(k => { const p = pctInd(st[k]); return `<button class="faixa-chip" style="--cor: var(--${k.toLowerCase()})" onclick="abrirIndicador('${k}')" aria-label="${NOMES_IND[k]}: ${p}%"><span>${k}</span><b>${p}%</b></button>`; }).join('');
     }
 
     function atualizarAlertas() {
@@ -165,19 +197,21 @@
       document.getElementById('chipAl15').className = 'chip' + (horizonteAlertas === 15 ? ' active' : '');
 
       const grupos7 = tem ? agruparAlertas(gerarAlertas(7)) : [];
+      atualizarHero(tem, grupos7);
       const badge = document.getElementById('badgeAlertas');
       badge.textContent = grupos7.length;
       badge.style.display = grupos7.length ? 'inline-block' : 'none';
 
       const alvo = document.getElementById('listaAlertas');
       if (!tem) { alvo.innerHTML = '<p style="text-align:center; padding: 24px; color: var(--text-muted); font-size: 0.88rem;">Importe as planilhas na aba Configurações para ver as ações do dia.</p>'; return; }
-      const grupos = agruparAlertas(gerarAlertas(horizonteAlertas));
+      const grupos = agruparAlertas(gerarAlertas(horizonteAlertas, true));
       if (!grupos.length) { alvo.innerHTML = `<p style="text-align:center; padding: 24px; color: var(--text-muted); font-size: 0.88rem;">🎉 Nenhuma ação urgente nos próximos ${horizonteAlertas} dias.</p>`; }
       else {
         const secoes = [
-          { titulo: '🔴 Hoje', filtro: g => g.min === 0 },
-          { titulo: '🟠 Próximos 7 dias', filtro: g => g.min >= 1 && g.min <= 7 },
-          { titulo: '🟡 De 8 a 15 dias', filtro: g => g.min >= 8 }
+          { titulo: 'Hoje', filtro: g => g.min === 0 },
+          { titulo: 'Próximos 7 dias', filtro: g => g.min >= 1 && g.min <= 7 },
+          { titulo: 'De 8 a 15 dias', filtro: g => g.min >= 8 && g.min < 999 },
+          { titulo: 'Busca ativa de vacinação', filtro: g => g.min === 999 }
         ];
         let html = '';
         if (modoAlertas === 'rua') {
@@ -204,7 +238,7 @@
         }
       }
       const faltaDados = Object.values(BASE_DADOS.cidadaos).some(c => c.indicadores && ((!c.ex && ['C2','C3','C4','C5','C6'].some(k => c.indicadores[k])) || (c.indicadores.C4 && c.c4_vis_txt === undefined) || (c.indicadores.C5 && c.c5_vis_txt === undefined) || (c.indicadores.C6 && c.c6_vis_txt === undefined) || (c.indicadores.C2 && c.c2_ok1 === undefined)));
-      if (faltaDados) alvo.innerHTML = '<div class="card" style="border-left:5px solid #f59e0b;"><b>⚠️ Reimporte as planilhas</b><p class="al-ajuda">Os dados guardados no app são de uma versão anterior e não têm as datas das visitas. Vá na aba <b>Configurações</b>, importe os relatórios de novo e os lembretes de visita voltam a aparecer aqui.</p></div>' + alvo.innerHTML;
+      if (faltaDados) alvo.innerHTML = '<div class="card" style="border-left:5px solid #f59e0b;"><b>⚠️ Reimporte as planilhas</b><p class="al-ajuda">Os dados guardados no app são de uma versão anterior e não têm as datas das visitas. Vá na aba <b>Configurações</b>, importe os 9 relatórios de novo e os lembretes de visita voltam a aparecer aqui.</p></div>' + alvo.innerHTML;
       const anivs = gerarAniversarios(horizonteAlertas);
       if (anivs.length) {
         let ha = `<div class="al-grupo">🎉 Aniversariantes · ${anivs.length}</div>`;
@@ -227,7 +261,6 @@
       if (!b) return;
       const c = BASE_DADOS.cidadaos[b.getAttribute('data-chave')];
       if (!c) return;
-      window.__abrindoCartao = true; alternarAba('dashboard'); window.__abrindoCartao = false;
       abrirIndicador('C1');
       document.getElementById('campoBusca').value = c.nome;
       filtrarLista();
@@ -321,46 +354,25 @@
     });
 
     function alternarAba(aba) {
-      ['dashboard', 'alertas', 'upload'].forEach(a => { document.getElementById('view-' + a).style.display = a === aba ? 'block' : 'none'; });
+      ['dashboard', 'alertas', 'cidadaos', 'upload'].forEach(a => { document.getElementById('view-' + a).style.display = a === aba ? 'block' : 'none'; });
       document.getElementById('btnTabDash').className = aba === 'dashboard' ? 'active' : '';
       document.getElementById('btnTabAl').className = aba === 'alertas' ? 'active' : '';
+      document.getElementById('btnTabCid').className = aba === 'cidadaos' ? 'active' : '';
       document.getElementById('btnTabUp').className = aba === 'upload' ? 'active' : '';
-      if (aba === 'dashboard' && document.getElementById('painel-lista').style.display !== 'none' && !window.__abrindoCartao) mostrarCards();
       if (aba === 'alertas') atualizarAlertas();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
     const NOMES_IND = { C1: '📋 C1 · Cadastro', C2: '👶 C2 · Criança', C3: '🤰 C3 · Pré-natal', C4: '🩸 C4 · Diabetes', C5: '❤️ C5 · Hipertensão', C6: '👴 C6 · Idosos', C7: '👩 C7 · Mulheres', BF: '💰 Bolsa Família', todos: 'Todos' };
+    // Tocar num card de indicador abre a aba Cidadãos já filtrada por ele
     function abrirIndicador(ind) {
       selecionarFiltroIndicador(ind);
-      document.getElementById('painel-cards').style.display = 'none';
-      document.getElementById('painel-lista').style.display = 'block';
-      try { if (!(history.state && history.state.lista)) history.pushState({ lista: 1 }, ''); } catch (e) {}
+      alternarAba('cidadaos');
       window.scrollTo(0, 0);
-    }
-    function mostrarCards() {
-      document.getElementById('painel-lista').style.display = 'none';
-      document.getElementById('painel-cards').style.display = 'block';
-      window.scrollTo(0, 0);
-    }
-    function voltarAosCards() {
-      try { if (history.state && history.state.lista) { history.back(); return; } } catch (e) {}
-      mostrarCards();
-    }
-    window.addEventListener('popstate', () => mostrarCards());
-
-    // Verifica se o indicador possui pelo menos 1 cidadão com pendência
-    function indicadorTemPendencias(ind) {
-      if (!/^C[1-7]$/.test(ind)) return false;
-      const lista = Object.values((typeof BASE_DADOS !== 'undefined' && BASE_DADOS.cidadaos) ? BASE_DADOS.cidadaos : {});
-      return lista.some(c => {
-        if (!c.indicadores || !c.indicadores[ind]) return false;
-        const pends = c.pendencias || [];
-        return c[ind.toLowerCase() + 'Ok'] === false || pends.some(p => p.startsWith(ind + ':'));
-      });
     }
 
     function selecionarFiltroIndicador(ind) {
+
       filtroIndicadorAtual = ind;
       document.querySelectorAll('.chips-indicadores .chip').forEach(c => c.classList.remove('active'));
       document.querySelectorAll('.card-meta').forEach(c => c.classList.remove('active'));
@@ -378,11 +390,10 @@
       if (card) card.classList.add('active');
 
       const selectPend = document.getElementById('filtroPendencia');
-      // Se o card clicado tiver pendências, abre direto em "Apenas Pendências"; se estiver 100% em dia (sem falhas) ou for BF, abre em "Todos"
-      if (indicadorTemPendencias(ind)) {
-        selectPend.value = 'pendentes';
-      } else {
+      if (ind === 'C1' || ind === 'todos' || ind === 'BF') {
         selectPend.value = 'todos';
+      } else {
+        selectPend.value = 'pendentes';
       }
       filtrarLista();
     }

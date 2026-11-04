@@ -85,7 +85,7 @@ function idadeEmAnos(dtStr) {
     function inicializarListaPlanilhas() {
       const listaDiv = document.getElementById('listaArquivosUpload');
       let html = `<div class="file-list-header">
-            <span>0 de 9 planilhas selecionadas</span>
+            <span>0 de ${PLANILHAS_ESPERADAS.length} planilhas selecionadas</span>
           </div>`;
       
       PLANILHAS_ESPERADAS.forEach(p => {
@@ -114,6 +114,7 @@ function idadeEmAnos(dtStr) {
       cpfToChave = {}; nomeToChave = {};
       let arquivosProcessados = {};
       const perfilDetectado = {};
+      const relatoriosVacinacao = [];
       const limpaValor = (v) => (v || '').toString().replace(/^"|"$/g, '').trim();
       const detectarPerfil = (chaveBruta, valorBruto) => {
         const k = normalizarTexto(chaveBruta);
@@ -124,12 +125,14 @@ function idadeEmAnos(dtStr) {
       };
 
       for (let file of files) {
+        let textoArquivo;
+        try { textoArquivo = await obterTextoArquivo(file); }
+        catch (e) { avisoToast('Não foi possível ler ' + file.name + ': ' + e.message); continue; }
         await new Promise((resolve) => {
-          const reader = new FileReader();
-          reader.readAsText(file, 'ISO-8859-1');
-          reader.onload = () => {
+          const reader = { result: textoArquivo };
+          const processar = () => {
             const linhas = reader.result.split(/\r?\n/);
-            let tema = "", cabIdx = -1;
+            let tema = "", cabIdx = -1, ehVac = false;
             for (let i = 0; i < Math.min(linhas.length, 35); i++) {
               const l = linhas[i].trim();
               {
@@ -143,13 +146,16 @@ function idadeEmAnos(dtStr) {
                 }
               }
               if (l.includes("Lista temática;")) tema = l.split(";")[1]?.trim();
+              if (normalizarTexto(l).includes('busca ativa de vacina')) ehVac = true;
+              if (l.startsWith("Nome do cidadão;")) { cabIdx = i; break; }
               if (l.startsWith("Nome;") || l.startsWith("NOME CIDADÃO;") || l.startsWith("Nome equipe;") || l.startsWith("TIPO DE LOGRADOURO;")) {
                 cabIdx = i; break;
               }
             }
 
             let matchedId = null;
-            if (tema === "Desenvolvimento infantil") matchedId = 'criancas';
+            if (ehVac) matchedId = 'vacinacao';
+            else if (tema === "Desenvolvimento infantil") matchedId = 'criancas';
             else if (tema === "Gestação e puerpério") matchedId = 'gestantes';
             else if (tema === "Diabetes") matchedId = 'diabeticos';
             else if (tema === "Hipertensão") matchedId = 'hipertensos';
@@ -166,7 +172,11 @@ function idadeEmAnos(dtStr) {
             let countAtualizados = 0;
             let countBolsaFamiliaFile = 0;
 
-            if (cabIdx !== -1) {
+            if (ehVac && cabIdx !== -1) {
+              const rel = lerRelatorioVacinacao(linhas, cabIdx); rel.meta.arquivo = file.name;
+              relatoriosVacinacao.push(rel);
+              countAtualizados = new Set(rel.rows.map(r => r.nome)).size;
+            } else if (cabIdx !== -1) {
               const colunas = linhas[cabIdx].split(";").map(c => c.trim().replace(/^"|"$/g, ''));
               for (let i = cabIdx + 1; i < linhas.length; i++) {
                 const linha = linhas[i].trim();
@@ -219,6 +229,7 @@ function idadeEmAnos(dtStr) {
                     cid.dt_nascimento = reg[key];
                   }
                 }
+                if (reg["Sexo"] && reg["Sexo"] !== "-") cid.sexo = reg["Sexo"];
                 if (reg["Idade"] && reg["Idade"] !== "-") cid.idade_txt = reg["Idade"];
                 else if (reg["IDADE"] && reg["IDADE"] !== "-") cid.idade_txt = reg["IDADE"];
 
@@ -454,17 +465,13 @@ function idadeEmAnos(dtStr) {
                     const coloOk = !!dtColo && dtColo >= somarMeses(hoje7, -36);
                     const mamaOk = !!dtMama && dtMama >= somarMeses(hoje7, -24);
                     const consultaOk = !!dtConsulta && dtConsulta >= somarMeses(hoje7, -12);
-                    const hpvOk = dosesHpv >= 1;
-                    const partes7 = [];
-                    const p7 = cid.pendencias;
+                                        const partes7 = [];
+                    const p7 = [];
                     if (precisaColo) {
                       partes7.push(`Preventivo ${dtColo ? fmtData(dtColo) : 'sem registro'} ${coloOk ? '✓' : '✗'}`);
                       if (!coloOk) p7.push("C7: Busca Ativa - Preventivo (colo do útero) solicitado ou avaliado nos últimos 3 anos" + (dtColo ? ` (último registro em ${fmtData(dtColo)})` : " (sem registro)"));
                     }
-                    if (precisaHpv) {
-                      partes7.push(`HPV ${hpvOk ? dosesHpv + ' dose' + (dosesHpv > 1 ? 's' : '') : 'sem registro'} ${hpvOk ? '✓' : '✗'}`);
-                      if (!hpvOk) p7.push("C7: Busca Ativa - Vacina HPV (9 a 14 anos) sem registro");
-                    }
+                    if (precisaHpv) { partes7.push('@HPV'); p7.push('@HPV'); }
                     if (precisaConsulta) {
                       partes7.push(`Consulta ${dtConsulta ? fmtData(dtConsulta) : 'sem registro'} ${consultaOk ? '✓' : '✗'}`);
                       if (!consultaOk) p7.push("C7: Busca Ativa - Consulta de saúde sexual e reprodutiva no último ano" + (dtConsulta ? ` (última em ${fmtData(dtConsulta)})` : " (sem registro)"));
@@ -473,8 +480,8 @@ function idadeEmAnos(dtStr) {
                       partes7.push(`Mamografia ${dtMama ? fmtData(dtMama) : 'sem registro'} ${mamaOk ? '✓' : '✗'}`);
                       if (!mamaOk) p7.push("C7: Busca Ativa - Mamografia solicitada ou avaliada nos últimos 2 anos" + (dtMama ? ` (último registro em ${fmtData(dtMama)})` : " (sem registro)"));
                     }
-                    cid.c7Ok = (!precisaColo || coloOk) && (!precisaHpv || hpvOk) && (!precisaConsulta || consultaOk) && (!precisaMama || mamaOk);
-                    cid.c7_tempo = { texto: '🩺 ' + partes7.join(' · '), ok: cid.c7Ok };
+                    cid.c7_base = { outros: (!precisaColo || coloOk) && (!precisaConsulta || consultaOk) && (!precisaMama || mamaOk), partes: partes7, pend: p7, hpv: precisaHpv, doses: dosesHpv };
+                    montarC7(cid);
                   }
                 }
               }
@@ -489,12 +496,16 @@ function idadeEmAnos(dtStr) {
 
             resolve();
           };
+          processar();
         });
       }
 
+      const resumoVac = relatoriosVacinacao.length ? aplicarRelatoriosVacinacao(relatoriosVacinacao) : null;
+      if (!resumoVac) Object.values(BASE_DADOS.cidadaos).forEach(aplicarVacinacaoCidadao);
+      const resumoVacTxt = resumoVac ? `${resumoVac.pessoas} pessoa(s) com ${resumoVac.vacinas} vacina(s) em atraso` + (resumoVac.hpv ? `, ${resumoVac.hpv} com HPV` : '') + (resumoVac.foraDaBase ? `. ${resumoVac.foraDaBase} fora da base (não vinculados)` : '') + '.' + (resumoVac.meninas ? ` HPV avaliado em ${resumoVac.meninasHpv} de ${resumoVac.meninas} meninas de 9 a 14 anos.` + (resumoVac.meninasHpv < resumoVac.meninas ? ' Para o resto, exporte a busca ativa com o imunobiológico HPV.' : '') : '') : '';
       let countEncontrados = Object.keys(arquivosProcessados).length;
       let html = `<div class="file-list-header">
-            <span>${countEncontrados} de 9 planilhas processadas</span>
+            <span>${countEncontrados} de ${PLANILHAS_ESPERADAS.length} planilhas processadas</span>
             <span class="btn-limpar" onclick="inicializarListaPlanilhas(); document.getElementById('progressoUpload').innerHTML='';">Limpar</span>
           </div>`;
           
@@ -509,7 +520,7 @@ function idadeEmAnos(dtStr) {
                  <div class="file-item-content">
                    <div class="file-item-title">${p.icone} ${p.titulo}</div>
                    <span class="file-item-name">${info.nome}</span>
-                   <div class="file-item-status">✓ ${info.count} pacientes identificados${textoBf}.</div>
+                   <div class="file-item-status">✓ ${info.count} pacientes identificados${textoBf}.${p.id === 'vacinacao' && resumoVacTxt ? ' ' + resumoVacTxt : ''}</div>
                  </div>
                </div>
              `;
@@ -721,7 +732,8 @@ function idadeEmAnos(dtStr) {
         const valAnotacao = c.anotacao || '';
         const visApp = (c.visitasApp || []).map((v, i) => `<div class="visita-app-linha">📝 Visita registrada no app: <b>${v.d}</b> · ${v.inds.map(k => (MOTIVOS_VISITA[k] || k).replace(/ \(.*$/, '')).join(', ')} <button class="btn-rm-visita" data-chave="${escHtml(chave)}" data-i="${i}" aria-label="Remover visita">✕</button></div>`).join('');
         const retsHtml = (c.retornos || []).map((r, i) => r.feito ? '' : `<div class="retorno-linha">📅 Retorno em <b>${dataBR(r.d)}</b>${r.nota ? ' · ' + escHtml(r.nota) : ''}<span class="acoes-ret"><button class="btn-ret-feito" data-chave="${escHtml(chave)}" data-i="${i}">✓ Feito</button><button class="btn-ret-rm" data-chave="${escHtml(chave)}" data-i="${i}" aria-label="Remover retorno">✕</button></span></div>`).join('');
-        const visitaHtml = (podeRegistrarVisita(c) ? `${visApp}<button class="btn-visita" data-chave="${escHtml(chave)}">📝 Registrar visita</button>` : '') + retsHtml + `<button class="btn-retorno" data-chave="${escHtml(chave)}">📅 Agendar retorno</button>`;
+        const vacHtml = (c.vacAtraso && c.vacAtraso.length) ? `<div class="vac-bloco"><b>💉 ${c.vacAtraso.length} vacina(s) em atraso</b><div>${c.vacAtraso.map(x => escHtml(textoDoseVacina(x))).join(' · ')}</div><small>Relatório de ${escHtml(c.vacData || '')}</small></div>` : '';
+        const visitaHtml = vacHtml + (podeRegistrarVisita(c) ? `${visApp}<button class="btn-visita" data-chave="${escHtml(chave)}">📝 Registrar visita</button>` : '') + retsHtml + `<button class="btn-retorno" data-chave="${escHtml(chave)}">📅 Agendar retorno</button>`;
         const anotacaoHtml = `<textarea class="area-anotacao" placeholder="✍️ Anotações do ACS..." onchange="salvarAnotacao('${chave}', this.value)">${valAnotacao}</textarea>`;
 
         const temPend = algumaPendente;

@@ -37,6 +37,13 @@
       }));
       L.push('', '*Retornos agendados*', `Atrasados: ${atr} · Próximos 7 dias: ${prox} · Feitos na semana: ${fei}`);
       if (nomes && lstAtr.length) L.push('Atrasados: ' + lstAtr.join(', '));
+      // vacinação (busca ativa)
+      const comVac = Object.values(BASE_DADOS.cidadaos).filter(c => c.vacAtraso && c.vacAtraso.length);
+      if (comVac.length || Object.values(BASE_DADOS.cidadaos).some(c => c.vacCob)) {
+        const hpv = comVac.filter(c => c.vacAtraso.some(x => ehHpv(x.v)));
+        L.push('', '*Vacinação (busca ativa)*', `${comVac.length} pessoa(s) com vacina em atraso` + (hpv.length ? ` · ${hpv.length} com HPV atrasada` : ''));
+        if (nomes && comVac.length) L.push('Em atraso: ' + comVac.slice(0, 20).map(c => c.nome).join(', ') + (comVac.length > 20 ? ' e mais ' + (comVac.length - 20) : ''));
+      }
       // próximos 7 dias
       const al = gerarAlertas(7); const uni = new Set(al.filter(a => a.tipo !== 'retorno').map(a => a.chave));
       L.push('', '*Próximos 7 dias*', `${uni.size} cidadão(s) com prazo ou mudança de faixa a acompanhar`);

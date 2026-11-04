@@ -40,7 +40,7 @@
       BASE_DADOS = { cidadaos: {}, ruas: new Set() };
       filaSalvar = filaSalvar.then(() => BaseIDB.del('base')).then(() => BaseIDB.del('historico')).catch(() => {});
       document.documentElement.classList.remove('travado');
-      atualizarInterface(); atualizarCardSenha(); alternarAba('dashboard');
+      atualizarInterface(); atualizarCardSenha(); alternarAba('alertas');
     }
     document.addEventListener('visibilitychange', () => {
       if (document.hidden) ocultoDesde = Date.now();
