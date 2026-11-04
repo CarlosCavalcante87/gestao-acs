@@ -557,3 +557,12 @@ header { position: relative; }
 
 .cab-saudacao { margin-top: 0; }
 header p#subtitulo { margin-top: 3px; }
+
+/* Cabeçalho: sem avatar; o nome é o botão de editar; microárea e total em linhas separadas */
+.cab-saudacao { display: inline-flex; align-items: center; gap: 8px; background: none; border: 0; padding: 0; margin: 0; font: inherit; font-size: 1.5rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; color: inherit; text-align: left; cursor: pointer; }
+.cab-saudacao::after { content: '✎'; font-size: 0.85rem; font-weight: 700; color: #64748b; background: #f1f5f9; border: 1px solid #e3e8ef; border-radius: 8px; padding: 3px 7px; }
+header p#subtitulo { white-space: pre-line; line-height: 1.35; }
+.cab-status { align-self: stretch; padding: 8px 12px; gap: 9px; border-radius: 14px; }
+.cab-status .cs-txt b { font-size: 0.82rem; }
+.cab-status .cs-txt small { font-size: 0.72rem; }
+.cab-status .cs-ponto { width: 10px; height: 10px; }

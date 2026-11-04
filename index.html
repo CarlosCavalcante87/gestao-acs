@@ -36,14 +36,13 @@
     <h1 class="so-leitor">Guia de Visitas TACS</h1>
     <div class="cab-linha">
       <div class="cab-texto">
-        <div class="cab-saudacao" id="saudacao">Guia de Visitas TACS</div>
+        <button type="button" class="cab-saudacao" id="saudacao" onclick="abrirModalPerfil()" aria-label="Editar nome e microárea">Guia de Visitas TACS</button>
         <p id="subtitulo">Aguardando dados...</p>
       </div>
       <button type="button" class="cab-status" id="cabStatus" onclick="alternarPopStatus(event)" aria-label="Estado dos dados salvos" aria-expanded="false">
         <span class="cs-ponto" id="csPonto"></span>
         <span class="cs-txt"><b id="csL1">Sem dados</b><small id="csL2">importe as planilhas</small></span>
       </button>
-      <button type="button" class="perfil-avatar" id="perfilLinha" onclick="abrirModalPerfil()" aria-label="Editar nome e microárea">?</button>
     </div>
     <div class="pop-status" id="popStatus" hidden></div>
   </header>
@@ -262,12 +261,10 @@
       
       <div class="card" style="padding: 20px 16px;">
         <h3 style="font-size: 1.05rem; display: flex; align-items: center; gap: 6px; margin-bottom: 4px;">📦 Importar todas as planilhas</h3>
-        <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0 12px; line-height: 1.45;">
-          Exporte as planilhas no PEC, depois toque abaixo e selecione <strong>todas de uma vez</strong> (segure o dedo em uma e marque as outras). O app descobre sozinho qual é cada uma e importa na ordem certa.
-        </p>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0 10px; line-height: 1.4;">Selecione <strong>todas de uma vez</strong>; o app reconhece cada uma.</p>
 
         <div class="warning-box">
-          ⚠️ Sempre importe <strong>todas as planilhas, exportadas no mesmo dia</strong> (as 9 de sempre mais a <b>busca ativa de vacinação</b>, que passa a monitorar vacinas e o HPV). Se faltar alguma, os indicadores daquele grupo ficam desatualizados e a conferência de quem saiu do PEC fica incompleta.
+          ⚠️ Importe <strong>as 10 planilhas do mesmo dia</strong> (as 9 de sempre + a <b>busca ativa de vacinação</b>). Faltando alguma, o grupo dela fica desatualizado.
         </div>
 
         <button class="btn-selecionar" onclick="const i = document.getElementById('inputArquivosCSV'); i.value = ''; i.click()">
