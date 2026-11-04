@@ -54,6 +54,7 @@
         <div id="avisoBackupTexto"></div>
         <div class="aviso-backup-botoes"><button class="btn-nao-mini" onclick="adiarAvisoBackup()">Depois</button><button class="btn-sim-mini" onclick="abrirModalBackup()">💾 Fazer backup agora</button></div>
       </div>
+      <section id="painelAlcance" class="card alcance" style="display:none;" aria-label="Alcance total das metas"></section>
       <div class="grid-indicadores">
 
         <div class="card-meta active" id="card-c1" onclick="abrirIndicador('C1')">
@@ -170,7 +171,7 @@
       <div id="painel-lista">
       <div class="barra-voltar">
         <button class="btn-voltar" onclick="alternarAba('dashboard')">← Indicadores</button>
-        <span class="chip-ativo" id="chipAtivo"></span>
+        <span class="chip-ativo" id="chipAtivo" style="--accent:var(--c1)">📋 C1: Cadastros</span>
       </div>
 
       <div class="chips-indicadores">
@@ -457,6 +458,7 @@
   <script src="./js/visitas.js"></script>
   <script src="./js/mudancas.js"></script>
   <script src="./js/historico.js"></script>
+  <script src="./js/alcance.js"></script>
   <script src="./js/xlsx.js"></script>
   <script src="./js/indicadores.js"></script>
   <script src="./js/interface.js"></script>

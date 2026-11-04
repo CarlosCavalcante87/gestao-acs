@@ -458,3 +458,51 @@ nav.tab-bar .badge-tab[style*="display: none"] { display: none !important; }
 .al-prim { flex: 1; min-height: 48px; border: none; border-radius: 12px; background: #14532d; color: #ffffff; font: inherit; font-weight: 700; font-size: 0.92rem; cursor: pointer; margin: 0; }
 .al-icone { flex: none; width: 48px; height: 48px; border: 1px solid #cbd5c8; border-radius: 12px; background: #ffffff; color: #14532d; display: flex; align-items: center; justify-content: center; }
 .al-link { display: block; width: 100%; min-height: 44px; margin-top: 4px; background: none; border: none; color: #475569; font: inherit; font-size: 0.82rem; font-weight: 600; text-decoration: underline; cursor: pointer; }
+
+/* Painel Alcance Total das Metas */
+.alcance { padding: 16px; margin-bottom: 14px; }
+.alc-cab { display: flex; flex-direction: column; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid #e3e8ef; margin-bottom: 14px; }
+.alc-cab h3 { margin: 0; font-size: 1.05rem; font-weight: 800; }
+.alc-cab p { margin: 4px 0 0; font-size: .8rem; color: #475569; }
+.alc-abas { display: flex; background: #f1f5f9; border: 1px solid #e3e8ef; border-radius: 12px; padding: 3px; align-self: flex-start; }
+.alc-abas button { border: 0; background: transparent; padding: 8px 14px; min-height: 36px; border-radius: 9px; font: inherit; font-size: .82rem; font-weight: 600; color: #475569; cursor: pointer; }
+.alc-abas button.on { background: #fff; color: #0369a1; font-weight: 700; box-shadow: 0 1px 2px rgba(15,23,42,.1); }
+.alc-corpo-geral { display: grid; grid-template-columns: 1fr; gap: 14px; }
+.alc-esq { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.alc-donut { width: 210px; max-width: 70%; height: auto; }
+.alc-pct { font-size: 38px; font-weight: 800; fill: #0f172a; }
+.alc-rot { font-size: 9px; font-weight: 700; fill: #64748b; letter-spacing: .04em; }
+.alc-meta { font-size: 8px; fill: #94a3b8; }
+.alc-leg { display: flex; gap: 16px; font-size: .82rem; margin-top: 8px; flex-wrap: wrap; justify-content: center; }
+.alc-leg span { display: inline-flex; align-items: center; gap: 6px; }
+.alc-leg i { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+.alc-leg span:first-child { color: #047857; } .alc-leg span:last-child { color: #b45309; }
+.alc-kpis { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 10px; }
+.alc-kpis > div { background: #f8fafc; border: 1px solid #e3e8ef; border-radius: 12px; padding: 8px 12px; }
+.alc-kpis small { display: block; font-size: .72rem; color: #475569; font-weight: 600; }
+.alc-kpis b { font-size: .95rem; }
+.alc-kpi-st { grid-column: 1 / span 2; }
+.alc-verde-t { color: #047857; } .alc-ambar-t { color: #b45309; } .alc-verm-t { color: #b91c1c; }
+.alc-lista { display: flex; flex-direction: column; gap: 8px; }
+.alc-linha { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; background: #fff; border: 1px solid #e3e8ef; border-radius: 12px; padding: 8px 10px; min-height: 48px; font: inherit; cursor: pointer; }
+.alc-ic { font-size: 1.2rem; width: 24px; text-align: center; }
+.alc-corpo { flex: 1; min-width: 0; display: block; }
+.alc-topo { display: flex; justify-content: space-between; gap: 8px; font-size: .82rem; }
+.alc-topo i { font-style: normal; font-weight: 700; color: #475569; }
+.alc-barra { display: block; height: 7px; border-radius: 4px; background: #eef2f7; margin-top: 5px; overflow: hidden; }
+.alc-barra span { display: block; height: 100%; border-radius: 4px; }
+.alc-badge { font-size: .75rem; font-weight: 800; padding: 3px 8px; border-radius: 8px; border: 1px solid; min-width: 44px; text-align: center; }
+.alc-badge.alc-verde { background: #ecfdf5; color: #047857; border-color: #6ee7b7; }
+.alc-badge.alc-ambar { background: #fffbeb; color: #b45309; border-color: #fcd34d; }
+.alc-badge.alc-cinza { background: #f1f5f9; color: #475569; border-color: #e2e8f0; }
+.alc-seta { color: #94a3b8; font-size: 1.2rem; }
+@media (min-width: 900px) {
+  .alcance { padding: 20px 22px; }
+  .alc-cab { flex-direction: row; justify-content: space-between; align-items: flex-start; }
+  .alc-corpo-geral { grid-template-columns: minmax(240px, 2fr) 3fr; gap: 28px; align-items: center; }
+  .alc-corpo-geral.so-lista { grid-template-columns: 1fr; }
+  .alc-donut { width: 260px; }
+  .alc-kpis { grid-template-columns: repeat(3, 1fr); }
+  .alc-kpi-st { grid-column: auto; }
+}
+.chip-ativo:empty { display: none; }

@@ -65,7 +65,7 @@
       { id: 'mulher', icone: '👩', titulo: 'Saúde da mulher', desc: 'Falta · PEC: Condições de saúde → Saúde da mulher' },
       { id: 'criancas', icone: '👶', titulo: 'Crianças (puericultura)', desc: 'Falta · PEC: Condições de saúde → Desenvolvimento infantil' },
       { id: 'territorio', icone: '🗺️', titulo: 'Território / famílias', desc: 'Falta · PEC: Território → Cadastro domiciliar' },
-      { id: 'vacinacao', icone: '💉', titulo: 'Busca ativa de vacinação', desc: 'Falta · PEC: Busca ativa → Vacinação (status Atrasada)' }
+      { id: 'vacinacao', icone: '💉', titulo: 'Busca ativa de vacinação', desc: 'Falta · Busca ativa de vacinação (.xlsx de rotina com ✓ e ✗, ou .csv do PEC)' }
     ];
 
     function normalizarTexto(txt) {

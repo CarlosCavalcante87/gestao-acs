@@ -46,22 +46,23 @@
 
     async function xlsxParaTexto(file) {
       const arqs = await xlsxDescompactar(await file.arrayBuffer());
-      // primeira aba
-      let alvo = null;
+      // abas, na ordem do arquivo
+      const abas = [];
       if (arqs['xl/workbook.xml'] && arqs['xl/_rels/workbook.xml.rels']) {
         const wb = xmlDoc(arqs['xl/workbook.xml']), rels = xmlDoc(arqs['xl/_rels/workbook.xml.rels']);
-        const s1 = wb.getElementsByTagName('sheet')[0];
-        const rid = s1 && (s1.getAttribute('r:id') || s1.getAttributeNS('http://schemas.openxmlformats.org/officeDocument/2006/relationships', 'id'));
-        const rel = [...rels.getElementsByTagName('Relationship')].find(r => r.getAttribute('Id') === rid);
-        if (rel) { const t = rel.getAttribute('Target').replace(/^\//, ''); alvo = t.startsWith('xl/') ? t : 'xl/' + t; }
+        [...wb.getElementsByTagName('sheet')].forEach(sh => {
+          const rid = sh.getAttribute('r:id') || sh.getAttributeNS('http://schemas.openxmlformats.org/officeDocument/2006/relationships', 'id');
+          const rel = [...rels.getElementsByTagName('Relationship')].find(r => r.getAttribute('Id') === rid);
+          if (rel) { const t = rel.getAttribute('Target').replace(/^\//, ''); abas.push({ nome: sh.getAttribute('name') || '', caminho: t.startsWith('xl/') ? t : 'xl/' + t }); }
+        });
       }
-      if (!alvo || !arqs[alvo]) alvo = Object.keys(arqs).filter(n => /worksheets\//.test(n)).sort()[0];
-      if (!alvo) throw new Error('Nenhuma aba encontrada no .xlsx.');
+      if (!abas.length) Object.keys(arqs).filter(n => /worksheets\//.test(n)).sort().forEach(n => abas.push({ nome: '', caminho: n }));
+      if (!abas.length || !arqs[abas[0].caminho]) throw new Error('Nenhuma aba encontrada no .xlsx.');
       // textos compartilhados
       const textos = [];
       if (arqs['xl/sharedStrings.xml']) [...xmlDoc(arqs['xl/sharedStrings.xml']).getElementsByTagName('si')].forEach(si => { textos.push([...si.getElementsByTagName('t')].map(t => t.textContent).join('')); });
-      // estilos: quais formatos são data/hora
-      const tipoPorEstilo = [];
+      // estilos: formatos de data/hora e cor de fundo
+      const tipoPorEstilo = [], fundoPorEstilo = [];
       if (arqs['xl/styles.xml']) {
         const st = xmlDoc(arqs['xl/styles.xml']); const custom = {};
         [...st.getElementsByTagName('numFmt')].forEach(n => { custom[n.getAttribute('numFmtId')] = n.getAttribute('formatCode') || ''; });
@@ -72,27 +73,43 @@
           const temData = /[dy]/.test(g), temHora = /h|s/.test(g);
           return temData && temHora ? 'datahora' : temData ? 'data' : temHora ? 'hora' : null;
         };
+        const fundos = [];
+        const fl = st.getElementsByTagName('fills')[0];
+        if (fl) [...fl.getElementsByTagName('fill')].forEach(f => { const pf = f.getElementsByTagName('patternFill')[0]; const fg = pf && pf.getElementsByTagName('fgColor')[0]; fundos.push(pf && pf.getAttribute('patternType') === 'solid' && fg && fg.getAttribute('rgb') ? fg.getAttribute('rgb').toUpperCase() : null); });
         const cell = st.getElementsByTagName('cellXfs')[0];
-        if (cell) [...cell.getElementsByTagName('xf')].forEach(x => tipoPorEstilo.push(classificar(x.getAttribute('numFmtId'))));
+        if (cell) [...cell.getElementsByTagName('xf')].forEach(x => { tipoPorEstilo.push(classificar(x.getAttribute('numFmtId'))); fundoPorEstilo.push(fundos[+x.getAttribute('fillId') || 0] || null); });
       }
-      const linhas = [];
-      [...xmlDoc(arqs[alvo]).getElementsByTagName('row')].forEach(row => {
-        const cels = [];
-        [...row.getElementsByTagName('c')].forEach((c, i) => {
-          const col = c.getAttribute('r') ? colunaDeRef(c.getAttribute('r')) : i;
-          const t = c.getAttribute('t'); const vEl = c.getElementsByTagName('v')[0]; const v = vEl ? vEl.textContent : '';
-          let txt = '';
-          if (t === 's') txt = textos[+v] || '';
-          else if (t === 'inlineStr') txt = [...c.getElementsByTagName('t')].map(x => x.textContent).join('');
-          else if (t === 'str' || t === 'e') txt = v;
-          else if (t === 'b') txt = v === '1' ? 'Sim' : 'Não';
-          else if (v !== '') { const tipo = tipoPorEstilo[+c.getAttribute('s') || 0]; txt = tipo ? serialParaTexto(parseFloat(v), tipo) : numeroParaTexto(v); }
-          while (cels.length < col) cels.push('');
-          cels[col] = txt.replace(/[\r\n;]+/g, ' ').trim();
+      // uma aba inteira como matriz de { txt, fundo }
+      const lerAba = (caminho) => {
+        const linhas = [];
+        [...xmlDoc(arqs[caminho]).getElementsByTagName('row')].forEach(row => {
+          const cels = [];
+          [...row.getElementsByTagName('c')].forEach((c, i) => {
+            const col = c.getAttribute('r') ? colunaDeRef(c.getAttribute('r')) : i;
+            const t = c.getAttribute('t'); const vEl = c.getElementsByTagName('v')[0]; const v = vEl ? vEl.textContent : '';
+            const est = +c.getAttribute('s') || 0;
+            let txt = '';
+            if (t === 's') txt = textos[+v] || '';
+            else if (t === 'inlineStr') txt = [...c.getElementsByTagName('t')].map(x => x.textContent).join('');
+            else if (t === 'str' || t === 'e') txt = v;
+            else if (t === 'b') txt = v === '1' ? 'Sim' : 'Não';
+            else if (v !== '') { const tipo = tipoPorEstilo[est]; txt = tipo ? serialParaTexto(parseFloat(v), tipo) : numeroParaTexto(v); }
+            while (cels.length < col) cels.push({ txt: '', fundo: null });
+            cels[col] = { txt: txt.replace(/[\r\n;]+/g, ' ').trim(), fundo: fundoPorEstilo[est] || null };
+          });
+          linhas.push(cels);
         });
-        linhas.push(cels.join(';'));
+        return linhas;
+      };
+      // Aba "Legenda": cor de fundo -> significado (A aplicada, E equivalente, R em atraso)
+      const mapaCor = {};
+      const leg = abas.find(a => /legenda/i.test(a.nome));
+      if (leg && arqs[leg.caminho]) lerAba(leg.caminho).forEach(r => {
+        const sig = normalizarTexto((r[1] && r[1].txt) || ''); const cor = r[0] && r[0].fundo; if (!cor) return;
+        if (/equivalente/.test(sig)) mapaCor[cor] = 'E'; else if (/aplicad/.test(sig)) mapaCor[cor] = 'A'; else if (/atraso/.test(sig)) mapaCor[cor] = 'R';
       });
-      return linhas.join('\n');
+      const usaCor = Object.keys(mapaCor).length > 0;
+      return lerAba(abas[0].caminho).map((cels, n) => cels.map(c => c.txt + (usaCor && n > 0 && c.fundo && mapaCor[c.fundo] ? '‹' + mapaCor[c.fundo] + '›' : '')).join(';')).join('\n');
     }
 
     // Texto de um arquivo importado: .csv (ISO-8859-1, como o PEC exporta) ou .xlsx

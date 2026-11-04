@@ -132,7 +132,7 @@ function idadeEmAnos(dtStr) {
           const reader = { result: textoArquivo };
           const processar = () => {
             const linhas = reader.result.split(/\r?\n/);
-            let tema = "", cabIdx = -1, ehVac = false;
+            let tema = "", cabIdx = -1, ehVac = false, ehMatriz = false;
             for (let i = 0; i < Math.min(linhas.length, 35); i++) {
               const l = linhas[i].trim();
               {
@@ -148,6 +148,7 @@ function idadeEmAnos(dtStr) {
               if (l.includes("Lista temática;")) tema = l.split(";")[1]?.trim();
               if (normalizarTexto(l).includes('busca ativa de vacina')) ehVac = true;
               if (l.startsWith("Nome do cidadão;")) { cabIdx = i; break; }
+              if (/^CPF;CNS;Nome;Nascimento;/.test(l)) { cabIdx = i; ehVac = true; ehMatriz = true; break; }
               if (l.startsWith("Nome;") || l.startsWith("NOME CIDADÃO;") || l.startsWith("Nome equipe;") || l.startsWith("TIPO DE LOGRADOURO;")) {
                 cabIdx = i; break;
               }
@@ -173,7 +174,7 @@ function idadeEmAnos(dtStr) {
             let countBolsaFamiliaFile = 0;
 
             if (ehVac && cabIdx !== -1) {
-              const rel = lerRelatorioVacinacao(linhas, cabIdx); rel.meta.arquivo = file.name;
+              const rel = ehMatriz ? lerMatrizVacinacao(linhas, cabIdx) : lerRelatorioVacinacao(linhas, cabIdx); rel.meta.arquivo = file.name;
               relatoriosVacinacao.push(rel);
               countAtualizados = new Set(rel.rows.map(r => r.nome)).size;
             } else if (cabIdx !== -1) {
@@ -502,7 +503,7 @@ function idadeEmAnos(dtStr) {
 
       const resumoVac = relatoriosVacinacao.length ? aplicarRelatoriosVacinacao(relatoriosVacinacao) : null;
       if (!resumoVac) Object.values(BASE_DADOS.cidadaos).forEach(aplicarVacinacaoCidadao);
-      const resumoVacTxt = resumoVac ? `${resumoVac.pessoas} pessoa(s) com ${resumoVac.vacinas} vacina(s) em atraso` + (resumoVac.hpv ? `, ${resumoVac.hpv} com HPV` : '') + (resumoVac.foraDaBase ? `. ${resumoVac.foraDaBase} fora da base (não vinculados)` : '') + '.' + (resumoVac.meninas ? ` HPV avaliado em ${resumoVac.meninasHpv} de ${resumoVac.meninas} meninas de 9 a 14 anos.` + (resumoVac.meninasHpv < resumoVac.meninas ? ' Para o resto, exporte a busca ativa com o imunobiológico HPV.' : '') : '') : '';
+      const resumoVacTxt = resumoVac ? `${resumoVac.pessoas} pessoa(s) com ${resumoVac.vacinas} vacina(s) em atraso` + (resumoVac.hpv ? `, ${resumoVac.hpv} com HPV atrasada` : '') + (resumoVac.foraDaBase ? `. ${resumoVac.foraDaBase} fora da sua microárea/base` : '') + '.' + (resumoVac.meninas ? ` HPV avaliado em ${resumoVac.meninasHpv} de ${resumoVac.meninas} meninas de 9 a 14 anos.` + (resumoVac.meninasHpv < resumoVac.meninas ? ' Para o resto, exporte a busca ativa com o imunobiológico HPV.' : '') : '') : '';
       let countEncontrados = Object.keys(arquivosProcessados).length;
       let html = `<div class="file-list-header">
             <span>${countEncontrados} de ${PLANILHAS_ESPERADAS.length} planilhas processadas</span>
@@ -627,6 +628,7 @@ function idadeEmAnos(dtStr) {
       filtrarLista();
       atualizarAlertas();
       renderMudancas();
+      renderAlcance();
       renderHistorico();
       atualizarStatusBackup();
     }

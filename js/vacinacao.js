@@ -3,7 +3,7 @@
     // BUSCA ATIVA DE VACINAÇÃO (relatório do PEC: uma linha por cidadão, vacina e dose)
     // =========================================================================
     // C2 considera as vacinas do indicador (penta e poliomielite); as demais ficam como informação no cartão
-    const ehVacinaC2 = (imuno) => /penta|polio|dtp|hepatite b|hib/.test(normalizarTexto(imuno || ''));
+    const ehVacinaC2 = (imuno) => /penta|polio|vip|dtp|hepatite b|hib/.test(normalizarTexto(imuno || ''));
     const ehHpv = (imuno) => /hpv|papiloma/.test(normalizarTexto(imuno || ''));
     function nomeVacinaCurto(v) { return (v || '').replace(/^vacina\s+/i, '').trim(); }
     function textoDoseVacina(it) { return nomeVacinaCurto(it.v) + (it.d && it.d !== '-' ? ' ' + it.d : ''); }
@@ -38,6 +38,43 @@
         });
       }
       return { meta, rows };
+    }
+
+    // Relatório em matriz (uma linha por cidadão, uma coluna por vacina/dose):
+    // ✓ verde = aplicada, ✓ azul = equivalente, vazio vermelho = em atraso, ✗ = inapto pela idade, vazio sem cor = apto no prazo
+    function lerMatrizVacinacao(linhas, cabIdx) {
+      const colunas = linhas[cabIdx].split(';').map(c => c.trim());
+      const iCpf = colunas.indexOf('CPF'), iNome = colunas.indexOf('Nome'), iNasc = colunas.indexOf('Nascimento');
+      const iPrimeira = colunas.findIndex((c, i) => i > iNasc && /\b(D\d?|DU|R\d|REF)\b/i.test(c) && !/^(microarea|equipe|unidade)/i.test(normalizarTexto(c)));
+      const vacinas = colunas.map((c, i) => ({ c, i })).filter(x => x.i >= iPrimeira && x.c);
+      const rows = [];
+      for (let i = cabIdx + 1; i < linhas.length; i++) {
+        const l = linhas[i]; if (!l.trim()) continue;
+        const vals = l.split(';');
+        const nome = (vals[iNome] || '').trim().toUpperCase(); if (!nome || nome.length < 3) continue;
+        const cels = {};
+        vacinas.forEach(x => {
+          const t = (vals[x.i] || '').trim(); const m = /‹([AER])›/.exec(t); const base = t.replace(/‹[AER]›/, '').trim();
+          cels[x.c] = base === '✗' ? 'X' : base === '✓' ? (m ? m[1] : 'A') : (m ? m[1] : 'N');
+        });
+        rows.push({ nome, cpf: (vals[iCpf] || '').replace(/\D/g, ''), nasc: (vals[iNasc] || '').trim(), cels });
+      }
+      return { tipo: 'matriz', meta: {}, rows, colunas: vacinas.map(x => x.c) };
+    }
+    function aplicarMatrizVacinacao(rel, resumo) {
+      const idx = indiceBase(); const gerado = dataDoNomeDoArquivo(rel.meta.arquivo) || fmtData(new Date());
+      const fora = new Set();
+      rel.rows.forEach(r => {
+        const ch = (r.cpf.length === 11 && idx.porCpf[r.cpf]) || idx.porNome[r.nome];
+        if (!ch) { fora.add(r.nome); return; }
+        const c = BASE_DADOS.cidadaos[ch];
+        if (r.nasc && !c.dt_nascimento) c.dt_nascimento = r.nasc;
+        c.vacAtraso = rel.colunas.filter(col => r.cels[col] === 'R').map(col => ({ v: col, d: '' }));
+        const colHpv = rel.colunas.find(col => ehHpv(col));
+        c.vacHpv = colHpv ? r.cels[colHpv] : undefined;
+        c.vacCob = { todas: true, hpv: !!colHpv }; c.vacData = gerado; c.vacFonte = 'matriz';
+      });
+      resumo.foraDaBase += fora.size;
     }
 
     // Faixa de idade (em anos completos) que o relatório cobre; null quando não dá para saber.
@@ -75,6 +112,7 @@
     function aplicarRelatoriosVacinacao(relatorios) {
       const resumo = { pessoas: 0, vacinas: 0, foraDaBase: 0, hpv: 0 };
       relatorios.forEach(rel => {
+        if (rel.tipo === 'matriz') { aplicarMatrizVacinacao(rel, resumo); return; }
         const { meta, rows } = rel; const idx = indiceBase();
         const statusAtraso = filtroVazio(meta.status) || /atras/.test(normalizarTexto(meta.status));
         const inferir = statusAtraso && filtroVazio(meta.dose) && filtroVazio(meta.tipoLog) && filtroVazio(meta.log) && filtroVazio(meta.bairro);
@@ -99,6 +137,7 @@
           const novas = porChave[ch] || [];
           const idade = c.dt_nascimento ? idadeEmAnos(c.dt_nascimento) : null;
           const coberto = inferir && faixa && idade !== null && idade >= faixa.min && idade <= faixa.max;
+          if (c.vacFonte === 'matriz') return;
           if (!coberto && !novas.length) return;
           let lista = c.vacAtraso || [];
           if (coberto) {
@@ -121,6 +160,11 @@
 
     // C7: monta o texto e o resultado a partir da base guardada e do estado do HPV.
     function estadoHpv(c) {
+      if (c.vacHpv) {
+        if (c.vacHpv === 'A' || c.vacHpv === 'E') return { tipo: 'ok', txt: 'em dia' };
+        if (c.vacHpv === 'R') return { tipo: 'atrasada', doses: [], nome: 'HPV' };
+        if (c.vacHpv === 'N') return { tipo: 'aplicar' };
+      }
       const hl = (c.vacAtraso || []).filter(x => ehHpv(x.v));
       if (hl.length) return { tipo: 'atrasada', doses: hl.map(x => x.d).filter(d => d && d !== '-'), nome: nomeVacinaCurto(hl[0].v) };
       if (c.vacCob && c.vacCob.hpv) return { tipo: 'ok', txt: 'em dia' };
@@ -135,11 +179,12 @@
       const partes = [], pend = [];
       b.partes.forEach(p => {
         if (p !== '@HPV') { partes.push(p); return; }
-        partes.push(st.tipo === 'ok' ? `HPV ${st.txt} ✓` : st.tipo === 'atrasada' ? `HPV ${st.doses.length ? st.doses.join('/') + ' ' : ''}atrasada ✗` : (b.semLista ? 'HPV sem informação ✗' : 'HPV sem registro ✗'));
+        partes.push(st.tipo === 'ok' ? `HPV ${st.txt} ✓` : st.tipo === 'atrasada' ? `HPV ${st.doses.length ? st.doses.join('/') + ' ' : ''}atrasada ✗` : st.tipo === 'aplicar' ? 'HPV a aplicar ✗' : (b.semLista ? 'HPV sem informação ✗' : 'HPV sem registro ✗'));
       });
       b.pend.forEach(p => {
         if (p !== '@HPV') { pend.push(p); return; }
         if (st.tipo === 'atrasada') pend.push(`C7: Busca Ativa - Vacina HPV atrasada${st.doses.length ? ' (' + st.doses.join(', ') + ')' : ''}: aplicar a dose em atraso (9 a 14 anos)`);
+        else if (st.tipo === 'aplicar') pend.push('C7: Vacina HPV (9 a 14 anos): dose liberada e ainda sem registro. Aplicar na UBS ou conferir a caderneta');
         else if (st.tipo === 'sem') pend.push(b.semLista ? 'C7: Vacina HPV (9 a 14 anos): sem informação no sistema. Conferir a caderneta na visita e importar a busca ativa de vacinação com o imunobiológico HPV' : 'C7: Busca Ativa - Vacina HPV (9 a 14 anos) sem registro: conferir a caderneta e importar a busca ativa de vacinação (HPV)');
       });
       c.pendencias = (c.pendencias || []).filter(p => !p.startsWith('C7:')).concat(pend);

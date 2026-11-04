@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gestao-acs-v74';
+const CACHE_NAME = 'gestao-acs-v77';
 const CACHE_FONTES = 'gestao-acs-fontes';
 const RECURSOS = [
   './',
@@ -17,7 +17,7 @@ const RECURSOS = [
   './js/medidas.js',
   './js/visitas.js',
   './js/mudancas.js',
-  './js/historico.js',
+  './js/historico.js', './js/alcance.js',
   './js/indicadores.js',
   './js/interface.js',
   './manifest.json',
