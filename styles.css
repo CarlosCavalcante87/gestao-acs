@@ -582,3 +582,7 @@ nav.tab-bar .badge-tab[style*="display: none"] { display: none !important; }
 /* Emojis de condição (diabetes, hipertensão, gestante) ao lado da idade */
 .cond-emoji { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; border-radius: 50%; background: #f1f5f9; border: 1px solid #e2e8f0; font-size: 0.8rem; line-height: 1; }
 .tag-sem { background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; }
+
+/* Versão e desenvolvedor discretos na tela de login */
+.bloq-caixa .bloq-versao { margin: 14px 0 0; font-size: 0.66rem; color: #94a3b8; opacity: 0.9; }
+.bloq-caixa .bloq-versao b { color: #94a3b8; font-weight: 600; }

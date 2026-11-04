@@ -37,7 +37,7 @@
       const ok = cryptoOk(), temApp = senhaDefinida() && !!senhaSessao;
       const cb = document.getElementById('bkpUsarSenha');
       cb.checked = ok; cb.disabled = !ok;
-      document.getElementById('bkpRotulo').textContent = temApp ? 'Proteger o arquivo com a senha do app' : 'Proteger o arquivo com senha';
+      document.getElementById('bkpRotulo').textContent = temApp ? 'Proteger o arquivo com a senha do app' : (senhaDefinida() ? 'Proteger o arquivo com senha (use a mesma senha do app)' : 'Proteger o arquivo com senha');
       document.getElementById('bkpSenha').value = ''; document.getElementById('bkpSenha2').value = '';
       document.getElementById('bkpLigarApp').checked = true;
       document.getElementById('bkpAviso').textContent = ok ? '' : 'A proteção por senha só funciona em endereço seguro (https). O backup será gerado sem senha.';
