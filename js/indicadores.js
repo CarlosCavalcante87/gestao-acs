@@ -241,6 +241,7 @@ function idadeEmAnos(dtStr) {
                   if ((kn === "numero" || kn === "n°" || kn === "no" || kn.startsWith("numero ")) && !cid.numero) cid.numero = val;
                   if (kn === "telefone celular" && !cid.telefone) cid.telefone = val;
                 }
+                if (cpfValido && !temCpf(cid)) cid.cpf = cpfValido;   // outra planilha trouxe o CPF que faltava
                 if (cid.bolsaFamilia === undefined) cid.bolsaFamilia = false;
 
                 let matchedBf = false;
@@ -277,17 +278,7 @@ function idadeEmAnos(dtStr) {
                   const v = (reg[key] || "").trim();
                   if (kn.includes("atualiza") && kn.includes("cadastr") && (kn.includes("domicil") || kn.includes("famili") || kn.includes("moradia")) && /\d/.test(v)) cid.dt_cad_dom = v;
                 }
-                const diasDe = (s) => { const d = s ? parseDataJS(s) : null; return (d && !isNaN(d.getTime())) ? Math.floor((new Date() - d) / 86400000) : null; };
-                const diasInd = diasDe(cid.dt_cadastral), diasDom = diasDe(cid.dt_cad_dom);
-                const indVenceu = diasInd === null || diasInd > 365;
-                const domVenceu = diasDom !== null && diasDom > 365;
-                cid.c1_ind_ok = !indVenceu; cid.c1_dom_ok = (diasDom === null) ? null : !domVenceu;
-                cid.c1Ok = !indVenceu && !domVenceu;
-                cid.pendencias = (cid.pendencias || []).filter(p => !p.startsWith("C1:"));
-                if (indVenceu) cid.pendencias.push(diasInd === null
-                  ? "C1: Cadastro INDIVIDUAL sem data de atualização: refazer/atualizar o cadastro individual do cidadão (CDS ou PEC) e conferir o cadastro domiciliar da família"
-                  : `C1: Cadastro INDIVIDUAL desatualizado (última atualização em ${cid.dt_cadastral}, há mais de 1 ano): atualizar o cadastro individual do cidadão e, na mesma visita, conferir o cadastro domiciliar da família`);
-                if (domVenceu) cid.pendencias.push(`C1: Cadastro DOMICILIAR desatualizado (última atualização em ${cid.dt_cad_dom}, há mais de 1 ano): atualizar o cadastro do domicílio/família`);
+                avaliarC1(cid);
 
                 // =========================================================================
                 // C2: CRIANÇAS DE 0 A 4 ANOS (LISTA DESENVOLVIMENTO INFANTIL)
@@ -571,8 +562,31 @@ function idadeEmAnos(dtStr) {
       atualizarInterface();
     }
 
+    // C1: cadastro individual atualizado (até 1 ano), domiciliar (se informado) e com CPF preenchido
+    function temCpf(c) { return ((c && c.cpf) || '').replace(/\D/g, '').length === 11; }
+    function avaliarC1(cid) {
+      const diasDe = (s) => { const d = s ? parseDataJS(s) : null; return (d && !isNaN(d.getTime())) ? Math.floor((new Date() - d) / 86400000) : null; };
+      const diasInd = diasDe(cid.dt_cadastral), diasDom = diasDe(cid.dt_cad_dom);
+      const indVenceu = diasInd === null || diasInd > 365;
+      const domVenceu = diasDom !== null && diasDom > 365;
+      const faltaCpf = !temCpf(cid);
+      cid.c1_ind_ok = !indVenceu; cid.c1_dom_ok = (diasDom === null) ? null : !domVenceu;
+      cid.c1_cpf_ok = !faltaCpf;
+      cid.c1Ok = !indVenceu && !domVenceu && !faltaCpf;
+      cid.pendencias = (cid.pendencias || []).filter(p => !p.startsWith("C1:"));
+      if (indVenceu) cid.pendencias.push(diasInd === null
+        ? "C1: Cadastro INDIVIDUAL sem data de atualização: refazer/atualizar o cadastro individual do cidadão (CDS ou PEC) e conferir o cadastro domiciliar da família"
+        : `C1: Cadastro INDIVIDUAL desatualizado (última atualização em ${cid.dt_cadastral}, há mais de 1 ano): atualizar o cadastro individual do cidadão e, na mesma visita, conferir o cadastro domiciliar da família`);
+      if (domVenceu) cid.pendencias.push(`C1: Cadastro DOMICILIAR desatualizado (última atualização em ${cid.dt_cad_dom}, há mais de 1 ano): atualizar o cadastro do domicílio/família`);
+      if (faltaCpf) cid.pendencias.push("C1: Falta CPF: cadastro sem CPF. Pedir o CPF ao cidadão e preencher no cadastro individual (CDS ou PEC)");
+    }
+
     function atualizarInterface() {
       const lista = Object.values(BASE_DADOS.cidadaos);
+      lista.forEach(c => { if (c.c1_cpf_ok !== temCpf(c)) avaliarC1(c); });   // dados salvos por versão anterior ainda não têm a checagem de CPF
+      // alerta de cadastros sem CPF (só a quantidade, nunca os números)
+      const semCpf = lista.filter(c => !temCpf(c)).length;
+      window.__semCpf = semCpf;
       const totalBf = lista.filter(c => c.bolsaFamilia).length;
       
       window.__totalVinculados = lista.length;
@@ -637,7 +651,21 @@ function idadeEmAnos(dtStr) {
       atualizarStatusBackup();
     }
 
+    let filtroSoSemCpf = false;
+    function alternarSoSemCpf() { filtroSoSemCpf = !filtroSoSemCpf; filtrarLista(); }
+
     function filtrarLista() {
+      // faixa de alerta do C1: quantos cadastros estão sem CPF (toque para ver só eles)
+      const semCpf = window.__semCpf || 0;
+      if (filtroIndicadorAtual !== 'C1' || !semCpf) filtroSoSemCpf = false;
+      const elAlertaCpf = document.getElementById('alertaCpfLista');
+      if (elAlertaCpf) {
+        const mostrar = filtroIndicadorAtual === 'C1' && semCpf > 0;
+        elAlertaCpf.style.display = mostrar ? '' : 'none';
+        elAlertaCpf.innerHTML = mostrar
+          ? `🪪 Falta CPF: ${semCpf} ${semCpf === 1 ? 'cadastro' : 'cadastros'} · ${filtroSoSemCpf ? 'mostrando só eles (toque para ver todos)' : 'toque para ver só eles'}`
+          : '';
+      }
       const termoRaw = document.getElementById('campoBusca').value.trim();
       const ruaSel = document.getElementById('filtroRua').value;
       const situacaoSel = document.getElementById('filtroPendencia').value;
@@ -669,6 +697,7 @@ function idadeEmAnos(dtStr) {
         }
 
         if (ruaSel && c.rua !== ruaSel) return false;
+        if (filtroSoSemCpf && temCpf(c)) return false;
 
         if (!temTermoBusca && filtroIndicadorAtual !== 'BF') {
           // A pendência considerada é a do indicador selecionado (C1 = só cadastro individual)
@@ -697,7 +726,11 @@ function idadeEmAnos(dtStr) {
         // Cada indicador vira um bloco: etiqueta verde (meta atingida) ou vermelha (não atendida)
         // e, logo abaixo, o que fazer para atingir a meta.
         const rotulos = {
-          C1: c.c1Ok === false ? ('C1: Cadastro Individual desatualizado' + (c.c1_dom_ok === false ? ' e domiciliar' : '')) : 'C1: Cadastro Individual',
+          C1: c.c1Ok === false
+            ? ((c.c1_ind_ok === false || c.c1_dom_ok === false)
+                ? ('C1: Cadastro Individual desatualizado' + (c.c1_dom_ok === false ? ' e domiciliar' : '') + (c.c1_cpf_ok === false ? ' · falta CPF' : ''))
+                : 'C1: Cadastro Individual · falta CPF')
+            : 'C1: Cadastro Individual',
           C2: 'C2: Criança' + (c.c2_vacinasOk ? ' · 💉 vacinas em dia' : ''),
           C3: 'C3: Gestante',
           C4: 'C4: Diabetes',

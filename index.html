@@ -72,7 +72,7 @@
             <div class="rodape-card"><span class="status-meta" id="c1-pend">Aguardando...</span></div>
           </div>
           <div class="barra-fundo"><div class="barra-progresso" id="c1-bar"></div></div>
-          <div class="regra-acs">Meta: Cadastro individual atualizado (até 1 ano)</div>
+          <div class="regra-acs">Meta: Cadastro individual atualizado (até 1 ano) e com CPF</div>
         </div>
 
         <div class="card-meta" id="card-c2" onclick="abrirIndicador('C2')">
@@ -189,6 +189,8 @@
         <button class="chip" id="chip-C7" onclick="selecionarFiltroIndicador('C7')">👩 C7: Mulheres</button>
         <button class="chip" id="chip-BF" onclick="selecionarFiltroIndicador('BF')">💰 Bolsa Família</button>
       </div>
+
+      <div id="alertaCpfLista" class="alerta-cpf alerta-cpf-lista" style="display:none;" role="button" tabindex="0" onclick="alternarSoSemCpf()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();alternarSoSemCpf();}"></div>
 
       <div class="barra-filtros">
         <input type="text" id="campoBusca" class="search-bar" placeholder="🔍 Buscar por nome, CPF ou número da casa..." oninput="filtrarLista()">
