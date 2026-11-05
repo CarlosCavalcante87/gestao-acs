@@ -692,6 +692,10 @@ html.escuro .hero-hoje { filter: invert(0.9) hue-rotate(180deg); }
     .sp-cruz { animation: spTraco .5s ease-out 1.4s forwards; }
     @keyframes spTraco { to { stroke-dashoffset: 0; } }
     @keyframes spPulo { 0% { transform: scale(1); } 50% { transform: scale(1.12); } 100% { transform: scale(1); } }
+    /* ícone real do app (icone-192.png); se não carregar, fica o desenho em SVG */
+    .splash-icone { position: absolute; left: 40px; top: 40px; width: 120px; height: 120px; border-radius: 27px; opacity: 0; box-shadow: 0 8px 24px rgba(3, 40, 80, .35); animation: spIcone .9s cubic-bezier(.34, 1.56, .64, 1) .4s forwards; }
+    .splash-box.tem-icone .splash-logo { display: none; }
+    @keyframes spIcone { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: scale(1); } }
     .splash-titulo { font-size: 1.45rem; font-weight: 800; letter-spacing: -0.02em; opacity: 0; animation: spSobe .7s ease 1.7s forwards; }
     .splash-sub { margin-top: 8px; font-size: .85rem; font-weight: 500; opacity: 0; animation: spSobe .7s ease 2.1s forwards; }
     .splash-sub { --op: .9; }
@@ -705,6 +709,7 @@ html.escuro .hero-hoje { filter: invert(0.9) hue-rotate(180deg); }
     @media (prefers-reduced-motion: reduce) {
       #splash { animation: spSai .3s ease 1.5s forwards; }
         .splash-orbita { display: none; }
+        .splash-icone { animation: none; opacity: 1; }
         .splash-logo { animation: none; }
         .splash-logo path, .splash-logo circle { stroke-dashoffset: 0; animation: none; }
         .splash-titulo, .splash-sub { animation: none; opacity: 1; transform: none; }
