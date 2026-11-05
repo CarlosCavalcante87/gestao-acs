@@ -192,6 +192,11 @@
 
       <div id="alertaCpfLista" class="alerta-cpf alerta-cpf-lista" style="display:none;" role="button" tabindex="0" onclick="alternarSoSemCpf()" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();alternarSoSemCpf();}"></div>
 
+      <div class="seg" id="seletorVisao" role="tablist" aria-label="Forma de exibir" style="display:none;">
+        <button class="seg-btn active" id="visPessoa" onclick="definirVisaoLista('pessoa')">👤 Por pessoa</button>
+        <button class="seg-btn" id="visFamilia" onclick="definirVisaoLista('familia')">🏠 Por família</button>
+      </div>
+
       <div class="barra-filtros">
         <input type="text" id="campoBusca" class="search-bar" placeholder="🔍 Buscar por nome, CPF ou número da casa..." oninput="filtrarLista()">
         <div class="filtros-duplos">
@@ -473,6 +478,7 @@
     </div>
   </div>
 
+  <script src="./js/versao.js"></script>
   <script src="./js/nucleo.js"></script>
   <script src="./js/armazenamento.js"></script>
   <script src="./js/alertas.js"></script>

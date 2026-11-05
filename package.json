@@ -1,7 +1,11 @@
 {
   "name": "guia-visitas-tacs",
-  "version": "84.0.0",
+  "version": "85.18.0",
   "private": true,
-  "scripts": { "test": "node tests/run.js" },
-  "devDependencies": { "playwright": "^1.40.0" }
+  "scripts": {
+    "test": "node tests/run.js"
+  },
+  "devDependencies": {
+    "playwright": "^1.40.0"
+  }
 }

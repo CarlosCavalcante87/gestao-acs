@@ -383,6 +383,8 @@
     });
 
     function alternarAba(aba) {
+      // ao sair da aba Cidadãos, esquece o nome que ficou na busca (evita listas vazias "misteriosas" nos outros indicadores)
+      if (aba !== 'cidadaos') { const cb = document.getElementById('campoBusca'); if (cb && cb.value !== '') { cb.value = ''; if (typeof filtrarLista === 'function') filtrarLista(); } }
       ['dashboard', 'alertas', 'cidadaos', 'upload'].forEach(a => { document.getElementById('view-' + a).style.display = a === aba ? 'block' : 'none'; });
       document.getElementById('btnTabDash').className = aba === 'dashboard' ? 'active' : '';
       document.getElementById('btnTabAl').className = aba === 'alertas' ? 'active' : '';

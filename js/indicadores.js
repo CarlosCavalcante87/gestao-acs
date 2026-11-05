@@ -651,10 +651,98 @@ function idadeEmAnos(dtStr) {
       atualizarStatusBackup();
     }
 
+    // ---------- C1: visão por família (mesma rua + mesmo número = mesma casa) ----------
+    let visaoLista = 'pessoa';
+    try { if (localStorage.getItem('guia_visao_c1') === 'familia') visaoLista = 'familia'; } catch (e) {}
+    function definirVisaoLista(v) { visaoLista = v; try { localStorage.setItem('guia_visao_c1', v); } catch (e) {} filtrarLista(); }
+    function chaveFamilia(c) {
+      const rua = normalizarTexto(c.rua || '').trim();
+      const num = normalizarTexto(c.numero || '').replace(/\s+/g, '');
+      if (!rua || !num || /^(s\/?n|sn|0|-|semnumero)$/.test(num)) return null;   // sem endereço completo: não agrupa
+      return rua + '|' + num;
+    }
+    const temPendC1 = (c) => c.c1Ok === false || (c.pendencias || []).some(p => p.startsWith('C1:'));
+
+    // Emojis de perfil de cada pessoa (um por indicador/condição), para ver de relance quem é quem na família
+    const EMOJIS_PERFIL = [['C2', '👶', 'Criança (C2)'], ['C3', '🤰', 'Gestante / puérpera (C3)'], ['C4', '🩸', 'Diabetes (C4)'], ['C5', '❤️', 'Hipertensão (C5)'], ['C6', '👴', 'Idoso (C6)'], ['C7', '👩', 'Mulher 25–64 (C7)'], ['BF', '💰', 'Bolsa Família']];
+    function perfilPessoa(c, porIdade) {
+      const ind = c.indicadores || {}, anos = c.dt_nascimento ? idadeEmAnos(c.dt_nascimento) : null;
+      return EMOJIS_PERFIL.filter(([k]) => k === 'BF' ? c.bolsaFamilia
+        : (ind[k] || (porIdade && ((k === 'C2' && anos !== null && anos < 10) || (k === 'C6' && anos !== null && anos >= 60)))));
+    }
+    const htmlEmojisPerfil = (lista) => lista.map(([, em, nome]) => `<span class="cond-emoji" role="img" title="${nome}" aria-label="${nome}">${em}</span>`).join('');
+    const LEGENDA_PERFIL = `<div class="fam-legenda">${EMOJIS_PERFIL.map(([, em, nome]) => `<span>${em} ${nome.replace(/ \(.*$/, '')}</span>`).join('')}</div>`;
+
+    function htmlMoradorC1(chave, c) {
+      const idade = c.dt_nascimento ? calcularIdade(c.dt_nascimento) : (c.idade_txt || '');
+      const motivos = [];
+      if (c.c1_ind_ok === false) motivos.push('cadastro individual desatualizado');
+      if (c.c1_cpf_ok === false) motivos.push('falta CPF');
+      const tags = temPendC1(c) && motivos.length
+        ? motivos.map(m => `<span class="tag tag-danger">✗ ${m}</span>`).join('')
+        : (temPendC1(c) ? '<span class="tag tag-danger">✗ C1 pendente</span>' : '<span class="tag tag-ok">✓ C1</span>');
+      return `<div class="fam-mor"><div class="fam-mor-info"><div class="fam-mor-nome">${escHtml(c.nome)}${idade ? ` <small>🎂 ${escHtml(idade)}</small>` : ''}</div><div class="fam-mor-emojis">${htmlEmojisPerfil(perfilPessoa(c, true))}</div><div>${tags}</div></div>
+        <button class="btn-ver-ficha" data-chave="${escHtml(chave)}">Ver ficha</button></div>`;
+    }
+
+    function renderPorFamilia(filtrados, content, contadorEl) {
+      const totalCasa = {};
+      Object.values(BASE_DADOS.cidadaos).forEach(c => { const k = chaveFamilia(c); if (k) totalCasa[k] = (totalCasa[k] || 0) + 1; });
+      const grupos = new Map(), semEnd = [];
+      filtrados.forEach(([chave, c]) => {
+        const k = chaveFamilia(c);
+        if (!k) { semEnd.push([chave, c]); return; }
+        if (!grupos.has(k)) grupos.set(k, { k, rua: c.rua, numero: c.numero, mem: [] });
+        grupos.get(k).mem.push([chave, c]);
+      });
+      const fams = [...grupos.values()].map(g => ({ ...g, pend: g.mem.filter(([, c]) => temPendC1(c)).length }));
+      // Ordem: ruas em ordem alfabética; dentro de cada rua, do menor para o maior número da residência
+      const chaveRua = (g) => normalizarTexto(g.rua || '').trim();
+      fams.sort((a, b) => chaveRua(a).localeCompare(chaveRua(b), 'pt-BR', { sensitivity: 'base' }) || String(a.numero).localeCompare(String(b.numero), 'pt-BR', { numeric: true, sensitivity: 'base' }));
+      contadorEl.innerText = `Exibindo ${fams.length} ${fams.length === 1 ? 'família' : 'famílias'} · ${filtrados.length - semEnd.length} pessoa(s)` + (semEnd.length ? ` · ${semEnd.length} sem endereço completo` : '');
+      let html = fams.length ? LEGENDA_PERFIL : '', ruaAtual = null;
+      const famsPorRua = {}; fams.forEach(g => { const r = chaveRua(g); famsPorRua[r] = (famsPorRua[r] || 0) + 1; });
+      fams.forEach(g => {
+        if (chaveRua(g) !== ruaAtual) {
+          ruaAtual = chaveRua(g);
+          html += `<div class="fam-rua">📍 ${escHtml(g.rua)} <small>· ${famsPorRua[ruaAtual]} ${famsPorRua[ruaAtual] === 1 ? 'família' : 'famílias'}</small></div>`;
+        }
+        g.mem.sort((x, y) => (y[1].c1Ok === false) - (x[1].c1Ok === false) || (x[1].nome || '').localeCompare(y[1].nome || '', 'pt-BR', { sensitivity: 'base' }));
+        const dom = g.mem.map(([, c]) => c).filter(c => c.dt_cad_dom);
+        const domVenceu = dom.some(c => c.c1_dom_ok === false);
+        const domTxt = !dom.length ? '' : (domVenceu
+          ? `<div class="fam-dom">Cadastro domiciliar: <span class="tag tag-danger">✗ desatualizado (última atualização em ${escHtml(dom.find(c => c.c1_dom_ok === false).dt_cad_dom)})</span></div>`
+          : `<div class="fam-dom">Cadastro domiciliar: <span class="tag tag-ok">✓ em dia</span></div>`);
+        const nTot = totalCasa[g.k] || g.mem.length;
+        const resumo = g.pend ? `<b class="fam-pend">${g.pend} com pendência no C1</b>` : '<b class="fam-okt">tudo em dia ✓</b>';
+        html += `<div class="fam-card ${g.pend || domVenceu ? '' : 'fam-ok'}"><h5>🏠 Nº ${escHtml(g.numero)} <small class="fam-h5-rua">${escHtml(g.rua)}</small></h5>
+          <div class="fam-sub">${nTot} ${nTot === 1 ? 'morador' : 'moradores'} · ${resumo}</div>${domTxt}
+          ${g.mem.map(([ch, c]) => htmlMoradorC1(ch, c)).join('')}</div>`;
+      });
+      if (semEnd.length) {
+        semEnd.sort((x, y) => (x[1].nome || '').localeCompare(y[1].nome || '', 'pt-BR', { sensitivity: 'base' }));
+        html += `<div class="fam-card fam-sem"><h5>📍 Sem rua ou número cadastrados</h5><div class="fam-sub">Não dá para saber a família. Confira o endereço no cadastro.</div>
+          ${semEnd.map(([ch, c]) => htmlMoradorC1(ch, c)).join('')}</div>`;
+      }
+      content.innerHTML = html;
+    }
+    document.addEventListener('click', (e) => {
+      const b = e.target.closest && e.target.closest('.btn-ver-ficha');
+      if (!b) return;
+      const c = BASE_DADOS.cidadaos[b.getAttribute('data-chave')];
+      if (!c) return;
+      visaoLista = 'pessoa';   // só para abrir a ficha; a escolha salva do usuário não muda
+      document.getElementById('campoBusca').value = c.nome;
+      filtrarLista();
+      window.scrollTo(0, 0);
+    });
+
     let filtroSoSemCpf = false;
     function alternarSoSemCpf() { filtroSoSemCpf = !filtroSoSemCpf; filtrarLista(); }
 
     function filtrarLista() {
+      // busca preenchida = todos os cards estão filtrando por ela: destaca o campo em vermelho para não passar despercebido
+      { const cb = document.getElementById('campoBusca'); if (cb) { const ativa = cb.value.trim() !== ''; cb.classList.toggle('busca-ativa', ativa); cb.title = ativa ? 'Há um texto na busca filtrando a lista. Apague para ver todos.' : ''; } }
       // faixa de alerta do C1: quantos cadastros estão sem CPF (toque para ver só eles)
       const semCpf = window.__semCpf || 0;
       if (filtroIndicadorAtual !== 'C1' || !semCpf) filtroSoSemCpf = false;
@@ -665,6 +753,14 @@ function idadeEmAnos(dtStr) {
         elAlertaCpf.innerHTML = mostrar
           ? `🪪 Falta CPF: ${semCpf} ${semCpf === 1 ? 'cadastro' : 'cadastros'} · ${filtroSoSemCpf ? 'mostrando só eles (toque para ver todos)' : 'toque para ver só eles'}`
           : '';
+      }
+      // seletor "Por pessoa / Por família": só aparece no C1
+      const verFamilia = filtroIndicadorAtual === 'C1' && visaoLista === 'familia';
+      const elSel = document.getElementById('seletorVisao');
+      if (elSel) {
+        elSel.style.display = filtroIndicadorAtual === 'C1' ? '' : 'none';
+        document.getElementById('visPessoa').className = 'seg-btn' + (verFamilia ? '' : ' active');
+        document.getElementById('visFamilia').className = 'seg-btn' + (verFamilia ? ' active' : '');
       }
       const termoRaw = document.getElementById('campoBusca').value.trim();
       const ruaSel = document.getElementById('filtroRua').value;
@@ -720,6 +816,8 @@ function idadeEmAnos(dtStr) {
         content.innerHTML = '<p style="text-align:center; padding: 24px; color: var(--text-muted); font-size: 0.88rem;">Nenhum cidadão localizado para este filtro.</p>';
         return;
       }
+
+      if (verFamilia) { renderPorFamilia(filtrados, content, contadorEl); return; }
 
       let htmlLista = '';
       filtrados.forEach(([chave, c]) => {
@@ -787,8 +885,7 @@ function idadeEmAnos(dtStr) {
         if (anosC !== null && anosC >= 60 && !(c.indicadores && c.indicadores['C6'])) perfilBadge += '<span class="tag tag-info">🧓 Idoso · fora do C6</span>';
         // Condições do cidadão (emojis logo após a idade): diabetes, hipertensão, gestação/puerpério
         const indC = c.indicadores || {};
-        const condicoesBadge = [['C4', '🩸', 'Diabetes'], ['C5', '❤️', 'Hipertensão'], ['C3', '🤰', 'Gestante / puérpera']]
-          .filter(([k]) => indC[k]).map(([k, em, nome]) => `<span class="cond-emoji" role="img" title="${nome}" aria-label="${nome}">${em}</span>`).join('');
+        const condicoesBadge = htmlEmojisPerfil(perfilPessoa(c, false).filter(([k]) => k !== 'BF'));
         const linhaInfoHtml = (idadeBadge || condicoesBadge || bfBadge || perfilBadge) ? `<div class="linha-info">${idadeBadge}${condicoesBadge}${bfBadge}${perfilBadge}</div>` : '';
         htmlLista += `
           <div class="item-cidadao ${temPend ? 'tem-pend' : 'em-dia'}">

@@ -1,9 +1,11 @@
-const CACHE_NAME = 'gestao-acs-v85-11';
+importScripts('./js/versao.js');   // única fonte da versão
+const CACHE_NAME = 'gestao-acs-' + self.__VERSAO__.replace('.', '-');   // ex.: gestao-acs-v85-12
 const CACHE_FONTES = 'gestao-acs-fontes';
 const RECURSOS = [
   './',
   './index.html',
   './styles.css',
+  './js/versao.js',
   './js/nucleo.js',
   './js/armazenamento.js',
   './js/alertas.js',

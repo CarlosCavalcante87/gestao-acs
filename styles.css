@@ -630,3 +630,51 @@ button:focus-visible, [role="button"]:focus-visible, .chip:focus-visible, .btn:f
 .btn-selecionar:active { background: var(--primary-dark); }
 .btn-parabens { background: var(--success); }
 .btn-json-in, .btn-sync { background: var(--primary); }
+
+/* ===== v85.12: contraste e área de toque ===== */
+/* Textos cinza que ficam direto sobre o fundo da página (#d8dfea) precisam de contraste mínimo 4,5:1 */
+:root { --text-muted: #4f5e74; }
+.app-versao { color: #4f5e74; }
+.app-versao b { color: #334155; }
+
+/* Área de toque mínima de 44 px nos botões pequenos (celular) */
+.btn-ret-feito, .btn-ret-rm, .btn-rm-visita, .btn-nao-mini, .btn-sim-mini, .btn-al-feito,
+.btn-visita, .btn-retorno, .btn-abrir, .btn-parabens, .btn-voltar, .file-list-header .btn-limpar { min-height: 44px; }
+.btn-ret-feito, .btn-ret-rm, .btn-rm-visita { min-width: 44px; padding-left: 12px; padding-right: 12px; }
+.btn-rm-visita { display: inline-flex; align-items: center; justify-content: center; }
+.btn-parabens, .file-list-header .btn-limpar { display: inline-flex; align-items: center; justify-content: center; }
+.file-list-header .btn-limpar { padding: 0 8px; }
+.chip { min-height: 40px; }
+
+/* ===== v85.12: tema escuro ===== */
+/* O tema escuro inverte a tela inteira; o cartão verde do resumo já é escuro, então inverte de volta para não ficar claro */
+html.escuro .hero-hoje { filter: invert(0.9) hue-rotate(180deg); }
+
+/* ===== v85.13: C1 por família ===== */
+.fam-card { background: var(--card); border-radius: 16px; padding: 14px; margin-bottom: 12px; box-shadow: var(--shadow-sm); border-left: 5px solid #ef4444; }
+.fam-card.fam-ok { border-left-color: #10b981; }
+.fam-card.fam-sem { border-left-color: #94a3b8; }
+.fam-card h5 { font-size: 0.95rem; font-weight: 800; color: var(--text); }
+.fam-sub { font-size: 0.78rem; color: var(--text-muted); margin: 2px 0 8px; }
+.fam-pend { color: #b91c1c; } .fam-okt { color: #166534; }
+.fam-dom { font-size: 0.78rem; font-weight: 700; margin-bottom: 4px; }
+.fam-mor { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 0; border-top: 1px solid #eef2f7; }
+.fam-mor-nome { font-size: 0.86rem; font-weight: 700; color: var(--text); margin-bottom: 3px; }
+.fam-mor-nome small { font-weight: 600; font-size: 0.72rem; color: var(--text-muted); }
+.btn-ver-ficha { flex-shrink: 0; min-height: 44px; padding: 0 12px; border: 1.5px solid var(--primary); background: #f0f9ff; color: var(--primary); font: inherit; font-weight: 700; font-size: 0.78rem; border-radius: 12px; cursor: pointer; }
+@media (hover: hover) { .btn-ver-ficha:hover { background: var(--primary-soft); } }
+
+/* C1 · visão por família: cabeçalho de cada rua */
+.fam-rua { margin: 14px 0 6px; padding: 7px 12px; background: #eef2f7; border-radius: 10px; font-size: 0.82rem; font-weight: 800; color: #0f172a; }
+.fam-rua small { font-weight: 600; color: #64748b; }
+.fam-h5-rua { font-weight: 600; color: #64748b; font-size: 0.74rem; margin-left: 4px; }
+
+/* C1 · emojis de perfil por pessoa e por família */
+.fam-legenda { display: flex; flex-wrap: wrap; gap: 4px 10px; font-size: 0.7rem; font-weight: 600; color: #64748b; background: #f8fafc; border: 1px solid #e3e8ef; border-radius: 10px; padding: 7px 10px; margin: 6px 0 4px; }
+.fam-emojis, .fam-mor-emojis { display: flex; flex-wrap: wrap; gap: 4px; }
+.fam-emojis { margin: 0 0 8px; }
+.fam-mor-emojis { margin-bottom: 4px; }
+.fam-mor-emojis:empty { display: none; }
+
+/* Busca preenchida: borda vermelha para lembrar que a lista está filtrada pelo texto */
+.search-bar.busca-ativa { border-color: #dc2626; background: #fef2f2; box-shadow: 0 0 0 2px #dc2626; }

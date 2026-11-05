@@ -1,6 +1,6 @@
 /* Estado da base, perfil, utilidades de data e telas */
-    // Versão do sistema: ao publicar uma nova, altere aqui E em CACHE_NAME no sw.js (mesmo número)
-    const APP_VERSAO = 'v85.11'; // manter igual ao CACHE_NAME do sw.js (v85.11 = gestao-acs-v85-11)
+    // Versão do sistema: vem de js/versao.js (mude com: node scripts/versao.js 85.13)
+    const APP_VERSAO = self.__VERSAO__ || '';   // vem de js/versao.js (única fonte da versão)
     const APP_DEV = 'Carlos Cavalcante';
     function mostrarVersaoApp() {
       document.querySelectorAll('.app-versao').forEach(el => {
