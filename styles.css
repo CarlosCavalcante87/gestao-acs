@@ -714,3 +714,4 @@ html.escuro .hero-hoje { filter: invert(0.9) hue-rotate(180deg); }
         .splash-logo path, .splash-logo circle { stroke-dashoffset: 0; animation: none; }
         .splash-titulo, .splash-sub { animation: none; opacity: 1; transform: none; }
     }
+

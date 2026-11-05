@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <script>try { var _t = localStorage.getItem('guia_tema') || 'auto', _f = localStorage.getItem('guia_fonte') || '0', _r = document.documentElement.classList;
-    if (_t === 'escuro' || (_t === 'auto' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)) _r.add('escuro');
+  <script>try { var _t = localStorage.getItem('guia_tema') || 'claro', _f = localStorage.getItem('guia_fonte') || '0', _r = document.documentElement.classList;
+    if (_t === 'escuro') _r.add('escuro'); else _r.remove('escuro');
     if (_f !== '0') _r.add('fonte' + _f); } catch (e) {}</script>
   <script>try { var __h = new Date(), __p = function (n) { return String(n).padStart(2, '0'); }; var __dia = __h.getFullYear() + '-' + __p(__h.getMonth() + 1) + '-' + __p(__h.getDate()); if (localStorage.getItem('guia_senha') && window.isSecureContext && localStorage.getItem('guia_destravado') !== __dia) document.documentElement.classList.add('travado'); } catch (e) {}</script>
   <meta charset="UTF-8">
@@ -291,7 +291,7 @@
         <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0 10px; line-height: 1.4;">Selecione <strong>todas de uma vez</strong>; o app reconhece cada uma.</p>
 
         <div class="warning-box">
-          ⚠️ Importe <strong>as 10 planilhas do mesmo dia</strong> (as 9 de sempre + a <b>busca ativa de vacinação</b>). Faltando alguma, o grupo dela fica desatualizado.
+          ⚠️ Importe <strong>as 11 planilhas do mesmo dia</strong> (as 9 de sempre + a <b>busca ativa de vacinação</b> em 2 arquivos: <b>Atrasada</b> e <b>No prazo</b>). Faltando alguma, o grupo dela fica desatualizado.
         </div>
 
         <button class="btn-selecionar" onclick="const i = document.getElementById('inputArquivosCSV'); i.value = ''; i.click()">
@@ -306,43 +306,34 @@
 
       <div class="card" id="cardAcess">
         <h3>♿ Aparência e leitura</h3>
-        <div class="rotulo-acess">Tamanho da letra</div>
-        <div class="opcoes-acess" id="opFonte">
-          <button data-v="0" onclick="definirFonte('0')" style="font-size:0.85rem;">A Normal</button>
-          <button data-v="1" onclick="definirFonte('1')" style="font-size:1rem;">A Grande</button>
-          <button data-v="2" onclick="definirFonte('2')" style="font-size:1.15rem;">A Maior</button>
-        </div>
         <div class="rotulo-acess">Tema</div>
         <div class="opcoes-acess" id="opTema">
-          <button data-v="auto" onclick="definirTema('auto')">🌓 Automático</button>
           <button data-v="claro" onclick="definirTema('claro')">☀️ Claro</button>
           <button data-v="escuro" onclick="definirTema('escuro')">🌙 Escuro</button>
         </div>
-        <div class="al-status">Automático segue o tema do celular. Essas escolhas ficam salvas neste aparelho.</div>
       </div>
 
       <div class="card" id="cardSenha">
         <h3>🔒 Senha do app e do backup</h3>
         <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0 10px;">
-          Uma única senha (6 ou mais caracteres) bloqueia o app na primeira abertura de cada dia (depois de digitada, ela não é pedida de novo até o dia seguinte), e é a mesma senha que protege os arquivos de backup.
+          Protege o acesso diário ao app e os arquivos de backup.
         </p>
         <div class="al-status" id="statusSenha" style="margin: 0 0 8px;"></div>
         <button class="btn" id="btnSenhaDef" onclick="abrirModalSenha('definir')">🔒 Definir senha</button>
         <button class="btn" id="btnSenhaAlt" style="display:none;" onclick="abrirModalSenha('alterar')">✏️ Alterar senha</button>
         <button class="btn btn-danger" id="btnSenhaRem" style="display:none;" onclick="abrirModalSenha('remover')">🔓 Remover senha</button>
-        <div class="al-status">O bloqueio impede o uso do app por quem pegar o celular desbloqueado. Ele não criptografa os dados guardados no aparelho: quem protege o arquivo de backup é a senha.</div>
       </div>
 
       <div class="card">
         <h3>📤 Resumo semanal para a equipe</h3>
-        <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0 10px;">Gera um texto curto com os indicadores, a variação da semana, visitas feitas e retornos, pronto para enviar à enfermeira ou ao grupo da equipe.</p>
+        <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0 10px;">Gera relatório rápido dos indicadores e visitas para enviar à equipe.</p>
         <button class="btn" onclick="abrirResumo()">📤 Gerar resumo da semana</button>
       </div>
 
       <div class="card">
         <h3>💾 Backup e Restauração</h3>
         <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0 10px;">
-          O backup guarda todos os cidadãos, os indicadores e as suas anotações. Guarde o arquivo em local seguro e use "Restaurar backup" para recuperar tudo, inclusive em outro celular.
+          Salva ou recupera todos os dados e anotações do aplicativo.
         </p>
         <input type="file" id="inputArquivoJSON" accept=".json" style="display: none;" onchange="importarBaseJSON(this.files[0])">
         <button class="btn btn-json-in" onclick="const i = document.getElementById('inputArquivoJSON'); i.value = ''; i.click()">

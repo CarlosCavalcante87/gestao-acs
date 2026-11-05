@@ -7,16 +7,14 @@
     function temaEscuroAtivo() { return document.documentElement.classList.contains('escuro'); }
     function definirTema(v) {
       try { localStorage.setItem('guia_tema', v); } catch (e) {}
-      const esc = v === 'escuro' || (v === 'auto' && window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches);
-      document.documentElement.classList.toggle('escuro', esc);
+      document.documentElement.classList.toggle('escuro', v === 'escuro');
       atualizarAcessib();
     }
     function atualizarAcessib() {
-      let f = '0', t = 'auto'; try { f = localStorage.getItem('guia_fonte') || '0'; t = localStorage.getItem('guia_tema') || 'auto'; } catch (e) {}
+      let f = '0', t = 'claro'; try { f = localStorage.getItem('guia_fonte') || '0'; t = localStorage.getItem('guia_tema') === 'escuro' ? 'escuro' : 'claro'; } catch (e) {}
       document.querySelectorAll('#opFonte button').forEach(b => b.classList.toggle('ativo', b.dataset.v === f));
       document.querySelectorAll('#opTema button').forEach(b => b.classList.toggle('ativo', b.dataset.v === t));
     }
-    try { matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { let t = 'auto'; try { t = localStorage.getItem('guia_tema') || 'auto'; } catch (e) {} if (t === 'auto') definirTema('auto'); }); } catch (e) {}
     function atualizarCardSenha() {
       const card = document.getElementById('cardSenha'); if (!card) return;
       const def = senhaDefinida();

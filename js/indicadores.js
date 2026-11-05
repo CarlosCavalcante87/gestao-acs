@@ -81,27 +81,59 @@ function idadeEmAnos(dtStr) {
       return meses === 0 ? a : `${a} e ${m}`;
     }
 
-    function inicializarListaPlanilhas() {
-      const listaDiv = document.getElementById('listaArquivosUpload');
+    // Quais planilhas já foram importadas (guardado no aparelho): permite importar uma por uma, em dias/momentos diferentes
+    const PLANILHAS_OK_KEY = 'guia_planilhas_ok';
+    function lerPlanilhasOk() { try { return JSON.parse(localStorage.getItem(PLANILHAS_OK_KEY)) || {}; } catch (e) { return {}; } }
+    function limparListaPlanilhas() {
+      try { localStorage.removeItem(PLANILHAS_OK_KEY); localStorage.removeItem('guia_vac_relatorios'); } catch (e) {}
+      const pg = document.getElementById('progressoUpload'); if (pg) pg.innerHTML = '';
+      inicializarListaPlanilhas();
+    }
+    function inicializarListaPlanilhas(resumoVacTxt) {
+      const listaDiv = document.getElementById('listaArquivosUpload'); if (!listaDiv) return;
+      const ok = lerPlanilhasOk(); const vacs = Object.values(lerRelatoriosVacImportados());
+      const TIPO_VAC = { vac_atrasada: 'atrasada', vac_prazo: 'no prazo' };
+      const relDe = (p) => vacs.filter(v => v.tipo === TIPO_VAC[p.id] || v.tipo === 'todas');   // relatório sem filtro de status vale para os dois
+      const feita = (p) => TIPO_VAC[p.id] ? relDe(p).length > 0 : !!ok[p.id];
+      const feitas = PLANILHAS_ESPERADAS.filter(feita).length;
+      const dts = new Set(vacs.map(v => v.data).filter(Boolean));
       let html = `<div class="file-list-header">
-            <span>0 de ${PLANILHAS_ESPERADAS.length} planilhas selecionadas</span>
+            <span>${feitas} de ${PLANILHAS_ESPERADAS.length} planilhas processadas</span>
+            ${feitas ? '<span class="btn-limpar" onclick="limparListaPlanilhas()">Limpar lista</span>' : ''}
           </div>`;
-      
       PLANILHAS_ESPERADAS.forEach(p => {
-        html += `
-          <div class="file-item" id="file-item-${p.id}">
-            <div class="file-item-icon pending">-</div>
-            <div class="file-item-content">
+        if (TIPO_VAC[p.id] && feita(p)) {
+          const linhas = relDe(p).map(v => `✓ ${escHtml(v.grupo)} · ${v.pessoas} pessoa(s)${v.data ? ' · ' + escHtml(v.data) : ''}`).join('<br>');
+          const aviso = (p.id === 'vac_prazo' && dts.size > 1) ? '<br><span class="file-item-falta">⚠️ Atrasada e No prazo são de datas diferentes: baixe os dois no mesmo dia.</span>' : '';
+          const resumo = (p.id === 'vac_atrasada' && resumoVacTxt) ? '<br>' + escHtml(resumoVacTxt) : '';
+          html += `<div class="file-item"><div class="file-item-icon">✓</div><div class="file-item-content">
+            <div class="file-item-title">${p.icone} ${p.titulo}</div>
+            <div class="file-item-status">${linhas}${resumo}${aviso}</div></div></div>`;
+        } else if (!TIPO_VAC[p.id] && ok[p.id]) {
+          const info = ok[p.id];
+          if (info.count > 0) {
+            const textoBf = info.bf > 0 ? `, ${info.bf} no Bolsa Família` : '';
+            html += `<div class="file-item"><div class="file-item-icon">✓</div><div class="file-item-content">
               <div class="file-item-title">${p.icone} ${p.titulo}</div>
-              <div class="file-item-status pending">${p.desc}</div>
-            </div>
-          </div>
-        `;
+              <span class="file-item-name">${escHtml(info.nome)}</span>
+              <div class="file-item-status">✓ ${info.count} pacientes identificados${textoBf}.${info.data ? ' ' + escHtml(info.data) : ''}</div></div></div>`;
+          } else {
+            html += `<div class="file-item"><div class="file-item-icon error">!</div><div class="file-item-content">
+              <div class="file-item-title">${p.icone} ${p.titulo}</div>
+              <span class="file-item-name">${escHtml(info.nome)}</span>
+              <div class="file-item-status error">Ficheiro sem pacientes válidos.</div></div></div>`;
+          }
+        } else {
+          html += `<div class="file-item"><div class="file-item-icon pending">-</div><div class="file-item-content">
+            <div class="file-item-title">${p.icone} ${p.titulo}</div>
+            <div class="file-item-status pending">${p.desc}</div></div></div>`;
+        }
       });
       listaDiv.innerHTML = html;
     }
 
-    async function processarFicheiros(files) {
+
+    async function processarFicheiros(files, esperado) {
       if (!files.length) return;
       const prog = document.getElementById('progressoUpload');
       const listaDiv = document.getElementById('listaArquivosUpload');
@@ -154,13 +186,14 @@ function idadeEmAnos(dtStr) {
             }
 
             let matchedId = null;
+            const temaNorm = normalizarTexto(tema);
             if (ehVac) matchedId = 'vacinacao';
-            else if (tema === "Desenvolvimento infantil") matchedId = 'criancas';
-            else if (tema === "Gestação e puerpério") matchedId = 'gestantes';
-            else if (tema === "Diabetes") matchedId = 'diabeticos';
-            else if (tema === "Hipertensão") matchedId = 'hipertensos';
-            else if (tema === "Pessoa idosa") matchedId = 'idosos';
-            else if (tema === "Saúde da mulher") matchedId = 'mulher';
+            else if (temaNorm.includes("desenvolvimento infantil")) matchedId = 'criancas';
+            else if (temaNorm.includes("gestacao e puerperio")) matchedId = 'gestantes';
+            else if (temaNorm.includes("diabetes")) matchedId = 'diabeticos';
+            else if (temaNorm.includes("hipertensao")) matchedId = 'hipertensos';
+            else if (temaNorm.includes("pessoa idosa")) matchedId = 'idosos';
+            else if (temaNorm.includes("saude da mulher")) matchedId = 'mulher';
             else if (tema) matchedId = 'lista_geral';
             else {
               const fname = file.name.toLowerCase();
@@ -169,11 +202,13 @@ function idadeEmAnos(dtStr) {
               else matchedId = 'lista_geral';
             }
             
+            if (esperado && !(ehVac && cabIdx !== -1)) { avisoToast(`“${file.name}” não parece ser um relatório de busca ativa de vacinação. Não importei esse arquivo.`); resolve(); return; }
             let countAtualizados = 0;
             let countBolsaFamiliaFile = 0;
 
             if (ehVac && cabIdx !== -1) {
               const rel = ehMatriz ? lerMatrizVacinacao(linhas, cabIdx) : lerRelatorioVacinacao(linhas, cabIdx); rel.meta.arquivo = file.name;
+              if (esperado && !ehMatriz) { const t = tipoStatusVacinacao(rel.meta); if (t !== 'todas' && t !== esperado) avisoToast(`“${file.name}” é do relatório “${ROTULO_STATUS_VAC[t]}”, mas foi escolhido em “${ROTULO_STATUS_VAC[esperado]}”. Importei assim mesmo.`); }
               relatoriosVacinacao.push(rel);
               countAtualizados = new Set(rel.rows.map(r => r.nome)).size;
             } else if (cabIdx !== -1) {
@@ -496,53 +531,13 @@ function idadeEmAnos(dtStr) {
 
       const resumoVac = relatoriosVacinacao.length ? aplicarRelatoriosVacinacao(relatoriosVacinacao) : null;
       if (!resumoVac) Object.values(BASE_DADOS.cidadaos).forEach(aplicarVacinacaoCidadao);
-      const resumoVacTxt = resumoVac ? `${resumoVac.pessoas} pessoa(s) com ${resumoVac.vacinas} vacina(s) em atraso` + (resumoVac.hpv ? `, ${resumoVac.hpv} com HPV atrasada` : '') + (resumoVac.foraDaBase ? `. ${resumoVac.foraDaBase} fora da sua microárea/base` : '') + '.' + (resumoVac.meninas ? ` HPV avaliado em ${resumoVac.meninasHpv} de ${resumoVac.meninas} meninas de 9 a 14 anos.` + (resumoVac.meninasHpv < resumoVac.meninas ? ' Para o resto, exporte a busca ativa com o imunobiológico HPV.' : '') : '') : '';
-      let countEncontrados = Object.keys(arquivosProcessados).length;
-      let html = `<div class="file-list-header">
-            <span>${countEncontrados} de ${PLANILHAS_ESPERADAS.length} planilhas processadas</span>
-            <span class="btn-limpar" onclick="inicializarListaPlanilhas(); document.getElementById('progressoUpload').innerHTML='';">Limpar</span>
-          </div>`;
-          
-      PLANILHAS_ESPERADAS.forEach(p => {
-        if (arquivosProcessados[p.id]) {
-           const info = arquivosProcessados[p.id];
-           if (info.count > 0) {
-             let textoBf = info.bf > 0 ? `, ${info.bf} no Bolsa Família` : '';
-             html += `
-               <div class="file-item">
-                 <div class="file-item-icon">✓</div>
-                 <div class="file-item-content">
-                   <div class="file-item-title">${p.icone} ${p.titulo}</div>
-                   <span class="file-item-name">${info.nome}</span>
-                   <div class="file-item-status">✓ ${info.count} pacientes identificados${textoBf}.${p.id === 'vacinacao' && resumoVacTxt ? ' ' + resumoVacTxt : ''}</div>
-                 </div>
-               </div>
-             `;
-           } else {
-             html += `
-               <div class="file-item">
-                 <div class="file-item-icon error">!</div>
-                 <div class="file-item-content">
-                   <div class="file-item-title">${p.icone} ${p.titulo}</div>
-                   <span class="file-item-name">${info.nome}</span>
-                   <div class="file-item-status error">Ficheiro sem pacientes válidos.</div>
-                 </div>
-               </div>
-             `;
-           }
-        } else {
-           html += `
-             <div class="file-item">
-               <div class="file-item-icon pending">-</div>
-               <div class="file-item-content">
-                 <div class="file-item-title">${p.icone} ${p.titulo}</div>
-                 <div class="file-item-status pending">${p.desc}</div>
-               </div>
-             </div>
-           `;
-        }
-      });
-      listaDiv.innerHTML = html;
+      const resumoVacTxt = resumoVac ? `${resumoVac.pessoas} pessoa(s) com ${resumoVac.vacinas} vacina(s) em atraso` + (resumoVac.hpv ? `, ${resumoVac.hpv} com HPV atrasada` : '') + (resumoVac.prazoPessoas ? ` ${resumoVac.prazoPessoas} pessoa(s) com ${resumoVac.prazoVacinas} vacina(s) a aplicar no prazo.` : '') + (resumoVac.foraDaBase ? ` ${resumoVac.foraDaBase} fora da sua microárea/base` : '') + '.' + (resumoVac.meninas ? ` HPV avaliado em ${resumoVac.meninasHpv} de ${resumoVac.meninas} meninas de 9 a 14 anos.` + (resumoVac.meninasHpv < resumoVac.meninas ? ' Para o resto, exporte a busca ativa com o imunobiológico HPV.' : '') : '') : '';
+      try {
+        const ok = lerPlanilhasOk(); const agora = new Date().toLocaleDateString('pt-BR');
+        Object.entries(arquivosProcessados).forEach(([id, info]) => { if (id !== 'vacinacao') ok[id] = { nome: info.nome, count: info.count, bf: info.bf, data: agora }; });
+        localStorage.setItem(PLANILHAS_OK_KEY, JSON.stringify(ok));
+      } catch (e) {}
+      inicializarListaPlanilhas(resumoVacTxt);
 
       if (perfilDetectado.nome || perfilDetectado.micro) {
         const atual = lerPerfil();

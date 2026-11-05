@@ -77,6 +77,26 @@
       resumo.foraDaBase += fora.size;
     }
 
+    // Tipo do relatório pelo filtro "Status da vacina": 'atrasada', 'no prazo' ou 'todas' (sem filtro)
+    function tipoStatusVacinacao(meta) {
+      const n = normalizarTexto(meta.status || '');
+      if (/atras/.test(n)) return 'atrasada';
+      if (/no prazo/.test(n)) return 'no prazo';
+      return 'todas';
+    }
+    const ROTULO_STATUS_VAC = { 'atrasada': 'Atrasadas', 'no prazo': 'No prazo', 'todas': 'Atrasadas e no prazo' };
+    // Guarda quais relatórios já foram importados (para a tela mostrar o que falta), um por grupo-alvo e status
+    const VAC_REL_KEY = 'guia_vac_relatorios';
+    function lerRelatoriosVacImportados() { try { return JSON.parse(localStorage.getItem(VAC_REL_KEY)) || {}; } catch (e) { return {}; } }
+    function registrarRelatorioVacinacao(rel, data) {
+      if (rel.tipo === 'matriz') return;
+      try {
+        const reg = lerRelatoriosVacImportados(); const tipo = tipoStatusVacinacao(rel.meta);
+        reg[tipo + '|' + normalizarTexto(rel.meta.grupo || '')] = { tipo, grupo: rel.meta.grupo || 'todos os grupos', data, arquivo: rel.meta.arquivo || '', pessoas: new Set(rel.rows.map(r => r.nome)).size };
+        localStorage.setItem(VAC_REL_KEY, JSON.stringify(reg));
+      } catch (e) {}
+    }
+
     // Faixa de idade (em anos completos) que o relatório cobre; null quando não dá para saber.
     function faixaCobertaVacinacao(meta) {
       let min = null, max = null;
@@ -110,28 +130,46 @@
 
     // Aplica os relatórios de vacinação lidos nesta importação. Devolve um resumo para a tela.
     function aplicarRelatoriosVacinacao(relatorios) {
-      const resumo = { pessoas: 0, vacinas: 0, foraDaBase: 0, hpv: 0 };
+      const resumo = { pessoas: 0, vacinas: 0, foraDaBase: 0, hpv: 0, prazoPessoas: 0, prazoVacinas: 0 };
       relatorios.forEach(rel => {
         if (rel.tipo === 'matriz') { aplicarMatrizVacinacao(rel, resumo); return; }
         const { meta, rows } = rel; const idx = indiceBase();
         const statusAtraso = filtroVazio(meta.status) || /atras/.test(normalizarTexto(meta.status));
-        const inferir = statusAtraso && filtroVazio(meta.dose) && filtroVazio(meta.tipoLog) && filtroVazio(meta.log) && filtroVazio(meta.bairro);
+        const statusPrazo = filtroVazio(meta.status) || /no prazo/.test(normalizarTexto(meta.status));
+        const filtrosLivres = filtroVazio(meta.dose) && filtroVazio(meta.tipoLog) && filtroVazio(meta.log) && filtroVazio(meta.bairro);
+        const inferir = statusAtraso && filtrosLivres;
+        const inferirPrazo = statusPrazo && filtrosLivres;
         const faixa = faixaCobertaVacinacao(meta);
         const imunoEspecifico = !filtroVazio(meta.imuno);
         const temHpvNoRelatorio = rows.some(r => ehHpv(r.v)) || (imunoEspecifico && ehHpv(meta.imuno));
         const gerado = dataDoNomeDoArquivo(meta.arquivo) || meta.gerado || fmtData(new Date());
         // 1) linhas por cidadão (só vacinas atrasadas)
-        const porChave = {}; const fora = new Set();
+        const porChave = {}, porChavePrazo = {}; const fora = new Set();
         rows.forEach(r => {
-          if (!/atras/.test(normalizarTexto(r.status))) return;
+          const st = normalizarTexto(r.status);
+          const ehAtraso = /atras/.test(st), ehPrazo = /no prazo/.test(st);
+          if (!ehAtraso && !ehPrazo) return;
           const ch = (r.cpf.length === 11 && idx.porCpf[r.cpf]) || idx.porNome[r.nome];
           if (!ch) { fora.add(r.nome); return; }
-          (porChave[ch] = porChave[ch] || []).push({ v: r.v, d: r.d });
+          ((ehAtraso ? porChave : porChavePrazo)[ch] = (ehAtraso ? porChave : porChavePrazo)[ch] || []).push({ v: r.v, d: r.d });
           const c = BASE_DADOS.cidadaos[ch];
           if (r.sexo && r.sexo !== '-' && !c.sexo) c.sexo = r.sexo;
           if (r.nasc && r.nasc !== '-' && !c.dt_nascimento) c.dt_nascimento = r.nasc;
         });
         resumo.foraDaBase += fora.size;
+        // 1b) vacinas "no prazo" (a aplicar, ainda sem atraso): só informação no cartão e alerta de HPV
+        Object.entries(BASE_DADOS.cidadaos).forEach(([ch, c]) => {
+          const novas = porChavePrazo[ch] || [];
+          const idade = c.dt_nascimento ? idadeEmAnos(c.dt_nascimento) : null;
+          const coberto = inferirPrazo && faixa && idade !== null && idade >= faixa.min && idade <= faixa.max;
+          if (c.vacFonte === 'matriz') return;
+          if (!coberto && !novas.length) return;
+          let lista = c.vacNoPrazo || [];
+          if (coberto) lista = imunoEspecifico ? lista.filter(x => (ehHpv(meta.imuno) ? !ehHpv(x.v) : normalizarTexto(x.v) !== normalizarTexto(meta.imuno))) : [];
+          novas.forEach(n => { if (!lista.some(x => normalizarTexto(x.v) === normalizarTexto(n.v) && x.d === n.d)) lista.push(n); });
+          c.vacNoPrazo = lista; c.vacDataPrazo = gerado;
+        });
+        registrarRelatorioVacinacao(rel, gerado);
         // 2) cobertura: todo cidadão da base dentro da faixa foi "avaliado" por este relatório
         Object.entries(BASE_DADOS.cidadaos).forEach(([ch, c]) => {
           const novas = porChave[ch] || [];
@@ -152,6 +190,7 @@
         });
       });
       Object.values(BASE_DADOS.cidadaos).forEach(c => { aplicarVacinacaoCidadao(c); });
+      Object.values(BASE_DADOS.cidadaos).forEach(c => { if (c.vacNoPrazo && c.vacNoPrazo.length) { resumo.prazoPessoas++; resumo.prazoVacinas += c.vacNoPrazo.length; } });
       Object.values(BASE_DADOS.cidadaos).forEach(c => { if (c.vacAtraso && c.vacAtraso.length) { resumo.pessoas++; resumo.vacinas += c.vacAtraso.length; if (c.vacAtraso.some(x => ehHpv(x.v))) resumo.hpv++; } });
       const meninas = Object.values(BASE_DADOS.cidadaos).filter(ehMeninaHpv);
       resumo.meninas = meninas.length; resumo.meninasHpv = meninas.filter(c => (c.vacCob && c.vacCob.hpv) || (c.vacAtraso || []).some(x => ehHpv(x.v))).length;
@@ -167,6 +206,7 @@
       }
       const hl = (c.vacAtraso || []).filter(x => ehHpv(x.v));
       if (hl.length) return { tipo: 'atrasada', doses: hl.map(x => x.d).filter(d => d && d !== '-'), nome: nomeVacinaCurto(hl[0].v) };
+      if ((c.vacNoPrazo || []).some(x => ehHpv(x.v))) return { tipo: 'aplicar' };   // relatório "No prazo": dose liberada, ainda não aplicada
       if (c.vacCob && c.vacCob.hpv) return { tipo: 'ok', txt: 'em dia' };
       const b = c.c7_base || {};
       if (b.doses >= 1) return { tipo: 'ok', txt: b.doses + ' dose' + (b.doses > 1 ? 's' : '') };
