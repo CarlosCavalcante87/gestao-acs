@@ -1,6 +1,6 @@
 {
   "name": "guia-visitas-tacs",
-  "version": "85.18.0",
+  "version": "85.22.0",
   "private": true,
   "scripts": {
     "test": "node tests/run.js"

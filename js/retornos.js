@@ -59,9 +59,10 @@
       const payload = { cidadaos: BASE_DADOS.cidadaos, ruas: Array.from(BASE_DADOS.ruas).sort(), perfil: lerPerfil(), historico: historicoCache };
       const texto = JSON.stringify(payload);
       const hoje = isoLocal(new Date());
+      const dataNome = hoje.split('-').reverse().join('-');   // dd-mm-aaaa
       try {
-        if (usar) { av.textContent = 'Protegendo o arquivo...'; baixarArquivo(JSON.stringify(await cifrarTexto(texto, senha)), `backup_guia_tacs_${hoje}_protegido.json`); }
-        else baixarArquivo(JSON.stringify(payload, null, 2), `backup_guia_tacs_${hoje}.json`);
+        if (usar) { av.textContent = 'Protegendo o arquivo...'; baixarArquivo(JSON.stringify(await cifrarTexto(texto, senha)), `backup_${dataNome}_protegido.json`); }
+        else baixarArquivo(JSON.stringify(payload, null, 2), `backup_${dataNome}.json`);
         localStorage.setItem('guia_ultimo_backup', JSON.stringify({ d: hoje, cifrado: usar }));
         if (usar && !temApp && !senhaDefinida() && document.getElementById('bkpLigarApp').checked) { await gravarSenhaApp(s1); atualizarCardSenha(); }
         fecharModalBackup(); atualizarStatusBackup(); avisoToast('✅ Backup gerado.');
