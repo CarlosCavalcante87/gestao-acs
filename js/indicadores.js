@@ -133,6 +133,37 @@ function idadeEmAnos(dtStr) {
     }
 
 
+    // Lista as planilhas esperadas que ainda não foram importadas
+    function planilhasFaltando() {
+      const ok = lerPlanilhasOk(); const vacs = Object.values(lerRelatoriosVacImportados());
+      const TIPO_VAC = { vac_atrasada: 'atrasada', vac_prazo: 'no prazo' };
+      return PLANILHAS_ESPERADAS.filter(p => TIPO_VAC[p.id]
+        ? !vacs.some(v => v.tipo === TIPO_VAC[p.id] || v.tipo === 'todas')
+        : !ok[p.id]);
+    }
+    // Pop-up pós-importação: avisa quais planilhas faltam (ou que está tudo certo); após o OK vai para a aba Indicadores
+    function mostrarAvisoImportacao() {
+      const faltam = planilhasFaltando(), total = PLANILHAS_ESPERADAS.length;
+      const modal = document.getElementById('modalImportacao'); if (!modal) { alternarAba('dashboard'); return; }
+      const ul = document.getElementById('impFaltam');
+      if (!faltam.length) {
+        document.getElementById('impIcone').textContent = '✅';
+        document.getElementById('impTitulo').textContent = 'Todas as planilhas importadas';
+        document.getElementById('impTexto').textContent = `As ${total} planilhas foram processadas.`;
+        ul.innerHTML = '';
+      } else {
+        document.getElementById('impIcone').textContent = '⚠️';
+        document.getElementById('impTitulo').textContent = faltam.length === 1 ? 'Falta 1 planilha' : `Faltam ${faltam.length} planilhas`;
+        document.getElementById('impTexto').textContent = `${total - faltam.length} de ${total} planilhas processadas. O grupo de cada planilha que falta fica desatualizado.`;
+        ul.innerHTML = faltam.map(p => `<li style="padding:6px 0; border-top:1px solid #e2e8f0;">${p.icone} <b>${escHtml(p.titulo)}</b><br><span style="font-size:0.75rem; color:var(--text-muted);">${escHtml(p.desc.replace(/^Falta · /, ''))}</span></li>`).join('');
+      }
+      modal.classList.add('aberto');
+    }
+    function fecharModalImportacao() {
+      document.getElementById('modalImportacao').classList.remove('aberto');
+      alternarAba('dashboard');
+    }
+
     async function processarFicheiros(files, esperado) {
       if (!files.length) return;
       const prog = document.getElementById('progressoUpload');
@@ -275,6 +306,7 @@ function idadeEmAnos(dtStr) {
                   if (!val || val === "-") continue;
                   if ((kn === "numero" || kn === "n°" || kn === "no" || kn.startsWith("numero ")) && !cid.numero) cid.numero = val;
                   if (kn === "telefone celular" && !cid.telefone) cid.telefone = val;
+                  if (kn === "complemento") cid.complemento = val;   // "23" e "23 A" são casas diferentes
                 }
                 if (cpfValido && !temCpf(cid)) cid.cpf = cpfValido;   // outra planilha trouxe o CPF que faltava
                 if (cid.bolsaFamilia === undefined) cid.bolsaFamilia = false;
@@ -469,49 +501,22 @@ function idadeEmAnos(dtStr) {
                   cid.ex = cid.ex || {}; cid.ex.C6 = { okExtra: (!infPendente && consAnual), pend: cid.pendencias.filter(p => p.startsWith("C6: Vacina") || p.startsWith("C6: Busca Ativa")) };
                 }
                 else if (tema === "Saúde da mulher") {
-                  // C7 (boas práticas da mulher): preventivo (25-64a), vacina HPV (9-14a),
-                  // consulta de saúde sexual e reprodutiva (14-69a) e mamografia (50-69a)
+                  // C7 (boas práticas da mulher). Faixas por procedimento (ver faixasC7, em vacinacao.js):
+                  // HPV 9-14a · consulta de saúde sexual e reprodutiva 14-69a · preventivo 25-64a · mamografia 50-69a.
+                  // Aqui guarda-se a situação de cada procedimento; montarC7 decide pela idade de hoje o que mostrar e cobrar.
                   const hoje7 = new Date();
-                  const anos7 = idadeEmAnos(reg["Data de nascimento"] || "");
-                  const precisaColo = (anos7 === null) || (anos7 >= 25 && anos7 <= 64);
-                  const precisaHpv = (anos7 !== null) && (anos7 >= 9 && anos7 <= 14);
-                  const precisaConsulta = (anos7 === null) || (anos7 >= 14 && anos7 <= 69);
-                  const precisaMama = (anos7 !== null) && (anos7 >= 50 && anos7 <= 69);
-                  cid.pendencias = cid.pendencias.filter(p => !p.startsWith("C7:"));
-                  if (!precisaColo && !precisaHpv && !precisaConsulta && !precisaMama) {
-                    delete cid.indicadores['C7']; delete cid.c7Ok; delete cid.c7_tempo;
-                  } else {
-                    cid.indicadores['C7'] = true;
-                    const ultimaData = (pred) => {
-                      let ds = [];
-                      for (const k in reg) { if (pred(normalizarTexto(k))) ds = ds.concat(extrairDatas(reg[k])); }
-                      return ds.sort((a, b) => a - b).pop() || null;
-                    };
-                    const dtColo = ultimaData(k => k.includes('colo de utero') && k.includes('data'));      // solicitado ou avaliado
-                    const dtMama = ultimaData(k => k.includes('mama') && k.includes('data'));               // solicitada, realizada ou avaliada
-                    const dtConsulta = ultimaData(k => k.includes('consulta de saude sexual'));
-                    const dosesHpv = ((reg["HPV"] || "").match(/vacina hpv/gi) || []).length;
-                    const coloOk = !!dtColo && dtColo >= somarMeses(hoje7, -36);
-                    const mamaOk = !!dtMama && dtMama >= somarMeses(hoje7, -24);
-                    const consultaOk = !!dtConsulta && dtConsulta >= somarMeses(hoje7, -12);
-                                        const partes7 = [];
-                    const p7 = [];
-                    if (precisaColo) {
-                      partes7.push(`Preventivo ${dtColo ? fmtData(dtColo) : 'sem registro'} ${coloOk ? '✓' : '✗'}`);
-                      if (!coloOk) p7.push("C7: Busca Ativa - Preventivo (colo do útero) solicitado ou avaliado nos últimos 3 anos" + (dtColo ? ` (último registro em ${fmtData(dtColo)})` : " (sem registro)"));
-                    }
-                    if (precisaHpv) { partes7.push('@HPV'); p7.push('@HPV'); }
-                    if (precisaConsulta) {
-                      partes7.push(`Consulta ${dtConsulta ? fmtData(dtConsulta) : 'sem registro'} ${consultaOk ? '✓' : '✗'}`);
-                      if (!consultaOk) p7.push("C7: Busca Ativa - Consulta de saúde sexual e reprodutiva no último ano" + (dtConsulta ? ` (última em ${fmtData(dtConsulta)})` : " (sem registro)"));
-                    }
-                    if (precisaMama) {
-                      partes7.push(`Mamografia ${dtMama ? fmtData(dtMama) : 'sem registro'} ${mamaOk ? '✓' : '✗'}`);
-                      if (!mamaOk) p7.push("C7: Busca Ativa - Mamografia solicitada ou avaliada nos últimos 2 anos" + (dtMama ? ` (último registro em ${fmtData(dtMama)})` : " (sem registro)"));
-                    }
-                    cid.c7_base = { outros: (!precisaColo || coloOk) && (!precisaConsulta || consultaOk) && (!precisaMama || mamaOk), partes: partes7, pend: p7, hpv: precisaHpv, doses: dosesHpv };
-                    montarC7(cid);
-                  }
+                  const ultimaData = (pred) => {
+                    let ds = [];
+                    for (const k in reg) { if (pred(normalizarTexto(k))) ds = ds.concat(extrairDatas(reg[k])); }
+                    return ds.sort((a, b) => a - b).pop() || null;
+                  };
+                  const sit7 = (dt, meses) => ({ dt: dt ? fmtData(dt) : '', ok: !!dt && dt >= somarMeses(hoje7, -meses) });
+                  const dtColo = ultimaData(k => k.includes('colo de utero') && k.includes('data'));      // solicitado ou avaliado
+                  const dtMama = ultimaData(k => k.includes('mama') && k.includes('data'));               // solicitada, realizada ou avaliada
+                  const dtConsulta = ultimaData(k => k.includes('consulta de saude sexual'));
+                  const dosesHpv = ((reg["HPV"] || "").match(/vacina hpv/gi) || []).length;
+                  cid.c7_base = { v: 2, itens: { colo: sit7(dtColo, 36), consulta: sit7(dtConsulta, 12), mama: sit7(dtMama, 24) }, doses: dosesHpv };
+                  montarC7(cid);   // sem faixa válida (idade fora de 9-69, sem data de nascimento ou sexo masculino): não entra no C7
                 }
               }
             }
@@ -555,6 +560,7 @@ function idadeEmAnos(dtStr) {
       await registrarHistorico();
       prog.style.color = "#10b981"; prog.innerHTML = "";
       atualizarInterface();
+      if (!esperado) mostrarAvisoImportacao();   // importação geral: pop-up de faltantes e, ao dar OK, vai para Indicadores
     }
 
     // C1: cadastro individual atualizado (até 1 ano), domiciliar (se informado) e com CPF preenchido
@@ -654,12 +660,18 @@ function idadeEmAnos(dtStr) {
       const rua = normalizarTexto(c.rua || '').trim();
       const num = normalizarTexto(c.numero || '').replace(/\s+/g, '');
       if (!rua || !num || /^(s\/?n|sn|0|-|semnumero)$/.test(num)) return null;   // sem endereço completo: não agrupa
-      return rua + '|' + num;
+      const comp = normalizarTexto(c.complemento || '').replace(/\s+/g, '');
+      return (comp && comp !== '-') ? rua + '|' + num + '|' + comp : rua + '|' + num;   // "23" e "23 A" são casas diferentes
+    }
+    // Número da casa como aparece na tela: "23" ou "23 A" (com o complemento, quando houver)
+    function numeroComComplemento(c) {
+      const n = (c.numero || '').trim(), comp = (c.complemento || '').trim();
+      return (comp && comp !== '-') ? (n + ' ' + comp).trim() : n;
     }
     const temPendC1 = (c) => c.c1Ok === false || (c.pendencias || []).some(p => p.startsWith('C1:'));
 
     // Emojis de perfil de cada pessoa (um por indicador/condição), para ver de relance quem é quem na família
-    const EMOJIS_PERFIL = [['C2', '👶', 'Criança (C2)'], ['C3', '🤰', 'Gestante / puérpera (C3)'], ['C4', '🩸', 'Diabetes (C4)'], ['C5', '❤️', 'Hipertensão (C5)'], ['C6', '👴', 'Idoso (C6)'], ['C7', '👩', 'Mulher 25–64 (C7)'], ['BF', '💰', 'Bolsa Família']];
+    const EMOJIS_PERFIL = [['C2', '👶', 'Criança (C2)'], ['C3', '🤰', 'Gestante / puérpera (C3)'], ['C4', '🩸', 'Diabetes (C4)'], ['C5', '❤️', 'Hipertensão (C5)'], ['C6', '👴', 'Idoso (C6)'], ['C7', '👩', 'Mulher (C7)'], ['BF', '💰', 'Bolsa Família']];
     function perfilPessoa(c, porIdade) {
       const ind = c.indicadores || {}, anos = c.dt_nascimento ? idadeEmAnos(c.dt_nascimento) : null;
       return EMOJIS_PERFIL.filter(([k]) => k === 'BF' ? c.bolsaFamilia
@@ -676,7 +688,7 @@ function idadeEmAnos(dtStr) {
       const tags = temPendC1(c) && motivos.length
         ? motivos.map(m => `<span class="tag tag-danger">✗ ${m}</span>`).join('')
         : (temPendC1(c) ? '<span class="tag tag-danger">✗ C1 pendente</span>' : '<span class="tag tag-ok">✓ C1</span>');
-      return `<div class="fam-mor"><div class="fam-mor-info"><div class="fam-mor-nome">${escHtml(c.nome)}${idade ? ` <small>🎂 ${escHtml(idade)}</small>` : ''}</div><div class="fam-mor-emojis">${htmlEmojisPerfil(perfilPessoa(c, true))}</div><div>${tags}</div></div>
+      return `<div class="fam-mor"><div class="fam-mor-info"><div class="fam-mor-nome">${escHtml(c.nome)}${idade ? ` <small>${escHtml(idade)}</small>` : ''}</div><div class="fam-mor-emojis">${htmlEmojisPerfil(perfilPessoa(c, true))}</div><div>${tags}</div></div>
         <button class="btn-ver-ficha" data-chave="${escHtml(chave)}">Ver ficha</button></div>`;
     }
 
@@ -687,7 +699,7 @@ function idadeEmAnos(dtStr) {
       filtrados.forEach(([chave, c]) => {
         const k = chaveFamilia(c);
         if (!k) { semEnd.push([chave, c]); return; }
-        if (!grupos.has(k)) grupos.set(k, { k, rua: c.rua, numero: c.numero, mem: [] });
+        if (!grupos.has(k)) grupos.set(k, { k, rua: c.rua, numero: numeroComComplemento(c), mem: [] });
         grupos.get(k).mem.push([chave, c]);
       });
       const fams = [...grupos.values()].map(g => ({ ...g, pend: g.mem.filter(([, c]) => temPendC1(c)).length }));
@@ -782,7 +794,7 @@ function idadeEmAnos(dtStr) {
           const matchNome = palavrasBusca.length > 0 && palavrasBusca.every(p => nomeNorm.includes(p));
           const cpfDigitos = (c.cpf || "").replace(/\D/g, "");
           const matchDoc = termoDigitos.length >= 2 && cpfDigitos.includes(termoDigitos);
-          const matchNum = c.numero && normalizarTexto(c.numero) === termoNorm;
+          const matchNum = c.numero && (normalizarTexto(c.numero) === termoNorm || normalizarTexto(numeroComComplemento(c)) === termoNorm);
 
           if (!matchNome && !matchDoc && !matchNum) return false;
         }
@@ -848,7 +860,7 @@ function idadeEmAnos(dtStr) {
               acoes.map(a => `<div class="acao-item">${a}</div>`).join('') + `</div>`
             : '';
           const blocoHtml = `<div class="bloco-meta">
-              <span class="tag ${atingida ? 'tag-ok' : 'tag-danger'}">${atingida ? '✓' : '✗'} ${rotulos[ind]}</span>${(tempos[ind] && tempos[ind].texto) ? `<span class="tag tag-tempo ${tempos[ind].ok ? 'tempo-ok' : 'tempo-atencao'}">${tempos[ind].texto}</span>` : ''}
+              <span class="tag ${atingida ? 'tag-ok' : 'tag-danger'}">${atingida ? '✓' : '✗'} ${rotulos[ind]}</span>${(tempos[ind] && tempos[ind].texto) ? `<span class="tag tag-tempo ${tempos[ind].ok ? 'tempo-ok' : 'tempo-atencao'}">${tempos[ind].texto}</span>` : ''}${ind === 'C7' ? badgeHpv(c) : ''}
               ${acoesHtml}
             </div>`;
           if (atingida) blocosOkHtml += blocoHtml; else blocosPendHtml += blocoHtml;
@@ -871,7 +883,7 @@ function idadeEmAnos(dtStr) {
 
         const temPend = algumaPendente;
         const idadeCalc = c.dt_nascimento ? calcularIdade(c.dt_nascimento) : (c.idade_txt || '');
-        const idadeBadge = idadeCalc ? `<span class="idade">🎂 ${idadeCalc}</span>` : '';
+        const idadeBadge = idadeCalc ? `<span class="idade">${idadeCalc}</span>` : '';
         const bfBadge = c.bolsaFamilia ? `<span class="tag tag-bf">💰 Bolsa Família</span>` : '';
         // Etiquetas de perfil para quem está fora das listas de indicadores do PEC (sem meta, só para identificar)
         const anosC = c.dt_nascimento ? idadeEmAnos(c.dt_nascimento) : null;
@@ -888,7 +900,7 @@ function idadeEmAnos(dtStr) {
               <div class="nome">${c.nome}</div>
             </div>
             ${linhaInfoHtml}
-            <div class="endereco">📍 ${c.rua || 'Sem rua cadastrada'}, nº ${c.numero || 'S/N'}${linkTel}</div>
+            <div class="endereco">📍 ${c.rua || 'Sem rua cadastrada'}, nº ${numeroComComplemento(c) || 'S/N'}${linkTel}</div>
             ${htmlMedidas(c)}
             <div>${tagsHtml}</div>
             ${pendenciasHtml}

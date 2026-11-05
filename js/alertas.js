@@ -179,7 +179,7 @@
       const idade = c.dt_nascimento ? calcularIdade(c.dt_nascimento) : (c.idade_txt || '');
       const urlWa = linkWhatsApp(c.telefone);
       const [pTxt, pCls, cCls] = pilulaAlerta(itens);
-      const sub = [idade, `${c.rua || 'Sem rua cadastrada'}, nº ${c.numero || 'S/N'}`].filter(Boolean).join(' · ');
+      const sub = [idade, `${c.rua || 'Sem rua cadastrada'}, nº ${numeroComComplemento(c) || 'S/N'}`].filter(Boolean).join(' · ');
       const k = escHtml(chave);
       const iconeWa = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.7-5.2A8.5 8.5 0 1 1 21 12z"/></svg>';
       const podeVisita = podeRegistrarVisita(c);
@@ -248,9 +248,9 @@
           [...porRua.keys()].sort((a, b) => a.localeCompare(b, 'pt-BR', { sensitivity: 'base' })).forEach(rua => {
             const lista = porRua.get(rua).sort((a, b) => {
               const na = parseInt(a.c.numero), nb = parseInt(b.c.numero);
-              return ((isNaN(na) ? 1e9 : na) - (isNaN(nb) ? 1e9 : nb)) || (a.c.nome || '').localeCompare(b.c.nome || '', 'pt-BR', { sensitivity: 'base' });
+              return ((isNaN(na) ? 1e9 : na) - (isNaN(nb) ? 1e9 : nb)) || (a.c.complemento || '').localeCompare(b.c.complemento || '', 'pt-BR', { sensitivity: 'base' }) || (a.c.nome || '').localeCompare(b.c.nome || '', 'pt-BR', { sensitivity: 'base' });
             });
-            const casas = new Set(lista.map(g => (g.c.numero || 'S/N'))).size;
+            const casas = new Set(lista.map(g => (numeroComComplemento(g.c) || 'S/N'))).size;
             html += `<div class="al-grupo">📍 ${escHtml(rua)} · ${lista.length} cidadão(s) em ${casas} casa(s)</div>`;
             lista.forEach(g => { html += cardAlerta(g); });
           });

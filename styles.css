@@ -660,7 +660,7 @@ html.escuro .hero-hoje { filter: invert(0.9) hue-rotate(180deg); }
 .fam-dom { font-size: 0.78rem; font-weight: 700; margin-bottom: 4px; }
 .fam-mor { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 0; border-top: 1px solid #eef2f7; }
 .fam-mor-nome { font-size: 0.86rem; font-weight: 700; color: var(--text); margin-bottom: 3px; }
-.fam-mor-nome small { font-weight: 600; font-size: 0.72rem; color: var(--text-muted); }
+.fam-mor-nome small { display: block; margin-top: 1px; font-weight: 600; font-size: 0.72rem; color: var(--text-muted); }   /* idade sempre numa linha própria, abaixo do nome */
 .btn-ver-ficha { flex-shrink: 0; min-height: 44px; padding: 0 12px; border: 1.5px solid var(--primary); background: #f0f9ff; color: var(--primary); font: inherit; font-weight: 700; font-size: 0.78rem; border-radius: 12px; cursor: pointer; }
 @media (hover: hover) { .btn-ver-ficha:hover { background: var(--primary-soft); } }
 

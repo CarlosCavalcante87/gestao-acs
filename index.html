@@ -364,6 +364,18 @@
     <button id="btnTabUp" onclick="alternarAba('upload')"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.5-2-3.4-2.3.9a7 7 0 0 0-2-1.2L14 3h-4l-.6 2.6a7 7 0 0 0-2 1.2l-2.3-.9-2 3.4 2 1.5A7 7 0 0 0 5 12c0 .4 0 .8.1 1.2l-2 1.5 2 3.4 2.3-.9a7 7 0 0 0 2 1.2L10 21h4l.6-2.6a7 7 0 0 0 2-1.2l2.3.9 2-3.4-2-1.5c.1-.4.1-.8.1-1.2z"/></svg><span>Configurações</span></button>
   </nav>
 
+  <div class="modal-fundo" id="modalImportacao" onclick="if(event.target===this) fecharModalImportacao()">
+    <div class="modal-caixa">
+      <div class="modal-icone" id="impIcone">📦</div>
+      <h3 id="impTitulo">Importação concluída</h3>
+      <p id="impTexto" style="margin-bottom:12px;"></p>
+      <ul id="impFaltam" style="list-style:none; text-align:left; font-size:0.85rem; color:var(--text); margin:0 0 16px; padding:0; max-height:40vh; overflow:auto;"></ul>
+      <div class="modal-botoes" style="grid-template-columns:1fr;">
+        <button class="btn-salvar" onclick="fecharModalImportacao()">OK</button>
+      </div>
+    </div>
+  </div>
+
   <div class="modal-fundo" id="modalLimpar" onclick="if(event.target===this) fecharModalLimpar()">
     <div class="modal-caixa">
       <div class="modal-icone">🗑️</div>

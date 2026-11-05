@@ -1,4 +1,4 @@
-/* Busca ativa de vacinação: importação do relatório, C2 (vacinas) e C7 (HPV de 9 a 14 anos) */
+/* Busca ativa de vacinação: importação do relatório, C2 (vacinas) e C7 (HPV de 9 a 14 anos; faixas etárias do C7 em faixasC7) */
     // =========================================================================
     // BUSCA ATIVA DE VACINAÇÃO (relatório do PEC: uma linha por cidadão, vacina e dose)
     // =========================================================================
@@ -131,6 +131,17 @@
     // Aplica os relatórios de vacinação lidos nesta importação. Devolve um resumo para a tela.
     function aplicarRelatoriosVacinacao(relatorios) {
       const resumo = { pessoas: 0, vacinas: 0, foraDaBase: 0, hpv: 0, prazoPessoas: 0, prazoVacinas: 0 };
+      // 0) data de nascimento e sexo de QUALQUER relatório entram antes de avaliar a cobertura: a ordem dos arquivos não muda o resultado
+      { const idx0 = indiceBase();
+        relatorios.forEach(rel => {
+          if (rel.tipo === 'matriz') return;
+          rel.rows.forEach(r => {
+            const ch = (r.cpf.length === 11 && idx0.porCpf[r.cpf]) || idx0.porNome[r.nome]; if (!ch) return;
+            const c = BASE_DADOS.cidadaos[ch];
+            if (r.sexo && r.sexo !== '-' && !c.sexo) c.sexo = r.sexo;
+            if (r.nasc && r.nasc !== '-' && !c.dt_nascimento) c.dt_nascimento = r.nasc;
+          });
+        }); }
       relatorios.forEach(rel => {
         if (rel.tipo === 'matriz') { aplicarMatrizVacinacao(rel, resumo); return; }
         const { meta, rows } = rel; const idx = indiceBase();
@@ -166,6 +177,7 @@
           if (!coberto && !novas.length) return;
           let lista = c.vacNoPrazo || [];
           if (coberto) lista = imunoEspecifico ? lista.filter(x => (ehHpv(meta.imuno) ? !ehHpv(x.v) : normalizarTexto(x.v) !== normalizarTexto(meta.imuno))) : [];
+          if (coberto && !imunoEspecifico) c.vacCobPrazo = true;   // o relatório "No prazo" avaliou todas as vacinas desta pessoa
           novas.forEach(n => { if (!lista.some(x => normalizarTexto(x.v) === normalizarTexto(n.v) && x.d === n.d)) lista.push(n); });
           c.vacNoPrazo = lista; c.vacDataPrazo = gerado;
         });
@@ -193,11 +205,14 @@
       Object.values(BASE_DADOS.cidadaos).forEach(c => { if (c.vacNoPrazo && c.vacNoPrazo.length) { resumo.prazoPessoas++; resumo.prazoVacinas += c.vacNoPrazo.length; } });
       Object.values(BASE_DADOS.cidadaos).forEach(c => { if (c.vacAtraso && c.vacAtraso.length) { resumo.pessoas++; resumo.vacinas += c.vacAtraso.length; if (c.vacAtraso.some(x => ehHpv(x.v))) resumo.hpv++; } });
       const meninas = Object.values(BASE_DADOS.cidadaos).filter(ehMeninaHpv);
-      resumo.meninas = meninas.length; resumo.meninasHpv = meninas.filter(c => (c.vacCob && c.vacCob.hpv) || (c.vacAtraso || []).some(x => ehHpv(x.v))).length;
+      resumo.meninas = meninas.length; resumo.meninasHpv = meninas.filter(c => (c.vacCob && c.vacCob.hpv) || hpvSemPendenciaNosRelatorios(c) || (c.vacAtraso || []).some(x => ehHpv(x.v))).length;
       return resumo;
     }
 
     // C7: monta o texto e o resultado a partir da base guardada e do estado do HPV.
+    // Os relatórios de Atrasadas e de No prazo (sem filtro de imunobiológico) cobriram a pessoa: se o HPV não está
+    // em nenhum dos dois, a dose já foi aplicada (ou a pessoa não está elegível), então não há pendência de HPV.
+    const hpvSemPendenciaNosRelatorios = (c) => !!(c.vacCob && c.vacCob.todas && c.vacCobPrazo);
     function estadoHpv(c) {
       if (c.vacHpv) {
         if (c.vacHpv === 'A' || c.vacHpv === 'E') return { tipo: 'ok', txt: 'em dia' };
@@ -208,31 +223,80 @@
       if (hl.length) return { tipo: 'atrasada', doses: hl.map(x => x.d).filter(d => d && d !== '-'), nome: nomeVacinaCurto(hl[0].v) };
       if ((c.vacNoPrazo || []).some(x => ehHpv(x.v))) return { tipo: 'aplicar' };   // relatório "No prazo": dose liberada, ainda não aplicada
       if (c.vacCob && c.vacCob.hpv) return { tipo: 'ok', txt: 'em dia' };
+      if (hpvSemPendenciaNosRelatorios(c)) return { tipo: 'ok', txt: 'em dia' };   // avaliada em Atrasadas e No prazo e HPV não aparece em nenhum
       const b = c.c7_base || {};
       if (b.doses >= 1) return { tipo: 'ok', txt: b.doses + ' dose' + (b.doses > 1 ? 's' : '') };
       return { tipo: 'sem' };
     }
+    // Faixas etárias do C7 (Saúde da mulher): ÚNICA fonte da regra. Vale a idade completa HOJE.
+    //   HPV 9–14 · consulta de saúde sexual e reprodutiva 14–69 · preventivo (colo do útero) 25–64 · mamografia 50–69
+    // Sem data de nascimento não dá para saber a faixa: nada é cobrado. Sexo masculino nunca entra.
+    function faixasC7(anos, sexo) {
+      const f = { hpv: false, consulta: false, colo: false, mama: false };
+      if (typeof anos !== 'number' || isNaN(anos) || anos < 0) return f;
+      if (/^\s*m/i.test(sexo || '')) return f;
+      f.hpv = anos >= 9 && anos <= 14;
+      f.consulta = anos >= 14 && anos <= 69;
+      f.colo = anos >= 25 && anos <= 64;
+      f.mama = anos >= 50 && anos <= 69;
+      return f;
+    }
+    // Situação guardada de cada procedimento (data do último registro e se está dentro do prazo).
+    // Bases guardadas por versões anteriores só tinham o texto das etiquetas: recupera o que dá dele.
+    function itensC7(b) {
+      if (b.v === 2) return b.itens || {};
+      const it = {}, chaves = { Preventivo: 'colo', Consulta: 'consulta', Mamografia: 'mama' };
+      (b.partes || []).forEach(p => {
+        const m = /^(Preventivo|Consulta|Mamografia) (.+) ([✓✗])$/.exec(p);
+        if (m) it[chaves[m[1]]] = { dt: m[2] === 'sem registro' ? '' : m[2], ok: m[3] === '✓' };
+      });
+      return it;
+    }
+    // Monta etiquetas e pendências do C7 SEMPRE pela idade de hoje: quem saiu da faixa deixa de ser cobrada
+    // e quem entrou passa a ser (a base guardada tem a situação de todos os procedimentos).
     function montarC7(c) {
       const b = c.c7_base; if (!b) return;
-      const st = b.hpv ? estadoHpv(c) : null;
-      const hpvOk = !b.hpv || st.tipo === 'ok';
+      const f = faixasC7(c.dt_nascimento ? idadeEmAnos(c.dt_nascimento) : null, c.sexo);
+      if (b.semLista) { f.consulta = false; f.colo = false; f.mama = false; }   // entrou só pela vacinação: só o HPV
+      c.pendencias = (c.pendencias || []).filter(p => !p.startsWith('C7:'));
+      if (!f.hpv && !f.consulta && !f.colo && !f.mama) {   // fora de todas as faixas: sem etiqueta e sem cobrança de C7
+        if (c.indicadores) delete c.indicadores.C7;
+        delete c.c7Ok; delete c.c7_tempo;
+        return;
+      }
+      const it = itensC7(b);
       const partes = [], pend = [];
-      b.partes.forEach(p => {
-        if (p !== '@HPV') { partes.push(p); return; }
-        partes.push(st.tipo === 'ok' ? `HPV ${st.txt} ✓` : st.tipo === 'atrasada' ? `HPV ${st.doses.length ? st.doses.join('/') + ' ' : ''}atrasada ✗` : st.tipo === 'aplicar' ? 'HPV a aplicar ✗' : (b.semLista ? 'HPV sem informação ✗' : 'HPV sem registro ✗'));
-      });
-      b.pend.forEach(p => {
-        if (p !== '@HPV') { pend.push(p); return; }
+      let outrosOk = true, hpvOk = true;
+      const proc = (k, rotulo, msg) => {
+        if (!f[k]) return;
+        const x = it[k] || { dt: '', ok: false };
+        partes.push(`${rotulo} ${x.dt || 'sem registro'} ${x.ok ? '✓' : '✗'}`);
+        if (!x.ok) { outrosOk = false; pend.push(msg(x.dt)); }
+      };
+      proc('colo', 'Preventivo', dt => 'C7: Busca Ativa - Preventivo (colo do útero) solicitado ou avaliado nos últimos 3 anos' + (dt ? ` (último registro em ${dt})` : ' (sem registro)'));
+      if (f.hpv) {
+        const st = estadoHpv(c);
+        hpvOk = st.tipo === 'ok';
         if (st.tipo === 'atrasada') pend.push(`C7: Busca Ativa - Vacina HPV atrasada${st.doses.length ? ' (' + st.doses.join(', ') + ')' : ''}: aplicar a dose em atraso (9 a 14 anos)`);
         else if (st.tipo === 'aplicar') pend.push('C7: Vacina HPV (9 a 14 anos): dose liberada e ainda sem registro. Aplicar na UBS ou conferir a caderneta');
         else if (st.tipo === 'sem') pend.push(b.semLista ? 'C7: Vacina HPV (9 a 14 anos): sem informação no sistema. Conferir a caderneta na visita e importar a busca ativa de vacinação com o imunobiológico HPV' : 'C7: Busca Ativa - Vacina HPV (9 a 14 anos) sem registro: conferir a caderneta e importar a busca ativa de vacinação (HPV)');
-      });
-      c.pendencias = (c.pendencias || []).filter(p => !p.startsWith('C7:')).concat(pend);
-      c.c7Ok = b.outros && hpvOk;
-      c.c7_tempo = { texto: '🩺 ' + partes.join(' · '), ok: c.c7Ok };
+      }
+      proc('consulta', 'Consulta', dt => 'C7: Busca Ativa - Consulta de saúde sexual e reprodutiva no último ano' + (dt ? ` (última em ${dt})` : ' (sem registro)'));
+      proc('mama', 'Mamografia', dt => 'C7: Busca Ativa - Mamografia solicitada ou avaliada nos últimos 2 anos' + (dt ? ` (último registro em ${dt})` : ' (sem registro)'));
+      c.pendencias = c.pendencias.concat(pend);
+      c.c7Ok = outrosOk && hpvOk;
+      c.c7_tempo = { texto: partes.length ? '🩺 ' + partes.join(' · ') : '', ok: c.c7Ok };   // o HPV tem etiqueta própria (badgeHpv)
       c.indicadores = c.indicadores || {}; c.indicadores.C7 = true;
     }
-    const ehMeninaHpv = (c) => { const a = c.dt_nascimento ? idadeEmAnos(c.dt_nascimento) : null; return a !== null && a >= 9 && a <= 14 && /^f/i.test(c.sexo || ''); };
+    // Etiqueta do HPV no cartão (meninas de 9 a 14 anos): verde quando a planilha confirma, vermelha em qualquer outro caso
+    function badgeHpv(c) {
+      if (!c.c7_base || !(c.indicadores && c.indicadores.C7)) return '';
+      if (!faixasC7(c.dt_nascimento ? idadeEmAnos(c.dt_nascimento) : null, c.sexo).hpv) return '';
+      const st = estadoHpv(c), ok = st.tipo === 'ok';
+      const dica = ok ? 'HPV em dia' : st.tipo === 'atrasada' ? 'HPV atrasada' : st.tipo === 'aplicar' ? 'HPV a aplicar (dose liberada, sem registro)' : 'HPV sem informação nas planilhas';
+      return `<span class="tag ${ok ? 'tag-ok' : 'tag-danger'}" title="${escHtml(dica)}">${ok ? '✓' : '✗'} 💉 HPV</span>`;
+    }
+    const ehMeninaHpv = (c) => { const a = c.dt_nascimento ? idadeEmAnos(c.dt_nascimento) : null; return faixasC7(a, c.sexo).hpv && /^f/i.test(c.sexo || ''); };
 
     // Reaplica a vacinação de um cidadão sobre C2 e C7. Pode rodar quantas vezes for preciso.
     function aplicarVacinacaoCidadao(c) {
@@ -246,7 +310,7 @@
       }
       // C7: meninas de 9 a 14 anos que ainda não estavam na lista "Saúde da mulher" entram só pelo HPV
       if (!c.c7_base && ehMeninaHpv(c)) {
-        c.c7_base = { outros: true, partes: ['@HPV'], pend: ['@HPV'], hpv: true, doses: 0, semLista: true };
+        c.c7_base = { v: 2, itens: {}, doses: 0, semLista: true };
       }
       if (c.c7_base) montarC7(c);
     }
