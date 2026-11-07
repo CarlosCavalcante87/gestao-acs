@@ -9,6 +9,8 @@ const RECURSOS = [
   './js/nucleo.js',
   './js/armazenamento.js',
   './js/alertas.js',
+  './js/agenda.js',
+  './js/prontuario.js',
   './js/backup.js',
   './js/senha.js',
   './js/resumo.js',

@@ -253,7 +253,7 @@
           <h2>Ações e Prazos do Dia</h2>
         </div>
         <p class="ca-sub">Prazos de visitas a vencer, mudanças de faixas etárias e retornos agendados.</p>
-        <div class="seg" role="tablist" aria-label="Período">
+        <div class="seg" id="alHoriz" role="tablist" aria-label="Período">
           <button class="seg-btn active" id="chipAl7" onclick="definirHorizonteAlertas(7)">Próximos 7 dias</button>
           <button class="seg-btn" id="chipAl15" onclick="definirHorizonteAlertas(15)">Próximos 15 dias</button>
         </div>
@@ -269,6 +269,16 @@
           <button class="seg-btn" id="chipModoAniv" onclick="definirModoAlertas('aniv')">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21h16v-7H4zM12 14V8M12 8c-1.2 0-2-.8-2-2 0-1 1-2 2-3 1 1 2 2 2 3 0 1.2-.8 2-2 2zM4 17.5c2 1.5 4 1.5 8 0s6-1.5 8 0"/></svg>
             <span>Aniversários <b id="cntAniv"></b></span>
+          </button>
+        </div>
+        <div class="seg seg-modo" id="alAgenda" role="tablist" aria-label="Agenda de metas">
+          <button class="seg-btn" id="chipModoPrazo" onclick="definirModoAlertas('prazo')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+            <span>Agenda por prazo</span>
+          </button>
+          <button class="seg-btn" id="chipModoSemana" onclick="definirModoAlertas('semana')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+            <span>Agenda da semana</span>
           </button>
         </div>
       </section>
@@ -291,7 +301,7 @@
         <p style="font-size: 0.8rem; color: var(--text-muted); margin: 6px 0 10px; line-height: 1.4;">Selecione <strong>todas de uma vez</strong>; o app reconhece cada uma.</p>
 
         <div class="warning-box">
-          ⚠️ Importe <strong>as 11 planilhas do mesmo dia</strong> (as 9 de sempre + a <b>busca ativa de vacinação</b> em 2 arquivos: <b>Atrasada</b> e <b>No prazo</b>). Faltando alguma, o grupo dela fica desatualizado.
+          ⚠️ Importe <strong>as 13 planilhas do mesmo dia</strong> (as 9 de sempre + 4 da <b>busca ativa de vacinação</b>: Atrasada e No prazo, de 0 a 9 anos e de 10 a 14 anos). Faltando alguma, o grupo dela fica desatualizado.
         </div>
 
         <button class="btn-selecionar" onclick="const i = document.getElementById('inputArquivosCSV'); i.value = ''; i.click()">
@@ -388,6 +398,20 @@
     </div>
   </div>
 
+  <div class="modal-fundo pr-fundo" id="modalProntuario">
+    <div class="pr-folha" role="dialog" aria-label="Prontuário">
+      <div class="pr-topo"><div><small>Prontuário</small><div id="prNome" class="pr-nome"></div></div><button class="pr-x" onclick="fecharProntuario()" aria-label="Fechar">✕</button></div>
+      <div class="pr-abas">
+        <button class="pr-aba" data-aba="resumo" onclick="trocarAbaProntuario('resumo')">Resumo</button>
+        <button class="pr-aba" data-aba="linha" onclick="trocarAbaProntuario('linha')">Linha do tempo</button>
+        <button class="pr-aba" data-aba="ind" onclick="trocarAbaProntuario('ind')">Indicadores</button>
+        <button class="pr-aba" data-aba="vac" onclick="trocarAbaProntuario('vac')">Vacinas</button>
+        <button class="pr-aba" data-aba="notas" onclick="trocarAbaProntuario('notas')">Anotações</button>
+      </div>
+      <div class="pr-corpo" id="prCorpo"></div>
+      <div class="pr-rodape"><button class="btn" id="prVisita" onclick="abrirModalVisita(chaveProntuario)">📝 Registrar visita</button><button class="btn" style="background:#475569" onclick="abrirModalRetorno(chaveProntuario)">📅 Agendar retorno</button></div>
+    </div>
+  </div>
   <div class="modal-fundo" id="modalVisita" onclick="if(event.target===this) fecharModalVisita()">
     <div class="modal-caixa" style="text-align:left;">
       <h3 style="text-align:center;">📝 Registrar visita</h3>
@@ -504,6 +528,7 @@
   <script src="./js/nucleo.js"></script>
   <script src="./js/armazenamento.js"></script>
   <script src="./js/alertas.js"></script>
+  <script src="./js/agenda.js"></script>
   <script src="./js/backup.js"></script>
   <script src="./js/senha.js"></script>
   <script src="./js/resumo.js"></script>
@@ -518,5 +543,6 @@
   <script src="./js/xlsx.js"></script>
   <script src="./js/indicadores.js"></script>
   <script src="./js/interface.js"></script>
+  <script src="./js/prontuario.js"></script>
 </body>
 </html>
