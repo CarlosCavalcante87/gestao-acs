@@ -92,9 +92,8 @@ function idadeEmAnos(dtStr) {
     function inicializarListaPlanilhas(resumoVacTxt) {
       const listaDiv = document.getElementById('listaArquivosUpload'); if (!listaDiv) return;
       const ok = lerPlanilhasOk(); const vacs = Object.values(lerRelatoriosVacImportados());
-      const TIPO_VAC = { vac_atrasada: 'atrasada', vac_prazo: 'no prazo' };
-      const relDe = (p) => vacs.filter(v => v.tipo === TIPO_VAC[p.id] || v.tipo === 'todas');   // relatório sem filtro de status vale para os dois
-      const feita = (p) => TIPO_VAC[p.id] ? relDe(p).length > 0 : !!ok[p.id];
+      const relDe = (p) => vacs.filter(v => (v.tipo === p.vac[0] || v.tipo === 'todas') && (v.g === p.vac[1] || !v.g));   // sem filtro de status vale para os dois status
+      const feita = (p) => p.vac ? relDe(p).length > 0 : !!ok[p.id];
       const feitas = PLANILHAS_ESPERADAS.filter(feita).length;
       const dts = new Set(vacs.map(v => v.data).filter(Boolean));
       let html = `<div class="file-list-header">
@@ -102,14 +101,14 @@ function idadeEmAnos(dtStr) {
             ${feitas ? '<span class="btn-limpar" onclick="limparListaPlanilhas()">Limpar lista</span>' : ''}
           </div>`;
       PLANILHAS_ESPERADAS.forEach(p => {
-        if (TIPO_VAC[p.id] && feita(p)) {
+        if (p.vac && feita(p)) {
           const linhas = relDe(p).map(v => `✓ ${escHtml(v.grupo)} · ${v.pessoas} pessoa(s)${v.data ? ' · ' + escHtml(v.data) : ''}`).join('<br>');
-          const aviso = (p.id === 'vac_prazo' && dts.size > 1) ? '<br><span class="file-item-falta">⚠️ Atrasada e No prazo são de datas diferentes: baixe os dois no mesmo dia.</span>' : '';
-          const resumo = (p.id === 'vac_atrasada' && resumoVacTxt) ? '<br>' + escHtml(resumoVacTxt) : '';
+          const aviso = (p.id === 'vac_prazo_ado' && dts.size > 1) ? '<br><span class="file-item-falta">⚠️ Atrasada e No prazo são de datas diferentes: baixe os dois no mesmo dia.</span>' : '';
+          const resumo = (p.id === 'vac_atrasada_cri' && resumoVacTxt) ? '<br>' + escHtml(resumoVacTxt) : '';
           html += `<div class="file-item"><div class="file-item-icon">✓</div><div class="file-item-content">
             <div class="file-item-title">${p.icone} ${p.titulo}</div>
             <div class="file-item-status">${linhas}${resumo}${aviso}</div></div></div>`;
-        } else if (!TIPO_VAC[p.id] && ok[p.id]) {
+        } else if (!p.vac && ok[p.id]) {
           const info = ok[p.id];
           if (info.count > 0) {
             const textoBf = info.bf > 0 ? `, ${info.bf} no Bolsa Família` : '';
@@ -136,9 +135,8 @@ function idadeEmAnos(dtStr) {
     // Lista as planilhas esperadas que ainda não foram importadas
     function planilhasFaltando() {
       const ok = lerPlanilhasOk(); const vacs = Object.values(lerRelatoriosVacImportados());
-      const TIPO_VAC = { vac_atrasada: 'atrasada', vac_prazo: 'no prazo' };
-      return PLANILHAS_ESPERADAS.filter(p => TIPO_VAC[p.id]
-        ? !vacs.some(v => v.tipo === TIPO_VAC[p.id] || v.tipo === 'todas')
+      return PLANILHAS_ESPERADAS.filter(p => p.vac
+        ? !vacs.some(v => (v.tipo === p.vac[0] || v.tipo === 'todas') && (v.g === p.vac[1] || !v.g))
         : !ok[p.id]);
     }
     // Pop-up pós-importação: avisa quais planilhas faltam (ou que está tudo certo); após o OK vai para a aba Indicadores
@@ -904,6 +902,7 @@ function idadeEmAnos(dtStr) {
             ${htmlMedidas(c)}
             <div>${tagsHtml}</div>
             ${pendenciasHtml}
+            <button class="btn-prontuario" data-chave="${escHtml(chave)}">📋 Prontuário</button>
             ${visitaHtml}
             ${anotacaoHtml}
           </div>

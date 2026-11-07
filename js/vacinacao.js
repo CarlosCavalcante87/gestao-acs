@@ -84,6 +84,17 @@
       if (/no prazo/.test(n)) return 'no prazo';
       return 'todas';
     }
+    // O app acompanha vacinas só até esta idade (crianças e adolescentes de 0 a 14 anos)
+    const VAC_IDADE_MAX = 14;
+    // 'criancas' (0 a 9) ou 'adolescentes' (10 a 19, filtrado de 10 a 14); null se não der para saber
+    function grupoVacinacao(meta) {
+      const n = normalizarTexto((meta && meta.grupo) || '');
+      if (/crian/.test(n)) return 'criancas';
+      if (/adolesc/.test(n)) return 'adolescentes';
+      const f = faixaCobertaVacinacao(meta);
+      if (f) return f.min <= 9 ? 'criancas' : (f.min <= 19 ? 'adolescentes' : null);
+      return null;
+    }
     const ROTULO_STATUS_VAC = { 'atrasada': 'Atrasadas', 'no prazo': 'No prazo', 'todas': 'Atrasadas e no prazo' };
     // Guarda quais relatórios já foram importados (para a tela mostrar o que falta), um por grupo-alvo e status
     const VAC_REL_KEY = 'guia_vac_relatorios';
@@ -92,7 +103,7 @@
       if (rel.tipo === 'matriz') return;
       try {
         const reg = lerRelatoriosVacImportados(); const tipo = tipoStatusVacinacao(rel.meta);
-        reg[tipo + '|' + normalizarTexto(rel.meta.grupo || '')] = { tipo, grupo: rel.meta.grupo || 'todos os grupos', data, arquivo: rel.meta.arquivo || '', pessoas: new Set(rel.rows.map(r => r.nome)).size };
+        reg[tipo + '|' + normalizarTexto(rel.meta.grupo || '') + '|' + normalizarTexto(rel.meta.faixa || '')] = { tipo, g: grupoVacinacao(rel.meta), grupo: (rel.meta.grupo || 'todos os grupos') + (/\d/.test(rel.meta.faixa || '') ? ' · ' + rel.meta.faixa.replace(/^-\s*/, '') : ''), data, arquivo: rel.meta.arquivo || '', pessoas: new Set(rel.rows.map(r => r.nome)).size };
         localStorage.setItem(VAC_REL_KEY, JSON.stringify(reg));
       } catch (e) {}
     }
@@ -108,6 +119,7 @@
       const f = (meta.faixa || '');
       const mf = f.match(/(\d+)\D+(\d+)/);
       if (mf) { min = Math.max(min, +mf[1]); max = Math.min(max, +mf[2]); }
+      max = Math.min(max, VAC_IDADE_MAX);
       return { min, max };
     }
     const filtroVazio = (v) => { const n = normalizarTexto(v || ''); return n === '' || n === '-' || n === 'todas' || n === 'todos'; };
@@ -162,6 +174,7 @@
           if (!ehAtraso && !ehPrazo) return;
           const ch = (r.cpf.length === 11 && idx.porCpf[r.cpf]) || idx.porNome[r.nome];
           if (!ch) { fora.add(r.nome); return; }
+          { const nasc = r.nasc || BASE_DADOS.cidadaos[ch].dt_nascimento; const id = nasc ? idadeEmAnos(nasc) : null; if (id !== null && id > VAC_IDADE_MAX) return; }   // só até 14 anos
           ((ehAtraso ? porChave : porChavePrazo)[ch] = (ehAtraso ? porChave : porChavePrazo)[ch] || []).push({ v: r.v, d: r.d });
           const c = BASE_DADOS.cidadaos[ch];
           if (r.sexo && r.sexo !== '-' && !c.sexo) c.sexo = r.sexo;

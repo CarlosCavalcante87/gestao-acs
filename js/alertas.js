@@ -164,7 +164,7 @@
     }
 
     let modoAlertas = 'urgencia';
-    try { const mSalvo = localStorage.getItem('guia_modo_alertas'); if (mSalvo === 'rua' || mSalvo === 'aniv') modoAlertas = mSalvo; } catch (e) {}
+    try { const mSalvo = localStorage.getItem('guia_modo_alertas'); if (['rua', 'aniv', 'prazo', 'semana'].includes(mSalvo)) modoAlertas = mSalvo; } catch (e) {}
     function definirModoAlertas(m) { modoAlertas = m; try { localStorage.setItem('guia_modo_alertas', m); } catch (e) {} atualizarAlertas(); }
 
     function pilulaAlerta(itens) {
@@ -189,10 +189,10 @@
         ${itens.filter(a => a.afKey).map(a => `<button class="btn-al-feito" data-chave="${k}" data-k="${escHtml(a.afKey)}">✓ Feito (${escHtml(a.ind)})</button>`).join('')}
         ${itens.filter(a => a.tipo === 'retorno').map(a => `<button class="btn-ret-feito grande" data-chave="${k}" data-i="${a.ri}">✓ Retorno feito (${a.data.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })})</button>`).join('')}
         <div class="al-acoes">
-          ${podeVisita ? `<button class="btn-visita al-prim" data-chave="${k}">Registrar visita</button>` : `<button class="al-prim btn-abrir" data-chave="${k}">Abrir cartão do cidadão</button>`}
+          ${podeVisita ? `<button class="btn-visita al-prim" data-chave="${k}">Registrar visita</button>` : `<button class="al-prim btn-prontuario" data-chave="${k}">📋 Prontuário</button>`}
           ${urlWa ? `<a class="al-icone" href="${urlWa}" target="_blank" rel="noopener" aria-label="Chamar ${escHtml((c.nome || '').split(' ')[0])} no WhatsApp">${iconeWa}</a>` : ''}
         </div>
-        ${podeVisita ? `<button class="al-link btn-abrir" data-chave="${k}">Abrir cartão do cidadão</button>` : ''}
+        <div class="al-links">${podeVisita ? `<button class="al-link btn-prontuario" data-chave="${k}">📋 Prontuário</button>` : ''}<button class="al-link btn-abrir" data-chave="${k}">Abrir cartão do cidadão</button></div>
       </div>`;
     }
 
@@ -213,6 +213,9 @@
       document.getElementById('chipModoUrg').className = 'seg-btn' + (modoAlertas === 'urgencia' ? ' active' : '');
       document.getElementById('chipModoRua').className = 'seg-btn' + (modoAlertas === 'rua' ? ' active' : '');
       document.getElementById('chipModoAniv').className = 'seg-btn' + (modoAlertas === 'aniv' ? ' active' : '');
+      document.getElementById('chipModoPrazo').className = 'seg-btn' + (modoAlertas === 'prazo' ? ' active' : '');
+      document.getElementById('chipModoSemana').className = 'seg-btn' + (modoAlertas === 'semana' ? ' active' : '');
+      document.getElementById('alHoriz').style.display = (modoAlertas === 'prazo' || modoAlertas === 'semana') ? 'none' : '';
       const tem = Object.keys(BASE_DADOS.cidadaos).length > 0;
       document.getElementById('chipAl7').className = 'seg-btn' + (horizonteAlertas === 7 ? ' active' : '');
       document.getElementById('chipAl15').className = 'seg-btn' + (horizonteAlertas === 15 ? ' active' : '');
@@ -231,6 +234,8 @@
       if (!tem) { alvo.innerHTML = '<p style="text-align:center; padding: 24px; color: var(--text-muted); font-size: 0.88rem;">Importe as planilhas na aba Configurações para ver as ações do dia.</p>'; return; }
       const grupos = gruposCnt;
       if (modoAlertas === 'aniv') { alvo.innerHTML = ''; }
+      else if (modoAlertas === 'prazo') { alvo.innerHTML = htmlAgendaPrazo(); }
+      else if (modoAlertas === 'semana') { alvo.innerHTML = htmlAgendaSemana(); }
       else if (!grupos.length) { alvo.innerHTML = `<p style="text-align:center; padding: 24px; color: var(--text-muted); font-size: 0.88rem;">🎉 Nenhuma ação urgente nos próximos ${horizonteAlertas} dias.</p>`; }
       else {
         const temAtraso = g => g.itens.some(a => a.atrasado);

@@ -66,8 +66,10 @@
       { id: 'mulher', icone: '👩', titulo: 'Saúde da mulher', desc: 'Falta · PEC: Condições de saúde → Saúde da mulher' },
       { id: 'criancas', icone: '👶', titulo: 'Crianças (puericultura)', desc: 'Falta · PEC: Condições de saúde → Desenvolvimento infantil' },
       { id: 'territorio', icone: '🗺️', titulo: 'Território / famílias', desc: 'Falta · PEC: Território → Cadastro domiciliar' },
-      { id: 'vac_atrasada', icone: '⏰', titulo: 'Busca ativa de vacinação · Atrasada', desc: 'Falta · PEC: Busca ativa de vacinação → Status da vacina: Atrasada (.csv)' },
-      { id: 'vac_prazo', icone: '🗓️', titulo: 'Busca ativa de vacinação · No prazo', desc: 'Falta · PEC: Busca ativa de vacinação → Status da vacina: No prazo (.csv)' }
+      { id: 'vac_atrasada_cri', vac: ['atrasada', 'criancas'], icone: '⏰', titulo: 'Vacinas atrasadas · 0 a 9 anos', desc: 'Falta · PEC: Busca ativa de vacinação → Grupo-alvo: Crianças (0 a 9 anos) → Status: Atrasada (.csv)' },
+      { id: 'vac_prazo_cri', vac: ['no prazo', 'criancas'], icone: '🗓️', titulo: 'Vacinas no prazo · 0 a 9 anos', desc: 'Falta · PEC: Busca ativa de vacinação → Grupo-alvo: Crianças (0 a 9 anos) → Status: No prazo (.csv)' },
+      { id: 'vac_atrasada_ado', vac: ['atrasada', 'adolescentes'], icone: '⏰', titulo: 'Vacinas atrasadas · 10 a 14 anos (HPV e outras)', desc: 'Falta · PEC: Busca ativa de vacinação → Grupo-alvo: Adolescentes, faixa etária 10 até 14 anos → Status: Atrasada (.csv)' },
+      { id: 'vac_prazo_ado', vac: ['no prazo', 'adolescentes'], icone: '🗓️', titulo: 'Vacinas no prazo · 10 a 14 anos (HPV e outras)', desc: 'Falta · PEC: Busca ativa de vacinação → Grupo-alvo: Adolescentes, faixa etária 10 até 14 anos → Status: No prazo (.csv)' }
     ];
 
     function normalizarTexto(txt) {
