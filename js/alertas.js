@@ -381,13 +381,56 @@
     window.addEventListener('DOMContentLoaded', () => {
       atualizarStatusLembretes();
       atualizarAlertas();
-      if (location.hash === '#alertas') alternarAba('alertas');
+      if (location.hash === '#alertas') alternarAba('alertas', true);
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.addEventListener('message', (e) => { if (e.data && e.data.abrir === 'alertas') alternarAba('alertas'); });
       }
     });
 
-    function alternarAba(aba) {
+    // ---------- Histórico de navegação para o botão Voltar do Android ----------
+    let __pilhaAbas = ['alertas'];
+    let __emPopState = false;
+    let __baseGestureEmpurrada = false;
+
+    function __abaAtivaAtual() {
+      const abas = ['alertas', 'dashboard', 'cidadaos', 'upload'];
+      for (let i = 0; i < abas.length; i++) {
+        const el = document.getElementById('view-' + abas[i]);
+        if (el && el.style.display !== 'none') return abas[i];
+      }
+      return 'alertas';
+    }
+
+    function __garantirBaseHistorico() {
+      if (__baseGestureEmpurrada) return;
+      __baseGestureEmpurrada = true;
+      try {
+        const atual = __abaAtivaAtual();
+        history.replaceState({ aba: atual, base: true }, '', '#' + atual);
+        history.pushState({ aba: atual }, '', '#' + atual);
+      } catch (e) {}
+    }
+
+    // No primeiro toque real do usuário, registra uma entrada válida com gesto de usuário (exigido pelo Chrome Android)
+    ['pointerdown', 'touchstart', 'click'].forEach(ev => {
+      document.addEventListener(ev, () => {
+        __garantirBaseHistorico();
+      }, { once: true, capture: true, passive: true });
+    });
+
+    // Quando qualquer modal abre por clique do usuário, adiciona uma entrada no histórico para que o botão Voltar feche o modal
+    document.addEventListener('click', () => {
+      setTimeout(() => {
+        const modalAberto = document.querySelector('.modal-fundo.aberto');
+        if (modalAberto && !modalAberto.__histPush) {
+          modalAberto.__histPush = true;
+          try { history.pushState({ modal: modalAberto.id || 'modal', aba: __abaAtivaAtual() }, '', '#' + __abaAtivaAtual()); } catch (e) {}
+        }
+      }, 20);
+    }, true);
+
+    function alternarAba(aba, semHistorico) {
+      const abaAntes = __abaAtivaAtual();
       // ao sair da aba Cidadãos, esquece o nome que ficou na busca (evita listas vazias "misteriosas" nos outros indicadores)
       if (aba !== 'cidadaos') { const cb = document.getElementById('campoBusca'); if (cb && cb.value !== '') { cb.value = ''; if (typeof filtrarLista === 'function') filtrarLista(); } }
       ['dashboard', 'alertas', 'cidadaos', 'upload'].forEach(a => { document.getElementById('view-' + a).style.display = a === aba ? 'block' : 'none'; });
@@ -397,7 +440,51 @@
       document.getElementById('btnTabUp').className = aba === 'upload' ? 'active' : '';
       if (aba === 'alertas') atualizarAlertas();
       window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (!semHistorico && !__emPopState && aba && aba !== abaAntes) {
+        __garantirBaseHistorico();
+        __pilhaAbas.push(aba);
+        try { history.pushState({ aba: aba }, '', '#' + aba); } catch (e) {}
+      }
     }
+
+    window.addEventListener('popstate', () => {
+      // 1. Se o prontuário estiver aberto, fecha apenas o prontuário
+      const pront = document.getElementById('modalProntuario');
+      if (pront && pront.classList.contains('aberto')) {
+        pront.__histPush = false;
+        if (typeof fecharProntuario === 'function') fecharProntuario();
+        else pront.classList.remove('aberto');
+        return;
+      }
+
+      // 2. Se qualquer outro modal estiver aberto, fecha apenas o modal
+      const modalAberto = document.querySelector('.modal-fundo.aberto');
+      if (modalAberto) {
+        modalAberto.__histPush = false;
+        modalAberto.classList.remove('aberto');
+        return;
+      }
+
+      // 3. Se houver aba anterior na pilha de navegação, volta para a aba anterior
+      if (__pilhaAbas.length > 1) {
+        __pilhaAbas.pop();
+        const destino = __pilhaAbas[__pilhaAbas.length - 1] || 'alertas';
+        __emPopState = true;
+        alternarAba(destino, true);
+        __emPopState = false;
+        return;
+      }
+
+      // 4. Se estiver em outra aba que não a inicial (alertas), volta para alertas
+      const atual = __abaAtivaAtual();
+      if (atual !== 'alertas') {
+        __pilhaAbas = ['alertas'];
+        __emPopState = true;
+        alternarAba('alertas', true);
+        __emPopState = false;
+      }
+    });
 
     const NOMES_IND = { C1: '📋 C1 · Cadastro', C2: '👶 C2 · Criança', C3: '🤰 C3 · Pré-natal', C4: '🩸 C4 · Diabetes', C5: '❤️ C5 · Hipertensão', C6: '👴 C6 · Idosos', C7: '👩 C7 · Mulheres', BF: '💰 Bolsa Família', todos: 'Todos' };
     // Tocar num card de indicador abre a aba Cidadãos já filtrada por ele
