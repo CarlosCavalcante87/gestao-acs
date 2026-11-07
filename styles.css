@@ -682,26 +682,26 @@ html.escuro .hero-hoje { filter: invert(0.9) hue-rotate(180deg); }
     /* ---------- ANIMAÇÃO DE ABERTURA ---------- */
     #splash { position: fixed; inset: 0; z-index: 2000; display: flex; align-items: center; justify-content: center;
       background: radial-gradient(60% 50% at 50% 42%, #0ea5e9 0%, #0284c7 45%, #075985 100%);
-      animation: spSai .6s ease 5s forwards; }
+      animation: spSai .5s ease 2.7s forwards; }
     .splash-conteudo { text-align: center; color: #fff; padding: 24px; }
     .splash-box { position: relative; width: 200px; height: 200px; margin: 0 auto 8px; }
-    .splash-logo { position: absolute; left: 40px; top: 40px; filter: drop-shadow(0 8px 24px rgba(3, 40, 80, .35)); animation: spPulo .8s cubic-bezier(.34, 1.56, .64, 1) 1.5s both; }
+    .splash-logo { position: absolute; left: 40px; top: 40px; filter: drop-shadow(0 8px 24px rgba(3, 40, 80, .35)); animation: spPulo .6s cubic-bezier(.34, 1.56, .64, 1) .7s both; }
     .splash-logo path, .splash-logo circle { stroke-dasharray: 100; stroke-dashoffset: 100; }
-    .sp-anel { animation: spTraco 1s ease-out .2s forwards; }
-    .sp-casa { animation: spTraco .8s ease-out .8s forwards; }
-    .sp-cruz { animation: spTraco .5s ease-out 1.4s forwards; }
+    .sp-anel { animation: spTraco .5s ease-out 0s forwards; }
+    .sp-casa { animation: spTraco .45s ease-out .25s forwards; }
+    .sp-cruz { animation: spTraco .35s ease-out .55s forwards; }
     @keyframes spTraco { to { stroke-dashoffset: 0; } }
     @keyframes spPulo { 0% { transform: scale(1); } 50% { transform: scale(1.12); } 100% { transform: scale(1); } }
     /* ícone real do app (icone-192.png); se não carregar, fica o desenho em SVG */
-    .splash-icone { position: absolute; left: 40px; top: 40px; width: 120px; height: 120px; border-radius: 27px; opacity: 0; box-shadow: 0 8px 24px rgba(3, 40, 80, .35); animation: spIcone .9s cubic-bezier(.34, 1.56, .64, 1) .4s forwards; }
+    .splash-icone { position: absolute; left: 40px; top: 40px; width: 120px; height: 120px; border-radius: 27px; opacity: 0; box-shadow: 0 8px 24px rgba(3, 40, 80, .35); animation: spIcone .55s cubic-bezier(.34, 1.56, .64, 1) .05s forwards; }
     .splash-box.tem-icone .splash-logo { display: none; }
     @keyframes spIcone { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: scale(1); } }
-    .splash-titulo { font-size: 1.45rem; font-weight: 800; letter-spacing: -0.02em; opacity: 0; animation: spSobe .7s ease 1.7s forwards; }
-    .splash-sub { margin-top: 8px; font-size: .85rem; font-weight: 500; opacity: 0; animation: spSobe .7s ease 2.1s forwards; }
+    .splash-titulo { font-size: 1.45rem; font-weight: 800; letter-spacing: -0.02em; opacity: 0; animation: spSobe .5s ease .45s forwards; }
+    .splash-sub { margin-top: 8px; font-size: .85rem; font-weight: 500; opacity: 0; animation: spSobe .5s ease .7s forwards; }
     .splash-sub { --op: .9; }
     .splash-orbita { position: absolute; inset: 0; width: 200px; height: 200px; opacity: 0; filter: drop-shadow(0 0 6px rgba(255,255,255,.35)); }
-    .o1 { animation: spGira 2.6s linear .3s infinite, spApar .6s ease .3s forwards; }
-    .o2 { animation: spGira 3.6s linear .3s infinite reverse, spApar .6s ease .3s forwards; }
+    .o1 { animation: spGira 2.2s linear 0s infinite, spApar .35s ease 0s forwards; }
+    .o2 { animation: spGira 3.0s linear 0s infinite reverse, spApar .35s ease 0s forwards; }
     @keyframes spGira { to { transform: rotate(360deg); } }
     @keyframes spApar { to { opacity: 1; } }
     @keyframes spSobe { from { opacity: 0; transform: translateY(10px); } to { opacity: var(--op, 1); transform: none; } }
